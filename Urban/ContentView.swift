@@ -6,23 +6,34 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
-    @State private var username: String = ""
-    @State private var houseId: String = ""
-    @State private var visitDate: Date = Date.now
-    @State private var constructionQuality: Evaluation = Evaluation.medium
-    @State private var finishes: Evaluation = Evaluation.medium
-    @State private var solarExposition: Evaluation = Evaluation.medium
-    @State private var location: Evaluation = Evaluation.medium
-    @State private var price: Evaluation = Evaluation.medium
-    @State private var value: Evaluation = Evaluation.medium
-    @State private var globalAppreciation: Evaluation = Evaluation.medium
-    @State private var userDecision: Decision = Decision.maybe
-    @State private var dislikes: String = ""
-    @State private var likes: String = ""
-    @State private var willingToPay: String = ""
-    @State private var finalEvaluation: Rating = Rating.threeStars
+    @State private var visitReport: VisitReport = VisitReport()
+    
+    func save(visitReport: VisitReport) -> Void {
+        let db = Firestore.firestore()
+        let collectionRef = db.collection("VisitReport")
+        let data = convertvisitReportToDictionary(visitReport: visitReport)
+        collectionRef.addDocument(data: data) { error in
+            if let error = error {
+                print("Error saving data: \(error.localizedDescription)")
+            } else {
+                print("Data saved successfully!")
+            }
+        }
+    }
+
+    func convertvisitReportToDictionary(visitReport: VisitReport) -> [String: Any] {
+        var dictionary: [String: Any] = [:]
+        let mirror = Mirror(reflecting: visitReport)
+        
+        for case let (label?, value) in mirror.children {
+            dictionary[label] = String(describing: value)
+        }
+        
+        return dictionary
+    }
     
     var body: some View {
         VStack {
@@ -35,56 +46,62 @@ struct ContentView: View {
                 Section(header: Text("Cliente")) {
                     TextField(
                             "Nome do cliente",
-                            text: $username
+                            text: $visitReport.clientName
                         )
                         .background(Color.clear)
                         .textInputAutocapitalization(.words)
                         .disableAutocorrection(true)
                     TextField(
                         "Id da angariação e.g. 1208-3634",
-                        text: $houseId
+                        text: $visitReport.listingCode
                     )
                 }
                 .listRowBackground(Color.clear)
                 
                 Section(header: Text("Propriedade")) {
-                    Picker(selection: $constructionQuality, label: Text("Qualidade de construção")) {
+                    Picker(selection: $visitReport.floorPlan, label: Text("Planta do Imóvel")) {
                         Text("Mau").tag(Evaluation.bad)
                         Text("Médio").tag(Evaluation.medium)
                         Text("Bom").tag(Evaluation.good)
                         Text("Muito Bom").tag(Evaluation.veryGood)
                     }
-                    Picker(selection: $finishes, label: Text("Acabamentos")) {
+                    Picker(selection: $visitReport.finishes, label: Text("Acabamentos")) {
                         Text("Mau").tag(Evaluation.bad)
                         Text("Médio").tag(Evaluation.medium)
                         Text("Bom").tag(Evaluation.good)
                         Text("Muito Bom").tag(Evaluation.veryGood)
                     }
-                    Picker(selection: $solarExposition, label: Text("Exposição solar")) {
+                    Picker(selection: $visitReport.sunExposition, label: Text("Exposição solar")) {
                         Text("Mau").tag(Evaluation.bad)
                         Text("Médio").tag(Evaluation.medium)
                         Text("Bom").tag(Evaluation.good)
                         Text("Muito Bom").tag(Evaluation.veryGood)
                     }
-                    Picker(selection: $location, label: Text("Localização")) {
+                    Picker(selection: $visitReport.locationRating, label: Text("Localização")) {
                         Text("Mau").tag(Evaluation.bad)
                         Text("Médio").tag(Evaluation.medium)
                         Text("Bom").tag(Evaluation.good)
                         Text("Muito Bom").tag(Evaluation.veryGood)
                     }
-                    Picker(selection: $price, label: Text("Preço")) {
+                    Picker(selection: $visitReport.locationRating, label: Text("Preço")) {
                         Text("Mau").tag(Evaluation.bad)
                         Text("Médio").tag(Evaluation.medium)
                         Text("Bom").tag(Evaluation.good)
                         Text("Muito Bom").tag(Evaluation.veryGood)
                     }
-                    Picker(selection: $value, label: Text("Valor")) {
+                    Picker(selection: $visitReport.value, label: Text("Valor")) {
                         Text("Mau").tag(Evaluation.bad)
                         Text("Médio").tag(Evaluation.medium)
                         Text("Bom").tag(Evaluation.good)
                         Text("Muito Bom").tag(Evaluation.veryGood)
                     }
-                    Picker(selection: $globalAppreciation, label: Text("Apreciação global")) {
+                    Picker(selection: $visitReport.overallAssessment, label: Text("Apreciação global")) {
+                        Text("Mau").tag(Evaluation.bad)
+                        Text("Médio").tag(Evaluation.medium)
+                        Text("Bom").tag(Evaluation.good)
+                        Text("Muito Bom").tag(Evaluation.veryGood)
+                    }
+                    Picker(selection: $visitReport.agentService, label: Text("Serviço KW")) {
                         Text("Mau").tag(Evaluation.bad)
                         Text("Médio").tag(Evaluation.medium)
                         Text("Bom").tag(Evaluation.good)
@@ -94,32 +111,26 @@ struct ContentView: View {
                 .listRowBackground(Color.clear)
                 
                 Section(header: Text("Impressões")) {
-                    Picker(selection: $userDecision, label: Text("Compraria ou arrendaria?")) {
+                    Picker(selection: $visitReport.isOption, label: Text("Este imóvel seria uma opção?")) {
                         Text("Sim").tag(Decision.yes)
                         Text("Não").tag(Decision.no)
                         Text("Talvez").tag(Decision.maybe)
                     }
                     Text("O que gostou menos?")
-                    TextEditor(text: $dislikes)
+                    TextEditor(text: $visitReport.dislikes)
                     Text("O que gostou mais?")
-                    TextEditor(text: $likes)
+                    TextEditor(text: $visitReport.likes)
                     Text("Quanto estaria disposto a pagar por este imóvel?")
-                    TextField("e.g. 200,000,00$", text: $willingToPay)
-                    Picker(selection: $finalEvaluation, label: Text("Avaliação final da visita")) {
-                            Text("⭐️").tag(Rating.oneStar)
-                            Text("⭐️⭐️").tag(Rating.twoStars)
-                            Text("⭐️⭐️⭐️").tag(Rating.threeStars)
-                            Text("⭐️⭐️⭐️⭐️").tag(Rating.fourStars)
-                            Text("⭐️⭐️⭐️⭐️⭐️").tag(Rating.fiveStars)
-                    }
+                    TextField("e.g. 200,000,00$", text: $visitReport.willingToPay)
                 }
                 .listRowBackground(Color.clear)
                 
                 Section {
                     Button("Submeter") {
                         print("Formulário submetido com sucesso!")
+                        save(visitReport: visitReport)
                     }
-                    .padding(/*@START_MENU_TOKEN@*/.horizontal, 0.0/*@END_MENU_TOKEN@*/)
+                    .padding(.horizontal, 0.0)
                     .frame(maxWidth: .infinity, alignment: .center)
                 }
                 .listRowBackground(Color(hex: "C6C2B5", opacity: 0.3))
@@ -128,7 +139,7 @@ struct ContentView: View {
             .scrollContentBackground(.hidden)
         }
         .padding()
-        .background(Color(hex: "EBE5D0"))
+        .background(Color(hex: "EBE2D0"))
     }
 }
 
