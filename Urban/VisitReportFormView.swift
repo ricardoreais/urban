@@ -8,8 +8,15 @@
 import SwiftUI
 import Firebase
 
-struct ContentView: View {
+struct VisitReportFormView: View {
     @State private var visitReport: VisitReport = VisitReport()
+    
+    func onAppear() {
+        guard let uuidString = Auth.auth().currentUser?.uid  else {
+            return
+        }
+        visitReport.userId = uuidString;
+    }
     
     func save(visitReport: VisitReport) -> Void {
         let db = Firestore.firestore()
@@ -23,7 +30,7 @@ struct ContentView: View {
             }
         }
     }
-
+    
     func convertvisitReportToDictionary(visitReport: VisitReport) -> [String: Any] {
         var dictionary: [String: Any] = [:]
         let mirror = Mirror(reflecting: visitReport)
@@ -31,7 +38,7 @@ struct ContentView: View {
         for case let (label?, value) in mirror.children {
             dictionary[label] = String(describing: value)
         }
-        
+        	
         return dictionary
     }
     
@@ -41,16 +48,15 @@ struct ContentView: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 200, height: 200)
-            
             Form {
                 Section(header: Text("Cliente")) {
                     TextField(
-                            "Nome do cliente",
-                            text: $visitReport.clientName
-                        )
-                        .background(Color.clear)
-                        .textInputAutocapitalization(.words)
-                        .disableAutocorrection(true)
+                        "Nome do cliente",
+                        text: $visitReport.clientName
+                    )
+                    .background(Color.clear)
+                    .textInputAutocapitalization(.words)
+                    .disableAutocorrection(true)
                     TextField(
                         "Id da angariação e.g. 1208-3634",
                         text: $visitReport.listingCode
@@ -138,13 +144,15 @@ struct ContentView: View {
             .foregroundColor(Color(hex: "514C4D"))
             .scrollContentBackground(.hidden)
         }
+        .onAppear(perform: onAppear)
+        .navigationBarBackButtonHidden(true)
         .padding()
         .background(Color(hex: "EBE2D0"))
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct VisitFormView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        VisitReportFormView()
     }
 }

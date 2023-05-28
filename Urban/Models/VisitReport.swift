@@ -28,4 +28,5 @@ struct VisitReport {
     var isOption: Decision = Decision.maybe
     var hasPropertyToSell: Bool = false
     var comments: String = ""
+    var userId: String = ""
 }
