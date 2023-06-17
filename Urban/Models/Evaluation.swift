@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum Evaluation {
+enum Evaluation: String, Codable {
     case bad
     case medium
     case good

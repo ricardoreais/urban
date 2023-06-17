@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Decision {
+enum Decision: String, Codable {
     case yes
     case no
     case maybe
