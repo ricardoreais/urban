@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack {
@@ -20,15 +20,15 @@ struct HomeView: View {
                     case Route.signUp:
                         SignUpView()
                     default:
-                        HomeView()
+                        MainView()
                 }
             }
         }
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        MainView()
     }
 }

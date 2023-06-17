@@ -24,7 +24,7 @@ struct UrbanApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SandboxView()
+            MainView()
         }
     }
 }

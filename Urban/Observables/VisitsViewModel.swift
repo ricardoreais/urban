@@ -14,7 +14,14 @@ class VisitsViewModel: ObservableObject {
     
     func fetchVisitReports() {
             let db = Firestore.firestore()
-            db.collection("VisitReport").getDocuments { snapshot, error in
+        
+        if let currentUser = Auth.auth().currentUser {
+            let userID = String(currentUser.uid)
+            print("Current User ID: \(userID)")
+            
+            db.collection("VisitReport")
+                .whereField("userId", isEqualTo: userID)
+            .getDocuments { snapshot, error in
                 if let error = error {
                     print("Error fetching visit reports: \(error.localizedDescription)")
                     return
@@ -41,5 +48,8 @@ class VisitsViewModel: ObservableObject {
                     self.reports = reports
                 }
             }
+        } else {
+            print("No current user")
+        }
         }
 }

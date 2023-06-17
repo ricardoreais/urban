@@ -48,7 +48,7 @@ struct SignInView: View {
                 Button("Sign In") {
                     signIn()
                 }.navigationDestination(isPresented: $loggedIn) {
-                    VisitReportFormView()
+                    HomeView()
                 }
                 .padding(.horizontal, 0.0)
                 .frame(maxWidth: .infinity, alignment: .center)
