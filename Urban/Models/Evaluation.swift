@@ -15,13 +15,13 @@ enum Evaluation: String, Codable {
     var rawValue: String {
         switch self {
         case .bad:
-            return "Mau"
+            return "bad"
         case .medium:
-            return "Médio"
+            return "medium"
         case .good:
-            return "Bom"
+            return "good"
         case .veryGood:
-            return "Muito bom"
+            return "veryGood"
         }
     }
 }

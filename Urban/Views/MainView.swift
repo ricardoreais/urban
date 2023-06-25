@@ -12,8 +12,8 @@ struct MainView: View {
         NavigationStack {
             VStack{
                 LogoView()
-                NavigationLink("Efetuar login", destination: SignInView())
-                NavigationLink("Criar nova conta", destination: SignUpView())
+                NavigationLink("login", destination: SignInView())
+                NavigationLink("signUp", destination: SignUpView())
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(ColorPalette.primary)

@@ -10,6 +10,37 @@ import Firebase
 import FirebaseFirestore
 
 
+struct CustomText: View {
+    @Binding var text: String
+    let placeholder: LocalizedStringKey
+
+    var body: some View {
+        TextField("", text: $text, prompt: {
+            Text(placeholder)
+                .foregroundColor(ColorPalette.secondary)
+        }())
+        .foregroundColor(ColorPalette.secondary)
+    }
+}
+
+struct CustomSection<Content: View>: View {
+    let header: String
+    let content: Content
+    
+    init(header: String, @ViewBuilder content: () -> Content) {
+        self.header = header
+        self.content = content()
+    }
+    
+    var body: some View {
+        Section(header: Text(LocalizedStringKey(header))) {
+            content
+        }
+        .foregroundColor(.accentColor)
+        .listRowBackground(Color.clear)
+    }
+}
+
 struct CustomLabelStyle: LabelStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.title
@@ -19,7 +50,7 @@ struct CustomLabelStyle: LabelStyle {
 
 struct CustomPicker: View {
     public var selection: Binding<Evaluation>
-    public var label: String
+    public var label: LocalizedStringKey
     
     var body: some View {
         Picker(selection: selection, label: Text(label)) {
@@ -63,68 +94,43 @@ struct VisitReportFormView: View {
         VStack {
             LogoView()
             Form {
-                Section(header: Text("Cliente")) {
-                    TextField(
-                        "",
-                        text: $visitReport.clientName,
-                        prompt: Text("Nome do cliente").foregroundColor(ColorPalette.secondary)
-                    )
-                    .foregroundColor(ColorPalette.secondary)
+                CustomSection(header: "client") {
+                    CustomText(text:$visitReport.clientName, placeholder: "clientName")
                     .textInputAutocapitalization(.words)
                     .disableAutocorrection(true)
-                    TextField(
-                        "",
-                        text: $visitReport.listingCode,
-                        prompt: Text("Id da angariação e.g. 1208-3634").foregroundColor(ColorPalette.secondary)
+                    
+                    CustomText(text: $visitReport.listingCode, placeholder: "listingCodeWithExample"
                     )
-                    .foregroundColor(ColorPalette.secondary)
                 }
-                .foregroundColor(.accentColor)
-                .listRowBackground(Color.clear)
                 
-                Section(header: Text("Propriedade")) {
-                    CustomPicker(selection: $visitReport.floorPlan, label: "Planta do Imóvel")
-                    CustomPicker(selection: $visitReport.finishes, label: "Acabamentos")
-                    CustomPicker(selection: $visitReport.sunExposition, label: "Exposição solar")
-                    CustomPicker(selection: $visitReport.locationRating, label: "Localização")
-                    CustomPicker(selection: $visitReport.value, label: "Valor")
-                    CustomPicker(selection: $visitReport.overallAssessment, label: "Apreciação global")
-                    CustomPicker(selection: $visitReport.agentService, label: "Serviço KW")
+                CustomSection(header: "property") {
+                    CustomPicker(selection: $visitReport.floorPlan, label: "floorPlan")
+                    CustomPicker(selection: $visitReport.finishes, label: "finishes")
+                    CustomPicker(selection: $visitReport.sunExposition, label: "sunExposure")
+                    CustomPicker(selection: $visitReport.locationRating, label: "location")
+                    CustomPicker(selection: $visitReport.value, label: "value")
+                    CustomPicker(selection: $visitReport.overallAssessment, label: "overallAssessment")
+                    CustomPicker(selection: $visitReport.agentService, label: "kwService")
                 }
-                .foregroundColor(.accentColor)
-                .listRowBackground(Color.clear)
                 
-                Section(header: Text("Impressões")) {
-                    Picker(selection: $visitReport.isOption, label: Text("Este imóvel seria uma opção?")) {
-                        Text("Sim").tag(Decision.yes)
-                        Text("Não").tag(Decision.no)
-                        Text("Talvez").tag(Decision.maybe)
+                CustomSection(header: "impressions") {
+                    Picker(selection: $visitReport.isOption, label: Text("isThisPropertyAnOption")) {
+                        Text("yes").tag(Decision.yes)
+                        Text("no").tag(Decision.no)
+                        Text("maybe").tag(Decision.maybe)
                     }
                     .pickerStyle(MenuPickerStyle())
                     .accentColor(ColorPalette.secondary)
-                    TextField(
-                        "",
-                        text: $visitReport.dislikes,
-                        prompt: Text("O que gostou menos?").foregroundColor(ColorPalette.secondary)
-                    )
-                    .foregroundColor(ColorPalette.secondary)
-                    TextField(
-                        "",
-                        text: $visitReport.likes,
-                        prompt: Text("O que gostou mais?").foregroundColor(ColorPalette.secondary)
-                    )
-                    .foregroundColor(ColorPalette.secondary)
-                    Text("Quanto estaria disposto a pagar por este imóvel?").foregroundColor(ColorPalette.secondary)
-                    TextField("", text: $visitReport.willingToPay,
-                              prompt: Text("e.g. 200,000,00$").foregroundColor(ColorPalette.secondary))
-                    .foregroundColor(ColorPalette.secondary)
+                    
+                    CustomText(text: $visitReport.dislikes, placeholder: "whatDidYouDislike")
+                    CustomText(text: $visitReport.likes, placeholder: "whatDidYouLike")
+                    Text("howMuchAreYouWillingToPay").foregroundColor(ColorPalette.secondary)
+                    CustomText(text: $visitReport.willingToPay, placeholder: "moneyExample")
                 }
-                .foregroundColor(.accentColor)
-                .listRowBackground(Color.clear)
                 
                 Section {
-                    Button("Submeter") {
-                        print("Formulário submetido com sucesso!")
+                    Button("submit") {
+                        print("Form submitted with success!")
                         save(visitReport: visitReport)
                     }
                     .padding(.horizontal, 0.0)
@@ -137,6 +143,7 @@ struct VisitReportFormView: View {
             .onAppear(perform: onAppear)
             .padding()
         }
+        .navigationBarBackButtonHidden(true)
         .accentColor(.accentColor)
         .background(ColorPalette.primary)
     }

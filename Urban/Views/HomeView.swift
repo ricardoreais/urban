@@ -16,11 +16,11 @@ struct HomeView: View {
         TabView {
             VisitsView()
                 .tabItem {
-                    Label("As minhas visitas", systemImage: "list.bullet")
+                    Label("myVisits", systemImage: "list.bullet")
                 }
             VisitReportFormView()
                 .tabItem {
-                    Label("Criar visita", systemImage: "square.and.pencil")
+                    Label("createVisit", systemImage: "square.and.pencil")
                 }
         }
         .navigationBarBackButtonHidden(true)

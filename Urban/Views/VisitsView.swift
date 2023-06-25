@@ -13,27 +13,34 @@ struct VisitsView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
-            Text("As minhas visitas")
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.top, 16)
-                .padding(.leading, 20)
-            
-            if viewModel.isLoading {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                    .scaleEffect(2)
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            } else {
-                List(viewModel.reports) { report in
-                    NavigationLink(destination: VisitDetailsView(id: report.id ?? "")) {
-                        CustomTextView(label: "Cliente ", value: report.clientName) +
-                        CustomTextView(label: " Código ", value: report.listingCode)
+                Text("myVisits")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top, 16)
+                    .padding(.leading, 20)
+                
+                if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                        .scaleEffect(2)
+                        .padding()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    if(viewModel.reports.isEmpty){
+                        Text("noVisitsYet")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .listRowBackground(ColorPalette.highlights)
+                    else{
+                        List(viewModel.reports) { report in
+                            NavigationLink(destination: VisitDetailsView(id: report.id ?? "")) {
+                                CustomTextView(label: "clientName", value: report.clientName) +
+                                CustomTextView(label: "code", value: report.listingCode)
+                            }
+                            .listRowBackground(ColorPalette.highlights)
+                        }
+                        
+                    }
                 }
-            }
             }
             .background(ColorPalette.primary)
             .frame(maxWidth: .infinity, maxHeight: .infinity)

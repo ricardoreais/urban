@@ -12,10 +12,11 @@ struct CustomTextView: View {
     let value: String
     
     var body: some View {
-        Text(label)
+        Text(LocalizedStringKey(label))
             .foregroundColor(.accentColor)
             .fontWeight(.bold) +
-        Text(value)
+        Text(" ") +
+        Text(LocalizedStringKey(value))
     }
     
     static func +(lhs: CustomTextView, rhs: CustomTextView) -> some View {
@@ -28,6 +29,6 @@ struct CustomTextView: View {
 
 struct CustomTextView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTextView(label: "Cliente ", value: "Ricardo Reais")
+        CustomTextView(label: "clientName", value: "Ricardo Reais")
     }
 }

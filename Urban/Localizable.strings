@@ -1,0 +1,54 @@
+/* 
+  Localizable.strings
+  Urban
+
+  Created by Juliana Estrela on 25/06/2023.
+  
+*/
+"client" = "Cliente";
+"clientName" = "Nome de cliente";
+"code" = "Código";
+"myVisits" = "As minhas visitas";
+"createVisit" = "Criar visita";
+"property" = "Propriedade";
+"impressions" = "Impressões";
+"submit" = "Submeter";
+"listingCodeWithExample" = "Id da angariação e.g. 1208-3634";
+"listingCode" = "Id da angariação";
+"floorPlan" = "Planta do Imóvel";
+"finishes" = "Acabamentos";
+"sunExposure" = "Exposição solar";
+"location" = "Localização";
+"value" = "Valor";
+"overallAssessment" = "Apreciação global";
+"kwService" = "Serviço KW";
+"whatDidYouDislike" = "O que gostou menos?";
+"whatDidYouLike" = "O que gostou mais?";
+"howMuchAreYouWillingToPay" = "Quanto estaria disposto a pagar por este imóvel?";
+"moneyExample" = "e.g. 200,000,00$";
+"isThisPropertyAnOption" = "Este imóvel seria uma opção?";
+"yes" = "Sim";
+"no" = "Não";
+"maybe" = "Talvez";
+"noVisitsYet" = "Ainda não tem visitas nenhumas criadas...";
+"address" = "Morada";
+"district" = "Distrito";
+"whatILiked" = "O que gostei";
+"whatIDisliked" = "O que gostei menos";
+"howMuchAmIWillingToPay" = "Quanto estou disposto a pagar";
+"isItAnOption" = "É uma opção?";
+"comments" = "Comentários";
+"bad" = "Mau";
+"medium" = "Médio";
+"good" = "Bom";
+"veryGood" = "Muito bom";
+"email" = "Email";
+"password" = "Password";
+"repeatPassword" = "Repetir password";
+"error" = "Erro";
+"notPossibleToLogin" = "Não foi possivel efetuar o login, valide o seu email/password";
+"ok" = "OK";
+"signIn" = "Entrar";
+"pleaseFillFieldsCorrectly" = "Por favor preencha corretamente os campos";
+"signUp" = "Criar nova conta";
+"login" = "Efetuar login";

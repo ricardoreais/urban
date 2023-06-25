@@ -49,15 +49,15 @@ struct SignInView: View {
             }
             .alert(isPresented: $hasErrors) {
                 Alert(
-                    title: Text("Erro"),
-                    message: Text("Não foi possivel efetuar o login, valide o seu email/password"),
-                    dismissButton: .default(Text("OK"))
+                    title: Text("error"),
+                    message: Text("notPossibleToLogin"),
+                    dismissButton: .default(Text("ok"))
                 )
             }
             .foregroundColor(ColorPalette.secondary)
             .scrollContentBackground(.hidden)
             
-            Button("Sign In") {
+            Button("signIn") {
                 signIn()
             }.navigationDestination(isPresented: $loggedIn) {
                 HomeView()

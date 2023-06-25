@@ -22,19 +22,19 @@ struct SignUpView: View {
                 LogoView()
                 Form {
                     TextField("", text: $email,
-                              prompt: Text("Email").foregroundColor(ColorPalette.secondary))
+                              prompt: Text("email").foregroundColor(ColorPalette.secondary))
                     .disableAutocorrection(true)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                     .listRowBackground(ColorPalette.highlights)
                     
                     SecureField("", text: $password,
-                              prompt: Text("Password").foregroundColor(ColorPalette.secondary))
+                              prompt: Text("password").foregroundColor(ColorPalette.secondary))
                     .listRowBackground(ColorPalette.highlights)
                     .disableAutocorrection(true)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                     
                     SecureField("", text: $confirmPassword,
-                              prompt: Text("Repetir password").foregroundColor(ColorPalette.secondary))
+                              prompt: Text("repeatPassword").foregroundColor(ColorPalette.secondary))
                     .listRowBackground(ColorPalette.highlights)
                     .disableAutocorrection(true)
                     .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
@@ -42,17 +42,21 @@ struct SignUpView: View {
                 }
                 .alert(isPresented: $hasErrors) {
                     Alert(
-                        title: Text("Erro"),
-                        message: Text("Por favor preencha corretamente os campos"),
-                        dismissButton: .default(Text("OK"))
+                        title: Text("error"),
+                        message: Text("pleaseFillFieldsCorrectly"),
+                        dismissButton: .default(Text("ok"))
                     )
                 }
                 .foregroundColor(ColorPalette.secondary)
                 .scrollContentBackground(.hidden)
                 
                 
-                Button("Criar nova conta") {
+                Button("signUp") {
                     hasErrors = email.isEmpty || password.isEmpty || confirmPassword.isEmpty || password != confirmPassword
+                    
+                    if(hasErrors){
+                        return
+                    }
                     
                     Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
                         guard let user = authResult?.user, error == nil else {
