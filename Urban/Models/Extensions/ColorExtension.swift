@@ -22,15 +22,6 @@ extension Color {
         self.init(red: red, green: green, blue: blue, opacity: opacity)
     }
     
-    static var primary: Color  {
-        return Color("Primary")
-    }
-    
-    static var secondary: Color  {
-        return Color("Secondary")
-    }
-    
-    
     func uiColor() -> UIColor {
         
         if #available(iOS 14.0, *) {
