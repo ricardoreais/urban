@@ -14,6 +14,7 @@ class VisitViewModel: ObservableObject {
     @Published var isLoading = true
     
     func fetchVisitReport(id: String) {
+        print("Getting visit: \(id)")
         let db = Firestore.firestore()
         db.collection("VisitReport")
             .document(id)

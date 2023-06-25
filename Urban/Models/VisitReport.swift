@@ -14,7 +14,7 @@ struct VisitReport: Codable, Identifiable {
     var clientName: String = ""
     var listingCode: String = ""
     var location: String = ""
-    var listedValue: Double = 0.0
+    var listedValue: String = ""
     var address: String = ""
     var district: String = ""
     var floorPlan: Evaluation = Evaluation.medium

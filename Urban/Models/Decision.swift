@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Decision: String, Codable {
     case yes
     case no
     case maybe
     
-    var rawValue: String {
+    var rawValue: LocalizedStringKey {
         switch self {
         case .yes:
             return "yes"

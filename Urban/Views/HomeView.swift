@@ -22,6 +22,24 @@ struct HomeView: View {
                 .tabItem {
                     Label("createVisit", systemImage: "square.and.pencil")
                 }
+            VStack{
+                Text("comingSoon")
+                    .foregroundColor(ColorPalette.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(ColorPalette.primary)
+            .tabItem {
+                Label("calendar", systemImage: "calendar")
+            }
+            VStack{
+                Text("comingSoon")
+                    .foregroundColor(ColorPalette.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(ColorPalette.primary)
+            .tabItem {
+                Label("myAccount", systemImage: "person")
+            }
         }
         .navigationBarBackButtonHidden(true)
     }

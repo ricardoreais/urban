@@ -47,7 +47,6 @@ struct VisitsView: View {
         }
         .scrollContentBackground(.hidden)
         .foregroundColor(ColorPalette.secondary)
-        .background(ColorPalette.primary)
         .onAppear(perform: {
             viewModel.fetchVisitReports()
         })
@@ -58,7 +57,7 @@ struct VisitsView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = VisitsViewModel()
         viewModel.reports = [
-            VisitReport(id: "uN8uNes0lGhdpGHmFq2t", clientName: "John Doe", listingCode: "ABC123", location: "City", listedValue: 100000, userId: "6JAQAHYtNreSRJfEM9ssEr92uYx1")
+            VisitReport(id: "uN8uNes0lGhdpGHmFq2t", clientName: "John Doe", listingCode: "ABC123", location: "City", listedValue: "100000", userId: "6JAQAHYtNreSRJfEM9ssEr92uYx1")
         ]
         return VisitsView(viewModel: viewModel)
     }

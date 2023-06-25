@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import SwiftUI
+
 enum Evaluation: String, Codable {
     case bad
     case medium
     case good
     case veryGood
     
-    var rawValue: String {
+    var rawValue: LocalizedStringKey {
         switch self {
         case .bad:
             return "bad"

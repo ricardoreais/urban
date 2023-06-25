@@ -54,10 +54,10 @@ struct CustomPicker: View {
     
     var body: some View {
         Picker(selection: selection, label: Text(label)) {
-            Text("Mau").tag(Evaluation.bad)
-            Text("Médio").tag(Evaluation.medium)
-            Text("Bom").tag(Evaluation.good)
-            Text("Muito Bom").tag(Evaluation.veryGood)
+            Text(Evaluation.bad.rawValue).tag(Evaluation.bad)
+            Text(Evaluation.medium.rawValue).tag(Evaluation.medium)
+            Text(Evaluation.good.rawValue).tag(Evaluation.good)
+            Text(Evaluation.veryGood.rawValue).tag(Evaluation.veryGood)
         }
         .pickerStyle(MenuPickerStyle())
         .accentColor(ColorPalette.secondary)
@@ -66,6 +66,8 @@ struct CustomPicker: View {
 
 struct VisitReportFormView: View {
     @State private var visitReport: VisitReport = VisitReport()
+    @State private var visitCreated: Bool = false
+    @State private var hasErrors: Bool = false
     
     func onAppear() {
         guard let uuidString = Auth.auth().currentUser?.uid  else {
@@ -75,74 +77,114 @@ struct VisitReportFormView: View {
     }
     
     func save(visitReport: VisitReport) -> Void {
+        hasErrors = visitReport.clientName.isEmpty || visitReport.listingCode.isEmpty
+        
+        if(hasErrors){
+            return
+        }
+        
         let db = Firestore.firestore()
         let collectionRef = db.collection("VisitReport")
         do {
             try collectionRef.addDocument(from: visitReport) { error in
                 if let error = error {
+                    hasErrors = true
                     print("Error saving data: \(error.localizedDescription)")
                 } else {
-                    print("Data saved successfully!")
+                    print("Form submitted with success!")
+                    visitCreated = true
                 }
             }
         } catch let error {
+            hasErrors = true
             print("Error saving data: \(error)")
         }
     }
     
     var body: some View {
-        VStack {
-            LogoView()
-            Form {
-                CustomSection(header: "client") {
-                    CustomText(text:$visitReport.clientName, placeholder: "clientName")
-                    .textInputAutocapitalization(.words)
-                    .disableAutocorrection(true)
+        NavigationStack {
+            VStack{
+                LogoView()
+                Form {
+                    CustomSection(header: "client") {
+                        CustomText(text:$visitReport.clientName, placeholder: "clientName")
+                            .textInputAutocapitalization(.words)
+                            .disableAutocorrection(true)
+                        
+                        CustomText(text: $visitReport.listingCode, placeholder: "listingCodeWithExample"
+                        )
+                    }
                     
-                    CustomText(text: $visitReport.listingCode, placeholder: "listingCodeWithExample"
+                    CustomSection(header: "property") {
+                        Group{
+                            CustomText(text: $visitReport.location, placeholder: "location")
+                            CustomText(text: $visitReport.listedValue, placeholder: "value")
+                            CustomText(text: $visitReport.address, placeholder: "address")
+                            CustomText(text: $visitReport.district, placeholder: "district")
+                            
+                        }
+                        CustomPicker(selection: $visitReport.floorPlan, label: "floorPlan")
+                        CustomPicker(selection: $visitReport.finishes, label: "finishes")
+                        CustomPicker(selection: $visitReport.sunExposition, label: "sunExposure")
+                        CustomPicker(selection: $visitReport.locationRating, label: "location")
+                        CustomPicker(selection: $visitReport.value, label: "value")
+                        CustomPicker(selection: $visitReport.overallAssessment, label: "overallAssessment")
+                        CustomPicker(selection: $visitReport.agentService, label: "kwService")
+                    }
+                    
+                    CustomSection(header: "impressions") {
+                        CustomText(text: $visitReport.likes, placeholder: "whatDidYouLike")
+                        CustomText(text: $visitReport.dislikes, placeholder: "whatDidYouDislike")
+                        
+                        Text("howMuchAreYouWillingToPay").foregroundColor(ColorPalette.secondary)
+                        CustomText(text: $visitReport.willingToPay, placeholder: "moneyExample")
+                        
+                        
+                        Picker(selection: $visitReport.isOption, label: Text("isThisPropertyAnOption")) {
+                            Text(Decision.yes.rawValue).tag(Decision.yes)
+                            Text(Decision.no.rawValue).tag(Decision.no)
+                            Text(Decision.maybe.rawValue).tag(Decision.maybe)
+                        }
+                        .pickerStyle(MenuPickerStyle())
+                        .accentColor(ColorPalette.secondary)
+                        
+                        Picker(selection: $visitReport.hasPropertyToSell, label: Text("doYouHaveAnyPropertyToSell")) {
+                            Text(Decision.yes.rawValue).tag(Decision.yes)
+                            Text(Decision.no.rawValue).tag(Decision.no)
+                        }
+                        .pickerStyle(MenuPickerStyle())
+                        .accentColor(ColorPalette.secondary)
+                        CustomText(text: $visitReport.comments, placeholder: "comments")
+                    }
+                    
+                    Section {
+                        Button("submit") {
+                            save(visitReport: visitReport)
+                        }
+                        .navigationDestination(isPresented: $visitCreated) {
+                            HomeView()
+                        }
+                        .padding(.horizontal, 0.0)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                    .foregroundColor(.accentColor)
+                    .listRowBackground(Color.clear)
+                }
+                .alert(isPresented: $hasErrors) {
+                    Alert(
+                        title: Text("error"),
+                        message: Text("pleaseFillFieldsCorrectly"),
+                        dismissButton: .default(Text("ok"))
                     )
                 }
-                
-                CustomSection(header: "property") {
-                    CustomPicker(selection: $visitReport.floorPlan, label: "floorPlan")
-                    CustomPicker(selection: $visitReport.finishes, label: "finishes")
-                    CustomPicker(selection: $visitReport.sunExposition, label: "sunExposure")
-                    CustomPicker(selection: $visitReport.locationRating, label: "location")
-                    CustomPicker(selection: $visitReport.value, label: "value")
-                    CustomPicker(selection: $visitReport.overallAssessment, label: "overallAssessment")
-                    CustomPicker(selection: $visitReport.agentService, label: "kwService")
-                }
-                
-                CustomSection(header: "impressions") {
-                    Picker(selection: $visitReport.isOption, label: Text("isThisPropertyAnOption")) {
-                        Text("yes").tag(Decision.yes)
-                        Text("no").tag(Decision.no)
-                        Text("maybe").tag(Decision.maybe)
-                    }
-                    .pickerStyle(MenuPickerStyle())
-                    .accentColor(ColorPalette.secondary)
-                    
-                    CustomText(text: $visitReport.dislikes, placeholder: "whatDidYouDislike")
-                    CustomText(text: $visitReport.likes, placeholder: "whatDidYouLike")
-                    Text("howMuchAreYouWillingToPay").foregroundColor(ColorPalette.secondary)
-                    CustomText(text: $visitReport.willingToPay, placeholder: "moneyExample")
-                }
-                
-                Section {
-                    Button("submit") {
-                        print("Form submitted with success!")
-                        save(visitReport: visitReport)
-                    }
-                    .padding(.horizontal, 0.0)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                }
-                .foregroundColor(.accentColor)
-                .listRowBackground(Color.clear)
+                .scrollContentBackground(.hidden)
+                .onAppear(perform: onAppear)
+                .padding()
             }
-            .scrollContentBackground(.hidden)
-            .onAppear(perform: onAppear)
-            .padding()
+            .background(ColorPalette.primary)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .scrollContentBackground(.hidden)
         .navigationBarBackButtonHidden(true)
         .accentColor(.accentColor)
         .background(ColorPalette.primary)

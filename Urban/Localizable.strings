@@ -18,13 +18,13 @@
 "floorPlan" = "Planta do Imóvel";
 "finishes" = "Acabamentos";
 "sunExposure" = "Exposição solar";
-"location" = "Localização";
+"location" = "Zona";
 "value" = "Valor";
 "overallAssessment" = "Apreciação global";
 "kwService" = "Serviço KW";
 "whatDidYouDislike" = "O que gostou menos?";
 "whatDidYouLike" = "O que gostou mais?";
-"howMuchAreYouWillingToPay" = "Quanto estaria disposto a pagar por este imóvel?";
+"howMuchAreYouWillingToPay" = "Quanto vale para si este imóvel?";
 "moneyExample" = "e.g. 200,000,00$";
 "isThisPropertyAnOption" = "Este imóvel seria uma opção?";
 "yes" = "Sim";
@@ -52,3 +52,8 @@
 "pleaseFillFieldsCorrectly" = "Por favor preencha corretamente os campos";
 "signUp" = "Criar nova conta";
 "login" = "Efetuar login";
+"doYouHaveAnyPropertyToSell" = "Tem algum imóvel para vender?";
+"comments" = "Observações";
+"comingSoon" = "Brevemente disponivel";
+"calendar" = "Calendário de visitas";
+"myAccount" = "A minha conta";

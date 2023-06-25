@@ -12,11 +12,13 @@ struct CustomTextView: View {
     let value: String
     
     var body: some View {
-        Text(LocalizedStringKey(label))
-            .foregroundColor(.accentColor)
-            .fontWeight(.bold) +
-        Text(" ") +
-        Text(LocalizedStringKey(value))
+        Group {
+            Text(LocalizedStringKey(label))
+                .foregroundColor(.accentColor)
+                .fontWeight(.bold) +
+            Text(" ") +
+            Text(LocalizedStringKey(value))
+        }
     }
     
     static func +(lhs: CustomTextView, rhs: CustomTextView) -> some View {
