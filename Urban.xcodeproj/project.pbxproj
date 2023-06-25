@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */; };
+		1F3A3DDF2A46F49C0088F25D /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DDE2A46F49C0088F25D /* ViewExtension.swift */; };
+		1F3A3DE32A4718990088F25D /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE22A4718990088F25D /* LogoView.swift */; };
 		1F654BC029EB14AD002ED11C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BBF29EB14AD002ED11C /* FirebaseAuth */; };
 		1F654BC229EB14AD002ED11C /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BC129EB14AD002ED11C /* FirebaseAuthCombine-Community */; };
 		1F654BC429EB14AD002ED11C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BC329EB14AD002ED11C /* FirebaseDatabase */; };
@@ -42,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
+		1F3A3DDE2A46F49C0088F25D /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		1F3A3DE22A4718990088F25D /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		1F654BD929EB1520002ED11C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F654BDD29EB1CD6002ED11C /* VisitReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReport.swift; sourceTree = "<group>"; };
 		1F7F33AA2A22A9FE0080DE09 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -88,15 +94,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F3A3DDD2A46F45E0088F25D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1FA7F7B629D9EDEF00886539 /* ColorExtension.swift */,
+				1F3A3DDE2A46F49C0088F25D /* ViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1F654BDF29EB2633002ED11C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1F7F33B72A2388E60080DE09 /* Observables */,
+				1F3A3DDD2A46F45E0088F25D /* Extensions */,
 				1FA7F7B429D9E6AC00886539 /* Rating.swift */,
-				1FA7F7B629D9EDEF00886539 /* ColorExtension.swift */,
 				1F654BDD29EB1CD6002ED11C /* VisitReport.swift */,
 				1FA7F7B229D9E43B00886539 /* Decision.swift */,
 				1FA7F7B029D9E2B400886539 /* Evaluation.swift */,
 				1F7F33AC2A22ABA20080DE09 /* Route.swift */,
+				1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				1F7F33B02A237EEC0080DE09 /* SidebarView.swift */,
+				1F3A3DE22A4718990088F25D /* LogoView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -157,7 +175,6 @@
 		1FA7F7A129D9D41E00886539 /* Urban */ = {
 			isa = PBXGroup;
 			children = (
-				1F7F33B72A2388E60080DE09 /* Observables */,
 				1F7F33B42A2380430080DE09 /* Layout */,
 				1F7F33AF2A237EAB0080DE09 /* Components */,
 				1F7F33AE2A237E920080DE09 /* Views */,
@@ -267,11 +284,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3A3DDF2A46F49C0088F25D /* ViewExtension.swift in Sources */,
+				1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */,
 				1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */,
 				1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */,
 				1FA7F7A529D9D41E00886539 /* VisitReportFormView.swift in Sources */,
 				1FFAD7FA2A113BF000F63B1C /* VisitsView.swift in Sources */,
 				1F7F33B92A2389000080DE09 /* VisitsViewModel.swift in Sources */,
+				1F3A3DE32A4718990088F25D /* LogoView.swift in Sources */,
 				1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */,
 				1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */,
 				1F7F33B62A23806F0080DE09 /* DefaultLayout.swift in Sources */,

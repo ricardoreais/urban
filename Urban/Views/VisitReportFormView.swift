@@ -7,6 +7,31 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestore
+
+
+struct CustomLabelStyle: LabelStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.title
+            .foregroundColor(.purple) // Modify the label color
+    }
+}
+
+struct CustomPicker: View {
+    public var selection: Binding<Evaluation>
+    public var label: String
+    
+    var body: some View {
+        Picker(selection: selection, label: Text(label)) {
+            Text("Mau").tag(Evaluation.bad)
+            Text("Médio").tag(Evaluation.medium)
+            Text("Bom").tag(Evaluation.good)
+            Text("Muito Bom").tag(Evaluation.veryGood)
+        }
+        .pickerStyle(MenuPickerStyle())
+        .accentColor(ColorPalette.secondary)
+    }
+}
 
 struct VisitReportFormView: View {
     @State private var visitReport: VisitReport = VisitReport()
@@ -21,7 +46,6 @@ struct VisitReportFormView: View {
     func save(visitReport: VisitReport) -> Void {
         let db = Firestore.firestore()
         let collectionRef = db.collection("VisitReport")
-        let data = convertvisitReportToDictionary(visitReport: visitReport)
         do {
             try collectionRef.addDocument(from: visitReport) { error in
                 if let error = error {
@@ -35,129 +59,87 @@ struct VisitReportFormView: View {
         }
     }
     
-    func convertvisitReportToDictionary(visitReport: VisitReport) -> [String: Any] {
-        var dictionary: [String: Any] = [:]
-        let mirror = Mirror(reflecting: visitReport)
-        
-        for case let (label?, value) in mirror.children {
-            dictionary[label] = String(describing: value)
-        }
-        	
-        return dictionary
-    }
-    
     var body: some View {
-        TabView {
-            VStack {
-                Image("logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200)
-                Form {
-                    Section(header: Text("Cliente")) {
-                        TextField(
-                            "Nome do cliente",
-                            text: $visitReport.clientName
-                        )
-                        .background(Color.clear)
-                        .textInputAutocapitalization(.words)
-                        .disableAutocorrection(true)
-                        TextField(
-                            "Id da angariação e.g. 1208-3634",
-                            text: $visitReport.listingCode
-                        )
-                    }
-                    .listRowBackground(Color.clear)
-                    
-                    Section(header: Text("Propriedade")) {
-                        Picker(selection: $visitReport.floorPlan, label: Text("Planta do Imóvel")) {
-                            Text("Mau").tag(Evaluation.bad)
-                            Text("Médio").tag(Evaluation.medium)
-                            Text("Bom").tag(Evaluation.good)
-                            Text("Muito Bom").tag(Evaluation.veryGood)
-                        }
-                        Picker(selection: $visitReport.finishes, label: Text("Acabamentos")) {
-                            Text("Mau").tag(Evaluation.bad)
-                            Text("Médio").tag(Evaluation.medium)
-                            Text("Bom").tag(Evaluation.good)
-                            Text("Muito Bom").tag(Evaluation.veryGood)
-                        }
-                        Picker(selection: $visitReport.sunExposition, label: Text("Exposição solar")) {
-                            Text("Mau").tag(Evaluation.bad)
-                            Text("Médio").tag(Evaluation.medium)
-                            Text("Bom").tag(Evaluation.good)
-                            Text("Muito Bom").tag(Evaluation.veryGood)
-                        }
-                        Picker(selection: $visitReport.locationRating, label: Text("Localização")) {
-                            Text("Mau").tag(Evaluation.bad)
-                            Text("Médio").tag(Evaluation.medium)
-                            Text("Bom").tag(Evaluation.good)
-                            Text("Muito Bom").tag(Evaluation.veryGood)
-                        }
-                        Picker(selection: $visitReport.locationRating, label: Text("Preço")) {
-                            Text("Mau").tag(Evaluation.bad)
-                            Text("Médio").tag(Evaluation.medium)
-                            Text("Bom").tag(Evaluation.good)
-                            Text("Muito Bom").tag(Evaluation.veryGood)
-                        }
-                        Picker(selection: $visitReport.value, label: Text("Valor")) {
-                            Text("Mau").tag(Evaluation.bad)
-                            Text("Médio").tag(Evaluation.medium)
-                            Text("Bom").tag(Evaluation.good)
-                            Text("Muito Bom").tag(Evaluation.veryGood)
-                        }
-                        Picker(selection: $visitReport.overallAssessment, label: Text("Apreciação global")) {
-                            Text("Mau").tag(Evaluation.bad)
-                            Text("Médio").tag(Evaluation.medium)
-                            Text("Bom").tag(Evaluation.good)
-                            Text("Muito Bom").tag(Evaluation.veryGood)
-                        }
-                        Picker(selection: $visitReport.agentService, label: Text("Serviço KW")) {
-                            Text("Mau").tag(Evaluation.bad)
-                            Text("Médio").tag(Evaluation.medium)
-                            Text("Bom").tag(Evaluation.good)
-                            Text("Muito Bom").tag(Evaluation.veryGood)
-                        }
-                    }
-                    .listRowBackground(Color.clear)
-                    
-                    Section(header: Text("Impressões")) {
-                        Picker(selection: $visitReport.isOption, label: Text("Este imóvel seria uma opção?")) {
-                            Text("Sim").tag(Decision.yes)
-                            Text("Não").tag(Decision.no)
-                            Text("Talvez").tag(Decision.maybe)
-                        }
-                        Text("O que gostou menos?")
-                        TextEditor(text: $visitReport.dislikes)
-                        Text("O que gostou mais?")
-                        TextEditor(text: $visitReport.likes)
-                        Text("Quanto estaria disposto a pagar por este imóvel?")
-                        TextField("e.g. 200,000,00$", text: $visitReport.willingToPay)
-                    }
-                    .listRowBackground(Color.clear)
-                    
-                    Section {
-                        Button("Submeter") {
-                            print("Formulário submetido com sucesso!")
-                            save(visitReport: visitReport)
-                        }
-                        .padding(.horizontal, 0.0)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                    }
-                    .listRowBackground(Color(hex: "C6C2B5", opacity: 0.3))
+        VStack {
+            LogoView()
+            Form {
+                Section(header: Text("Cliente")) {
+                    TextField(
+                        "",
+                        text: $visitReport.clientName,
+                        prompt: Text("Nome do cliente").foregroundColor(ColorPalette.secondary)
+                    )
+                    .foregroundColor(ColorPalette.secondary)
+                    .textInputAutocapitalization(.words)
+                    .disableAutocorrection(true)
+                    TextField(
+                        "",
+                        text: $visitReport.listingCode,
+                        prompt: Text("Id da angariação e.g. 1208-3634").foregroundColor(ColorPalette.secondary)
+                    )
+                    .foregroundColor(ColorPalette.secondary)
                 }
-                .foregroundColor(Color(hex: "514C4D"))
-                .scrollContentBackground(.hidden)
+                .foregroundColor(.accentColor)
+                .listRowBackground(Color.clear)
+                
+                Section(header: Text("Propriedade")) {
+                    CustomPicker(selection: $visitReport.floorPlan, label: "Planta do Imóvel")
+                    CustomPicker(selection: $visitReport.finishes, label: "Acabamentos")
+                    CustomPicker(selection: $visitReport.sunExposition, label: "Exposição solar")
+                    CustomPicker(selection: $visitReport.locationRating, label: "Localização")
+                    CustomPicker(selection: $visitReport.value, label: "Valor")
+                    CustomPicker(selection: $visitReport.overallAssessment, label: "Apreciação global")
+                    CustomPicker(selection: $visitReport.agentService, label: "Serviço KW")
+                }
+                .foregroundColor(.accentColor)
+                .listRowBackground(Color.clear)
+                
+                Section(header: Text("Impressões")) {
+                    Picker(selection: $visitReport.isOption, label: Text("Este imóvel seria uma opção?")) {
+                        Text("Sim").tag(Decision.yes)
+                        Text("Não").tag(Decision.no)
+                        Text("Talvez").tag(Decision.maybe)
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .accentColor(ColorPalette.secondary)
+                    TextField(
+                        "",
+                        text: $visitReport.dislikes,
+                        prompt: Text("O que gostou menos?").foregroundColor(ColorPalette.secondary)
+                    )
+                    .foregroundColor(ColorPalette.secondary)
+                    TextField(
+                        "",
+                        text: $visitReport.likes,
+                        prompt: Text("O que gostou mais?").foregroundColor(ColorPalette.secondary)
+                    )
+                    .foregroundColor(ColorPalette.secondary)
+                    Text("Quanto estaria disposto a pagar por este imóvel?").foregroundColor(ColorPalette.secondary)
+                    TextField("", text: $visitReport.willingToPay,
+                              prompt: Text("e.g. 200,000,00$").foregroundColor(ColorPalette.secondary))
+                    .foregroundColor(ColorPalette.secondary)
+                }
+                .foregroundColor(.accentColor)
+                .listRowBackground(Color.clear)
+                
+                Section {
+                    Button("Submeter") {
+                        print("Formulário submetido com sucesso!")
+                        save(visitReport: visitReport)
+                    }
+                    .padding(.horizontal, 0.0)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                }
+                .foregroundColor(.accentColor)
+                .listRowBackground(Color.clear)
             }
+            .scrollContentBackground(.hidden)
             .onAppear(perform: onAppear)
-            .navigationBarBackButtonHidden(true)
             .padding()
-            .background(Color(hex: "EBE2D0"))
-            
-        }.tabItem {
-            Label("Order", systemImage: "square.and.pencil")
         }
-        }
+        .accentColor(.accentColor)
+        .background(ColorPalette.primary)
+    }
 }
 
 struct VisitFormView_Previews: PreviewProvider {

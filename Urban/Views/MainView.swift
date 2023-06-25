@@ -10,19 +10,13 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         NavigationStack {
-            VStack {
-                NavigationLink("Efetuar login", value: Route.signIn)
-                NavigationLink("Criar nova conta", value: Route.signUp)
-            }.navigationDestination(for: Route.self) { route in
-                switch route {
-                    case Route.signIn:
-                        SignInView(route: route)
-                    case Route.signUp:
-                        SignUpView()
-                    default:
-                        MainView()
-                }
+            VStack{
+                LogoView()
+                NavigationLink("Efetuar login", destination: SignInView())
+                NavigationLink("Criar nova conta", destination: SignUpView())
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(ColorPalette.primary)
         }
     }
 }

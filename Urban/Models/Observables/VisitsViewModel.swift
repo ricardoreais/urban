@@ -7,14 +7,14 @@
 
 import Foundation
 import Firebase
-import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 class VisitsViewModel: ObservableObject {
     @Published var reports: [VisitReport] = []
+    @Published var isLoading = true
     
     func fetchVisitReports() {
-            let db = Firestore.firestore()
-        
+        let db = Firestore.firestore()
         if let currentUser = Auth.auth().currentUser {
             let userID = String(currentUser.uid)
             print("Current User ID: \(userID)")
@@ -45,6 +45,7 @@ class VisitsViewModel: ObservableObject {
                 }
                 
                 DispatchQueue.main.async {
+                    self.isLoading = false
                     self.reports = reports
                 }
             }
