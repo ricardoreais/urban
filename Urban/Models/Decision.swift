@@ -11,4 +11,15 @@ enum Decision: String, Codable {
     case yes
     case no
     case maybe
+    
+    var rawValue: String {
+        switch self {
+        case .yes:
+            return "Sim"
+        case .no:
+            return "Não"
+        case .maybe:
+            return "Talvez"
+        }
+    }
 }

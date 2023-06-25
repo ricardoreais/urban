@@ -11,7 +11,8 @@ struct VisitsView: View {
     @ObservedObject var viewModel = VisitsViewModel()
     
     var body: some View {
-        VStack(alignment: .leading) {
+        NavigationStack {
+            VStack(alignment: .leading) {
             Text("As minhas visitas")
                 .font(.title)
                 .fontWeight(.bold)
@@ -19,27 +20,25 @@ struct VisitsView: View {
                 .padding(.leading, 20)
             
             if viewModel.isLoading {
-               ProgressView()
-                   .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                   .scaleEffect(2)
-                   .padding()
-                   .frame(maxWidth: .infinity, maxHeight: .infinity)
-           } else {
-               List(viewModel.reports) { report in
-                   Group {
-                           Text("Cliente ")
-                           .foregroundColor(.accentColor)
-                           .fontWeight(.bold) +
-                           Text(report.clientName) +
-                           Text(" Código ")
-                               .foregroundColor(.accentColor)
-                               .fontWeight(.bold) +
-                       Text(report.listingCode)
-                   }.listRowBackground(ColorPalette.highlights)
-               }
-               .scrollContentBackground(.hidden)
-           }
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                    .scaleEffect(2)
+                    .padding()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                List(viewModel.reports) { report in
+                    NavigationLink(destination: VisitDetailsView(id: report.id ?? "")) {
+                        CustomTextView(label: "Cliente ", value: report.clientName) +
+                        CustomTextView(label: " Código ", value: report.listingCode)
+                    }
+                    .listRowBackground(ColorPalette.highlights)
+                }
+            }
+            }
+            .background(ColorPalette.primary)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .scrollContentBackground(.hidden)
         .foregroundColor(ColorPalette.secondary)
         .background(ColorPalette.primary)
         .onAppear(perform: {
@@ -52,9 +51,7 @@ struct VisitsView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = VisitsViewModel()
         viewModel.reports = [
-            VisitReport(id: "1", clientName: "John Doe", listingCode: "ABC123", location: "City", listedValue: 100000),
-            VisitReport(id: "2", clientName: "Jane Smith", listingCode: "XYZ789", location: "Suburb", listedValue: 150000)
-            // Add more mock data as needed
+            VisitReport(id: "uN8uNes0lGhdpGHmFq2t", clientName: "John Doe", listingCode: "ABC123", location: "City", listedValue: 100000, userId: "6JAQAHYtNreSRJfEM9ssEr92uYx1")
         ]
         return VisitsView(viewModel: viewModel)
     }

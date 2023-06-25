@@ -11,4 +11,17 @@ enum Evaluation: String, Codable {
     case medium
     case good
     case veryGood
+    
+    var rawValue: String {
+        switch self {
+        case .bad:
+            return "Mau"
+        case .medium:
+            return "Médio"
+        case .good:
+            return "Bom"
+        case .veryGood:
+            return "Muito bom"
+        }
+    }
 }
