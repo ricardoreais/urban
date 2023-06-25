@@ -57,7 +57,7 @@
 		1F7F33AA2A22A9FE0080DE09 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1F7F33AC2A22ABA20080DE09 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		1F7F33B82A2389000080DE09 /* VisitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsViewModel.swift; sourceTree = "<group>"; };
-		1F8AD73A2A3DD6990031B154 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeView.swift; path = ../../../../.Trash/HomeView.swift; sourceTree = "<group>"; };
+		1F8AD73A2A3DD6990031B154 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1FA7F79F29D9D41E00886539 /* Urban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Urban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA7F7A229D9D41E00886539 /* UrbanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanApp.swift; sourceTree = "<group>"; };
 		1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportFormView.swift; sourceTree = "<group>"; };
