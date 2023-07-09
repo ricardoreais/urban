@@ -69,3 +69,5 @@
 "agent" = "Agente";
 "backoffice" = "Backoffice";
 "admin" = "Administrador";
+"myEstates" = "As minhas propriedades";
+"addUser" = "Criar utilizador";

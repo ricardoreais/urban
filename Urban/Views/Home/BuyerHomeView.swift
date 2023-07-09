@@ -17,12 +17,14 @@ struct BuyerHomeView: View {
             VStack{
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
+                Text("Features: visita, proposta e ficha de visita")
+                    .foregroundColor(ColorPalette.secondary)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(ColorPalette.primary)
-                .tabItem {
-                    Label("createEstate", systemImage: "square.grid.3x1.folder.badge.plus")
-                }
+            .tabItem {
+                Label("myVisits", systemImage: "list.bullet")
+            }
             VStack{
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)

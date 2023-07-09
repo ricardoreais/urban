@@ -22,14 +22,30 @@ struct BackofficeHomeView: View {
                 
                 Form
                 {
-                    CustomInput(text: $estate.code, placeholder: "clientName")
+                    CustomSection(header: "client") {
+                        CustomInput(text:$estate.code, placeholder: "Id")
+                    }
                 }
+                .scrollContentBackground(.hidden)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.red, lineWidth: 2)
+                )
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(ColorPalette.primary)
-                .tabItem {
-                    Label("estates", systemImage: "building.2")
-                }
+            .tabItem {
+                Label("createEstate", systemImage: "square.grid.3x1.folder.badge.plus")
+            }
+            VStack{
+                Text("comingSoon")
+                    .foregroundColor(ColorPalette.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(ColorPalette.primary)
+            .tabItem {
+                Label("addUser", systemImage: "person.badge.plus")
+            }
             VStack{
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)

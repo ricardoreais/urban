@@ -17,6 +17,8 @@ struct AgentHomeView: View {
             VStack{
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
+                Text("Features: link para o site, morada")
+                    .foregroundColor(ColorPalette.secondary)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(ColorPalette.primary)
@@ -25,6 +27,8 @@ struct AgentHomeView: View {
                 }
             VStack{
                 Text("comingSoon")
+                    .foregroundColor(ColorPalette.secondary)
+                Text("Features: nome do comprador, opção de criar relatório de visita, opção de criar proposta")
                     .foregroundColor(ColorPalette.secondary)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -8,8 +8,35 @@
 import SwiftUI
 
 struct SellerHomeView: View {
+    init() {
+        UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            VStack{
+                Text("comingSoon")
+                    .foregroundColor(ColorPalette.secondary)
+                
+                Text("Features: link para o site, fichas de visita, propostas")
+                    .foregroundColor(ColorPalette.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(ColorPalette.primary)
+            .tabItem {
+                Label("myEstates", systemImage: "list.bullet")
+            }
+            VStack{
+                Text("comingSoon")
+                    .foregroundColor(ColorPalette.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(ColorPalette.primary)
+                .tabItem {
+                    Label("calendar", systemImage: "calendar")
+                }
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

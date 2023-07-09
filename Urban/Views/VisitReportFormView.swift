@@ -9,31 +9,6 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 
-struct CustomSection<Content: View>: View {
-    let header: String
-    let content: Content
-    
-    init(header: String, @ViewBuilder content: () -> Content) {
-        self.header = header
-        self.content = content()
-    }
-    
-    var body: some View {
-        Section(header: Text(LocalizedStringKey(header))) {
-            content
-        }
-        .foregroundColor(.accentColor)
-        .listRowBackground(Color.clear)
-    }
-}
-
-struct CustomLabelStyle: LabelStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.title
-            .foregroundColor(.purple) // Modify the label color
-    }
-}
-
 struct VisitReportFormView: View {
     @State private var visitReport: VisitReport = VisitReport()
     @State private var visitCreated: Bool = false
