@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct LogoView: View {
+struct Logo: View {
     var body: some View {
         Image("logo")
             .resizable()
@@ -16,8 +16,8 @@ struct LogoView: View {
     }
 }
 
-struct LogoView_Previews: PreviewProvider {
+struct Logo_Previews: PreviewProvider {
     static var previews: some View {
-        LogoView()
+        Logo()
     }
 }

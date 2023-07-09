@@ -33,8 +33,8 @@ struct VisitsView: View {
                     else{
                         List(viewModel.reports) { report in
                             NavigationLink(destination: VisitDetailsView(id: report.id ?? "")) {
-                                CustomTextView(label: "clientName", value: report.clientName) +
-                                CustomTextView(label: "code", value: report.listingCode)
+                                CustomText(label: "clientName", value: report.clientName) +
+                                CustomText(label: "code", value: report.listingCode)
                             }
                             .listRowBackground(ColorPalette.highlights)
                         }

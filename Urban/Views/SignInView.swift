@@ -33,7 +33,7 @@ struct SignInView: View {
     
     var body: some View {
         VStack{
-            LogoView()
+            Logo()
             Form {
                 TextField("", text: $email,
                           prompt: Text("Email").foregroundColor(ColorPalette.secondary))

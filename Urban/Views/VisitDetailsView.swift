@@ -28,34 +28,32 @@ struct VisitDetailsView: View {
                     } else {
                         Group {
                             Group {
-                                CustomTextView(label: "clientName", value: viewModel.report.clientName).padding(.bottom, 1)
-                                CustomTextView(label: "code", value: viewModel.report.listingCode)
-                                CustomTextView(label: "location", value: viewModel.report.location)
-                                CustomTextView(label: "value", value: "\(viewModel.report.listedValue)")
-                                CustomTextView(label: "address", value: viewModel.report.address)
-                                CustomTextView(label: "district", value: viewModel.report.district)
-                                CustomTextView(label: "floorPlan", value: viewModel.report.floorPlan.rawValue)
-                                CustomTextView(label: "finishes", value: viewModel.report.finishes.rawValue)
-                                CustomTextView(label: "sunExposure", value: viewModel.report.sunExposition.rawValue)
+                                CustomText(label: "clientName", value: viewModel.report.clientName).padding(.bottom, 1)
+                                CustomText(label: "code", value: viewModel.report.listingCode)
+                                CustomText(label: "location", value: viewModel.report.location)
+                                CustomText(label: "value", value: "\(viewModel.report.listedValue)")
+                                CustomText(label: "address", value: viewModel.report.address)
+                                CustomText(label: "district", value: viewModel.report.district)
+                                CustomText(label: "floorPlan", value: viewModel.report.floorPlan.rawValue)
+                                CustomText(label: "finishes", value: viewModel.report.finishes.rawValue)
+                                CustomText(label: "sunExposure", value: viewModel.report.sunExposition.rawValue)
                             }
                             Group {
-                                CustomTextView(label: "location", value: viewModel.report.locationRating.rawValue)
-                                CustomTextView(label: "value", value: viewModel.report.value.rawValue)
-                                CustomTextView(label: "overallAssessment", value: viewModel.report.overallAssessment.rawValue)
-                                CustomTextView(label: "kwService", value: viewModel.report.agentService.rawValue)
-                                CustomTextView(label: "whatILiked", value: viewModel.report.likes)
-                                CustomTextView(label: "whatIDisliked", value: viewModel.report.dislikes)
-                                CustomTextView(label: "howMuchAmIWillingToPay", value: viewModel.report.willingToPay)
-                                CustomTextView(label: "isItAnOption", value: viewModel.report.isOption.rawValue)
-                                CustomTextView(label: "comments", value: viewModel.report.comments)
+                                CustomText(label: "location", value: viewModel.report.locationRating.rawValue)
+                                CustomText(label: "value", value: viewModel.report.value.rawValue)
+                                CustomText(label: "overallAssessment", value: viewModel.report.overallAssessment.rawValue)
+                                CustomText(label: "kwService", value: viewModel.report.agentService.rawValue)
+                                CustomText(label: "whatILiked", value: viewModel.report.likes)
+                                CustomText(label: "whatIDisliked", value: viewModel.report.dislikes)
+                                CustomText(label: "howMuchAmIWillingToPay", value: viewModel.report.willingToPay)
+                                CustomText(label: "isItAnOption", value: viewModel.report.isOption.rawValue)
+                                CustomText(label: "comments", value: viewModel.report.comments)
                             }
                         }.padding(1)
                     }
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                .foregroundColor(ColorPalette.secondary)
-                .background(ColorPalette.primary)
             }
         }
         .padding(20)

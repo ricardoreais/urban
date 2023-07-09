@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BackOfficeHomeView: View {
+struct BackofficeHomeView: View {
     init() {
         UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
     }
@@ -17,6 +17,11 @@ struct BackOfficeHomeView: View {
             VStack{
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
+                
+                Form
+                {
+                    
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(ColorPalette.primary)
@@ -37,8 +42,8 @@ struct BackOfficeHomeView: View {
     }
 }
 
-struct BackOfficeHomeView_Previews: PreviewProvider {
+struct BackofficeHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        BackOfficeHomeView()
+        BackofficeHomeView()
     }
 }

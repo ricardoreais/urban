@@ -11,7 +11,7 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack{
-                LogoView()
+                Logo()
                 NavigationLink("login", destination: SignInView())
                 NavigationLink("signUp", destination: SignUpView())
             }

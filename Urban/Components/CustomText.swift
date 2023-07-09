@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomTextView: View {
+struct CustomText: View {
     let label: String
     let value: String
     
@@ -18,10 +18,11 @@ struct CustomTextView: View {
                 .fontWeight(.bold) +
             Text(" ") +
             Text(LocalizedStringKey(value))
+                .foregroundColor(ColorPalette.secondary)
         }
     }
     
-    static func +(lhs: CustomTextView, rhs: CustomTextView) -> some View {
+    static func +(lhs: CustomText, rhs: CustomText) -> some View {
         return HStack {
             lhs
             rhs
@@ -29,8 +30,10 @@ struct CustomTextView: View {
     }
 }
 
-struct CustomTextView_Previews: PreviewProvider {
+struct CustomText_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTextView(label: "clientName", value: "Ricardo Reais")
+        CustomText(label: "clientName", value: "Ricardo Reais")
+            .padding()
+            .background(ColorPalette.primary)
     }
 }

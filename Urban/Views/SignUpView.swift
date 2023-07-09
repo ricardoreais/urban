@@ -19,7 +19,7 @@ struct SignUpView: View {
     
     var body: some View {
             VStack {
-                LogoView()
+                Logo()
                 Form {
                     TextField("", text: $email,
                               prompt: Text("email").foregroundColor(ColorPalette.secondary))

@@ -9,20 +9,6 @@ import SwiftUI
 import Firebase
 import FirebaseFirestore
 
-
-struct CustomText: View {
-    @Binding var text: String
-    let placeholder: LocalizedStringKey
-
-    var body: some View {
-        TextField("", text: $text, prompt: {
-            Text(placeholder)
-                .foregroundColor(ColorPalette.secondary)
-        }())
-        .foregroundColor(ColorPalette.secondary)
-    }
-}
-
 struct CustomSection<Content: View>: View {
     let header: String
     let content: Content
@@ -104,23 +90,23 @@ struct VisitReportFormView: View {
     var body: some View {
         NavigationStack {
             VStack{
-                LogoView()
+                Logo()
                 Form {
                     CustomSection(header: "client") {
-                        CustomText(text:$visitReport.clientName, placeholder: "clientName")
+                        CustomInput(text:$visitReport.clientName, placeholder: "clientName")
                             .textInputAutocapitalization(.words)
                             .disableAutocorrection(true)
                         
-                        CustomText(text: $visitReport.listingCode, placeholder: "listingCodeWithExample"
+                        CustomInput(text: $visitReport.listingCode, placeholder: "listingCodeWithExample"
                         )
                     }
                     
                     CustomSection(header: "property") {
                         Group{
-                            CustomText(text: $visitReport.location, placeholder: "location")
-                            CustomText(text: $visitReport.listedValue, placeholder: "value")
-                            CustomText(text: $visitReport.address, placeholder: "address")
-                            CustomText(text: $visitReport.district, placeholder: "district")
+                            CustomInput(text: $visitReport.location, placeholder: "location")
+                            CustomInput(text: $visitReport.listedValue, placeholder: "value")
+                            CustomInput(text: $visitReport.address, placeholder: "address")
+                            CustomInput(text: $visitReport.district, placeholder: "district")
                             
                         }
                         CustomPicker(selection: $visitReport.floorPlan, label: "floorPlan")
@@ -133,11 +119,11 @@ struct VisitReportFormView: View {
                     }
                     
                     CustomSection(header: "impressions") {
-                        CustomText(text: $visitReport.likes, placeholder: "whatDidYouLike")
-                        CustomText(text: $visitReport.dislikes, placeholder: "whatDidYouDislike")
+                        CustomInput(text: $visitReport.likes, placeholder: "whatDidYouLike")
+                        CustomInput(text: $visitReport.dislikes, placeholder: "whatDidYouDislike")
                         
                         Text("howMuchAreYouWillingToPay").foregroundColor(ColorPalette.secondary)
-                        CustomText(text: $visitReport.willingToPay, placeholder: "moneyExample")
+                        CustomInput(text: $visitReport.willingToPay, placeholder: "moneyExample")
                         
                         
                         Picker(selection: $visitReport.isOption, label: Text("isThisPropertyAnOption")) {
@@ -154,7 +140,7 @@ struct VisitReportFormView: View {
                         }
                         .pickerStyle(MenuPickerStyle())
                         .accentColor(ColorPalette.secondary)
-                        CustomText(text: $visitReport.comments, placeholder: "comments")
+                        CustomInput(text: $visitReport.comments, placeholder: "comments")
                     }
                     
                     Section {
