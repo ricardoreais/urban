@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Decision: String, Codable {
+enum Decision: String, Codable, LocalizedEnum {
     case yes
     case no
     case maybe

@@ -13,8 +13,8 @@ struct Estate: Codable, Identifiable {
     @DocumentID var id: String?
     @ServerTimestamp var createdAt: Date?
     @ServerTimestamp var updatedAt: Date?
-    var code: String?
-    var address: String?
+    var code: String = ""
+    var address: String = ""
     var visits: [DocumentReference]?
     var bids: [DocumentReference]?
     var seller: DocumentReference?

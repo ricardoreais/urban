@@ -34,22 +34,6 @@ struct CustomLabelStyle: LabelStyle {
     }
 }
 
-struct CustomPicker: View {
-    public var selection: Binding<Evaluation>
-    public var label: LocalizedStringKey
-    
-    var body: some View {
-        Picker(selection: selection, label: Text(label)) {
-            Text(Evaluation.bad.rawValue).tag(Evaluation.bad)
-            Text(Evaluation.medium.rawValue).tag(Evaluation.medium)
-            Text(Evaluation.good.rawValue).tag(Evaluation.good)
-            Text(Evaluation.veryGood.rawValue).tag(Evaluation.veryGood)
-        }
-        .pickerStyle(MenuPickerStyle())
-        .accentColor(ColorPalette.secondary)
-    }
-}
-
 struct VisitReportFormView: View {
     @State private var visitReport: VisitReport = VisitReport()
     @State private var visitCreated: Bool = false
@@ -109,40 +93,29 @@ struct VisitReportFormView: View {
                             CustomInput(text: $visitReport.district, placeholder: "district")
                             
                         }
-                        CustomPicker(selection: $visitReport.floorPlan, label: "floorPlan")
-                        CustomPicker(selection: $visitReport.finishes, label: "finishes")
-                        CustomPicker(selection: $visitReport.sunExposition, label: "sunExposure")
-                        CustomPicker(selection: $visitReport.locationRating, label: "location")
-                        CustomPicker(selection: $visitReport.value, label: "value")
-                        CustomPicker(selection: $visitReport.overallAssessment, label: "overallAssessment")
-                        CustomPicker(selection: $visitReport.agentService, label: "kwService")
+                        EvaluationPicker(selection: $visitReport.floorPlan, label: "floorPlan")
+                        EvaluationPicker(selection: $visitReport.finishes, label: "finishes")
+                        EvaluationPicker(selection: $visitReport.sunExposition, label: "sunExposure")
+                        EvaluationPicker(selection: $visitReport.locationRating, label: "location")
+                        EvaluationPicker(selection: $visitReport.value, label: "value")
+                        EvaluationPicker(selection: $visitReport.overallAssessment, label: "overallAssessment")
+                        EvaluationPicker(selection: $visitReport.agentService, label: "kwService")
                     }
                     
                     CustomSection(header: "impressions") {
                         CustomInput(text: $visitReport.likes, placeholder: "whatDidYouLike")
+                        
                         CustomInput(text: $visitReport.dislikes, placeholder: "whatDidYouDislike")
                         
                         Text("howMuchAreYouWillingToPay").foregroundColor(ColorPalette.secondary)
                         CustomInput(text: $visitReport.willingToPay, placeholder: "moneyExample")
                         
+                        CustomPicker(selection: $visitReport.isOption, label: "isThisPropertyAnOption", options: [Decision.yes, Decision.no, Decision.maybe])
                         
-                        Picker(selection: $visitReport.isOption, label: Text("isThisPropertyAnOption")) {
-                            Text(Decision.yes.rawValue).tag(Decision.yes)
-                            Text(Decision.no.rawValue).tag(Decision.no)
-                            Text(Decision.maybe.rawValue).tag(Decision.maybe)
-                        }
-                        .pickerStyle(MenuPickerStyle())
-                        .accentColor(ColorPalette.secondary)
+                        CustomPicker(selection: $visitReport.hasPropertyToSell, label: "doYouHaveAnyPropertyToSell", options: [Decision.yes, Decision.no])
                         
-                        Picker(selection: $visitReport.hasPropertyToSell, label: Text("doYouHaveAnyPropertyToSell")) {
-                            Text(Decision.yes.rawValue).tag(Decision.yes)
-                            Text(Decision.no.rawValue).tag(Decision.no)
-                        }
-                        .pickerStyle(MenuPickerStyle())
-                        .accentColor(ColorPalette.secondary)
                         CustomInput(text: $visitReport.comments, placeholder: "comments")
                     }
-                    
                     Section {
                         Button("submit") {
                             save(visitReport: visitReport)

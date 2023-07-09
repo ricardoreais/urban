@@ -63,3 +63,9 @@
 "bids" = "Propostas";
 "deleteUser" = "Apagar utilizador";
 "createEstate" = "Criar angariação";
+"guest" = "Convidado";
+"buyer" = "Comprador";
+"seller" = "Vendedor";
+"agent" = "Agente";
+"backoffice" = "Backoffice";
+"admin" = "Administrador";

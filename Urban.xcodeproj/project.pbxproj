@@ -18,6 +18,9 @@
 		1F3804DE2A59D15F00F70347 /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804DD2A59D15F00F70347 /* Visit.swift */; };
 		1F3804E02A5A3ACB00F70347 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804DF2A5A3ACB00F70347 /* UserType.swift */; };
 		1F3804E32A5A3D4400F70347 /* CustomInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804E22A5A3D4400F70347 /* CustomInput.swift */; };
+		1F3804E52A5A411000F70347 /* EvaluationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804E42A5A411000F70347 /* EvaluationPicker.swift */; };
+		1F3804E72A5A42EB00F70347 /* CustomPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804E62A5A42EB00F70347 /* CustomPicker.swift */; };
+		1F3804E92A5A459B00F70347 /* LocalizedEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804E82A5A459B00F70347 /* LocalizedEnum.swift */; };
 		1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */; };
 		1F3A3DE32A4718990088F25D /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE22A4718990088F25D /* Logo.swift */; };
 		1F3A3DE52A4840EC0088F25D /* VisitDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */; };
@@ -65,6 +68,9 @@
 		1F3804DD2A59D15F00F70347 /* Visit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
 		1F3804DF2A5A3ACB00F70347 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		1F3804E22A5A3D4400F70347 /* CustomInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInput.swift; sourceTree = "<group>"; };
+		1F3804E42A5A411000F70347 /* EvaluationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EvaluationPicker.swift; sourceTree = "<group>"; };
+		1F3804E62A5A42EB00F70347 /* CustomPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPicker.swift; sourceTree = "<group>"; };
+		1F3804E82A5A459B00F70347 /* LocalizedEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedEnum.swift; sourceTree = "<group>"; };
 		1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		1F3A3DE22A4718990088F25D /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
 		1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitDetailsView.swift; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 				1F3804DF2A5A3ACB00F70347 /* UserType.swift */,
 				1FA7F7B229D9E43B00886539 /* Decision.swift */,
 				1FA7F7B029D9E2B400886539 /* Evaluation.swift */,
+				1F3804E82A5A459B00F70347 /* LocalizedEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -178,6 +185,8 @@
 				1F3A3DE22A4718990088F25D /* Logo.swift */,
 				1F3A3DE82A4854800088F25D /* CustomText.swift */,
 				1F3804E22A5A3D4400F70347 /* CustomInput.swift */,
+				1F3804E42A5A411000F70347 /* EvaluationPicker.swift */,
+				1F3804E62A5A42EB00F70347 /* CustomPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -330,11 +339,13 @@
 				1F7F33B92A2389000080DE09 /* VisitReportsObservable.swift in Sources */,
 				1F3A3DE72A4841450088F25D /* VisitReportObservable.swift in Sources */,
 				1F3A3DE32A4718990088F25D /* Logo.swift in Sources */,
+				1F3804E92A5A459B00F70347 /* LocalizedEnum.swift in Sources */,
 				1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */,
 				1F3804D82A59D12B00F70347 /* User.swift in Sources */,
 				1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */,
 				1F3A3DE92A4854800088F25D /* CustomText.swift in Sources */,
 				1F3804DE2A59D15F00F70347 /* Visit.swift in Sources */,
+				1F3804E72A5A42EB00F70347 /* CustomPicker.swift in Sources */,
 				1F3804DA2A59D14100F70347 /* Estate.swift in Sources */,
 				1F3804CF2A59B9C500F70347 /* AgentHomeView.swift in Sources */,
 				1F3804E02A5A3ACB00F70347 /* UserType.swift in Sources */,
@@ -342,6 +353,7 @@
 				1F3A3DE52A4840EC0088F25D /* VisitDetailsView.swift in Sources */,
 				1FA7F7B729D9EDEF00886539 /* ColorExtension.swift in Sources */,
 				1F3804D22A59B9FD00F70347 /* BuyerHomeView.swift in Sources */,
+				1F3804E52A5A411000F70347 /* EvaluationPicker.swift in Sources */,
 				1F3804DC2A59D15000F70347 /* Bid.swift in Sources */,
 				1F3804D42A59BA1200F70347 /* BackofficeHomeView.swift in Sources */,
 				1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */,

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BackofficeHomeView: View {
+    @State private var estate: Estate = Estate()
+    
     init() {
         UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
     }
@@ -20,7 +22,7 @@ struct BackofficeHomeView: View {
                 
                 Form
                 {
-                    
+                    CustomInput(text: $estate.code, placeholder: "clientName")
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

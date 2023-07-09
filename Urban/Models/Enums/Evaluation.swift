@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum Evaluation: String, Codable {
+enum Evaluation: String, Codable, LocalizedEnum {
     case bad
     case medium
     case good
