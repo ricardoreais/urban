@@ -9,7 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
-class VisitViewModel: ObservableObject {
+class VisitReportObservable: ObservableObject {
     @Published var report: VisitReport = VisitReport()
     @Published var isLoading = true
     

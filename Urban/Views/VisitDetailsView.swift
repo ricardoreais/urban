@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VisitDetailsView: View {
     let id: String
-    @ObservedObject var viewModel = VisitViewModel()
+    @ObservedObject var viewModel = VisitReportObservable()
     
     var body: some View {
         VStack(alignment: .leading){
@@ -69,7 +69,7 @@ struct VisitDetailsView: View {
 
 struct VisitDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = VisitViewModel()
+        let viewModel = VisitReportObservable()
         viewModel.report = VisitReport(id: "uN8uNes0lGhdpGHmFq2t", clientName: "John Doe", listingCode: "ABC123", location: "City", listedValue: "100000", willingToPay: "eaa", userId: "6JAQAHYtNreSRJfEM9ssEr92uYx1")
         viewModel.isLoading = false
         return VisitDetailsView(id: "6JAQAHYtNreSRJfEM9ssEr92uYx1", viewModel: viewModel)

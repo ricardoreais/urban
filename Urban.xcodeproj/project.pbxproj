@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F3804CD2A59B57A00F70347 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */; };
+		1F3804CF2A59B9C500F70347 /* AgentHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */; };
+		1F3804D22A59B9FD00F70347 /* BuyerHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */; };
+		1F3804D42A59BA1200F70347 /* BackOfficeHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804D32A59BA1200F70347 /* BackOfficeHomeView.swift */; };
+		1F3804D62A59BA2A00F70347 /* SellerHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804D52A59BA2A00F70347 /* SellerHomeView.swift */; };
+		1F3804D82A59D12B00F70347 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804D72A59D12B00F70347 /* User.swift */; };
+		1F3804DA2A59D14100F70347 /* Estate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804D92A59D14100F70347 /* Estate.swift */; };
+		1F3804DC2A59D15000F70347 /* Bid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804DB2A59D15000F70347 /* Bid.swift */; };
+		1F3804DE2A59D15F00F70347 /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804DD2A59D15F00F70347 /* Visit.swift */; };
+		1F3804E02A5A3ACB00F70347 /* UserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804DF2A5A3ACB00F70347 /* UserType.swift */; };
 		1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */; };
 		1F3A3DE32A4718990088F25D /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE22A4718990088F25D /* LogoView.swift */; };
 		1F3A3DE52A4840EC0088F25D /* VisitDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */; };
-		1F3A3DE72A4841450088F25D /* VisitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE62A4841450088F25D /* VisitViewModel.swift */; };
+		1F3A3DE72A4841450088F25D /* VisitReportObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE62A4841450088F25D /* VisitReportObservable.swift */; };
 		1F3A3DE92A4854800088F25D /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE82A4854800088F25D /* CustomTextView.swift */; };
 		1F3A3DEF2A4860BA0088F25D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F3A3DEE2A4860BA0088F25D /* Localizable.strings */; };
 		1F654BC029EB14AD002ED11C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BBF29EB14AD002ED11C /* FirebaseAuth */; };
@@ -26,10 +36,9 @@
 		1F654BD429EB14AD002ED11C /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BD329EB14AD002ED11C /* FirebaseRemoteConfigSwift */; };
 		1F654BD629EB14AD002ED11C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BD529EB14AD002ED11C /* FirebaseStorage */; };
 		1F654BD829EB14AD002ED11C /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BD729EB14AD002ED11C /* FirebaseStorageCombine-Community */; };
-		1F654BDA29EB1520002ED11C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F654BD929EB1520002ED11C /* GoogleService-Info.plist */; };
 		1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F654BDD29EB1CD6002ED11C /* VisitReport.swift */; };
 		1F7F33AB2A22A9FE0080DE09 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F33AA2A22A9FE0080DE09 /* MainView.swift */; };
-		1F7F33B92A2389000080DE09 /* VisitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F33B82A2389000080DE09 /* VisitsViewModel.swift */; };
+		1F7F33B92A2389000080DE09 /* VisitReportsObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */; };
 		1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AD73A2A3DD6990031B154 /* HomeView.swift */; };
 		1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7A229D9D41E00886539 /* UrbanApp.swift */; };
 		1FA7F7A529D9D41E00886539 /* VisitReportFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */; };
@@ -44,16 +53,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentHomeView.swift; sourceTree = "<group>"; };
+		1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerHomeView.swift; sourceTree = "<group>"; };
+		1F3804D32A59BA1200F70347 /* BackOfficeHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackOfficeHomeView.swift; sourceTree = "<group>"; };
+		1F3804D52A59BA2A00F70347 /* SellerHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerHomeView.swift; sourceTree = "<group>"; };
+		1F3804D72A59D12B00F70347 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1F3804D92A59D14100F70347 /* Estate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estate.swift; sourceTree = "<group>"; };
+		1F3804DB2A59D15000F70347 /* Bid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bid.swift; sourceTree = "<group>"; };
+		1F3804DD2A59D15F00F70347 /* Visit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
+		1F3804DF2A5A3ACB00F70347 /* UserType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserType.swift; sourceTree = "<group>"; };
 		1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		1F3A3DE22A4718990088F25D /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitDetailsView.swift; sourceTree = "<group>"; };
-		1F3A3DE62A4841450088F25D /* VisitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitViewModel.swift; sourceTree = "<group>"; };
+		1F3A3DE62A4841450088F25D /* VisitReportObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportObservable.swift; sourceTree = "<group>"; };
 		1F3A3DE82A4854800088F25D /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		1F3A3DEE2A4860BA0088F25D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		1F654BD929EB1520002ED11C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F654BDD29EB1CD6002ED11C /* VisitReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReport.swift; sourceTree = "<group>"; };
 		1F7F33AA2A22A9FE0080DE09 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		1F7F33B82A2389000080DE09 /* VisitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsViewModel.swift; sourceTree = "<group>"; };
+		1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsObservable.swift; sourceTree = "<group>"; };
 		1F8AD73A2A3DD6990031B154 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1FA7F79F29D9D41E00886539 /* Urban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Urban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA7F7A229D9D41E00886539 /* UrbanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanApp.swift; sourceTree = "<group>"; };
@@ -92,6 +110,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F3804D02A59B9D100F70347 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1F8AD73A2A3DD6990031B154 /* HomeView.swift */,
+				1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */,
+				1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */,
+				1F3804D32A59BA1200F70347 /* BackOfficeHomeView.swift */,
+				1F3804D52A59BA2A00F70347 /* SellerHomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1F3804E12A5A3AD100F70347 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				1F3804DF2A5A3ACB00F70347 /* UserType.swift */,
+				1FA7F7B229D9E43B00886539 /* Decision.swift */,
+				1FA7F7B029D9E2B400886539 /* Evaluation.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		1F3A3DDD2A46F45E0088F25D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,12 +143,15 @@
 		1F654BDF29EB2633002ED11C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1F3804E12A5A3AD100F70347 /* Enums */,
 				1F7F33B72A2388E60080DE09 /* Observables */,
 				1F3A3DDD2A46F45E0088F25D /* Extensions */,
 				1F654BDD29EB1CD6002ED11C /* VisitReport.swift */,
-				1FA7F7B229D9E43B00886539 /* Decision.swift */,
-				1FA7F7B029D9E2B400886539 /* Evaluation.swift */,
+				1F3804D72A59D12B00F70347 /* User.swift */,
 				1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */,
+				1F3804D92A59D14100F70347 /* Estate.swift */,
+				1F3804DB2A59D15000F70347 /* Bid.swift */,
+				1F3804DD2A59D15F00F70347 /* Visit.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -116,7 +159,7 @@
 		1F7F33AE2A237E920080DE09 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1F8AD73A2A3DD6990031B154 /* HomeView.swift */,
+				1F3804D02A59B9D100F70347 /* Home */,
 				1FFAD7FD2A113E1100F63B1C /* SignInView.swift */,
 				1F7F33AA2A22A9FE0080DE09 /* MainView.swift */,
 				1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */,
@@ -139,8 +182,8 @@
 		1F7F33B72A2388E60080DE09 /* Observables */ = {
 			isa = PBXGroup;
 			children = (
-				1F7F33B82A2389000080DE09 /* VisitsViewModel.swift */,
-				1F3A3DE62A4841450088F25D /* VisitViewModel.swift */,
+				1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */,
+				1F3A3DE62A4841450088F25D /* VisitReportObservable.swift */,
 			);
 			path = Observables;
 			sourceTree = "<group>";
@@ -164,10 +207,10 @@
 		1FA7F7A129D9D41E00886539 /* Urban */ = {
 			isa = PBXGroup;
 			children = (
+				1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */,
 				1F7F33AF2A237EAB0080DE09 /* Components */,
 				1F7F33AE2A237E920080DE09 /* Views */,
 				1F654BDF29EB2633002ED11C /* Models */,
-				1F654BD929EB1520002ED11C /* GoogleService-Info.plist */,
 				1FA7F7A229D9D41E00886539 /* UrbanApp.swift */,
 				1FA7F7A629D9D41F00886539 /* Assets.xcassets */,
 				1FA7F7A829D9D41F00886539 /* Preview Content */,
@@ -261,9 +304,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FA7F7AA29D9D41F00886539 /* Preview Assets.xcassets in Resources */,
+				1F3804CD2A59B57A00F70347 /* GoogleService-Info.plist in Resources */,
 				1F3A3DEF2A4860BA0088F25D /* Localizable.strings in Resources */,
 				1FA7F7A729D9D41F00886539 /* Assets.xcassets in Resources */,
-				1F654BDA29EB1520002ED11C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,17 +320,26 @@
 				1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */,
 				1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */,
 				1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */,
+				1F3804D62A59BA2A00F70347 /* SellerHomeView.swift in Sources */,
 				1FA7F7A529D9D41E00886539 /* VisitReportFormView.swift in Sources */,
 				1FFAD7FA2A113BF000F63B1C /* VisitsView.swift in Sources */,
-				1F7F33B92A2389000080DE09 /* VisitsViewModel.swift in Sources */,
-				1F3A3DE72A4841450088F25D /* VisitViewModel.swift in Sources */,
+				1F7F33B92A2389000080DE09 /* VisitReportsObservable.swift in Sources */,
+				1F3A3DE72A4841450088F25D /* VisitReportObservable.swift in Sources */,
 				1F3A3DE32A4718990088F25D /* LogoView.swift in Sources */,
 				1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */,
+				1F3804D82A59D12B00F70347 /* User.swift in Sources */,
 				1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */,
 				1F3A3DE92A4854800088F25D /* CustomTextView.swift in Sources */,
+				1F3804DE2A59D15F00F70347 /* Visit.swift in Sources */,
+				1F3804DA2A59D14100F70347 /* Estate.swift in Sources */,
+				1F3804CF2A59B9C500F70347 /* AgentHomeView.swift in Sources */,
+				1F3804E02A5A3ACB00F70347 /* UserType.swift in Sources */,
 				1F7F33AB2A22A9FE0080DE09 /* MainView.swift in Sources */,
 				1F3A3DE52A4840EC0088F25D /* VisitDetailsView.swift in Sources */,
 				1FA7F7B729D9EDEF00886539 /* ColorExtension.swift in Sources */,
+				1F3804D22A59B9FD00F70347 /* BuyerHomeView.swift in Sources */,
+				1F3804DC2A59D15000F70347 /* Bid.swift in Sources */,
+				1F3804D42A59BA1200F70347 /* BackOfficeHomeView.swift in Sources */,
 				1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */,
 				1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */,
 				1FA7F7B329D9E43B00886539 /* Decision.swift in Sources */,
@@ -419,6 +471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Urban/Preview Content\"";
+				DEVELOPMENT_TEAM = NL9BA4ZVSA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -447,6 +500,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Urban/Preview Content\"";
+				DEVELOPMENT_TEAM = NL9BA4ZVSA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
