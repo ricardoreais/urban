@@ -16,43 +16,15 @@ struct SignUpView: View {
     @State private var confirmPassword: String = ""
     @State private var accountCreated: Bool = false
     @State private var hasErrors: Bool = false
+    @EnvironmentObject var mediator: MediatorObservable
     
-    func createUser() -> Void {
-        let db = Firestore.firestore()
-        let collectionRef = db.collection("Users")
-        do {
-            let user = User(email: email, types: [UserType.buyer])
-            try collectionRef.addDocument(from: user) { error in
-                if let error = error {
-                    hasErrors = true
-                    print("Error saving data: \(error.localizedDescription)")
-                } else {
-                    print("User created with success!")
-                }
-            }
-        } catch let error {
-            hasErrors = true
-            print("Error saving data: \(error)")
-        }
-    }
     
     func signUp() -> Void {
-        hasErrors = email.isEmpty || password.isEmpty || confirmPassword.isEmpty || password != confirmPassword
+        let createUserCommand = CreateUserCommand(name: "", password: password, confirmPassword: confirmPassword, email: email, types: [UserType.buyer], telephone: "")
+        let result = mediator.handle(command: createUserCommand)
         
-        if(hasErrors){
-            return
-        }
-        
-        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-            guard let user = authResult?.user, error == nil else {
-                print("Error creating user: \(error!.localizedDescription)")
-                return
-            }
-            print("User created successfully with name: \(user.email ?? "")")
-            accountCreated = true
-        }
-        
-        createUser()
+        hasErrors = result == false
+        accountCreated = result == true
     }
     
     var body: some View {

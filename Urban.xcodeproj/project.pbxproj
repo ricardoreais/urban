@@ -54,6 +54,11 @@
 		1FA7F7B729D9EDEF00886539 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7B629D9EDEF00886539 /* ColorExtension.swift */; };
 		1FED3F882A75539100F38DD9 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F872A75539100F38DD9 /* AddUserView.swift */; };
 		1FED3F8A2A75582300F38DD9 /* UserObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F892A75582300F38DD9 /* UserObservable.swift */; };
+		1FED3F8F2A75632200F38DD9 /* CreateUserCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F8E2A75632200F38DD9 /* CreateUserCommand.swift */; };
+		1FED3F912A75638900F38DD9 /* CommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F902A75638900F38DD9 /* CommandHandler.swift */; };
+		1FED3F932A75646B00F38DD9 /* CreateUserCommandHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F922A75646B00F38DD9 /* CreateUserCommandHandler.swift */; };
+		1FED3F952A756AD400F38DD9 /* Mediator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F942A756AD400F38DD9 /* Mediator.swift */; };
+		1FED3F972A75757600F38DD9 /* MediatorObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F962A75757600F38DD9 /* MediatorObservable.swift */; };
 		1FFAD7FA2A113BF000F63B1C /* VisitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7F92A113BF000F63B1C /* VisitsView.swift */; };
 		1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */; };
 		1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7FD2A113E1100F63B1C /* SignInView.swift */; };
@@ -95,6 +100,11 @@
 		1FA7F7B629D9EDEF00886539 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		1FED3F872A75539100F38DD9 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
 		1FED3F892A75582300F38DD9 /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
+		1FED3F8E2A75632200F38DD9 /* CreateUserCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserCommand.swift; sourceTree = "<group>"; };
+		1FED3F902A75638900F38DD9 /* CommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandHandler.swift; sourceTree = "<group>"; };
+		1FED3F922A75646B00F38DD9 /* CreateUserCommandHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserCommandHandler.swift; sourceTree = "<group>"; };
+		1FED3F942A756AD400F38DD9 /* Mediator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mediator.swift; sourceTree = "<group>"; };
+		1FED3F962A75757600F38DD9 /* MediatorObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediatorObservable.swift; sourceTree = "<group>"; };
 		1FFAD7F92A113BF000F63B1C /* VisitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsView.swift; sourceTree = "<group>"; };
 		1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1FFAD7FD2A113E1100F63B1C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -205,6 +215,7 @@
 				1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */,
 				1F3A3DE62A4841450088F25D /* VisitReportObservable.swift */,
 				1FED3F892A75582300F38DD9 /* UserObservable.swift */,
+				1FED3F962A75757600F38DD9 /* MediatorObservable.swift */,
 			);
 			path = Observables;
 			sourceTree = "<group>";
@@ -228,6 +239,7 @@
 		1FA7F7A129D9D41E00886539 /* Urban */ = {
 			isa = PBXGroup;
 			children = (
+				1FED3F8B2A75624000F38DD9 /* Commands */,
 				1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */,
 				1F7F33AF2A237EAB0080DE09 /* Components */,
 				1F7F33AE2A237E920080DE09 /* Views */,
@@ -246,6 +258,17 @@
 				1FA7F7A929D9D41F00886539 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1FED3F8B2A75624000F38DD9 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				1FED3F8E2A75632200F38DD9 /* CreateUserCommand.swift */,
+				1FED3F902A75638900F38DD9 /* CommandHandler.swift */,
+				1FED3F922A75646B00F38DD9 /* CreateUserCommandHandler.swift */,
+				1FED3F942A756AD400F38DD9 /* Mediator.swift */,
+			);
+			path = Commands;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FED3F8F2A75632200F38DD9 /* CreateUserCommand.swift in Sources */,
 				1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */,
 				1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */,
 				1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */,
@@ -357,9 +381,11 @@
 				1F3804DE2A59D15F00F70347 /* Visit.swift in Sources */,
 				1F3804E72A5A42EB00F70347 /* CustomPicker.swift in Sources */,
 				1F3804DA2A59D14100F70347 /* Estate.swift in Sources */,
+				1FED3F952A756AD400F38DD9 /* Mediator.swift in Sources */,
 				1F3804CF2A59B9C500F70347 /* AgentHomeView.swift in Sources */,
 				1F3804E02A5A3ACB00F70347 /* UserType.swift in Sources */,
 				1F7F33AB2A22A9FE0080DE09 /* MainView.swift in Sources */,
+				1FED3F912A75638900F38DD9 /* CommandHandler.swift in Sources */,
 				1F3A3DE52A4840EC0088F25D /* VisitDetailsView.swift in Sources */,
 				1FA7F7B729D9EDEF00886539 /* ColorExtension.swift in Sources */,
 				1F3804D22A59B9FD00F70347 /* BuyerHomeView.swift in Sources */,
@@ -367,6 +393,8 @@
 				1F3804DC2A59D15000F70347 /* Bid.swift in Sources */,
 				1F3804D42A59BA1200F70347 /* BackofficeHomeView.swift in Sources */,
 				1F3804ED2A5A4CF200F70347 /* CustomSection.swift in Sources */,
+				1FED3F932A75646B00F38DD9 /* CreateUserCommandHandler.swift in Sources */,
+				1FED3F972A75757600F38DD9 /* MediatorObservable.swift in Sources */,
 				1FED3F8A2A75582300F38DD9 /* UserObservable.swift in Sources */,
 				1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */,
 				1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */,

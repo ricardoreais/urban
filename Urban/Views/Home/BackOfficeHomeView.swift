@@ -12,7 +12,7 @@ struct BackofficeHomeView: View {
     @State private var allAgents: [User] = []
     @State private var selectedAgents: [User] = []
     @State private var sellerEmail: String = ""
-    
+
     init() {
         UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
     }
@@ -41,7 +41,6 @@ struct BackofficeHomeView: View {
                         CustomInput(text:$sellerEmail, placeholder: "sellerEmail")
                     }
                 }
-                .scrollContentBackground(.hidden)
                 .overlay(
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.red, lineWidth: 2)
@@ -67,7 +66,7 @@ struct BackofficeHomeView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(ColorPalette.primary)
             .tabItem {
-                Label("addUser", systemImage: "person.badge.plus")
+                Label("createUser", systemImage: "person.badge.plus")
             }
             VStack{
                 Text("comingSoon")
@@ -79,6 +78,7 @@ struct BackofficeHomeView: View {
                 Label("deleteUser", systemImage: "person.badge.minus")
             }
         }
+        .scrollContentBackground(.hidden)
         .navigationBarBackButtonHidden(true)
     }
 }

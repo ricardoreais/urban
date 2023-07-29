@@ -72,7 +72,8 @@
 "backoffice" = "Backoffice";
 "admin" = "Administrador";
 "myEstates" = "As minhas propriedades";
-"addUser" = "Criar utilizador";
+"createUser" = "Criar utilizador";
 "id" = "Id";
 "updateUser" = "Atualizar utilizador";
 "sellerEmail" = "Email do vendedor";
+"userType" = "Tipo de utilizador";
