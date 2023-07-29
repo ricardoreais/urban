@@ -57,6 +57,7 @@
 "comingSoon" = "Brevemente disponivel";
 "calendar" = "Calendário de visitas";
 "myAccount" = "A minha conta";
+"estate" = "Angariação";
 "estates" = "Angariações";
 "buyers" = "Compradores";
 "addBuyer" = "Criar comprador";
@@ -67,7 +68,11 @@
 "buyer" = "Comprador";
 "seller" = "Vendedor";
 "agent" = "Agente";
+"agents" = "Agentes";
 "backoffice" = "Backoffice";
 "admin" = "Administrador";
 "myEstates" = "As minhas propriedades";
 "addUser" = "Criar utilizador";
+"id" = "Id";
+"updateUser" = "Atualizar utilizador";
+"sellerEmail" = "Email do vendedor";

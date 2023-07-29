@@ -8,40 +8,51 @@
 import SwiftUI
 
 struct HomeView: View {
+    @ObservedObject var user = UserObservable()
+    
     init() {
         UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
     }
 
     var body: some View {
-        TabView {
-            VisitsView()
-                .tabItem {
-                    Label("myVisits", systemImage: "list.bullet")
-                }
-            VisitReportFormView()
-                .tabItem {
-                    Label("createVisit", systemImage: "square.and.pencil")
-                }
-            VStack{
-                Text("comingSoon")
-                    .foregroundColor(ColorPalette.secondary)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
-            .tabItem {
-                Label("calendar", systemImage: "calendar")
-            }
-            VStack{
-                Text("comingSoon")
-                    .foregroundColor(ColorPalette.secondary)
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
-            .tabItem {
-                Label("myAccount", systemImage: "person")
-            }
+        VStack {
+            if user.isLoading {
+                    Logo()
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                        .scaleEffect(2)
+                        .padding()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+              } else {
+                  // Depending on the user type, show different views
+                  if let userTypes = user.value.types {
+                      if userTypes.contains(UserType.admin) {
+                          BackofficeHomeView()
+                      } else if userTypes.contains(UserType.buyer) {
+                          BuyerHomeView()
+                      }
+                      else if userTypes.contains(UserType.agent) {
+                         AgentHomeView()
+                     }
+                      else if userTypes.contains(UserType.seller) {
+                         SellerHomeView()
+                     }
+                      else if userTypes.contains(UserType.backoffice) {
+                          BackofficeHomeView()
+                      } else {
+                          // Handle other user types or show a default view
+                          Text("Unknown user type")
+                      }
+                  } else {
+                      // Handle the case when user.types is nil or show a default view
+                      Text("User types not available")
+                  }
+              }
         }
-        .navigationBarBackButtonHidden(true)
+        .background(ColorPalette.primary)
+        .onAppear(perform: {
+            user.fetch()
+        })
     }
 }
 

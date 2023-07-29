@@ -19,7 +19,7 @@ class VisitReportsObservable: ObservableObject {
             let userID = String(currentUser.uid)
             print("Current User ID: \(userID)")
             
-            db.collection("VisitReport")
+            db.collection("VisitReports")
                 .whereField("userId", isEqualTo: userID)
             .getDocuments { snapshot, error in
                 if let error = error {

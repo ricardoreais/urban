@@ -16,7 +16,7 @@ class VisitReportObservable: ObservableObject {
     func fetchVisitReport(id: String) {
         print("Getting visit: \(id)")
         let db = Firestore.firestore()
-        db.collection("VisitReport")
+        db.collection("VisitReports")
             .document(id)
             .getDocument { snapshot, error in
                if let error = error {

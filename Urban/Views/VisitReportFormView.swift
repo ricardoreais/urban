@@ -29,7 +29,7 @@ struct VisitReportFormView: View {
         }
         
         let db = Firestore.firestore()
-        let collectionRef = db.collection("VisitReport")
+        let collectionRef = db.collection("VisitReports")
         do {
             try collectionRef.addDocument(from: visitReport) { error in
                 if let error = error {

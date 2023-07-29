@@ -52,6 +52,8 @@
 		1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7B029D9E2B400886539 /* Evaluation.swift */; };
 		1FA7F7B329D9E43B00886539 /* Decision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7B229D9E43B00886539 /* Decision.swift */; };
 		1FA7F7B729D9EDEF00886539 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7B629D9EDEF00886539 /* ColorExtension.swift */; };
+		1FED3F882A75539100F38DD9 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F872A75539100F38DD9 /* AddUserView.swift */; };
+		1FED3F8A2A75582300F38DD9 /* UserObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F892A75582300F38DD9 /* UserObservable.swift */; };
 		1FFAD7FA2A113BF000F63B1C /* VisitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7F92A113BF000F63B1C /* VisitsView.swift */; };
 		1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */; };
 		1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7FD2A113E1100F63B1C /* SignInView.swift */; };
@@ -91,6 +93,8 @@
 		1FA7F7B029D9E2B400886539 /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
 		1FA7F7B229D9E43B00886539 /* Decision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decision.swift; sourceTree = "<group>"; };
 		1FA7F7B629D9EDEF00886539 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		1FED3F872A75539100F38DD9 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
+		1FED3F892A75582300F38DD9 /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
 		1FFAD7F92A113BF000F63B1C /* VisitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsView.swift; sourceTree = "<group>"; };
 		1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1FFAD7FD2A113E1100F63B1C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */,
 				1FFAD7F92A113BF000F63B1C /* VisitsView.swift */,
 				1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */,
+				1FED3F872A75539100F38DD9 /* AddUserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			children = (
 				1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */,
 				1F3A3DE62A4841450088F25D /* VisitReportObservable.swift */,
+				1FED3F892A75582300F38DD9 /* UserObservable.swift */,
 			);
 			path = Observables;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 				1F3804D82A59D12B00F70347 /* User.swift in Sources */,
 				1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */,
 				1F3A3DE92A4854800088F25D /* CustomText.swift in Sources */,
+				1FED3F882A75539100F38DD9 /* AddUserView.swift in Sources */,
 				1F3804DE2A59D15F00F70347 /* Visit.swift in Sources */,
 				1F3804E72A5A42EB00F70347 /* CustomPicker.swift in Sources */,
 				1F3804DA2A59D14100F70347 /* Estate.swift in Sources */,
@@ -360,6 +367,7 @@
 				1F3804DC2A59D15000F70347 /* Bid.swift in Sources */,
 				1F3804D42A59BA1200F70347 /* BackofficeHomeView.swift in Sources */,
 				1F3804ED2A5A4CF200F70347 /* CustomSection.swift in Sources */,
+				1FED3F8A2A75582300F38DD9 /* UserObservable.swift in Sources */,
 				1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */,
 				1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */,
 				1FA7F7B329D9E43B00886539 /* Decision.swift in Sources */,
