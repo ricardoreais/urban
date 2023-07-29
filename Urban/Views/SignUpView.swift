@@ -16,12 +16,12 @@ struct SignUpView: View {
     @State private var confirmPassword: String = ""
     @State private var accountCreated: Bool = false
     @State private var hasErrors: Bool = false
-    @EnvironmentObject var mediator: MediatorObservable
+    @ObservedObject private var user: UserObservable = UserObservable()
     
     
     func signUp() -> Void {
         let createUserCommand = CreateUserCommand(name: "", password: password, confirmPassword: confirmPassword, email: email, types: [UserType.buyer], telephone: "")
-        let result = mediator.handle(command: createUserCommand)
+        let result = user.create(command: createUserCommand)
         
         hasErrors = result == false
         accountCreated = result == true

@@ -25,7 +25,7 @@ struct UrbanApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .environmentObject(MediatorObservable())
+                .environmentObject(UserObservable())
         }
     }
 }

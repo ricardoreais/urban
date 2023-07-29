@@ -69,8 +69,7 @@ struct BackofficeHomeView: View {
                 Label("createUser", systemImage: "person.badge.plus")
             }
             VStack{
-                Text("comingSoon")
-                    .foregroundColor(ColorPalette.secondary)
+                DeleteUserView()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(ColorPalette.primary)

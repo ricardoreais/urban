@@ -10,11 +10,11 @@ import SwiftUI
 struct AddUserView: View {
     @State private var email: String = ""
     @State private var type: UserType = UserType.guest
-    @EnvironmentObject var mediator: MediatorObservable
+    @ObservedObject private var user: UserObservable = UserObservable()
     
     func createUser() {
         let createUserCommand = CreateUserCommand(name: "", password: "123456", confirmPassword: "123456", email: email, types: [type], telephone: "")
-        mediator.handle(command: createUserCommand)
+        user.create(command: createUserCommand)
     }
     
     var body: some View {
