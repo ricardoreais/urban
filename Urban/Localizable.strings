@@ -77,3 +77,4 @@
 "updateUser" = "Atualizar utilizador";
 "sellerEmail" = "Email do vendedor";
 "userType" = "Tipo de utilizador";
+"noUsers" = "Utilizadores não encontrados";

@@ -125,4 +125,29 @@ class UserObservable: ObservableObject {
                 }
             }
     }
+    
+    func delete(uid: String, completion: @escaping (Error?) -> Void) {
+        // First, delete the user document from Firestore
+        let db = Firestore.firestore()
+        let userRef = db.collection("Users").document(uid)
+        
+        userRef.delete { error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            // If the user document is deleted successfully, remove the user's authentication in Firebase
+            let auth = Auth.auth()
+            auth.currentUser?.delete { error in
+                if let error = error {
+                    completion(error)
+                    return
+                }
+                
+                // Both Firestore document and user authentication are successfully deleted
+                completion(nil)
+            }
+        }
+    }
 }

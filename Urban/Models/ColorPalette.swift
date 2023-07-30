@@ -12,4 +12,5 @@ struct ColorPalette {
     static let primary = Color("Primary")
     static let secondary = Color("Secondary")
     static let highlights = Color("Highlights")
+    static let error = Color("Error")
 }

@@ -56,6 +56,7 @@ struct VisitsView: View {
 struct VisitsView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = VisitReportsObservable()
+        viewModel.isLoading = false
         viewModel.reports = [
             VisitReport(id: "uN8uNes0lGhdpGHmFq2t", clientName: "John Doe", listingCode: "ABC123", location: "City", listedValue: "100000", userId: "6JAQAHYtNreSRJfEM9ssEr92uYx1")
         ]

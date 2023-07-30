@@ -57,6 +57,7 @@
 		1FED3F8F2A75632200F38DD9 /* CreateUserCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F8E2A75632200F38DD9 /* CreateUserCommand.swift */; };
 		1FED3F992A757BEE00F38DD9 /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F982A757BEE00F38DD9 /* DeleteUserView.swift */; };
 		1FED3F9E2A757F9F00F38DD9 /* GetUsersQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F9D2A757F9F00F38DD9 /* GetUsersQuery.swift */; };
+		1FED3FA32A76886600F38DD9 /* CreateEstateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FA22A76886600F38DD9 /* CreateEstateView.swift */; };
 		1FFAD7FA2A113BF000F63B1C /* VisitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7F92A113BF000F63B1C /* VisitsView.swift */; };
 		1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */; };
 		1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7FD2A113E1100F63B1C /* SignInView.swift */; };
@@ -101,6 +102,7 @@
 		1FED3F8E2A75632200F38DD9 /* CreateUserCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserCommand.swift; sourceTree = "<group>"; };
 		1FED3F982A757BEE00F38DD9 /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
 		1FED3F9D2A757F9F00F38DD9 /* GetUsersQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersQuery.swift; sourceTree = "<group>"; };
+		1FED3FA22A76886600F38DD9 /* CreateEstateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEstateView.swift; sourceTree = "<group>"; };
 		1FFAD7F92A113BF000F63B1C /* VisitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsView.swift; sourceTree = "<group>"; };
 		1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1FFAD7FD2A113E1100F63B1C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				1FED3F872A75539100F38DD9 /* AddUserView.swift */,
 				1FED3F982A757BEE00F38DD9 /* DeleteUserView.swift */,
 				1F3804D32A59BA1200F70347 /* BackofficeHomeView.swift */,
+				1FED3FA22A76886600F38DD9 /* CreateEstateView.swift */,
 			);
 			path = Backoffice;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				1F3804ED2A5A4CF200F70347 /* CustomSection.swift in Sources */,
 				1FED3F8A2A75582300F38DD9 /* UserObservable.swift in Sources */,
 				1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */,
+				1FED3FA32A76886600F38DD9 /* CreateEstateView.swift in Sources */,
 				1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */,
 				1FA7F7B329D9E43B00886539 /* Decision.swift in Sources */,
 			);

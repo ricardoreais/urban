@@ -12,7 +12,7 @@ struct DeleteUserView: View {
     
     var body: some View {
         VStack {
-            Text("HElloww2")
+            
             if user.isLoading {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
@@ -21,19 +21,31 @@ struct DeleteUserView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             } else {
                 if(user.users.isEmpty){
-                    Text("noVisitsYet")
+                    Text("noUsers")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 else{
                     List(user.users) { user in
-                        CustomText(label: "clientName", value: user.email ?? "") +
-                        CustomText(label: "code", value: user.id ?? "")
-                        
-                        Image(systemName: "xmark")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.red)
+                        HStack {
+                            CustomText(label: "email", value: "\(user.email ?? "")")
+                            Spacer()
+                            Image(systemName: "xmark")
+                                .font(.system(size: 20, weight: .bold))
+                                .foregroundColor(ColorPalette.error)
+                                .onTapGesture {
+                                    self.user.delete(uid: user.id ?? "") { error in
+                                        if let error = error {
+                                            print("Error deleting user: \(error.localizedDescription)")
+                                            // Handle the error as needed
+                                        } else {
+                                            print("User deleted successfully.")
+                                            self.user.getAll()
+                                        }
+                                    }
+                                }
+                       }
+                        .listRowBackground(ColorPalette.highlights)
                     }
-                    
                 }
             }
         }
@@ -52,5 +64,7 @@ struct DeleteUserView_Previews: PreviewProvider {
         user.users = [user1, user2, user3]
         user.isLoading = false
         return DeleteUserView(user: user)
+            .scrollContentBackground(.hidden)
+            .background(ColorPalette.primary)
     }
 }
