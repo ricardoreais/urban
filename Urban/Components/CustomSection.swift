@@ -19,6 +19,7 @@ struct CustomSection<Content: View>: View {
     var body: some View {
         Section(header: Text(LocalizedStringKey(header))) {
             content
+                .foregroundColor(ColorPalette.secondary)
         }
         .foregroundColor(.accentColor)
         .listRowBackground(Color.clear)
@@ -34,6 +35,15 @@ struct CustomSection_Previews: PreviewProvider {
         Form {
             CustomSection(header: "client") {
                 CustomInput(text:inputValue, placeholder: "clientName")
+                Text("Wow")
+                NavigationLink(destination: Text("siu")) {
+                    HStack {
+                        Text("Meow2")
+                        Spacer()
+                        Text("A,B, C")
+                            .multilineTextAlignment(.trailing)
+                    }
+                }
             }
         }
         .scrollContentBackground(.hidden)

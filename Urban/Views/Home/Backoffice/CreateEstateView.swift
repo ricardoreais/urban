@@ -12,6 +12,8 @@ struct CreateEstateView: View {
     @State private var allAgents: [User] = []
     @State private var selectedAgents: [User] = []
     @State private var sellerEmail: String = ""
+    @ObservedObject var user: UserObservable = UserObservable()
+    @State private var selected: Set<IdentifiableString> = Set([].map { IdentifiableString(string: $0) })
     
     var body: some View {
         VStack{
@@ -20,14 +22,15 @@ struct CreateEstateView: View {
                 CustomSection(header: "estate") {
                     CustomInput(text:$estate.code, placeholder: "id")
                     CustomInput(text:$estate.address, placeholder: "address")
-                    Picker("Select an option", selection: $sellerEmail) {
-                        ForEach(allAgents) { agent in
-                            Text(agent.name ?? "NA").tag(agent.id)
-                        }
-                    }
-                    .pickerStyle(DefaultPickerStyle())
-                    .padding()
-                    CustomInput(text:$estate.address, placeholder: "agents")
+                    CustomSelectList<IdentifiableString>(
+                        label: "agents",
+                        options: user.users.map{ $0.email ?? "" }.map { IdentifiableString(string: $0) },
+                        optionToString: { $0.string },
+                        selected: $selected
+                    )
+                    .onAppear(perform: {
+                        user.getAll()
+                    })
                     CustomInput(text:$sellerEmail, placeholder: "sellerEmail")
                 }
             }
