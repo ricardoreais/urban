@@ -85,7 +85,7 @@ struct VisitReportFormView: View {
                         Text("howMuchAreYouWillingToPay").foregroundColor(ColorPalette.secondary)
                         CustomInput(text: $visitReport.willingToPay, placeholder: "moneyExample")
                         
-                        CustomPicker(selection: $visitReport.isOption, label: "isThisPropertyAnOption", options: [Decision.yes, Decision.no, Decision.maybe])
+                        CustomPicker(selection: $visitReport.isOption, label: "isThisPropertyAnOption", options: [Decision.yes, Decision.no])
                         
                         CustomPicker(selection: $visitReport.hasPropertyToSell, label: "doYouHaveAnyPropertyToSell", options: [Decision.yes, Decision.no])
                         
