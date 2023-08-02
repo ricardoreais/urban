@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct CustomSection<Content: View>: View {
-    let header: String
+    let header: String?
     let content: Content
     
-    init(header: String, @ViewBuilder content: () -> Content) {
+    init(header: String? = nil, @ViewBuilder content: () -> Content) {
         self.header = header
         self.content = content()
     }
     
     var body: some View {
-        Section(header: Text(LocalizedStringKey(header))) {
+        Section(header: Text(LocalizedStringKey(header ?? ""))) {
             content
                 .foregroundColor(ColorPalette.secondary)
         }

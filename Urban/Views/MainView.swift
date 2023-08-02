@@ -10,13 +10,18 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         NavigationStack {
-            VStack{
+            CustomBackground {
                 Logo()
+                Spacer()
+                Text("slogan")
+                    .frame(width: 275)
+                    .font(.custom("Snell Roundhand", size: 30))
+                Spacer()
                 NavigationLink("login", destination: SignInView())
+                    .foregroundColor(.accentColor)
                 NavigationLink("signUp", destination: SignUpView())
+                    .foregroundColor(.accentColor)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
         }
     }
 }

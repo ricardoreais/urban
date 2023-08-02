@@ -28,26 +28,27 @@ struct SignUpView: View {
     }
     
     var body: some View {
-            VStack {
+            CustomBackground {
                 Logo()
-                Form {
-                    TextField("", text: $email,
-                              prompt: Text("email").foregroundColor(ColorPalette.secondary))
-                    .disableAutocorrection(true)
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                    .listRowBackground(ColorPalette.highlights)
+                CustomForm {
+                        // TODO: Add custom section here and try to remove all these duplicate styles.
+                        TextField("", text: $email,
+                                  prompt: Text("email").foregroundColor(ColorPalette.secondary))
+                        .disableAutocorrection(true)
+                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        .listRowBackground(ColorPalette.highlights)
                     
-                    SecureField("", text: $password,
-                              prompt: Text("password").foregroundColor(ColorPalette.secondary))
-                    .listRowBackground(ColorPalette.highlights)
-                    .disableAutocorrection(true)
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                    
-                    SecureField("", text: $confirmPassword,
-                              prompt: Text("repeatPassword").foregroundColor(ColorPalette.secondary))
-                    .listRowBackground(ColorPalette.highlights)
-                    .disableAutocorrection(true)
-                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        SecureField("", text: $password,
+                                  prompt: Text("password").foregroundColor(ColorPalette.secondary))
+                        .listRowBackground(ColorPalette.highlights)
+                        .disableAutocorrection(true)
+                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        
+                        SecureField("", text: $confirmPassword,
+                                  prompt: Text("repeatPassword").foregroundColor(ColorPalette.secondary))
+                        .listRowBackground(ColorPalette.highlights)
+                        .disableAutocorrection(true)
+                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
 
                 }
                 .alert(isPresented: $hasErrors) {
@@ -57,19 +58,11 @@ struct SignUpView: View {
                         dismissButton: .default(Text("ok"))
                     )
                 }
-                .foregroundColor(ColorPalette.secondary)
-                .scrollContentBackground(.hidden)
-                
-                
-                Button("signUp") {
-                    signUp()
-                }.navigationDestination(isPresented: $accountCreated) {
+                CustomButton(label: "signUp", action: {signUp()})
+                    .navigationDestination(isPresented: $accountCreated) {
                     SignInView()
                 }
-                .listRowBackground(Color.clear)
-                .padding(.horizontal, 0.0)
-                .frame(maxWidth: .infinity, alignment: .center)
-            }.background(ColorPalette.primary)
+            }
         }
 }
 

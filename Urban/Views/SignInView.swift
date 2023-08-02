@@ -32,9 +32,9 @@ struct SignInView: View {
     }
     
     var body: some View {
-        VStack{
+        CustomBackground {
             Logo()
-            Form {
+            CustomForm {
                 TextField("", text: $email,
                           prompt: Text("Email").foregroundColor(ColorPalette.secondary))
                 .disableAutocorrection(true)
@@ -54,18 +54,12 @@ struct SignInView: View {
                     dismissButton: .default(Text("ok"))
                 )
             }
-            .foregroundColor(ColorPalette.secondary)
-            .scrollContentBackground(.hidden)
             
-            Button("signIn") {
-                signIn()
-            }.navigationDestination(isPresented: $loggedIn) {
-                HomeView()
+            CustomButton(label: "signIn", action: {signIn()})
+                .navigationDestination(isPresented: $loggedIn) {
+                    HomeView()
             }
-            .padding(.horizontal, 0.0)
-            .frame(maxWidth: .infinity, alignment: .center)
         }
-        .background(ColorPalette.primary)
     }
 }
 
