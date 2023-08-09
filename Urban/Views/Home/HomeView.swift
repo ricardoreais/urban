@@ -40,7 +40,7 @@ struct HomeView: View {
                       }
                   } else {
                       // Handle the case when user.types is nil or show a default view
-                      Text("User types not available")
+                      Text("Unexpected exception, please contact support")
                   }
               }
         }
