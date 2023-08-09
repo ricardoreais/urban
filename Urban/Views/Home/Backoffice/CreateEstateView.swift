@@ -16,8 +16,8 @@ struct CreateEstateView: View {
     @State private var selected: Set<IdentifiableString> = Set([].map { IdentifiableString(string: $0) })
     
     var body: some View {
-        VStack{
-            Form
+        CustomBackground {
+            CustomForm
             {
                 CustomSection(header: "estate") {
                     CustomInput(text:$estate.code, placeholder: "id")
@@ -41,7 +41,5 @@ struct CreateEstateView: View {
 struct CreateEstateView_Previews: PreviewProvider {
     static var previews: some View {
         CreateEstateView()
-            .scrollContentBackground(.hidden)
-            .background(ColorPalette.primary)
     }
 }

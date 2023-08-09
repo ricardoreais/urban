@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2152A840B2900A44925 /* CustomSecureField.swift */; };
+		1F1DD2182A840E1E00A44925 /* CustomLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2172A840E1E00A44925 /* CustomLoading.swift */; };
 		1F3804CD2A59B57A00F70347 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */; };
 		1F3804CF2A59B9C500F70347 /* AgentHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */; };
 		1F3804D22A59B9FD00F70347 /* BuyerHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		1F1DD2152A840B2900A44925 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
+		1F1DD2172A840E1E00A44925 /* CustomLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoading.swift; sourceTree = "<group>"; };
 		1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentHomeView.swift; sourceTree = "<group>"; };
 		1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerHomeView.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				1FED3FB02A7ACBEB00F38DD9 /* CustomForm.swift */,
 				1FED3FB22A7ACF7E00F38DD9 /* CustomButton.swift */,
 				1F1DD2152A840B2900A44925 /* CustomSecureField.swift */,
+				1F1DD2172A840E1E00A44925 /* CustomLoading.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FED3FA52A76895500F38DD9 /* EstateObservable.swift in Sources */,
+				1F1DD2182A840E1E00A44925 /* CustomLoading.swift in Sources */,
 				1FED3F8F2A75632200F38DD9 /* CreateUserCommand.swift in Sources */,
 				1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */,
 				1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */,

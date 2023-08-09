@@ -21,6 +21,7 @@ struct CustomBackground<Content: View>: View {
         .foregroundColor(ColorPalette.secondary)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(ColorPalette.primary)
+        .scrollContentBackground(.hidden)
     }
 }
 

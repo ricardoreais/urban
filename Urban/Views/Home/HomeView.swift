@@ -15,14 +15,9 @@ struct HomeView: View {
     }
 
     var body: some View {
-        VStack {
+        CustomBackground {
             if user.isLoading {
-                    Logo()
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                        .scaleEffect(2)
-                        .padding()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    CustomLoading()
               } else {
                   // Depending on the user type, show different views
                   if let userTypes = user.value.types {
@@ -49,7 +44,6 @@ struct HomeView: View {
                   }
               }
         }
-        .background(ColorPalette.primary)
         .onAppear(perform: {
             user.fetch()
         })

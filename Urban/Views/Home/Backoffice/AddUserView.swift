@@ -18,32 +18,21 @@ struct AddUserView: View {
     }
     
     var body: some View {
-        Form
-        {
-            CustomSection(header: "createUser") {
-                CustomInput(text: $email, placeholder: "email")
-                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                CustomPicker(selection: $type, label: "userType", options: [UserType.backoffice, UserType.agent, UserType.buyer, UserType.seller])
-            }
-            
-            
-            Section {
-                Button("submit") {
-                    createUser()
+        CustomBackground{
+            CustomForm
+            {
+                CustomSection(header: "createUser") {
+                    CustomInput(text: $email, placeholder: "email")
+                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    CustomPicker(selection: $type, label: "userType", options: [UserType.backoffice, UserType.agent, UserType.buyer, UserType.seller])
                 }
-                .padding(.horizontal, 0.0)
-                .frame(maxWidth: .infinity, alignment: .center)
-            }
-            .foregroundColor(.accentColor)
-            .listRowBackground(Color.clear)
-        }
+                CustomButton(label: "submit", action: {createUser()})
+            }}
     }
 }
 
 struct AddUserView_Previews: PreviewProvider {
     static var previews: some View {
         AddUserView()
-            .scrollContentBackground(.hidden)
-            .background(ColorPalette.primary)
     }
 }

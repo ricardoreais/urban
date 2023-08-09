@@ -11,18 +11,12 @@ struct DeleteUserView: View {
     @ObservedObject var user: UserObservable = UserObservable()
     
     var body: some View {
-        VStack {
-            
+        CustomBackground {
             if user.isLoading {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                    .scaleEffect(2)
-                    .padding()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                CustomLoading()
             } else {
                 if(user.users.isEmpty){
                     Text("noUsers")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
                 else{
                     List(user.users) { user in
@@ -64,7 +58,5 @@ struct DeleteUserView_Previews: PreviewProvider {
         user.users = [user1, user2, user3]
         user.isLoading = false
         return DeleteUserView(user: user)
-            .scrollContentBackground(.hidden)
-            .background(ColorPalette.primary)
     }
 }

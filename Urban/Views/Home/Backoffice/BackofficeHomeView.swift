@@ -16,38 +16,24 @@ struct BackofficeHomeView: View {
     var body: some View {
         TabView {
             CreateEstateView()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
             .tabItem {
                 Label("createEstate", systemImage: "square.grid.3x1.folder.badge.plus")
             }
-            VStack{
+            CustomBackground {
                 Text("comingSoon")
-                    .foregroundColor(ColorPalette.secondary)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
             .tabItem {
                 Label("updateUser", systemImage: "person.badge.shield.checkmark")
             }
-            VStack{
-                AddUserView()
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
+            AddUserView()
             .tabItem {
                 Label("createUser", systemImage: "person.badge.plus")
             }
-            VStack{
-                DeleteUserView()
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
+            DeleteUserView()
             .tabItem {
                 Label("deleteUser", systemImage: "person.badge.minus")
             }
         }
-        .scrollContentBackground(.hidden)
         .navigationBarBackButtonHidden(true)
     }
 }
