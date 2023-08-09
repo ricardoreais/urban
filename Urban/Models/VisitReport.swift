@@ -27,7 +27,7 @@ struct VisitReport: Codable, Identifiable {
     var likes: String = ""
     var dislikes: String = ""
     var willingToPay: String = ""
-    var isOption: Decision = Decision.maybe
+    var isOption: Decision = Decision.yes
     var hasPropertyToSell: Bool = false
     var comments: String = ""
     var userId: String = ""
