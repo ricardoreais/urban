@@ -28,42 +28,31 @@ struct SignUpView: View {
     }
     
     var body: some View {
-            CustomBackground {
-                Logo()
-                CustomForm {
-                        // TODO: Add custom section here and try to remove all these duplicate styles.
-                        TextField("", text: $email,
-                                  prompt: Text("email").foregroundColor(ColorPalette.secondary))
-                        .disableAutocorrection(true)
-                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                        .listRowBackground(ColorPalette.highlights)
-                    
-                        SecureField("", text: $password,
-                                  prompt: Text("password").foregroundColor(ColorPalette.secondary))
-                        .listRowBackground(ColorPalette.highlights)
-                        .disableAutocorrection(true)
-                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                        
-                        SecureField("", text: $confirmPassword,
-                                  prompt: Text("repeatPassword").foregroundColor(ColorPalette.secondary))
-                        .listRowBackground(ColorPalette.highlights)
-                        .disableAutocorrection(true)
-                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-
-                }
-                .alert(isPresented: $hasErrors) {
-                    Alert(
-                        title: Text("error"),
-                        message: Text("pleaseFillFieldsCorrectly"),
-                        dismissButton: .default(Text("ok"))
-                    )
-                }
-                CustomButton(label: "signUp", action: {signUp()})
-                    .navigationDestination(isPresented: $accountCreated) {
+        CustomBackground {
+            Logo()
+            CustomForm {
+                CustomInput(text: $email, placeholder: "email")
+                    .disableAutocorrection(true)
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    .listRowBackground(ColorPalette.highlights)
+                CustomSecureField(text: $password, placeholder: "password")
+                    .listRowBackground(ColorPalette.highlights)
+                CustomSecureField(text: $confirmPassword, placeholder: "repeatPassword")
+                    .listRowBackground(ColorPalette.highlights)
+            }
+            .alert(isPresented: $hasErrors) {
+                Alert(
+                    title: Text("error"),
+                    message: Text("pleaseFillFieldsCorrectly"),
+                    dismissButton: .default(Text("ok"))
+                )
+            }
+            CustomButton(label: "signUp", action: {signUp()})
+                .navigationDestination(isPresented: $accountCreated) {
                     SignInView()
                 }
-            }
         }
+    }
 }
 
 struct SignUpView_Previews: PreviewProvider {

@@ -22,6 +22,7 @@ struct AddUserView: View {
         {
             CustomSection(header: "createUser") {
                 CustomInput(text: $email, placeholder: "email")
+                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                 CustomPicker(selection: $type, label: "userType", options: [UserType.backoffice, UserType.agent, UserType.buyer, UserType.seller])
             }
             

@@ -35,17 +35,12 @@ struct SignInView: View {
         CustomBackground {
             Logo()
             CustomForm {
-                TextField("", text: $email,
-                          prompt: Text("Email").foregroundColor(ColorPalette.secondary))
-                .disableAutocorrection(true)
-                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                .listRowBackground(ColorPalette.highlights)
-                
-                SecureField("", text: $password,
-                            prompt: Text("Password").foregroundColor(ColorPalette.secondary))
-                .listRowBackground(ColorPalette.highlights)
-                .disableAutocorrection(true)
-                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    CustomInput(text: $email, placeholder: "email")
+                        .disableAutocorrection(true)
+                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        .listRowBackground(ColorPalette.highlights)
+                    CustomSecureField(text: $password, placeholder: "password")
+                        .listRowBackground(ColorPalette.highlights)
             }
             .alert(isPresented: $hasErrors) {
                 Alert(
@@ -54,7 +49,6 @@ struct SignInView: View {
                     dismissButton: .default(Text("ok"))
                 )
             }
-            
             CustomButton(label: "signIn", action: {signIn()})
                 .navigationDestination(isPresented: $loggedIn) {
                     HomeView()

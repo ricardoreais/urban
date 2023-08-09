@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2152A840B2900A44925 /* CustomSecureField.swift */; };
 		1F3804CD2A59B57A00F70347 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */; };
 		1F3804CF2A59B9C500F70347 /* AgentHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */; };
 		1F3804D22A59B9FD00F70347 /* BuyerHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */; };
@@ -71,6 +72,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F1DD2152A840B2900A44925 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentHomeView.swift; sourceTree = "<group>"; };
 		1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerHomeView.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				1FED3FAE2A7AC76C00F38DD9 /* CustomBackground.swift */,
 				1FED3FB02A7ACBEB00F38DD9 /* CustomForm.swift */,
 				1FED3FB22A7ACF7E00F38DD9 /* CustomButton.swift */,
+				1F1DD2152A840B2900A44925 /* CustomSecureField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */,
 				1F3804D62A59BA2A00F70347 /* SellerHomeView.swift in Sources */,
 				1FA7F7A529D9D41E00886539 /* VisitReportFormView.swift in Sources */,
+				1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */,
 				1F3804E32A5A3D4400F70347 /* CustomInput.swift in Sources */,
 				1FFAD7FA2A113BF000F63B1C /* VisitsView.swift in Sources */,
 				1F7F33B92A2389000080DE09 /* VisitReportsObservable.swift in Sources */,
