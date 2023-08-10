@@ -15,22 +15,27 @@ struct CustomSelectListDetail<Selectable: Identifiable & Hashable>: View {
     var selected: Set<Selectable>
     
     var body: some View {
-        // TODO: Create custom list and form with styles. Try to aggregate all styles in general
-        List {
-            ForEach(options) { selectable in
-                Button(action: { toggleSelection(selectable: selectable) }) {
-                    HStack {
-                        Text(optionToString(selectable)).foregroundColor(.black)
+        CustomBackground{
+            List {
+                ForEach(options) { selectable in
+                    Button(action: { toggleSelection(selectable: selectable) }) {
+                        HStack {
+                            Text(optionToString(selectable))
+                                .foregroundColor(ColorPalette.secondary)
 
-                        Spacer()
+                            Spacer()
 
-                        if selected.contains { $0.id == selectable.id } {
-                            Image(systemName: "checkmark").foregroundColor(.accentColor)
+                            if selected.contains { $0.id == selectable.id } {
+                                Image(systemName: "checkmark").foregroundColor(.accentColor)
+                            }
                         }
                     }
-                }.tag(selectable.id)
+                    .tag(selectable.id)
+                }
+                .listRowBackground(ColorPalette.highlights)
             }
-        }.listStyle(GroupedListStyle())
+            .listStyle(GroupedListStyle())
+        }
     }
 
     private func toggleSelection(selectable: Selectable) {

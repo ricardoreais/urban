@@ -28,10 +28,11 @@ struct CustomSelectList<Selectable: Identifiable & Hashable>: View {
                   Text(LocalizedStringKey(label))
                   Spacer()
                   Text(formattedSelectedListString)
-                      .foregroundColor(.gray)
                       .multilineTextAlignment(.trailing)
               }
           }
+          .foregroundColor(ColorPalette.secondary)
+          .listRowBackground(Color.clear)
       }
 
       private func multiSelectionView() -> some View {
@@ -47,8 +48,8 @@ struct CustomSelectList_Previews: PreviewProvider {
     @State static var selected: Set<IdentifiableString> = Set(["A", "C"].map { IdentifiableString(string: $0) })
     
     static var previews: some View {
-        NavigationView {
-            Form {
+        CustomBackground {
+            CustomForm {
                 CustomSelectList<IdentifiableString>(
                     label: "Multiselect",
                     options: ["A", "B", "C", "D"].map { IdentifiableString(string: $0) },
@@ -56,8 +57,6 @@ struct CustomSelectList_Previews: PreviewProvider {
                     selected: $selected
                 )
             }
-            .scrollContentBackground(.hidden)
-            .background(ColorPalette.primary)
         }
     }
 }

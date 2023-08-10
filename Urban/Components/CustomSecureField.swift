@@ -13,9 +13,10 @@ struct CustomSecureField: View {
 
     var body: some View {
         SecureField("", text: $text,
-                  prompt: Text(placeholder).foregroundColor(ColorPalette.secondary))
+                  prompt: Text(placeholder).foregroundColor(ColorPalette.highlightsPlus))
         .disableAutocorrection(true)
         .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+        .foregroundColor(ColorPalette.secondary)
     }
 }
 

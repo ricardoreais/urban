@@ -58,6 +58,7 @@
 "calendar" = "Calendário de visitas";
 "myAccount" = "A minha conta";
 "estate" = "Angariação";
+"createEstate" = "Criar nova angariação";
 "estates" = "Angariações";
 "buyers" = "Compradores";
 "addBuyer" = "Criar comprador";
@@ -79,3 +80,5 @@
 "userType" = "Tipo de utilizador";
 "noUsers" = "Utilizadores não encontrados";
 "slogan" = "Experience you can trust! Trust you can experience.";
+"success" = "Sucesso!";
+"estateCreatedWithSuccess" = "A sua angariação foi criada com sucesso";

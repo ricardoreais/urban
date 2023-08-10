@@ -20,7 +20,7 @@ struct VisitsView: View {
                     .padding(.leading, 20)
                 
                 if viewModel.isLoading {
-                    ProgressView()
+                    CustomLoading()
                         .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
                         .scaleEffect(2)
                         .padding()

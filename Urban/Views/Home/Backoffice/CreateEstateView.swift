@@ -12,8 +12,13 @@ struct CreateEstateView: View {
     @State private var allAgents: [User] = []
     @State private var selectedAgents: [User] = []
     @State private var sellerEmail: String = ""
+    @State private var created: Bool = false
     @ObservedObject var user: UserObservable = UserObservable()
     @State private var selected: Set<IdentifiableString> = Set([].map { IdentifiableString(string: $0) })
+    
+    func createEstate() {
+        created = true
+    }
     
     var body: some View {
         CustomBackground {
@@ -33,6 +38,14 @@ struct CreateEstateView: View {
                     })
                     CustomInput(text:$sellerEmail, placeholder: "sellerEmail")
                 }
+                CustomButton(label: "createEstate", action: {createEstate()})
+            }
+            .alert(isPresented: $created) {
+                Alert(
+                    title: Text("success"),
+                    message: Text("estateCreatedWithSuccess"),
+                    dismissButton: .default(Text("ok"))
+                )
             }
         }
     }

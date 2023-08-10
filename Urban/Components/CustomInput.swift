@@ -14,7 +14,7 @@ struct CustomInput: View {
     var body: some View {
         TextField("", text: $text, prompt: {
             Text(placeholder)
-                .foregroundColor(ColorPalette.secondary)
+                .foregroundColor(ColorPalette.highlightsPlus)
         }())
         .foregroundColor(ColorPalette.secondary)
     }
@@ -23,11 +23,11 @@ struct CustomInput: View {
 struct CustomInput_Previews: PreviewProvider {
     static var previews: some View {
         let inputValue = Binding<String>(
-            get: { "Default Value" },
+            get: { "" },
             set: { _ in }
         )
         
-        CustomInput(text: inputValue, placeholder: "location")
+        CustomInput(text: inputValue, placeholder: "Placeholder")
             .padding()
             .background(ColorPalette.primary)
     }
