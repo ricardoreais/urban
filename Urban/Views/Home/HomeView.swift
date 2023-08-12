@@ -45,7 +45,7 @@ struct HomeView: View {
               }
         }
         .onAppear(perform: {
-            user.fetch()
+            user.getCurrent()
         })
     }
 }

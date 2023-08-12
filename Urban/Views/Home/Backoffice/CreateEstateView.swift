@@ -8,42 +8,56 @@
 import SwiftUI
 
 struct CreateEstateView: View {
-    @State private var estate: Estate = Estate()
+    @State private var estate: Estate = .init()
     @State private var allAgents: [User] = []
-    @State private var selectedAgents: [User] = []
     @State private var sellerEmail: String = ""
     @State private var created: Bool = false
-    @ObservedObject var user: UserObservable = UserObservable()
-    @State private var selected: Set<IdentifiableString> = Set([].map { IdentifiableString(string: $0) })
-    
+    @State private var hasError: Bool = false
+    @State private var selectedAgents: Set<User> = Set([])
+
+    @ObservedObject private var user: UserObservable = .init()
+    @ObservedObject private var estateObs: EstateObservable = .init()
+
     func createEstate() {
-        created = true
+        print("Creating estate")
+        let createEstateCommand = CreateEstateCommand(code: estate.code, address: estate.address, agents: selectedAgents.map { user.convertToDocumentReference(userId:$0.id!) }, sellerEmail: sellerEmail)
+        created = estateObs.create(command: createEstateCommand)
+        hasError = !created
+        print("Estate created \(created)")
     }
-    
+
     var body: some View {
         CustomBackground {
-            CustomForm
-            {
+            CustomForm {
                 CustomSection(header: "estate") {
-                    CustomInput(text:$estate.code, placeholder: "id")
-                    CustomInput(text:$estate.address, placeholder: "address")
-                    CustomSelectList<IdentifiableString>(
+                    CustomInput(text: $estate.code, placeholder: "id")
+                        .autocapitalization(/*@START_MENU_TOKEN@*/ .none/*@END_MENU_TOKEN@*/)
+                    CustomInput(text: $estate.address, placeholder: "address")
+                    CustomSelectList<User>(
                         label: "agents",
-                        options: user.users.map{ $0.email ?? "" }.map { IdentifiableString(string: $0) },
-                        optionToString: { $0.string },
-                        selected: $selected
+                        options: user.users,
+                        optionToString: { $0.email! },
+                        selected: $selectedAgents
                     )
                     .onAppear(perform: {
                         user.getAll()
                     })
-                    CustomInput(text:$sellerEmail, placeholder: "sellerEmail")
+                    CustomInput(text: $sellerEmail, placeholder: "sellerEmail")
+                        .autocapitalization(/*@START_MENU_TOKEN@*/ .none/*@END_MENU_TOKEN@*/)
                 }
-                CustomButton(label: "createEstate", action: {createEstate()})
+                CustomButton(label: "createEstate", action: { createEstate() })
             }
             .alert(isPresented: $created) {
                 Alert(
                     title: Text("success"),
                     message: Text("estateCreatedWithSuccess"),
+                    dismissButton: .default(Text("ok"))
+                )
+            }
+            .alert(isPresented: $hasError) {
+                Alert(
+                    title: Text("error"),
+                    message: Text("pleaseFillFieldsCorrectly"),
                     dismissButton: .default(Text("ok"))
                 )
             }

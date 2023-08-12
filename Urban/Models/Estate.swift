@@ -15,8 +15,8 @@ struct Estate: Codable, Identifiable {
     @ServerTimestamp var updatedAt: Date?
     var code: String = ""
     var address: String = ""
-    var visits: [DocumentReference]?
-    var bids: [DocumentReference]?
     var seller: DocumentReference?
     var agents: [DocumentReference]?
+    var visits: [DocumentReference]?
+    var bids: [DocumentReference]?
 }

@@ -5,17 +5,21 @@
 //  Created by Juliana Estrela on 29/07/2023.
 //
 
-import Foundation
 import Firebase
 import FirebaseFirestore
+import Foundation
 
 class UserObservable: ObservableObject {
-    @Published var value: User = User()
+    @Published var value: User = .init()
     @Published var isLoading = true
     @Published var users: [User] = []
+    private var db = Firestore.firestore()
     
-    func fetch() {
-        let db = Firestore.firestore()
+    func convertToDocumentReference(userId: String) -> DocumentReference {
+        return db.collection("Users").document(userId)
+    }
+    
+    func getCurrent() {
         if let currentUser = Auth.auth().currentUser {
             let userEmail = currentUser.email
             print("Current user email: \(userEmail)")
@@ -53,15 +57,16 @@ class UserObservable: ObservableObject {
                             print("No current user")
                         }
                     }
-                } } else {
-                    print("No current user")
                 }
+        } else {
+            print("No current user")
+        }
     }
     
     func create(command: CreateUserCommand) -> Bool {
         let hasErrors = command.email.isEmpty || command.password.isEmpty || command.confirmPassword.isEmpty || command.password != command.confirmPassword
         
-        if(hasErrors){
+        if hasErrors {
             return false
         }
         
@@ -73,7 +78,6 @@ class UserObservable: ObservableObject {
             print("User created successfully with name: \(user.email ?? "")")
         }
         
-        let db = Firestore.firestore()
         let collectionRef = db.collection("Users")
         do {
             let user = User(email: command.email, types: command.types)
@@ -85,7 +89,7 @@ class UserObservable: ObservableObject {
                     print("User created with success!")
                 }
             }
-        } catch let error {
+        } catch {
             print("Error saving data: \(error)")
             return false
         }
@@ -94,8 +98,7 @@ class UserObservable: ObservableObject {
     }
     
     func getAll() {
-        let db = Firestore.firestore()
-            db.collection("Users")
+        db.collection("Users")
             .getDocuments { snapshot, error in
                 if let error = error {
                     print("Error fetching visit reports: \(error.localizedDescription)")
@@ -127,8 +130,6 @@ class UserObservable: ObservableObject {
     }
     
     func delete(uid: String, completion: @escaping (Error?) -> Void) {
-        // First, delete the user document from Firestore
-        let db = Firestore.firestore()
         let userRef = db.collection("Users").document(uid)
         
         userRef.delete { error in
@@ -147,6 +148,45 @@ class UserObservable: ObservableObject {
                 
                 // Both Firestore document and user authentication are successfully deleted
                 completion(nil)
+            }
+        }
+    }
+    
+    func get(email: String, completion: @escaping (DocumentReference?) -> Void) {
+        let usersCollection = db.collection("Users")
+        
+        usersCollection.whereField("email", isEqualTo: email).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error fetching user document: \(error)")
+                completion(nil)
+                return
+            }
+            
+            if let document = querySnapshot?.documents.first {
+                completion(document.reference)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
+    func getOrCreate(email: String, completion: @escaping (DocumentReference?, Bool) -> Void) {
+        self.get(email: email) { documentReference in
+            if let documentRef = documentReference {
+                print("User exists. Document Reference: \(documentRef.path)")
+                completion(documentRef, true)
+            } else {
+                print("User does not exist. Document not found. Creating new user...")
+                let createUserCommand = CreateUserCommand(name: "", password: "123456", confirmPassword: "123456", email: email, types: [.seller], telephone: "")
+                let userCreated = self.create(command: createUserCommand)
+                
+                if userCreated {
+                    self.getOrCreate(email: email) { newDocumentReference, success in
+                        completion(newDocumentReference, true)
+                    }
+                } else {
+                    completion(nil, false)
+                }
             }
         }
     }
