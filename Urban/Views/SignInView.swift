@@ -13,22 +13,13 @@ struct SignInView: View {
     @State private var password: String = ""
     @State private var loggedIn: Bool = false
     @State private var hasErrors: Bool = false
+    @ObservedObject var user = UserObservable()
     
-    
-    func signIn() {
+    func signIn() async -> Void {
+        var result = await user.signIn(email, password)
         hasErrors = email.isEmpty || password.isEmpty
-        
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if let error = error {
-                hasErrors = true
-                // Handle sign-in error
-                print("Sign-in failed: \(error.localizedDescription)")
-            } else {
-                // Sign-in successful, do something
-                print("Sign-in successful!")
-                loggedIn = true;
-            }
-        }
+        hasErrors = result.hasErrors
+        loggedIn = result.loggedIn
     }
     
     var body: some View {
@@ -49,7 +40,7 @@ struct SignInView: View {
                     dismissButton: .default(Text("ok"))
                 )
             }
-            CustomButton(label: "signIn", action: {signIn()})
+            CustomButton("signIn", asyncAction: signIn)
                 .navigationDestination(isPresented: $loggedIn) {
                     HomeView()
             }

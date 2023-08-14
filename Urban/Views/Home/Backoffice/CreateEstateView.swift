@@ -18,12 +18,10 @@ struct CreateEstateView: View {
     @ObservedObject private var user: UserObservable = .init()
     @ObservedObject private var estateObs: EstateObservable = .init()
 
-    func createEstate() {
-        print("Creating estate")
+    func createEstate() async -> Void {
         let createEstateCommand = CreateEstateCommand(code: estate.code, address: estate.address, agents: selectedAgents.map { user.convertToDocumentReference(userId:$0.id!) }, sellerEmail: sellerEmail)
-        created = estateObs.create(command: createEstateCommand)
+        created = await estateObs.create(command: createEstateCommand)
         hasError = !created
-        print("Estate created \(created)")
     }
 
     var body: some View {
@@ -45,7 +43,7 @@ struct CreateEstateView: View {
                     CustomInput(text: $sellerEmail, placeholder: "sellerEmail")
                         .autocapitalization(/*@START_MENU_TOKEN@*/ .none/*@END_MENU_TOKEN@*/)
                 }
-                CustomButton(label: "createEstate", action: { createEstate() })
+                CustomButton("createEstate", asyncAction: createEstate)
             }
             .alert(isPresented: $created) {
                 Alert(

@@ -12,9 +12,9 @@ struct AddUserView: View {
     @State private var type: UserType = UserType.guest
     @ObservedObject private var user: UserObservable = UserObservable()
     
-    func createUser() {
+    func createUser() async -> Void {
         let createUserCommand = CreateUserCommand(name: "", password: "123456", confirmPassword: "123456", email: email, types: [type], telephone: "")
-        user.create(command: createUserCommand)
+        _ = await user.create(command: createUserCommand)
     }
     
     var body: some View {
@@ -26,7 +26,7 @@ struct AddUserView: View {
                         .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
                     CustomPicker(selection: $type, label: "userType", options: [UserType.backoffice, UserType.agent, UserType.buyer, UserType.seller])
                 }
-                CustomButton(label: "submit", action: {createUser()})
+                CustomButton("submit", asyncAction: createUser)
             }}
     }
 }

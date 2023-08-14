@@ -19,10 +19,9 @@ struct SignUpView: View {
     @ObservedObject private var user: UserObservable = UserObservable()
     
     
-    func signUp() -> Void {
+    func signUp() async -> Void {
         let createUserCommand = CreateUserCommand(name: "", password: password, confirmPassword: confirmPassword, email: email, types: [UserType.buyer], telephone: "")
-        let result = user.create(command: createUserCommand)
-        
+        let result = await user.create(command: createUserCommand)
         hasErrors = result == false
         accountCreated = result == true
     }
@@ -47,7 +46,7 @@ struct SignUpView: View {
                     dismissButton: .default(Text("ok"))
                 )
             }
-            CustomButton(label: "signUp", action: {signUp()})
+            CustomButton("signUp", asyncAction: signUp)
                 .navigationDestination(isPresented: $accountCreated) {
                     SignInView()
                 }

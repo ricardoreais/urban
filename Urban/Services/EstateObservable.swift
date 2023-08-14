@@ -14,38 +14,31 @@ class EstateObservable: ObservableObject {
     @Published var isLoading = true
     @Published var user = UserObservable()
     let collection = Firestore.firestore().collection(Collection.estates)
-  
-    func create(command: CreateEstateCommand) -> Bool {
-        let hasErrors = command.code.isEmpty || command.address.isEmpty || command.sellerEmail.isEmpty || command.agents.isEmpty
-        
-        if(hasErrors){
+    
+    func create(command: CreateEstateCommand) async -> Bool {
+        guard !command.code.isEmpty, !command.address.isEmpty,
+              !command.sellerEmail.isEmpty, !command.agents.isEmpty else {
             Logger.errorCreatingEstate(command.code)
             return false
         }
         
-        user.getOrCreate(email: command.sellerEmail) { documentReference, userCreated in
-            if let docRef = documentReference {
-                do {
-                    let estate = Estate(code: command.code,  address: command.address, seller: docRef, agents: command.agents, visits: [], bids: [])
-                    _ = try self.collection.addDocument(from: estate) { error in
-                        if let error = error {
-                            Logger.error(error)
-                            return
-                        } else {
-                            Logger.infoCreatedEstate(estate.code)
-                        }
-                    }
-                } catch let error {
-                    Logger.error(error)
-                    return
-                }
-                return
-                
-            } else {
-                Logger.errorFetchingOrCreatingUser(command.sellerEmail)
-            }
+        let result = await user.getOrCreate(email: command.sellerEmail)
+        
+        guard let seller = result.reference else {
+            Logger.errorFetchingOrCreatingUser(command.sellerEmail)
+            return false
         }
         
-        return true
+        let estate = Estate(code: command.code, address: command.address, seller: seller, agents: command.agents, visits: [], bids: [])
+        
+        do {
+            _ = try collection.addDocument(from: estate)
+            Logger.infoCreatedEstate(estate.code)
+            return true
+        } catch {
+            Logger.error(error)
+            return false
+        }
     }
 }
+

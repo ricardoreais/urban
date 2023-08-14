@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomInput: View {
     @Binding var text: String
     let placeholder: LocalizedStringKey
-
+    
     var body: some View {
         TextField("", text: $text, prompt: {
             Text(placeholder)

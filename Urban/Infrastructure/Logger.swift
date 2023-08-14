@@ -79,4 +79,12 @@ class Logger {
     static func errorFetchingOrCreatingUser(_ email: String) -> Void {
         error("Error fetching or creating user (seller) with email: \(email)")
     }
+    
+    static func verboseSignIn(_ email: String) -> Void {
+        verbose("Sign in successfull")
+    }
+    
+    static func errorSignIn(_ error: Error) -> Void {
+        self.error("Sign in failed \(error.localizedDescription)")
+    }
 }

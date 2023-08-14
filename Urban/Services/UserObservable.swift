@@ -23,6 +23,22 @@ class UserObservable: ObservableObject {
         collection = Firestore.firestore().collection(Collection.users)
     }
     
+    func signIn(_ email: String, _ password: String) async -> (loggedIn: Bool, hasErrors: Bool) {
+        var loggedIn = false
+        var hasErrors = email.isEmpty || password.isEmpty
+        
+        do {
+            let authResult = try await Auth.auth().signIn(withEmail: email, password: password)
+            Logger.verboseSignIn(authResult.user.email ?? "")
+            loggedIn = true
+        } catch {
+            Logger.errorSignIn(error)
+            hasErrors = true
+        }
+        
+        return (loggedIn, hasErrors)
+    }
+    
     func convertToDocumentReference(userId: String) -> DocumentReference {
         return collection.document(userId)
     }
@@ -64,36 +80,25 @@ class UserObservable: ObservableObject {
             }
     }
     
-    func create(command: CreateUserCommand) -> Bool {
+    func create(command: CreateUserCommand) async -> Bool {
         guard !command.email.isEmpty, !command.password.isEmpty, command.password == command.confirmPassword else {
             return false
         }
         
-        let email = command.email
-        Auth.auth().createUser(withEmail: email, password: command.password) { authResult, error in
-            if let error = error {
-                Logger.error(error)
-                return
-            }
-            
-            Logger.infoCreatingUser(email)
-        }
-        
         do {
-            let user = User(email: command.email, types: command.types)
-            _ = try collection.addDocument(from: user) { error in
-                if let error = error {
-                    Logger.error(error)
-                } else {
-                    Logger.infoCreatingUser(email)
-                }
-            }
+            let email = command.email
+            let authResult = try await Auth.auth().createUser(withEmail: email, password: command.password)
+            let user = User(email: email, types: command.types)
+            _ = try collection.addDocument(from: user)
+            Logger.infoCreatingUser(email)
+            
             return true
         } catch {
             Logger.error(error)
             return false
         }
     }
+
     
     func get(type: UserType? = nil) {
         var query: Query = collection
@@ -152,41 +157,46 @@ class UserObservable: ObservableObject {
         }
     }
     
-    func get(email: String, completion: @escaping (DocumentReference?) -> Void) {
-        collection.whereField("email", isEqualTo: email).getDocuments { querySnapshot, error in
-            if let error = error {
-                Logger.error(error)
-                completion(nil)
-                return
-            }
+    func get(email: String) async throws -> DocumentReference? {
+        do {
+            let querySnapshot = try await collection.whereField("email", isEqualTo: email).getDocuments()
             
-            if let document = querySnapshot?.documents.first {
-                completion(document.reference)
-            } else {
-                completion(nil)
+            if let document = querySnapshot.documents.first {
+                return document.reference
             }
+        } catch {
+            Logger.error(error)
         }
+        
+        return nil
     }
     
-    func getOrCreate(email: String, completion: @escaping (DocumentReference?, Bool) -> Void) {
-        get(email: email) { documentReference in
-            if let documentRef = documentReference {
+    func getOrCreate(email: String) async -> (reference: DocumentReference?, success: Bool) {
+        do {
+            if let documentReference = try await self.get(email: email) {
                 Logger.verboseUserAlreadyExists(email)
-                completion(documentRef, true)
+                return (documentReference, true)
             } else {
                 Logger.verboseUserDoesNotExist(email)
                 Logger.infoCreatingUser(email)
+                
                 let createUserCommand = CreateUserCommand(name: "", password: "123456", confirmPassword: "123456", email: email, types: [.seller], telephone: "")
-                let userCreated = self.create(command: createUserCommand)
+                let userCreated = await self.create(command: createUserCommand)
                 
                 if userCreated {
-                    self.getOrCreate(email: email) { newDocumentReference, _ in
-                        completion(newDocumentReference, true)
+                    if let newDocumentReference = try await self.get(email: email) {
+                        return (newDocumentReference, true)
+                    } else {
+                        Logger.errorFetchingOrCreatingUser(email)
+                        return (nil, false)
                     }
                 } else {
-                    completion(nil, false)
+                    return (nil, false)
                 }
             }
+        } catch {
+            Logger.error(error)
+            return (nil, false)
         }
     }
 }
