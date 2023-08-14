@@ -14,7 +14,7 @@ struct BuyerHomeView: View {
 
     var body: some View {
         TabView {
-            VStack{
+            VStack {
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
                 Text("Features: visita, proposta e ficha de visita")
@@ -25,15 +25,10 @@ struct BuyerHomeView: View {
             .tabItem {
                 Label("myVisits", systemImage: "list.bullet")
             }
-            VStack{
-                Text("comingSoon")
-                    .foregroundColor(ColorPalette.secondary)
+            VisitsCalendarView()
+            .tabItem {
+                Label("calendar", systemImage: "calendar")
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
-                .tabItem {
-                    Label("calendar", systemImage: "calendar")
-                }
         }
         .navigationBarBackButtonHidden(true)
     }

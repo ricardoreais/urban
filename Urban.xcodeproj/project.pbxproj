@@ -57,8 +57,8 @@
 		1F9A97662A8A9E1000B64436 /* ScheduleVisitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */; };
 		1F9A97682A8A9EB900B64436 /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97672A8A9EB900B64436 /* CustomCalendar.swift */; };
 		1F9A976A2A8AA54E00B64436 /* VisitObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97692A8AA54E00B64436 /* VisitObservable.swift */; };
-		1F9A976C2A8AA5C400B64436 /* Services in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A976B2A8AA5C400B64436 /* Services */; };
 		1F9A976E2A8AA7A000B64436 /* CreateVisitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A976D2A8AA7A000B64436 /* CreateVisitCommand.swift */; };
+		1F9A977C2A8ACE1300B64436 /* VisitsCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */; };
 		1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7A229D9D41E00886539 /* UrbanApp.swift */; };
 		1FA7F7A529D9D41E00886539 /* VisitReportFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */; };
 		1FA7F7A729D9D41F00886539 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7F7A629D9D41F00886539 /* Assets.xcassets */; };
@@ -123,8 +123,8 @@
 		1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVisitView.swift; sourceTree = "<group>"; };
 		1F9A97672A8A9EB900B64436 /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
 		1F9A97692A8AA54E00B64436 /* VisitObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitObservable.swift; sourceTree = "<group>"; };
-		1F9A976B2A8AA5C400B64436 /* Services */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Services; sourceTree = "<group>"; };
 		1F9A976D2A8AA7A000B64436 /* CreateVisitCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVisitCommand.swift; sourceTree = "<group>"; };
+		1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsCalendarView.swift; sourceTree = "<group>"; };
 		1FA7F79F29D9D41E00886539 /* Urban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Urban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA7F7A229D9D41E00886539 /* UrbanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanApp.swift; sourceTree = "<group>"; };
 		1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportFormView.swift; sourceTree = "<group>"; };
@@ -178,10 +178,10 @@
 		1F3804D02A59B9D100F70347 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1F9A97782A8ACD9600B64436 /* Buyer */,
 				1F552DAE2A8A5A670089349A /* Agent */,
 				1FED3FA12A75824A00F38DD9 /* Backoffice */,
 				1F8AD73A2A3DD6990031B154 /* HomeView.swift */,
-				1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */,
 				1F3804D52A59BA2A00F70347 /* SellerHomeView.swift */,
 			);
 			path = Home;
@@ -289,9 +289,17 @@
 				1FED3F892A75582300F38DD9 /* UserObservable.swift */,
 				1FED3FA42A76895500F38DD9 /* EstateObservable.swift */,
 				1F9A97692A8AA54E00B64436 /* VisitObservable.swift */,
-				1F9A976B2A8AA5C400B64436 /* Services */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		1F9A97782A8ACD9600B64436 /* Buyer */ = {
+			isa = PBXGroup;
+			children = (
+				1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */,
+				1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */,
+			);
+			path = Buyer;
 			sourceTree = "<group>";
 		};
 		1FA7F79629D9D41E00886539 = {
@@ -441,7 +449,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F9A976C2A8AA5C400B64436 /* Services in Resources */,
 				1FA7F7AA29D9D41F00886539 /* Preview Assets.xcassets in Resources */,
 				1F3804CD2A59B57A00F70347 /* GoogleService-Info.plist in Resources */,
 				1F3A3DEF2A4860BA0088F25D /* Localizable.strings in Resources */,
@@ -510,6 +517,7 @@
 				1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */,
 				1FED3FB32A7ACF7E00F38DD9 /* CustomButton.swift in Sources */,
 				1F5FAF572A8A6445007DB2DC /* EstateView.swift in Sources */,
+				1F9A977C2A8ACE1300B64436 /* VisitsCalendarView.swift in Sources */,
 				1FED3FAB2A79BF4700F38DD9 /* CustomSelectListDetail.swift in Sources */,
 				1FED3FAF2A7AC76C00F38DD9 /* CustomBackground.swift in Sources */,
 				1FA7F7B329D9E43B00886539 /* Decision.swift in Sources */,
