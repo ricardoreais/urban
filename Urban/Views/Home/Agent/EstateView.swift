@@ -10,8 +10,8 @@ import SwiftUI
 
 struct EstateView: View {
     let estate: Estate
-    @ObservedObject var estateObs: EstateObservable
-    @ObservedObject var visitObs: VisitObservable
+    @ObservedObject private var estateObs: EstateObservable = .shared
+    @ObservedObject private var visitObs: VisitObservable = .shared
     @ObservedObject private var userObs: UserObservable = .shared
 
     func openInPreview() {}
@@ -26,7 +26,7 @@ struct EstateView: View {
             Menu {
                 Button("createVisitReport", action: openInPreview)
                 CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
-                NavigationLink("scheduleVisit", destination: ScheduleVisitView(visitObs: visitObs))
+                NavigationLink("scheduleVisit", destination: ScheduleVisitView())
                 Button("createBid", action: openInPreview)
             } label: {
                 Label("moreActions", systemImage: "ellipsis")
@@ -53,10 +53,8 @@ struct EstateView_Previews: PreviewProvider {
             visits: nil,
             bids: nil
         )
-        let userObs = UserObservable.shared
-        let estateObs = EstateObservable(user: userObs)
         return NavigationView {
-            EstateView(estate: estate, estateObs: estateObs, visitObs: VisitObservable(user: userObs, estateObs: estateObs))
+            EstateView(estate: estate)
         }
     }
 }

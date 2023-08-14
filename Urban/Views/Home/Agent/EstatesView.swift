@@ -11,8 +11,8 @@ import SwiftUI
 // TODO: Features: visitas efetuadas, outros agentes, propostas criadas, criar proposta, criar ficha de visita
 struct EstatesView: View {
     @ObservedObject private var userObs: UserObservable = .shared
-    @ObservedObject var estateObs: EstateObservable
-    @ObservedObject var visitObs: VisitObservable
+    @ObservedObject var estateObs: EstateObservable = .shared
+    @ObservedObject private var visitObs: VisitObservable = .shared
 
     var body: some View {
         CustomBackground {
@@ -23,7 +23,7 @@ struct EstatesView: View {
                     Text("noEstatesYet")
                 } else {
                     List(estateObs.values) { estate in
-                        NavigationLink(destination: EstateView(estate: estate, estateObs: estateObs, visitObs: visitObs)) {
+                        NavigationLink(destination: EstateView(estate: estate)) {
                             CustomText(label: "code", value: estate.code) +
                                 CustomText(label: "address", value: estate.address)
                         }
@@ -44,17 +44,7 @@ struct EstatesView: View {
 
 struct EstatesView_Previews: PreviewProvider {
     static var previews: some View {
-        let user = UserObservable.shared
-        user.isLoading = false
-        user.value = User(
-            id: "user123",
-            createdAt: Timestamp(date: Date()),
-            updatedAt: Timestamp(date: Date()),
-            name: "John Doe",
-            email: "john@example.com",
-            telephone: "123-456-7890",
-            types: [.seller, .buyer])
-        let estate = EstateObservable(user: user)
+        let estate = EstateObservable.shared
         let estate1 = Estate(
             createdAt: Timestamp(date: Date()),
             updatedAt: Timestamp(date: Date()), code: "E001", address: "123 Main St", seller: nil, agents: nil, visits: nil, bids: nil)
@@ -67,6 +57,6 @@ struct EstatesView_Previews: PreviewProvider {
         let estates: [Estate] = [estate1, estate2, estate3]
         estate.isLoading = false
         estate.values = estates
-        return NavigationView { EstatesView(estateObs: estate, visitObs: VisitObservable(user: user, estateObs: estate)) }
+        return NavigationView { EstatesView(estateObs: estate) }
     }
 }

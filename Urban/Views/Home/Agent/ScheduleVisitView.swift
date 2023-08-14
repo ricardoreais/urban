@@ -9,16 +9,18 @@ import FirebaseFirestore
 import SwiftUI
 
 struct ScheduleVisitView: View {
-    @ObservedObject private var userObs: UserObservable = .shared
-    @ObservedObject var visitObs: VisitObservable
+    @ObservedObject var userObs: UserObservable = .shared
+    @ObservedObject private var visitObs: VisitObservable = .shared
 
     @State private var selectedDate = Date()
     @State private var selectedAgents: Set<User> = Set([])
+    @State private var created: Bool = false
     @State private var hasError: Bool = false
 
     func createVisit() async {
         let createVisitCommand = CreateVisitCommand(date: selectedDate, buyer: selectedAgents.first!)
-        hasError = !(await visitObs.create(createVisitCommand))
+        created = await visitObs.create(createVisitCommand)
+        hasError = !created
     }
 
     var body: some View {
@@ -36,6 +38,9 @@ struct ScheduleVisitView: View {
                         userObs.get(type: .buyer)
                     })
                     CustomButton("confirm", asyncAction: createVisit)
+                        .navigationDestination(isPresented: $created) {
+                            AgentHomeView()
+                        }
                 }
             }
             .alert(isPresented: $hasError) {
@@ -63,8 +68,7 @@ struct ScheduleVisitView_Previews: PreviewProvider {
             types: [.seller, .buyer]
         )
         return NavigationView {
-            ScheduleVisitView(visitObs: VisitObservable(user: user, estateObs: EstateObservable(user: user)))
+            ScheduleVisitView(userObs: user)
         }
-        .environmentObject(user)
     }
 }

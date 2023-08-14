@@ -14,11 +14,10 @@ class EstateObservable: ObservableObject {
     @Published var values: [Estate] = []
     @Published var selected: Estate? = nil
     @Published var isLoading = true
-    var user: UserObservable
+    private var user: UserObservable = .shared
     
-    init(user: UserObservable) {
-        self.user = user
-    }
+    static let shared = EstateObservable()
+    private init() {}
 
     private let collection: CollectionReference = Firestore.firestore().collection(Collection.estates)
     

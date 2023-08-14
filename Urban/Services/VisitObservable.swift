@@ -12,13 +12,11 @@ import Foundation
 class VisitObservable: ObservableObject {
     @Published var values: [Visit] = []
     @Published var isLoading = true
-    var user: UserObservable
-    var estateObs: EstateObservable
+    private var user: UserObservable = .shared
+    private var estateObs: EstateObservable = .shared
     
-    init(user: UserObservable, estateObs: EstateObservable) {
-        self.user = user
-        self.estateObs = estateObs
-    }
+    static let shared = VisitObservable()
+    private init() {}
     
     private let collection: CollectionReference = Firestore.firestore().collection(Collection.visits)
     

@@ -9,8 +9,8 @@ import FirebaseFirestore
 import SwiftUI
 
 struct AgentHomeView: View {
-    @ObservedObject private var userObs: UserObservable = UserObservable.shared
-    @ObservedObject private var estateObs: EstateObservable = EstateObservable(user: UserObservable.shared)
+    @ObservedObject private var userObs: UserObservable = .shared
+    @ObservedObject private var estateObs: EstateObservable = .shared
 
     init() {
         UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
@@ -18,7 +18,7 @@ struct AgentHomeView: View {
 
     var body: some View {
         TabView {
-            EstatesView(estateObs: estateObs, visitObs: VisitObservable(user: userObs, estateObs: estateObs))
+            EstatesView()
                 .tabItem {
                     Label("estates", systemImage: "building.2")
                 }
@@ -49,18 +49,6 @@ struct AgentHomeView: View {
 
 struct AgentHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        let user = UserObservable.shared
-        user.isLoading = false
-        user.value = User(
-            id: "user123",
-            createdAt: Timestamp(date: Date()),
-            updatedAt: Timestamp(date: Date()),
-            name: "John Doe",
-            email: "john@example.com",
-            telephone: "123-456-7890",
-            types: [.seller, .buyer]
-        )
-        return AgentHomeView()
-            .environmentObject(user)
+        AgentHomeView()
     }
 }
