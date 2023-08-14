@@ -13,11 +13,7 @@ class UserObservable: ObservableObject {
     @Published var value: User = .init()
     @Published var isLoading = true
     @Published var users: [User] = []
-    private let collection: CollectionReference
-    
-    init() {
-        collection = Firestore.firestore().collection(Collection.users)
-    }
+    private let collection: CollectionReference = Firestore.firestore().collection(Collection.users)
     
     func signIn(_ email: String, _ password: String) async -> (loggedIn: Bool, hasErrors: Bool) {
         var loggedIn = false
@@ -35,11 +31,11 @@ class UserObservable: ObservableObject {
         return (loggedIn, hasErrors)
     }
     
-    func convertToDocumentReference(userId: String) -> DocumentReference {
+    func convertToDocumentReference(_ userId: String) -> DocumentReference {
         return collection.document(userId)
     }
     
-    func getCurrent() async {
+    func getCurrent() async -> Void {
         guard let userEmail = Auth.auth().currentUser?.email else {
             Logger.errorNoAuthenticatedUser()
             return

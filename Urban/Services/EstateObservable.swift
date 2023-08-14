@@ -5,6 +5,7 @@
 //  Created by Juliana Estrela on 30/07/2023.
 //
 
+import SwiftUI
 import Foundation
 import Firebase
 import FirebaseFirestore
@@ -12,8 +13,8 @@ import FirebaseFirestore
 class EstateObservable: ObservableObject {
     @Published var values: [Estate] = []
     @Published var isLoading = true
-    @Published var user = UserObservable()
-    let collection = Firestore.firestore().collection(Collection.estates)
+    @ObservedObject var user = UserObservable()
+    private let collection: CollectionReference = Firestore.firestore().collection(Collection.estates)
     
     func create(command: CreateEstateCommand) async -> Bool {
         guard !command.code.isEmpty, !command.address.isEmpty,
@@ -39,6 +40,31 @@ class EstateObservable: ObservableObject {
             Logger.error(error)
             return false
         }
+    }
+    
+    func get() async -> Void {
+        do {
+            let currentUserReference = user.convertToDocumentReference(user.value.id!)
+            let documents = try await collection.whereField("agents", arrayContains: currentUserReference).getDocuments().documents
+            let estates: [Estate] = documents.compactMap { document -> Estate? in
+                do {
+                    let estateDocument = try document.data(as: Estate.self)
+                    Logger.verboseFetchedEstates()
+                    return estateDocument
+                } catch {
+                    Logger.error(error)
+                    return nil
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.isLoading = false
+                self.values = estates
+            }
+        } catch {
+            Logger.error(error)
+        }
+        
     }
 }
 

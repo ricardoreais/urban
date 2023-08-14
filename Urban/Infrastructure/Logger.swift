@@ -87,4 +87,8 @@ class Logger {
     static func errorSignIn(_ error: Error) -> Void {
         self.error("Sign in failed \(error.localizedDescription)")
     }
+    
+    static func verboseFetchedEstates() -> Void {
+        verbose("Estates fetched with success!")
+    }
 }

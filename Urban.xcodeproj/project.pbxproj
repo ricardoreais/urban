@@ -32,6 +32,7 @@
 		1F3A3DEF2A4860BA0088F25D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F3A3DEE2A4860BA0088F25D /* Localizable.strings */; };
 		1F552DAA2A879B8C0089349A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F552DA92A879B8C0089349A /* Collection.swift */; };
 		1F552DAC2A8A334C0089349A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F552DAB2A8A334C0089349A /* Logger.swift */; };
+		1F552DB02A8A5AE70089349A /* EstatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F552DAF2A8A5AE70089349A /* EstatesView.swift */; };
 		1F654BC029EB14AD002ED11C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BBF29EB14AD002ED11C /* FirebaseAuth */; };
 		1F654BC229EB14AD002ED11C /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BC129EB14AD002ED11C /* FirebaseAuthCombine-Community */; };
 		1F654BC429EB14AD002ED11C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BC329EB14AD002ED11C /* FirebaseDatabase */; };
@@ -100,6 +101,7 @@
 		1F3A3DEE2A4860BA0088F25D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1F552DA92A879B8C0089349A /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		1F552DAB2A8A334C0089349A /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		1F552DAF2A8A5AE70089349A /* EstatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatesView.swift; sourceTree = "<group>"; };
 		1F654BDD29EB1CD6002ED11C /* VisitReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReport.swift; sourceTree = "<group>"; };
 		1F7F33AA2A22A9FE0080DE09 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsObservable.swift; sourceTree = "<group>"; };
@@ -157,9 +159,9 @@
 		1F3804D02A59B9D100F70347 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1F552DAE2A8A5A670089349A /* Agent */,
 				1FED3FA12A75824A00F38DD9 /* Backoffice */,
 				1F8AD73A2A3DD6990031B154 /* HomeView.swift */,
-				1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */,
 				1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */,
 				1F3804D52A59BA2A00F70347 /* SellerHomeView.swift */,
 			);
@@ -194,6 +196,15 @@
 				1F552DAB2A8A334C0089349A /* Logger.swift */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		1F552DAE2A8A5A670089349A /* Agent */ = {
+			isa = PBXGroup;
+			children = (
+				1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */,
+				1F552DAF2A8A5AE70089349A /* EstatesView.swift */,
+			);
+			path = Agent;
 			sourceTree = "<group>";
 		};
 		1F654BDF29EB2633002ED11C /* Models */ = {
@@ -415,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F552DB02A8A5AE70089349A /* EstatesView.swift in Sources */,
 				1FED3FA52A76895500F38DD9 /* EstateObservable.swift in Sources */,
 				1F1DD2182A840E1E00A44925 /* CustomLoading.swift in Sources */,
 				1FED3F8F2A75632200F38DD9 /* CreateUserCommand.swift in Sources */,

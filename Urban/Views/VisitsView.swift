@@ -12,19 +12,14 @@ struct VisitsView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading) {
+            CustomBackground {
                 Text("myVisits")
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 16)
-                    .padding(.leading, 20)
                 
                 if viewModel.isLoading {
                     CustomLoading()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                        .scaleEffect(2)
-                        .padding()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
                     if(viewModel.reports.isEmpty){
                         Text("noVisitsYet")

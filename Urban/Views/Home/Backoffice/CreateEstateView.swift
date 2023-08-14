@@ -19,7 +19,7 @@ struct CreateEstateView: View {
     @ObservedObject private var estateObs: EstateObservable = .init()
 
     func createEstate() async -> Void {
-        let createEstateCommand = CreateEstateCommand(code: estate.code, address: estate.address, agents: selectedAgents.map { user.convertToDocumentReference(userId:$0.id!) }, sellerEmail: sellerEmail)
+        let createEstateCommand = CreateEstateCommand(code: estate.code, address: estate.address, agents: selectedAgents.map { user.convertToDocumentReference($0.id!) }, sellerEmail: sellerEmail)
         created = await estateObs.create(command: createEstateCommand)
         hasError = !created
     }

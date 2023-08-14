@@ -14,17 +14,10 @@ struct AgentHomeView: View {
 
     var body: some View {
         TabView {
-            VStack{
-                Text("comingSoon")
-                    .foregroundColor(ColorPalette.secondary)
-                Text("Features: link para o site, morada")
-                    .foregroundColor(ColorPalette.secondary)
+            EstatesView()
+            .tabItem {
+                Label("estates", systemImage: "building.2")
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
-                .tabItem {
-                    Label("estates", systemImage: "building.2")
-                }
             VStack{
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)

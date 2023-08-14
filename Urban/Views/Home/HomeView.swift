@@ -44,9 +44,11 @@ struct HomeView: View {
                   }
               }
         }
-        .onAppear(perform: {
-            user.getCurrent()
-        })
+        .onAppear {
+            Task {
+                await user.getCurrent()
+            }
+        }
     }
 }
 
