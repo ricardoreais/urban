@@ -16,7 +16,7 @@ struct CreateEstateView: View {
     @State private var selectedAgents: Set<User> = Set([])
 
     @ObservedObject private var user: UserObservable = .init()
-    @ObservedObject private var estateObs: EstateObservable = .init()
+    @ObservedObject private var estateObs: EstateObservable = EstateObservable(user: UserObservable())
 
     func createEstate() async -> Void {
         let createEstateCommand = CreateEstateCommand(code: estate.code, address: estate.address, agents: selectedAgents.map { user.convertToDocumentReference($0.id!) }, sellerEmail: sellerEmail)
@@ -65,6 +65,6 @@ struct CreateEstateView: View {
 
 struct CreateEstateView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateEstateView()
+        return CreateEstateView()
     }
 }

@@ -82,3 +82,5 @@
 "slogan" = "Experience you can trust! Trust you can experience.";
 "success" = "Sucesso!";
 "estateCreatedWithSuccess" = "A sua angariação foi criada com sucesso";
+"createdAt" = "Criada em";
+"updatedAt" = "Atualizada em";

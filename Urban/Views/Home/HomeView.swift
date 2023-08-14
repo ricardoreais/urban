@@ -6,13 +6,10 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct HomeView: View {
-    @ObservedObject var user = UserObservable()
-    
-    init() {
-        UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
-    }
+    @ObservedObject var user: UserObservable = UserObservable();
 
     var body: some View {
         CustomBackground {
@@ -44,6 +41,7 @@ struct HomeView: View {
                   }
               }
         }
+        .environmentObject(user) // Inject the shared instance of the user observable.
         .onAppear {
             Task {
                 await user.getCurrent()
@@ -54,6 +52,18 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        let userObs = UserObservable()
+        let currentUser = User(
+            id: "user123",
+            createdAt: Timestamp(date: Date()),
+            updatedAt: Timestamp(date: Date()),
+            name: "John Doe",
+            email: "john@example.com",
+            telephone: "123-456-7890",
+            types: [ .backoffice ]
+        )
+        userObs.isLoading = false
+        userObs.value = currentUser
+        return HomeView(user: userObs)
     }
 }

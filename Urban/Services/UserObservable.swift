@@ -10,7 +10,7 @@ import FirebaseFirestoreSwift
 import Foundation
 
 class UserObservable: ObservableObject {
-    @Published var value: User = .init()
+    @Published var value: User = User()
     @Published var isLoading = true
     @Published var users: [User] = []
     private let collection: CollectionReference = Firestore.firestore().collection(Collection.users)

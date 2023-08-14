@@ -16,7 +16,7 @@ struct SignInView: View {
     @ObservedObject var user = UserObservable()
     
     func signIn() async -> Void {
-        var result = await user.signIn(email, password)
+        let result = await user.signIn(email, password)
         hasErrors = email.isEmpty || password.isEmpty
         hasErrors = result.hasErrors
         loggedIn = result.loggedIn

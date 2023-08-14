@@ -13,7 +13,12 @@ import FirebaseFirestore
 class EstateObservable: ObservableObject {
     @Published var values: [Estate] = []
     @Published var isLoading = true
-    @ObservedObject var user = UserObservable()
+    var user: UserObservable
+    
+    init(user: UserObservable){
+        self.user = user
+    }
+
     private let collection: CollectionReference = Firestore.firestore().collection(Collection.estates)
     
     func create(command: CreateEstateCommand) async -> Bool {

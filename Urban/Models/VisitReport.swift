@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 struct VisitReport: Codable, Identifiable {
     @DocumentID var id: String?
-    @ServerTimestamp var date: Date?
+    @ServerTimestamp var date: Timestamp?
     var clientName: String = ""
     var listingCode: String = ""
     var location: String = ""
@@ -31,6 +32,6 @@ struct VisitReport: Codable, Identifiable {
     var hasPropertyToSell: Bool = false
     var comments: String = ""
     var userId: String = ""
-    @ServerTimestamp var createdAt: Date?
-    @ServerTimestamp var updatedAt: Date?
+    @ServerTimestamp var createdAt: Timestamp?
+    @ServerTimestamp var updatedAt: Timestamp?
 }

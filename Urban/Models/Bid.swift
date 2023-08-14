@@ -11,8 +11,8 @@ import FirebaseFirestoreSwift
 
 struct Bid: Codable, Identifiable {
     @DocumentID var id: String?
-    @ServerTimestamp var createdAt: Date?
-    @ServerTimestamp var updatedAt: Date?
+    @ServerTimestamp var createdAt: Timestamp?
+    @ServerTimestamp var updatedAt: Timestamp?
     var value: Decimal?
     var buyer: DocumentReference?
 }

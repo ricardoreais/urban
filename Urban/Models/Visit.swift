@@ -11,8 +11,8 @@ import FirebaseFirestoreSwift
 
 struct Visit: Codable, Identifiable {
     @DocumentID var id: String?
-    @ServerTimestamp var createdAt: Date?
-    @ServerTimestamp var updatedAt: Date?
+    @ServerTimestamp var createdAt: Timestamp?
+    @ServerTimestamp var updatedAt: Timestamp?
     var date: Date?
     var estate: DocumentReference?
     var reports: [DocumentReference]?

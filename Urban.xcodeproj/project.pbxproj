@@ -33,6 +33,10 @@
 		1F552DAA2A879B8C0089349A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F552DA92A879B8C0089349A /* Collection.swift */; };
 		1F552DAC2A8A334C0089349A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F552DAB2A8A334C0089349A /* Logger.swift */; };
 		1F552DB02A8A5AE70089349A /* EstatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F552DAF2A8A5AE70089349A /* EstatesView.swift */; };
+		1F5FAF572A8A6445007DB2DC /* EstateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAF562A8A6445007DB2DC /* EstateView.swift */; };
+		1F5FAF592A8A659F007DB2DC /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAF582A8A659F007DB2DC /* Timestamp.swift */; };
+		1F5FAF5B2A8A7168007DB2DC /* CustomLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAF5A2A8A7168007DB2DC /* CustomLink.swift */; };
+		1F5FAF5D2A8A738E007DB2DC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAF5C2A8A738E007DB2DC /* Configuration.swift */; };
 		1F654BC029EB14AD002ED11C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BBF29EB14AD002ED11C /* FirebaseAuth */; };
 		1F654BC229EB14AD002ED11C /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BC129EB14AD002ED11C /* FirebaseAuthCombine-Community */; };
 		1F654BC429EB14AD002ED11C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BC329EB14AD002ED11C /* FirebaseDatabase */; };
@@ -102,6 +106,10 @@
 		1F552DA92A879B8C0089349A /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		1F552DAB2A8A334C0089349A /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		1F552DAF2A8A5AE70089349A /* EstatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatesView.swift; sourceTree = "<group>"; };
+		1F5FAF562A8A6445007DB2DC /* EstateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstateView.swift; sourceTree = "<group>"; };
+		1F5FAF582A8A659F007DB2DC /* Timestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timestamp.swift; sourceTree = "<group>"; };
+		1F5FAF5A2A8A7168007DB2DC /* CustomLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLink.swift; sourceTree = "<group>"; };
+		1F5FAF5C2A8A738E007DB2DC /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		1F654BDD29EB1CD6002ED11C /* VisitReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReport.swift; sourceTree = "<group>"; };
 		1F7F33AA2A22A9FE0080DE09 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsObservable.swift; sourceTree = "<group>"; };
@@ -182,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				1FA7F7B629D9EDEF00886539 /* ColorExtension.swift */,
+				1F5FAF582A8A659F007DB2DC /* Timestamp.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -194,6 +203,7 @@
 				1F3A3DDD2A46F45E0088F25D /* Extensions */,
 				1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */,
 				1F552DAB2A8A334C0089349A /* Logger.swift */,
+				1F5FAF5C2A8A738E007DB2DC /* Configuration.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -203,6 +213,7 @@
 			children = (
 				1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */,
 				1F552DAF2A8A5AE70089349A /* EstatesView.swift */,
+				1F5FAF562A8A6445007DB2DC /* EstateView.swift */,
 			);
 			path = Agent;
 			sourceTree = "<group>";
@@ -250,6 +261,7 @@
 				1FED3FB22A7ACF7E00F38DD9 /* CustomButton.swift */,
 				1F1DD2152A840B2900A44925 /* CustomSecureField.swift */,
 				1F1DD2172A840E1E00A44925 /* CustomLoading.swift */,
+				1F5FAF5A2A8A7168007DB2DC /* CustomLink.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -434,6 +446,7 @@
 				1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */,
 				1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */,
 				1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */,
+				1F5FAF5B2A8A7168007DB2DC /* CustomLink.swift in Sources */,
 				1F552DAC2A8A334C0089349A /* Logger.swift in Sources */,
 				1F3804D62A59BA2A00F70347 /* SellerHomeView.swift in Sources */,
 				1FA7F7A529D9D41E00886539 /* VisitReportFormView.swift in Sources */,
@@ -444,6 +457,7 @@
 				1F3A3DE72A4841450088F25D /* VisitReportObservable.swift in Sources */,
 				1F3A3DE32A4718990088F25D /* Logo.swift in Sources */,
 				1F3804E92A5A459B00F70347 /* LocalizedEnum.swift in Sources */,
+				1F5FAF5D2A8A738E007DB2DC /* Configuration.swift in Sources */,
 				1FED3F992A757BEE00F38DD9 /* DeleteUserView.swift in Sources */,
 				1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */,
 				1F3804D82A59D12B00F70347 /* User.swift in Sources */,
@@ -456,6 +470,7 @@
 				1F3804CF2A59B9C500F70347 /* AgentHomeView.swift in Sources */,
 				1F3804E02A5A3ACB00F70347 /* UserType.swift in Sources */,
 				1F7F33AB2A22A9FE0080DE09 /* MainView.swift in Sources */,
+				1F5FAF592A8A659F007DB2DC /* Timestamp.swift in Sources */,
 				1F3A3DE52A4840EC0088F25D /* VisitDetailsView.swift in Sources */,
 				1FED3FB12A7ACBEB00F38DD9 /* CustomForm.swift in Sources */,
 				1FA7F7B729D9EDEF00886539 /* ColorExtension.swift in Sources */,
@@ -472,6 +487,7 @@
 				1FED3FA32A76886600F38DD9 /* CreateEstateView.swift in Sources */,
 				1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */,
 				1FED3FB32A7ACF7E00F38DD9 /* CustomButton.swift in Sources */,
+				1F5FAF572A8A6445007DB2DC /* EstateView.swift in Sources */,
 				1FED3FAB2A79BF4700F38DD9 /* CustomSelectListDetail.swift in Sources */,
 				1FED3FAF2A7AC76C00F38DD9 /* CustomBackground.swift in Sources */,
 				1FA7F7B329D9E43B00886539 /* Decision.swift in Sources */,

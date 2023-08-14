@@ -25,6 +25,7 @@ struct UrbanApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(ConfigurationService.singleton)
         }
     }
 }

@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct AgentHomeView: View {
+    @EnvironmentObject var userObs: UserObservable
+    
     init() {
         UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
     }
 
     var body: some View {
         TabView {
-            EstatesView()
+            EstatesView(estateObs: EstateObservable(user: userObs))
             .tabItem {
                 Label("estates", systemImage: "building.2")
             }
