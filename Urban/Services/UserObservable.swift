@@ -9,10 +9,6 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
-// TODO: Refactor the observable and add consistency between logs and error validation etc... Maybe even isolate all the logs in a separate class
-// Check if we should be using async await and clean these errors/warnings.
-// Ident/format all files using the extension
-// Only list agents in select list
 class UserObservable: ObservableObject {
     @Published var value: User = .init()
     @Published var isLoading = true
@@ -43,43 +39,34 @@ class UserObservable: ObservableObject {
         return collection.document(userId)
     }
     
-    func getCurrent() {
+    func getCurrent() async {
         guard let userEmail = Auth.auth().currentUser?.email else {
             Logger.errorNoAuthenticatedUser()
             return
         }
         
-        collection
-            .whereField("email", isEqualTo: userEmail)
-            .getDocuments { snapshot, error in
-                if let error = error {
+        do {
+            let documents = try await collection.whereField("email", isEqualTo: userEmail).getDocuments().documents
+            let users: [User] = documents.compactMap { document -> User? in
+                do {
+                    let userDocument = try document.data(as: User.self)
+                    Logger.infoFetchedUser(userEmail)
+                    return userDocument
+                } catch {
                     Logger.error(error)
-                    return
-                }
-                
-                guard let documents = snapshot?.documents else {
-                    Logger.errorFetchingUser(userEmail)
-                    return
-                }
-                
-                let users: [User] = documents.compactMap { document -> User? in
-                    do {
-                        let userDocument = try document.data(as: User.self)
-                        Logger.infoFetchedUser(userEmail)
-                        return userDocument
-                    } catch {
-                        Logger.error(error)
-                        return nil
-                    }
-                }
-                
-                DispatchQueue.main.async {
-                    self.isLoading = false
-                    self.value = users.first!
+                    return nil
                 }
             }
+            
+            DispatchQueue.main.async {
+                self.isLoading = false
+                self.value = users.first!
+            }
+        } catch {
+            Logger.error(error)
+        }
     }
-    
+
     func create(command: CreateUserCommand) async -> Bool {
         guard !command.email.isEmpty, !command.password.isEmpty, command.password == command.confirmPassword else {
             return false
@@ -87,7 +74,7 @@ class UserObservable: ObservableObject {
         
         do {
             let email = command.email
-            let authResult = try await Auth.auth().createUser(withEmail: email, password: command.password)
+            _ = try await Auth.auth().createUser(withEmail: email, password: command.password)
             let user = User(email: email, types: command.types)
             _ = try collection.addDocument(from: user)
             Logger.infoCreatingUser(email)
@@ -99,7 +86,6 @@ class UserObservable: ObservableObject {
         }
     }
 
-    
     func get(type: UserType? = nil) {
         var query: Query = collection
         
@@ -173,7 +159,7 @@ class UserObservable: ObservableObject {
     
     func getOrCreate(email: String) async -> (reference: DocumentReference?, success: Bool) {
         do {
-            if let documentReference = try await self.get(email: email) {
+            if let documentReference = try await get(email: email) {
                 Logger.verboseUserAlreadyExists(email)
                 return (documentReference, true)
             } else {
@@ -181,10 +167,10 @@ class UserObservable: ObservableObject {
                 Logger.infoCreatingUser(email)
                 
                 let createUserCommand = CreateUserCommand(name: "", password: "123456", confirmPassword: "123456", email: email, types: [.seller], telephone: "")
-                let userCreated = await self.create(command: createUserCommand)
+                let userCreated = await create(command: createUserCommand)
                 
                 if userCreated {
-                    if let newDocumentReference = try await self.get(email: email) {
+                    if let newDocumentReference = try await get(email: email) {
                         return (newDocumentReference, true)
                     } else {
                         Logger.errorFetchingOrCreatingUser(email)
