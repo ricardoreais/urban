@@ -9,7 +9,7 @@ import SwiftUI
 
 // TODO: We have a bug where in some cases (after a few minutes of authentication we need to re-authenticate to delete the user).
 struct DeleteUserView: View {
-    @ObservedObject var user: UserObservable = UserObservable()
+    @ObservedObject private var user: UserObservable = UserObservable.shared
     
     var body: some View {
         CustomBackground {
@@ -49,12 +49,6 @@ struct DeleteUserView: View {
 
 struct DeleteUserView_Previews: PreviewProvider {
     static var previews: some View {
-        let user = UserObservable()
-        let user1 = User(id: "1", name: "John Doe", email: "john@example.com", telephone: "123456789", types: [.backoffice, .buyer])
-        let user2 = User(id: "2", name: "Jane Smith", email: "jane@example.com", telephone: "987654321", types: [.agent])
-        let user3 = User(id: "3", name: "Bob Johnson", email: "bob@example.com", telephone: "555555555", types: [.seller])
-        user.users = [user1, user2, user3]
-        user.isLoading = false
-        return DeleteUserView(user: user)
+        return DeleteUserView()
     }
 }

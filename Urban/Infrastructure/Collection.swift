@@ -10,4 +10,5 @@ import Foundation
 enum Collection {
     static let users = "Users"
     static let estates = "Estates"
+    static let visits = "Visits"
 }

@@ -91,4 +91,12 @@ class Logger {
     static func verboseFetchedEstates() -> Void {
         verbose("Estates fetched with success!")
     }
+    
+    static func infoVisitCreated(_ date: Date) -> Void {
+        info("Visit created with success on \(date)")
+    }
+    
+    static func errorCreatingVisit() -> Void {
+        error("Error creating visit")
+    }
 }

@@ -15,8 +15,8 @@ struct CreateEstateView: View {
     @State private var hasError: Bool = false
     @State private var selectedAgents: Set<User> = Set([])
 
-    @ObservedObject private var user: UserObservable = .init()
-    @ObservedObject private var estateObs: EstateObservable = EstateObservable(user: UserObservable())
+    @ObservedObject private var user: UserObservable = UserObservable.shared
+    @ObservedObject private var estateObs: EstateObservable = EstateObservable(user: UserObservable.shared)
 
     func createEstate() async -> Void {
         let createEstateCommand = CreateEstateCommand(code: estate.code, address: estate.address, agents: selectedAgents.map { user.convertToDocumentReference($0.id!) }, sellerEmail: sellerEmail)

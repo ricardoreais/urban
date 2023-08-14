@@ -9,13 +9,15 @@ import SwiftUI
 
 struct CustomBackground<Content: View>: View {
     let content: Content
-    
-    init(@ViewBuilder content: () -> Content) {
+    let alignment: HorizontalAlignment
+
+    init(alignment: HorizontalAlignment = .center, @ViewBuilder content: () -> Content) {
         self.content = content()
+        self.alignment = alignment
     }
-    
+
     var body: some View {
-        VStack {
+        VStack(alignment: alignment) {
             content
         }
         .foregroundColor(ColorPalette.secondary)

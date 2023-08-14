@@ -10,15 +10,31 @@ import SwiftUI
 
 struct EstateView: View {
     let estate: Estate
+    @ObservedObject var estateObs: EstateObservable
+    @ObservedObject var visitObs: VisitObservable
+    @ObservedObject private var userObs: UserObservable = .shared
+
+    func openInPreview() {}
 
     var body: some View {
-        CustomBackground {
+        CustomBackground(alignment: .leading) {
             CustomText(label: "code", value: estate.code)
             CustomText(label: "address", value: estate.address)
             CustomText(label: "createdAt", value: estate.createdAt!.toString())
             CustomText(label: "updatedAt", value: estate.updatedAt!.toString())
-            CustomLink(url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
+
+            Menu {
+                Button("createVisitReport", action: openInPreview)
+                CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
+                NavigationLink("scheduleVisit", destination: ScheduleVisitView(visitObs: visitObs))
+                Button("createBid", action: openInPreview)
+            } label: {
+                Label("moreActions", systemImage: "ellipsis")
+            }
         }
+        .onAppear(perform: {
+            estateObs.setSelected(estate)
+        })
     }
 }
 
@@ -37,6 +53,10 @@ struct EstateView_Previews: PreviewProvider {
             visits: nil,
             bids: nil
         )
-        EstateView(estate: estate)
+        let userObs = UserObservable.shared
+        let estateObs = EstateObservable(user: userObs)
+        return NavigationView {
+            EstateView(estate: estate, estateObs: estateObs, visitObs: VisitObservable(user: userObs, estateObs: estateObs))
+        }
     }
 }

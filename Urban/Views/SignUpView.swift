@@ -16,7 +16,7 @@ struct SignUpView: View {
     @State private var confirmPassword: String = ""
     @State private var accountCreated: Bool = false
     @State private var hasErrors: Bool = false
-    @ObservedObject private var user: UserObservable = UserObservable()
+    @ObservedObject private var user: UserObservable = UserObservable.shared
     
     
     func signUp() async -> Void {

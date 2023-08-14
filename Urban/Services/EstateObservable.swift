@@ -5,25 +5,35 @@
 //  Created by Juliana Estrela on 30/07/2023.
 //
 
-import SwiftUI
-import Foundation
 import Firebase
 import FirebaseFirestore
+import Foundation
+import SwiftUI
 
 class EstateObservable: ObservableObject {
     @Published var values: [Estate] = []
+    @Published var selected: Estate? = nil
     @Published var isLoading = true
     var user: UserObservable
     
-    init(user: UserObservable){
+    init(user: UserObservable) {
         self.user = user
     }
 
     private let collection: CollectionReference = Firestore.firestore().collection(Collection.estates)
     
+    func convertToDocumentReference(_ estateId: String) -> DocumentReference {
+        return collection.document(estateId)
+    }
+    
+    func setSelected(_ estate: Estate) {
+        selected = estate
+    }
+    
     func create(command: CreateEstateCommand) async -> Bool {
         guard !command.code.isEmpty, !command.address.isEmpty,
-              !command.sellerEmail.isEmpty, !command.agents.isEmpty else {
+              !command.sellerEmail.isEmpty, !command.agents.isEmpty
+        else {
             Logger.errorCreatingEstate(command.code)
             return false
         }
@@ -47,14 +57,13 @@ class EstateObservable: ObservableObject {
         }
     }
     
-    func get() async -> Void {
+    func get() async {
         do {
             let currentUserReference = user.convertToDocumentReference(user.value.id!)
             let documents = try await collection.whereField("agents", arrayContains: currentUserReference).getDocuments().documents
             let estates: [Estate] = documents.compactMap { document -> Estate? in
                 do {
                     let estateDocument = try document.data(as: Estate.self)
-                    Logger.verboseFetchedEstates()
                     return estateDocument
                 } catch {
                     Logger.error(error)
@@ -63,13 +72,12 @@ class EstateObservable: ObservableObject {
             }
             
             DispatchQueue.main.async {
+                Logger.verboseFetchedEstates()
                 self.isLoading = false
                 self.values = estates
             }
         } catch {
             Logger.error(error)
         }
-        
     }
 }
-

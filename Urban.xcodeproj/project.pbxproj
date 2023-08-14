@@ -54,6 +54,11 @@
 		1F7F33AB2A22A9FE0080DE09 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F33AA2A22A9FE0080DE09 /* MainView.swift */; };
 		1F7F33B92A2389000080DE09 /* VisitReportsObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */; };
 		1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AD73A2A3DD6990031B154 /* HomeView.swift */; };
+		1F9A97662A8A9E1000B64436 /* ScheduleVisitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */; };
+		1F9A97682A8A9EB900B64436 /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97672A8A9EB900B64436 /* CustomCalendar.swift */; };
+		1F9A976A2A8AA54E00B64436 /* VisitObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97692A8AA54E00B64436 /* VisitObservable.swift */; };
+		1F9A976C2A8AA5C400B64436 /* Services in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A976B2A8AA5C400B64436 /* Services */; };
+		1F9A976E2A8AA7A000B64436 /* CreateVisitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A976D2A8AA7A000B64436 /* CreateVisitCommand.swift */; };
 		1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7A229D9D41E00886539 /* UrbanApp.swift */; };
 		1FA7F7A529D9D41E00886539 /* VisitReportFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */; };
 		1FA7F7A729D9D41F00886539 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA7F7A629D9D41F00886539 /* Assets.xcassets */; };
@@ -115,6 +120,11 @@
 		1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsObservable.swift; sourceTree = "<group>"; };
 		1F8AD73A2A3DD6990031B154 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1F9A97642A8A97F200B64436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVisitView.swift; sourceTree = "<group>"; };
+		1F9A97672A8A9EB900B64436 /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
+		1F9A97692A8AA54E00B64436 /* VisitObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitObservable.swift; sourceTree = "<group>"; };
+		1F9A976B2A8AA5C400B64436 /* Services */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Services; sourceTree = "<group>"; };
+		1F9A976D2A8AA7A000B64436 /* CreateVisitCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVisitCommand.swift; sourceTree = "<group>"; };
 		1FA7F79F29D9D41E00886539 /* Urban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Urban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA7F7A229D9D41E00886539 /* UrbanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanApp.swift; sourceTree = "<group>"; };
 		1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportFormView.swift; sourceTree = "<group>"; };
@@ -215,6 +225,7 @@
 				1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */,
 				1F552DAF2A8A5AE70089349A /* EstatesView.swift */,
 				1F5FAF562A8A6445007DB2DC /* EstateView.swift */,
+				1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */,
 			);
 			path = Agent;
 			sourceTree = "<group>";
@@ -263,6 +274,7 @@
 				1F1DD2152A840B2900A44925 /* CustomSecureField.swift */,
 				1F1DD2172A840E1E00A44925 /* CustomLoading.swift */,
 				1F5FAF5A2A8A7168007DB2DC /* CustomLink.swift */,
+				1F9A97672A8A9EB900B64436 /* CustomCalendar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -276,6 +288,8 @@
 				1F3A3DE62A4841450088F25D /* VisitReportObservable.swift */,
 				1FED3F892A75582300F38DD9 /* UserObservable.swift */,
 				1FED3FA42A76895500F38DD9 /* EstateObservable.swift */,
+				1F9A97692A8AA54E00B64436 /* VisitObservable.swift */,
+				1F9A976B2A8AA5C400B64436 /* Services */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -327,6 +341,7 @@
 			children = (
 				1FED3F8E2A75632200F38DD9 /* CreateUserCommand.swift */,
 				1FED3FA62A7689C400F38DD9 /* CreateEstateCommand.swift */,
+				1F9A976D2A8AA7A000B64436 /* CreateVisitCommand.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -426,6 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9A976C2A8AA5C400B64436 /* Services in Resources */,
 				1FA7F7AA29D9D41F00886539 /* Preview Assets.xcassets in Resources */,
 				1F3804CD2A59B57A00F70347 /* GoogleService-Info.plist in Resources */,
 				1F3A3DEF2A4860BA0088F25D /* Localizable.strings in Resources */,
@@ -464,9 +480,12 @@
 				1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */,
 				1F3804D82A59D12B00F70347 /* User.swift in Sources */,
 				1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */,
+				1F9A976E2A8AA7A000B64436 /* CreateVisitCommand.swift in Sources */,
+				1F9A97682A8A9EB900B64436 /* CustomCalendar.swift in Sources */,
 				1F3A3DE92A4854800088F25D /* CustomText.swift in Sources */,
 				1FED3F882A75539100F38DD9 /* AddUserView.swift in Sources */,
 				1F3804DE2A59D15F00F70347 /* Visit.swift in Sources */,
+				1F9A97662A8A9E1000B64436 /* ScheduleVisitView.swift in Sources */,
 				1F3804E72A5A42EB00F70347 /* CustomPicker.swift in Sources */,
 				1F3804DA2A59D14100F70347 /* Estate.swift in Sources */,
 				1F3804CF2A59B9C500F70347 /* AgentHomeView.swift in Sources */,
@@ -478,6 +497,7 @@
 				1FA7F7B729D9EDEF00886539 /* ColorExtension.swift in Sources */,
 				1F3804D22A59B9FD00F70347 /* BuyerHomeView.swift in Sources */,
 				1FED3F9E2A757F9F00F38DD9 /* GetUsersQuery.swift in Sources */,
+				1F9A976A2A8AA54E00B64436 /* VisitObservable.swift in Sources */,
 				1F3804E52A5A411000F70347 /* EvaluationPicker.swift in Sources */,
 				1F3804DC2A59D15000F70347 /* Bid.swift in Sources */,
 				1FED3FA72A7689C400F38DD9 /* CreateEstateCommand.swift in Sources */,

@@ -13,7 +13,7 @@ struct SignInView: View {
     @State private var password: String = ""
     @State private var loggedIn: Bool = false
     @State private var hasErrors: Bool = false
-    @ObservedObject var user = UserObservable()
+    @ObservedObject var user = UserObservable.shared
     
     func signIn() async -> Void {
         let result = await user.signIn(email, password)

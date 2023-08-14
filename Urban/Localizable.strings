@@ -85,3 +85,9 @@
 "createdAt" = "Criada em";
 "updatedAt" = "Atualizada em";
 "noEstatesYet" = "O seu utilizador ainda não tem nenhuma angariação associada...";
+"moreActions" = "Mais ações";
+"scheduleVisit" = "Agendar visita";
+"createVisitReport" = "Criar formulário de visita";
+"seeInBrowser" = "Ver no site da KW Portugal";
+"createBid" = "Criar proposta";
+"confirm" = "Confirmar";

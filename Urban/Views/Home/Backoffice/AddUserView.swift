@@ -10,7 +10,7 @@ import SwiftUI
 struct AddUserView: View {
     @State private var email: String = ""
     @State private var type: UserType = UserType.guest
-    @ObservedObject private var user: UserObservable = UserObservable()
+    @ObservedObject private var user: UserObservable = UserObservable.shared
     
     func createUser() async -> Void {
         let createUserCommand = CreateUserCommand(name: "", password: "123456", confirmPassword: "123456", email: email, types: [type], telephone: "")

@@ -10,6 +10,9 @@ import FirebaseFirestoreSwift
 import Foundation
 
 class UserObservable: ObservableObject {
+    static let shared = UserObservable()
+    private init() {}
+    
     @Published var value: User = User()
     @Published var isLoading = true
     @Published var users: [User] = []
