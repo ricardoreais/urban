@@ -84,3 +84,4 @@
 "estateCreatedWithSuccess" = "A sua angariação foi criada com sucesso";
 "createdAt" = "Criada em";
 "updatedAt" = "Atualizada em";
+"noEstatesYet" = "O seu utilizador ainda não tem nenhuma angariação associada...";

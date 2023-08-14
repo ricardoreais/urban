@@ -36,7 +36,7 @@
 		1F5FAF572A8A6445007DB2DC /* EstateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAF562A8A6445007DB2DC /* EstateView.swift */; };
 		1F5FAF592A8A659F007DB2DC /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAF582A8A659F007DB2DC /* Timestamp.swift */; };
 		1F5FAF5B2A8A7168007DB2DC /* CustomLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAF5A2A8A7168007DB2DC /* CustomLink.swift */; };
-		1F5FAF5D2A8A738E007DB2DC /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAF5C2A8A738E007DB2DC /* Configuration.swift */; };
+		1F5FAF5D2A8A738E007DB2DC /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAF5C2A8A738E007DB2DC /* SettingsManager.swift */; };
 		1F654BC029EB14AD002ED11C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BBF29EB14AD002ED11C /* FirebaseAuth */; };
 		1F654BC229EB14AD002ED11C /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BC129EB14AD002ED11C /* FirebaseAuthCombine-Community */; };
 		1F654BC429EB14AD002ED11C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BC329EB14AD002ED11C /* FirebaseDatabase */; };
@@ -109,11 +109,12 @@
 		1F5FAF562A8A6445007DB2DC /* EstateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstateView.swift; sourceTree = "<group>"; };
 		1F5FAF582A8A659F007DB2DC /* Timestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timestamp.swift; sourceTree = "<group>"; };
 		1F5FAF5A2A8A7168007DB2DC /* CustomLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLink.swift; sourceTree = "<group>"; };
-		1F5FAF5C2A8A738E007DB2DC /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		1F5FAF5C2A8A738E007DB2DC /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		1F654BDD29EB1CD6002ED11C /* VisitReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReport.swift; sourceTree = "<group>"; };
 		1F7F33AA2A22A9FE0080DE09 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsObservable.swift; sourceTree = "<group>"; };
 		1F8AD73A2A3DD6990031B154 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1F9A97642A8A97F200B64436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1FA7F79F29D9D41E00886539 /* Urban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Urban.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA7F7A229D9D41E00886539 /* UrbanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanApp.swift; sourceTree = "<group>"; };
 		1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportFormView.swift; sourceTree = "<group>"; };
@@ -203,7 +204,7 @@
 				1F3A3DDD2A46F45E0088F25D /* Extensions */,
 				1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */,
 				1F552DAB2A8A334C0089349A /* Logger.swift */,
-				1F5FAF5C2A8A738E007DB2DC /* Configuration.swift */,
+				1F5FAF5C2A8A738E007DB2DC /* SettingsManager.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -298,6 +299,7 @@
 		1FA7F7A129D9D41E00886539 /* Urban */ = {
 			isa = PBXGroup;
 			children = (
+				1F9A97642A8A97F200B64436 /* Info.plist */,
 				1F552DAD2A8A33550089349A /* Infrastructure */,
 				1F7F33B72A2388E60080DE09 /* Services */,
 				1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */,
@@ -457,7 +459,7 @@
 				1F3A3DE72A4841450088F25D /* VisitReportObservable.swift in Sources */,
 				1F3A3DE32A4718990088F25D /* Logo.swift in Sources */,
 				1F3804E92A5A459B00F70347 /* LocalizedEnum.swift in Sources */,
-				1F5FAF5D2A8A738E007DB2DC /* Configuration.swift in Sources */,
+				1F5FAF5D2A8A738E007DB2DC /* SettingsManager.swift in Sources */,
 				1FED3F992A757BEE00F38DD9 /* DeleteUserView.swift in Sources */,
 				1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */,
 				1F3804D82A59D12B00F70347 /* User.swift in Sources */,
@@ -622,6 +624,7 @@
 				DEVELOPMENT_TEAM = NL9BA4ZVSA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Urban/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -651,6 +654,7 @@
 				DEVELOPMENT_TEAM = NL9BA4ZVSA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Urban/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

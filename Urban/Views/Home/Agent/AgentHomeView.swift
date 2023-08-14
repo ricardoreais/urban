@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct AgentHomeView: View {
     @EnvironmentObject var userObs: UserObservable
@@ -47,6 +48,18 @@ struct AgentHomeView: View {
 
 struct AgentHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        AgentHomeView()
+        let user = UserObservable()
+        user.isLoading = false
+        user.value = User(
+            id: "user123",
+            createdAt: Timestamp(date: Date()),
+            updatedAt: Timestamp(date: Date()),
+            name: "John Doe",
+            email: "john@example.com",
+            telephone: "123-456-7890",
+            types: [.seller, .buyer]
+        )
+        return AgentHomeView()
+            .environmentObject(user)
     }
 }

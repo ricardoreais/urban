@@ -5,11 +5,10 @@
 //  Created by Juliana Estrela on 14/08/2023.
 //
 
-import SwiftUI
 import FirebaseFirestore
+import SwiftUI
 
 struct EstateView: View {
-    @EnvironmentObject var configurationService: ConfigurationService
     let estate: Estate
 
     var body: some View {
@@ -17,8 +16,8 @@ struct EstateView: View {
             CustomText(label: "code", value: estate.code)
             CustomText(label: "address", value: estate.address)
             CustomText(label: "createdAt", value: estate.createdAt!.toString())
-            CustomText(label: "updateAt", value: estate.updatedAt!.toString())
-            CustomLink(url: "\((configurationService.value?.websiteURL)!)\(estate.code)")
+            CustomText(label: "updatedAt", value: estate.updatedAt!.toString())
+            CustomLink(url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
         }
     }
 }
@@ -39,6 +38,5 @@ struct EstateView_Previews: PreviewProvider {
             bids: nil
         )
         EstateView(estate: estate)
-            .environmentObject(ConfigurationService.singleton)
     }
 }

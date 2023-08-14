@@ -43,8 +43,10 @@ struct HomeView: View {
         }
         .environmentObject(user) // Inject the shared instance of the user observable.
         .onAppear {
-            Task {
-                await user.getCurrent()
+            if(user.value.id == nil){
+                Task {
+                    await user.getCurrent()
+                }
             }
         }
     }
