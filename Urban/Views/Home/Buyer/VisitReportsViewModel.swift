@@ -7,14 +7,14 @@
 
 import Foundation
 
-class VisitsViewModel: ObservableObject {
+class VisitReportsViewModel: ObservableObject {
     @Published var reports: [VisitReport] = []
     @Published var selected: VisitReport = VisitReport()
     @Published var isLoading = true
     
     let visitReportService: VisitReportService
     
-    static let shared = VisitsViewModel()
+    static let shared = VisitReportsViewModel()
     
     private init(visitReportService: VisitReportService = VisitReportService()) {
         self.visitReportService = visitReportService

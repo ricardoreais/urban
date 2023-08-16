@@ -9,7 +9,7 @@ import SwiftUI
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-struct VisitDetailsView: View {
+struct VisitReportView: View {
     let report: VisitReport
     
     init(report: VisitReport) {
@@ -38,9 +38,9 @@ struct VisitDetailsView: View {
     }
 }
 
-struct VisitDetailsView_Previews: PreviewProvider {
+struct VisitReportView_Previews: PreviewProvider {
     static var previews: some View {
-        var visitReport = VisitReport(
+        let visitReport = VisitReport(
             id: "someUniqueId",
             date: Timestamp(date: Date()),  // Replace with the actual date
             floorPlan: .medium,
@@ -64,6 +64,6 @@ struct VisitDetailsView_Previews: PreviewProvider {
             updatedAt: Timestamp(date: Date())
         )
         
-        return VisitDetailsView(report: visitReport)
+        return VisitReportView(report: visitReport)
     }
 }

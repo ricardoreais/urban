@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct VisitsView: View {
-    @ObservedObject var model: VisitsViewModel
+struct VisitReportsView: View {
+    @ObservedObject var model: VisitReportsViewModel
     
-    init(model: VisitsViewModel = .shared) {
+    init(model: VisitReportsViewModel = .shared) {
         self.model = model
     }
     
@@ -26,7 +26,7 @@ struct VisitsView: View {
                     }
                     else {
                         List(model.reports) { report in
-                            NavigationLink(destination: VisitDetailsView(report: report)) {
+                            NavigationLink(destination: VisitReportView(report: report)) {
                                 CustomText(label: "clientName", value: "TODO")
                             }
                             .listRowBackground(ColorPalette.highlights)
@@ -40,12 +40,12 @@ struct VisitsView: View {
     }
 }
 
-struct VisitsView_Previews: PreviewProvider {
+struct VisitReportsView_Previews: PreviewProvider {
     static var previews: some View {
-        let model = VisitsViewModel.shared
+        let model = VisitReportsViewModel.shared
         model.isLoading = false
         model.reports = [
         ]
-        return VisitsView(model: model)
+        return VisitReportsView(model: model)
     }
 }

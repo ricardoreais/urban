@@ -14,7 +14,7 @@ struct BuyerHomeView: View {
 
     var body: some View {
         TabView {
-            VisitsView()
+            VisitReportsView()
             .tabItem {
                 Label("myVisits", systemImage: "list.bullet")
             }
