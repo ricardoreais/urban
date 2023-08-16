@@ -51,11 +51,12 @@
 		1F654BD629EB14AD002ED11C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BD529EB14AD002ED11C /* FirebaseStorage */; };
 		1F654BD829EB14AD002ED11C /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 1F654BD729EB14AD002ED11C /* FirebaseStorageCombine-Community */; };
 		1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F654BDD29EB1CD6002ED11C /* VisitReport.swift */; };
+		1F70C6EC2A8CDDC200ED785F /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C6EB2A8CDDC200ED785F /* CustomCalendar.swift */; };
 		1F7F33AB2A22A9FE0080DE09 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F33AA2A22A9FE0080DE09 /* MainView.swift */; };
 		1F7F33B92A2389000080DE09 /* VisitReportsObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */; };
 		1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AD73A2A3DD6990031B154 /* HomeView.swift */; };
 		1F9A97662A8A9E1000B64436 /* ScheduleVisitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */; };
-		1F9A97682A8A9EB900B64436 /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97672A8A9EB900B64436 /* CustomCalendar.swift */; };
+		1F9A97682A8A9EB900B64436 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97672A8A9EB900B64436 /* CustomDatePicker.swift */; };
 		1F9A976A2A8AA54E00B64436 /* VisitObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97692A8AA54E00B64436 /* VisitObservable.swift */; };
 		1F9A976E2A8AA7A000B64436 /* CreateVisitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A976D2A8AA7A000B64436 /* CreateVisitCommand.swift */; };
 		1F9A977C2A8ACE1300B64436 /* VisitsCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */; };
@@ -116,16 +117,17 @@
 		1F5FAF5A2A8A7168007DB2DC /* CustomLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLink.swift; sourceTree = "<group>"; };
 		1F5FAF5C2A8A738E007DB2DC /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		1F654BDD29EB1CD6002ED11C /* VisitReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReport.swift; sourceTree = "<group>"; };
+		1F70C6EB2A8CDDC200ED785F /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
 		1F7F33AA2A22A9FE0080DE09 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsObservable.swift; sourceTree = "<group>"; };
 		1F8AD73A2A3DD6990031B154 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1F9A97642A8A97F200B64436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVisitView.swift; sourceTree = "<group>"; };
-		1F9A97672A8A9EB900B64436 /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
+		1F9A97672A8A9EB900B64436 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		1F9A97692A8AA54E00B64436 /* VisitObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitObservable.swift; sourceTree = "<group>"; };
 		1F9A976D2A8AA7A000B64436 /* CreateVisitCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVisitCommand.swift; sourceTree = "<group>"; };
 		1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsCalendarView.swift; sourceTree = "<group>"; };
-		1FA7F79F29D9D41E00886539 /* Urban.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Urban.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FA7F79F29D9D41E00886539 /* AM Advisors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AM Advisors.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FA7F7A229D9D41E00886539 /* UrbanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrbanApp.swift; sourceTree = "<group>"; };
 		1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportFormView.swift; sourceTree = "<group>"; };
 		1FA7F7A629D9D41F00886539 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -274,7 +276,8 @@
 				1F1DD2152A840B2900A44925 /* CustomSecureField.swift */,
 				1F1DD2172A840E1E00A44925 /* CustomLoading.swift */,
 				1F5FAF5A2A8A7168007DB2DC /* CustomLink.swift */,
-				1F9A97672A8A9EB900B64436 /* CustomCalendar.swift */,
+				1F9A97672A8A9EB900B64436 /* CustomDatePicker.swift */,
+				1F70C6EB2A8CDDC200ED785F /* CustomCalendar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -313,7 +316,7 @@
 		1FA7F7A029D9D41E00886539 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1FA7F79F29D9D41E00886539 /* Urban.app */,
+				1FA7F79F29D9D41E00886539 /* AM Advisors.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -405,7 +408,7 @@
 				1F654BD729EB14AD002ED11C /* FirebaseStorageCombine-Community */,
 			);
 			productName = Urban;
-			productReference = 1FA7F79F29D9D41E00886539 /* Urban.app */;
+			productReference = 1FA7F79F29D9D41E00886539 /* AM Advisors.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -434,6 +437,7 @@
 			mainGroup = 1FA7F79629D9D41E00886539;
 			packageReferences = (
 				1F654BBE29EB14AD002ED11C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1F70C6ED2A8CE25500ED785F /* XCRemoteSwiftPackageReference "ElegantCalendar" */,
 			);
 			productRefGroup = 1FA7F7A029D9D41E00886539 /* Products */;
 			projectDirPath = "";
@@ -488,7 +492,7 @@
 				1F3804D82A59D12B00F70347 /* User.swift in Sources */,
 				1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */,
 				1F9A976E2A8AA7A000B64436 /* CreateVisitCommand.swift in Sources */,
-				1F9A97682A8A9EB900B64436 /* CustomCalendar.swift in Sources */,
+				1F9A97682A8A9EB900B64436 /* CustomDatePicker.swift in Sources */,
 				1F3A3DE92A4854800088F25D /* CustomText.swift in Sources */,
 				1FED3F882A75539100F38DD9 /* AddUserView.swift in Sources */,
 				1F3804DE2A59D15F00F70347 /* Visit.swift in Sources */,
@@ -506,6 +510,7 @@
 				1FED3F9E2A757F9F00F38DD9 /* GetUsersQuery.swift in Sources */,
 				1F9A976A2A8AA54E00B64436 /* VisitObservable.swift in Sources */,
 				1F3804E52A5A411000F70347 /* EvaluationPicker.swift in Sources */,
+				1F70C6EC2A8CDDC200ED785F /* CustomCalendar.swift in Sources */,
 				1F3804DC2A59D15000F70347 /* Bid.swift in Sources */,
 				1FED3FA72A7689C400F38DD9 /* CreateEstateCommand.swift in Sources */,
 				1FED3FA92A79BC6B00F38DD9 /* CustomSelectList.swift in Sources */,
@@ -664,7 +669,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ricardoreais.Urban;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "AM Advisors";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -694,7 +699,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ricardoreais.Urban;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "AM Advisors";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -731,6 +736,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 9.0.0;
+			};
+		};
+		1F70C6ED2A8CE25500ED785F /* XCRemoteSwiftPackageReference "ElegantCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ThasianX/ElegantCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

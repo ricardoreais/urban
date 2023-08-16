@@ -27,7 +27,7 @@ struct ScheduleVisitView: View {
         CustomBackground {
             CustomForm {
                 CustomSection(header: "estate") {
-                    CustomCalendar(selectedDate: $selectedDate)
+                    CustomDatePicker(selectedDate: $selectedDate)
                     CustomSelectList<User>(
                         label: "buyers",
                         options: userObs.users,
