@@ -15,10 +15,13 @@ class EstateObservable: ObservableObject {
     @Published var values: [Estate] = []
     @Published var selected: Estate? = nil
     @Published var isLoading = true
-    private var user: UserObservable = .shared
+    let userService: UserService
     
-    static let shared = EstateObservable()
-    private init() {}
+    static let shared = EstateObservable(userService: UserService())
+    
+    private init(userService: UserService) {
+        self.userService = userService
+    }
 
     private let collection: CollectionReference = Firestore.firestore().collection(Collection.estates)
     
@@ -38,7 +41,7 @@ class EstateObservable: ObservableObject {
             return false
         }
         
-        let result = await user.getOrCreate(email: command.sellerEmail)
+        let result = await userService.getOrCreate(email: command.sellerEmail)
         
         guard let seller = result.reference else {
             Logger.errorFetchingOrCreatingUser(command.sellerEmail)
@@ -59,7 +62,9 @@ class EstateObservable: ObservableObject {
     
     func get() async {
         do {
-            let currentUserReference = user.convertToDocumentReference(user.value.id!)
+            // TODO: Get current user from user manager observable?
+            let userId: String = ((await userService.getCurrent())?.id)!;
+            let currentUserReference = userService.convertToDocumentReference(userId)
             let documents = try await collection.whereField("agents", arrayContains: currentUserReference).getDocuments().documents
             let estates: [Estate] = documents.compactMap { document -> Estate? in
                 do {

@@ -9,18 +9,26 @@ import SwiftUI
 
 // TODO: We have a bug where in some cases (after a few minutes of authentication we need to re-authenticate to delete the user).
 struct DeleteUserView: View {
-    @ObservedObject private var user: UserObservable = UserObservable.shared
+    let userService: UserService
+    
+    @ObservedObject private var model: DeleteUserViewModel
+    
+    
+    init(model: DeleteUserViewModel = DeleteUserViewModel.shared, userService: UserService = UserService()) {
+        self.model = model
+        self.userService = userService
+    }
     
     var body: some View {
         CustomBackground {
-            if user.isLoading {
+            if model.isLoading {
                 CustomLoading()
             } else {
-                if(user.users.isEmpty){
+                if(model.users.isEmpty){
                     Text("noUsers")
                 }
                 else{
-                    List(user.users) { user in
+                    List(model.users) { user in
                         HStack {
                             CustomText(label: "email", value: "\(user.email ?? "")")
                             Spacer()
@@ -28,10 +36,12 @@ struct DeleteUserView: View {
                                 .font(.system(size: 20, weight: .bold))
                                 .foregroundColor(ColorPalette.error)
                                 .onTapGesture {
-                                    self.user.delete(uid: user.id ?? "") { error in
-                                        if error != nil {
-                                        } else {
-                                            self.user.get()
+                                    Task{
+                                        do {
+                                            try await userService.delete(uid: user.id ?? "")
+                                            await model.get()
+                                        } catch {
+                                            // Handle error
                                         }
                                     }
                                 }
@@ -41,9 +51,6 @@ struct DeleteUserView: View {
                 }
             }
         }
-        .onAppear(perform: {
-            user.get()
-        })
     }
 }
 

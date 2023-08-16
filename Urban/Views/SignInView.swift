@@ -13,10 +13,16 @@ struct SignInView: View {
     @State private var password: String = ""
     @State private var loggedIn: Bool = false
     @State private var hasErrors: Bool = false
+    // TODO: Set current user in user manager observable
     @ObservedObject var user = UserObservable.shared
+    let userService: UserService
+    
+    init(userService: UserService = UserService()) {
+        self.userService = userService
+    }
     
     func signIn() async -> Void {
-        let result = await user.signIn(email, password)
+        let result = await userService.signIn(email, password)
         hasErrors = email.isEmpty || password.isEmpty
         hasErrors = result.hasErrors
         loggedIn = result.loggedIn

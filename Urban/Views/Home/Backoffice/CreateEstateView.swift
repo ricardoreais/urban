@@ -15,11 +15,16 @@ struct CreateEstateView: View {
     @State private var hasError: Bool = false
     @State private var selectedAgents: Set<User> = Set([])
 
-    @ObservedObject private var user: UserObservable = .shared
+    @ObservedObject private var model: CreateEstateViewModel = CreateEstateViewModel.shared
     @ObservedObject private var estateObs: EstateObservable = .shared
-
+    let userService: UserService
+    
+    init(userService: UserService = UserService()) {
+        self.userService = userService
+    }
+    
     func createEstate() async -> Void {
-        let createEstateCommand = CreateEstateCommand(code: estate.code, address: estate.address, agents: selectedAgents.map { user.convertToDocumentReference($0.id!) }, sellerEmail: sellerEmail)
+        let createEstateCommand = CreateEstateCommand(code: estate.code, address: estate.address, agents: selectedAgents.map { userService.convertToDocumentReference($0.id!) }, sellerEmail: sellerEmail)
         created = await estateObs.create(command: createEstateCommand)
         hasError = !created
     }
@@ -33,13 +38,10 @@ struct CreateEstateView: View {
                     CustomInput(text: $estate.address, placeholder: "address")
                     CustomSelectList<User>(
                         label: "agents",
-                        options: user.users,
+                        options: model.agents,
                         optionToString: { $0.email! },
                         selected: $selectedAgents
                     )
-                    .onAppear(perform: {
-                        user.get(type: .agent)
-                    })
                     CustomInput(text: $sellerEmail, placeholder: "sellerEmail")
                         .autocapitalization(/*@START_MENU_TOKEN@*/ .none/*@END_MENU_TOKEN@*/)
                 }

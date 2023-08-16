@@ -9,15 +9,16 @@ import SwiftUI
 
 struct VisitDetailsView: View {
     let id: String
-    @ObservedObject var viewModel = VisitReportObservable()
-    
+    @ObservedObject var viewModel = VisitReportObservable.shared
+
     var body: some View {
-        VStack(alignment: .leading){
-            Text("Visita \(viewModel.report.listingCode)")
+        VStack(alignment: .leading) {
+            // TODO:
+            Text("Visita \("viewModel.report.listingCode")")
                 .font(.title)
                 .fontWeight(.bold)
                 .padding(.top, 16)
-            HStack(alignment: .top){
+            HStack(alignment: .top) {
                 VStack(alignment: .leading) {
                     if viewModel.isLoading {
                         ProgressView()
@@ -28,12 +29,6 @@ struct VisitDetailsView: View {
                     } else {
                         Group {
                             Group {
-                                CustomText(label: "clientName", value: viewModel.report.clientName).padding(.bottom, 1)
-                                CustomText(label: "code", value: viewModel.report.listingCode)
-                                CustomText(label: "location", value: viewModel.report.location)
-                                CustomText(label: "value", value: "\(viewModel.report.listedValue)")
-                                CustomText(label: "address", value: viewModel.report.address)
-                                CustomText(label: "district", value: viewModel.report.district)
                                 CustomText(label: "floorPlan", value: viewModel.report.floorPlan.rawValue)
                                 CustomText(label: "finishes", value: viewModel.report.finishes.rawValue)
                                 CustomText(label: "sunExposure", value: viewModel.report.sunExposition.rawValue)
@@ -51,7 +46,6 @@ struct VisitDetailsView: View {
                             }
                         }.padding(1)
                     }
-                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             }
@@ -67,9 +61,8 @@ struct VisitDetailsView: View {
 
 struct VisitDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = VisitReportObservable()
-        viewModel.report = VisitReport(id: "uN8uNes0lGhdpGHmFq2t", clientName: "John Doe", listingCode: "ABC123", location: "City", listedValue: "100000", willingToPay: "eaa", userId: "6JAQAHYtNreSRJfEM9ssEr92uYx1")
-        viewModel.isLoading = false
+        let viewModel = VisitReportObservable.shared
+        viewModel.isLoading = true
         return VisitDetailsView(id: "6JAQAHYtNreSRJfEM9ssEr92uYx1", viewModel: viewModel)
     }
 }

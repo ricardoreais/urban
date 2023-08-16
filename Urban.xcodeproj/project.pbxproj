@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F10A4C72A8D31FF00D7A007 /* VisitReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4C62A8D31FF00D7A007 /* VisitReportService.swift */; };
+		1F10A4C92A8D341A00D7A007 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4C82A8D341A00D7A007 /* UserService.swift */; };
+		1F10A4CB2A8D38E500D7A007 /* ScheduleVisitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4CA2A8D38E500D7A007 /* ScheduleVisitViewModel.swift */; };
+		1F10A4CD2A8D3E3200D7A007 /* CreateEstateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4CC2A8D3E3200D7A007 /* CreateEstateViewModel.swift */; };
+		1F10A4CF2A8D3F4800D7A007 /* DeleteUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */; };
 		1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2152A840B2900A44925 /* CustomSecureField.swift */; };
 		1F1DD2182A840E1E00A44925 /* CustomLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2172A840E1E00A44925 /* CustomLoading.swift */; };
 		1F3804CD2A59B57A00F70347 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */; };
@@ -86,6 +91,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F10A4C62A8D31FF00D7A007 /* VisitReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportService.swift; sourceTree = "<group>"; };
+		1F10A4C82A8D341A00D7A007 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		1F10A4CA2A8D38E500D7A007 /* ScheduleVisitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVisitViewModel.swift; sourceTree = "<group>"; };
+		1F10A4CC2A8D3E3200D7A007 /* CreateEstateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEstateViewModel.swift; sourceTree = "<group>"; };
+		1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserViewModel.swift; sourceTree = "<group>"; };
 		1F1DD2152A840B2900A44925 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		1F1DD2172A840E1E00A44925 /* CustomLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoading.swift; sourceTree = "<group>"; };
 		1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -237,6 +247,7 @@
 				1F552DAF2A8A5AE70089349A /* EstatesView.swift */,
 				1F5FAF562A8A6445007DB2DC /* EstateView.swift */,
 				1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */,
+				1F10A4CA2A8D38E500D7A007 /* ScheduleVisitViewModel.swift */,
 			);
 			path = Agent;
 			sourceTree = "<group>";
@@ -261,7 +272,6 @@
 				1FFAD7FD2A113E1100F63B1C /* SignInView.swift */,
 				1F7F33AA2A22A9FE0080DE09 /* MainView.swift */,
 				1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */,
-				1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,6 +309,8 @@
 				1FED3F892A75582300F38DD9 /* UserObservable.swift */,
 				1FED3FA42A76895500F38DD9 /* EstateObservable.swift */,
 				1F9A97692A8AA54E00B64436 /* VisitObservable.swift */,
+				1F10A4C62A8D31FF00D7A007 /* VisitReportService.swift */,
+				1F10A4C82A8D341A00D7A007 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -306,6 +318,7 @@
 		1F9A97782A8ACD9600B64436 /* Buyer */ = {
 			isa = PBXGroup;
 			children = (
+				1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */,
 				1FFAD7F92A113BF000F63B1C /* VisitsView.swift */,
 				1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */,
 				1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */,
@@ -378,8 +391,10 @@
 			children = (
 				1FED3F872A75539100F38DD9 /* AddUserView.swift */,
 				1FED3F982A757BEE00F38DD9 /* DeleteUserView.swift */,
+				1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */,
 				1F3804D32A59BA1200F70347 /* BackofficeHomeView.swift */,
 				1FED3FA22A76886600F38DD9 /* CreateEstateView.swift */,
+				1F10A4CC2A8D3E3200D7A007 /* CreateEstateViewModel.swift */,
 			);
 			path = Backoffice;
 			sourceTree = "<group>";
@@ -476,10 +491,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F552DB02A8A5AE70089349A /* EstatesView.swift in Sources */,
+				1F10A4CD2A8D3E3200D7A007 /* CreateEstateViewModel.swift in Sources */,
 				1FED3FA52A76895500F38DD9 /* EstateObservable.swift in Sources */,
 				1F1DD2182A840E1E00A44925 /* CustomLoading.swift in Sources */,
 				1FED3F8F2A75632200F38DD9 /* CreateUserCommand.swift in Sources */,
 				1F552DAA2A879B8C0089349A /* Collection.swift in Sources */,
+				1F10A4CB2A8D38E500D7A007 /* ScheduleVisitViewModel.swift in Sources */,
 				1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */,
 				1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */,
 				1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */,
@@ -501,6 +518,7 @@
 				1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */,
 				1F9A976E2A8AA7A000B64436 /* CreateVisitCommand.swift in Sources */,
 				1F9A97682A8A9EB900B64436 /* CustomDatePicker.swift in Sources */,
+				1F10A4C92A8D341A00D7A007 /* UserService.swift in Sources */,
 				1F3A3DE92A4854800088F25D /* CustomText.swift in Sources */,
 				1FED3F882A75539100F38DD9 /* AddUserView.swift in Sources */,
 				1F3804DE2A59D15F00F70347 /* Visit.swift in Sources */,
@@ -522,10 +540,12 @@
 				1F3804DC2A59D15000F70347 /* Bid.swift in Sources */,
 				1FED3FA72A7689C400F38DD9 /* CreateEstateCommand.swift in Sources */,
 				1FED3FA92A79BC6B00F38DD9 /* CustomSelectList.swift in Sources */,
+				1F10A4CF2A8D3F4800D7A007 /* DeleteUserViewModel.swift in Sources */,
 				1F3804D42A59BA1200F70347 /* BackofficeHomeView.swift in Sources */,
 				1F3804ED2A5A4CF200F70347 /* CustomSection.swift in Sources */,
 				1FED3F8A2A75582300F38DD9 /* UserObservable.swift in Sources */,
 				1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */,
+				1F10A4C72A8D31FF00D7A007 /* VisitReportService.swift in Sources */,
 				1FED3FA32A76886600F38DD9 /* CreateEstateView.swift in Sources */,
 				1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */,
 				1FED3FB32A7ACF7E00F38DD9 /* CustomButton.swift in Sources */,

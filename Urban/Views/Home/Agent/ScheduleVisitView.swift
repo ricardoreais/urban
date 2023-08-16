@@ -9,13 +9,18 @@ import FirebaseFirestore
 import SwiftUI
 
 struct ScheduleVisitView: View {
-    @ObservedObject var userObs: UserObservable = .shared
+    @ObservedObject var model: ScheduleVisitViewModel
     @ObservedObject private var visitObs: VisitObservable = .shared
 
     @State private var selectedDate = Date()
     @State private var selectedAgents: Set<User> = Set([])
     @State private var created: Bool = false
     @State private var hasError: Bool = false
+
+    init(model: ScheduleVisitViewModel = ScheduleVisitViewModel.shared, visitObs: VisitObservable = .shared) {
+        self.model = model
+        self.visitObs = visitObs
+    }
 
     func createVisit() async {
         let createVisitCommand = CreateVisitCommand(date: selectedDate, buyer: selectedAgents.first!)
@@ -30,13 +35,10 @@ struct ScheduleVisitView: View {
                     CustomDatePicker(selectedDate: $selectedDate)
                     CustomSelectList<User>(
                         label: "buyers",
-                        options: userObs.users,
+                        options: model.buyers,
                         optionToString: { $0.email! },
                         selected: $selectedAgents
                     )
-                    .onAppear(perform: {
-                        userObs.get(type: .buyer)
-                    })
                     CustomButton("confirm", asyncAction: createVisit)
                         .navigationDestination(isPresented: $created) {
                             AgentHomeView()
@@ -56,9 +58,9 @@ struct ScheduleVisitView: View {
 
 struct ScheduleVisitView_Previews: PreviewProvider {
     static var previews: some View {
-        let user = UserObservable.shared
-        user.isLoading = false
-        user.value = User(
+        let model = ScheduleVisitViewModel.shared
+        model.isLoading = false
+        model.buyers = [User(
             id: "user123",
             createdAt: Timestamp(date: Date()),
             updatedAt: Timestamp(date: Date()),
@@ -66,9 +68,9 @@ struct ScheduleVisitView_Previews: PreviewProvider {
             email: "john@example.com",
             telephone: "123-456-7890",
             types: [.seller, .buyer]
-        )
+        )]
         return NavigationView {
-            ScheduleVisitView(userObs: user)
+            ScheduleVisitView(model: model)
         }
     }
 }

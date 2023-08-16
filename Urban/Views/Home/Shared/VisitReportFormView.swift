@@ -5,26 +5,19 @@
 //  Created by Juliana Estrela on 02/04/2023.
 //
 
-import SwiftUI
 import Firebase
 import FirebaseFirestore
+import SwiftUI
 
 struct VisitReportFormView: View {
-    @State private var visitReport: VisitReport = VisitReport()
+    @State private var visitReport: VisitReport = .init()
     @State private var visitCreated: Bool = false
     @State private var hasErrors: Bool = false
     
-    func onAppear() {
-        guard let uuidString = Auth.auth().currentUser?.uid  else {
-            return
-        }
-        visitReport.userId = uuidString;
-    }
-    
-    func save(visitReport: VisitReport) -> Void {
-        hasErrors = visitReport.clientName.isEmpty || visitReport.listingCode.isEmpty
+    func save(visitReport: VisitReport) {
+        hasErrors = visitReport.agent == nil || visitReport.buyer == nil
         
-        if(hasErrors){
+        if hasErrors {
             return
         }
         
@@ -40,7 +33,7 @@ struct VisitReportFormView: View {
                     visitCreated = true
                 }
             }
-        } catch let error {
+        } catch {
             hasErrors = true
             print("Error saving data: \(error)")
         }
@@ -48,26 +41,10 @@ struct VisitReportFormView: View {
     
     var body: some View {
         NavigationStack {
-            VStack{
+            CustomBackground {
                 Logo()
-                Form {
-                    CustomSection(header: "client") {
-                        CustomInput(text:$visitReport.clientName, placeholder: "clientName")
-                            .textInputAutocapitalization(.words)
-                            .disableAutocorrection(true)
-                        
-                        CustomInput(text: $visitReport.listingCode, placeholder: "listingCodeWithExample"
-                        )
-                    }
-                    
+                CustomForm {
                     CustomSection(header: "property") {
-                        Group{
-                            CustomInput(text: $visitReport.location, placeholder: "location")
-                            CustomInput(text: $visitReport.listedValue, placeholder: "value")
-                            CustomInput(text: $visitReport.address, placeholder: "address")
-                            CustomInput(text: $visitReport.district, placeholder: "district")
-                            
-                        }
                         EvaluationPicker(selection: $visitReport.floorPlan, label: "floorPlan")
                         EvaluationPicker(selection: $visitReport.finishes, label: "finishes")
                         EvaluationPicker(selection: $visitReport.sunExposition, label: "sunExposure")
@@ -111,17 +88,9 @@ struct VisitReportFormView: View {
                         dismissButton: .default(Text("ok"))
                     )
                 }
-                .scrollContentBackground(.hidden)
-                .onAppear(perform: onAppear)
-                .padding()
             }
-            .background(ColorPalette.primary)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .scrollContentBackground(.hidden)
         .navigationBarBackButtonHidden(true)
-        .accentColor(.accentColor)
-        .background(ColorPalette.primary)
     }
 }
 

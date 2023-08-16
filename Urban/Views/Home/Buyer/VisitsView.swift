@@ -20,15 +20,13 @@ struct VisitsView: View {
                         Text("noVisitsYet")
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    else{
+                    else {
                         List(viewModel.reports) { report in
                             NavigationLink(destination: VisitDetailsView(id: report.id ?? "")) {
-                                CustomText(label: "clientName", value: report.clientName) +
-                                CustomText(label: "code", value: report.listingCode)
+                                CustomText(label: "clientName", value: "TODO")
                             }
                             .listRowBackground(ColorPalette.highlights)
                         }
-                        
                     }
                 }
             }
@@ -48,7 +46,6 @@ struct VisitsView_Previews: PreviewProvider {
         let viewModel = VisitReportsObservable()
         viewModel.isLoading = false
         viewModel.reports = [
-            VisitReport(id: "uN8uNes0lGhdpGHmFq2t", clientName: "John Doe", listingCode: "ABC123", location: "City", listedValue: "100000", userId: "6JAQAHYtNreSRJfEM9ssEr92uYx1")
         ]
         return VisitsView(viewModel: viewModel)
     }

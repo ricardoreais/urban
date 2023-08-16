@@ -12,12 +12,12 @@ import FirebaseFirestoreSwift
 struct VisitReport: Codable, Identifiable {
     @DocumentID var id: String?
     @ServerTimestamp var date: Timestamp?
-    var clientName: String = ""
-    var listingCode: String = ""
-    var location: String = ""
-    var listedValue: String = ""
-    var address: String = ""
-    var district: String = ""
+    //var clientName: String = ""
+    //var listingCode: String = ""
+    //var location: String = ""
+    //var listedValue: String = ""
+    //var address: String = ""
+    //var district: String = ""
     var floorPlan: Evaluation = Evaluation.medium
     var finishes: Evaluation = Evaluation.medium
     var sunExposition: Evaluation = Evaluation.medium
@@ -31,7 +31,10 @@ struct VisitReport: Codable, Identifiable {
     var isOption: Decision = Decision.yes
     var hasPropertyToSell: Bool = false
     var comments: String = ""
-    var userId: String = ""
+    var createdBy: DocumentReference?
+    var estate: DocumentReference?
+    var buyer: DocumentReference?
+    var agent: DocumentReference?
     @ServerTimestamp var createdAt: Timestamp?
     @ServerTimestamp var updatedAt: Timestamp?
 }

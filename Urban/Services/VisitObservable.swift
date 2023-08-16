@@ -17,14 +17,18 @@ class VisitObservable: ObservableObject {
     private var estateObs: EstateObservable = .shared
     
     static let shared = VisitObservable()
-    private init() {}
+    let userService: UserService
+    
+    private init(userService: UserService = UserService()) {
+        self.userService = userService
+    }
     
     private let collection: CollectionReference = Firestore.firestore().collection(Collection.visits)
     
     // Schedules a visit and associates it with the current agent.
     func create(_ command: CreateVisitCommand) async -> Bool {
-        let currentUserReference = user.convertToDocumentReference(user.value.id!)
-        let buyerReference = user.convertToDocumentReference(command.buyer.id!)
+        let currentUserReference = userService.convertToDocumentReference(user.value.id!)
+        let buyerReference = userService.convertToDocumentReference(command.buyer.id!)
         let currentEstate = estateObs.convertToDocumentReference((estateObs.selected?.id)!)
         let visit = Visit(date: command.date, estate: currentEstate, buyer: buyerReference, agent: currentUserReference)
         
@@ -41,7 +45,7 @@ class VisitObservable: ObservableObject {
     // Gets the visits of the current buyer user.
     func get() async {
         do {
-            let currentUserReference = user.convertToDocumentReference(user.value.id!)
+            let currentUserReference = userService.convertToDocumentReference(user.value.id!)
             let documents = try await collection.whereField("buyer", isEqualTo: currentUserReference).getDocuments().documents
             let visits: [Visit] = documents.compactMap { document -> Visit? in
                 do {
