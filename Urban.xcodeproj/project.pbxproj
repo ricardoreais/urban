@@ -177,9 +177,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F10A4C52A8D1CD100D7A007 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		1F3804D02A59B9D100F70347 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1F10A4C52A8D1CD100D7A007 /* Shared */,
 				1F9A97782A8ACD9600B64436 /* Buyer */,
 				1F552DAE2A8A5A670089349A /* Agent */,
 				1FED3FA12A75824A00F38DD9 /* Backoffice */,
@@ -252,8 +261,6 @@
 				1FFAD7FD2A113E1100F63B1C /* SignInView.swift */,
 				1F7F33AA2A22A9FE0080DE09 /* MainView.swift */,
 				1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */,
-				1FA7F7A429D9D41E00886539 /* VisitReportFormView.swift */,
-				1FFAD7F92A113BF000F63B1C /* VisitsView.swift */,
 				1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */,
 			);
 			path = Views;
@@ -299,6 +306,7 @@
 		1F9A97782A8ACD9600B64436 /* Buyer */ = {
 			isa = PBXGroup;
 			children = (
+				1FFAD7F92A113BF000F63B1C /* VisitsView.swift */,
 				1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */,
 				1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */,
 			);

@@ -13,11 +13,6 @@ struct VisitsView: View {
     var body: some View {
         NavigationStack {
             CustomBackground {
-                Text("myVisits")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.top, 16)
-                
                 if viewModel.isLoading {
                     CustomLoading()
                 } else {

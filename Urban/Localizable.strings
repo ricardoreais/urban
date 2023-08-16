@@ -91,3 +91,6 @@
 "seeInBrowser" = "Ver no site da KW Portugal";
 "createBid" = "Criar proposta";
 "confirm" = "Confirmar";
+"noScheduledVisitsYet" = "Sem visitas agendadas...";
+"day" = "Dia";
+"property" = "Imóvel";
