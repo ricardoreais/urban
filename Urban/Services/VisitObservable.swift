@@ -9,6 +9,7 @@ import Firebase
 import FirebaseFirestore
 import Foundation
 
+// TODO: Segregate service logic from viewmodel logic
 class VisitObservable: ObservableObject {
     @Published var values: [Visit] = []
     @Published var isLoading = true

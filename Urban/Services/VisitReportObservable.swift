@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
+// TODO: Segregate service logic from viewmodel logic
 class VisitReportObservable: ObservableObject {
     @Published var report: VisitReport = VisitReport()
     @Published var isLoading = true

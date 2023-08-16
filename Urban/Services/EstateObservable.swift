@@ -10,6 +10,7 @@ import FirebaseFirestore
 import Foundation
 import SwiftUI
 
+// TODO: Segregate service logic from viewmodel logic
 class EstateObservable: ObservableObject {
     @Published var values: [Estate] = []
     @Published var selected: Estate? = nil

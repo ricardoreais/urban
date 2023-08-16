@@ -9,6 +9,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
+// TODO: Segregate service logic from viewmodel logic
 class UserObservable: ObservableObject {
     static let shared = UserObservable()
     private init() {}
