@@ -9,7 +9,12 @@ import Firebase
 import FirebaseFirestore
 import Foundation
 
-class VisitService {
+protocol VisitServiceProtocol {
+    func create(_ command: CreateVisitCommand) async -> Bool
+    func get() async -> [Visit]
+}
+
+class VisitService: VisitServiceProtocol {
     private let collection: CollectionReference
     private let userService: UserService
     private let estateService: EstateService
@@ -63,4 +68,4 @@ class VisitService {
             return []
         }
     }
-}                                                       
+}

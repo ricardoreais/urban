@@ -12,11 +12,11 @@ class EstatesViewModel: ObservableObject {
     @Published var selected: Estate? = nil
     @Published var isLoading = true
     
-    let estateService: EstateService
+    let estateService: EstateServiceProtocol
     
     static let shared = EstatesViewModel()
     
-    private init(estateService: EstateService = EstateService(userManager: UserManager.shared, userService: UserService())) {
+    init(estateService: EstateServiceProtocol = EstateService(userManager: UserManager.shared, userService: UserService())) {
         self.estateService = estateService
         Task{
             await get()

@@ -10,11 +10,11 @@ class UserManager: ObservableObject {
     @Published var current: User = User()
     @Published var isLoading = true
     
-    let userService: UserService
+    let userService: UserServiceProtocol
     
     static let shared = UserManager(userService: UserService())
     
-    private init(userService: UserService) {
+    init(userService: UserServiceProtocol) {
         self.userService = userService
         Task {
             await getCurrent()

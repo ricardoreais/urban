@@ -38,55 +38,52 @@ struct VisitReportFormView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            CustomBackground {
-                Logo()
-                CustomForm {
-                    CustomSection(header: "property") {
-                        EvaluationPicker(selection: $visitReport.floorPlan, label: "floorPlan")
-                        EvaluationPicker(selection: $visitReport.finishes, label: "finishes")
-                        EvaluationPicker(selection: $visitReport.sunExposition, label: "sunExposure")
-                        EvaluationPicker(selection: $visitReport.locationRating, label: "location")
-                        EvaluationPicker(selection: $visitReport.value, label: "value")
-                        EvaluationPicker(selection: $visitReport.overallAssessment, label: "overallAssessment")
-                        EvaluationPicker(selection: $visitReport.agentService, label: "kwService")
-                    }
+        CustomBackground {
+            Logo()
+            CustomForm {
+                CustomSection(header: "property") {
+                    EvaluationPicker(selection: $visitReport.floorPlan, label: "floorPlan")
+                    EvaluationPicker(selection: $visitReport.finishes, label: "finishes")
+                    EvaluationPicker(selection: $visitReport.sunExposition, label: "sunExposure")
+                    EvaluationPicker(selection: $visitReport.locationRating, label: "location")
+                    EvaluationPicker(selection: $visitReport.value, label: "value")
+                    EvaluationPicker(selection: $visitReport.overallAssessment, label: "overallAssessment")
+                    EvaluationPicker(selection: $visitReport.agentService, label: "kwService")
+                }
                     
-                    CustomSection(header: "impressions") {
-                        CustomInput(text: $visitReport.likes, placeholder: "whatDidYouLike")
+                CustomSection(header: "impressions") {
+                    CustomInput(text: $visitReport.likes, placeholder: "whatDidYouLike")
                         
-                        CustomInput(text: $visitReport.dislikes, placeholder: "whatDidYouDislike")
+                    CustomInput(text: $visitReport.dislikes, placeholder: "whatDidYouDislike")
                         
-                        Text("howMuchAreYouWillingToPay").foregroundColor(ColorPalette.secondary)
-                        CustomInput(text: $visitReport.willingToPay, placeholder: "moneyExample")
+                    Text("howMuchAreYouWillingToPay").foregroundColor(ColorPalette.secondary)
+                    CustomInput(text: $visitReport.willingToPay, placeholder: "moneyExample")
                         
-                        CustomPicker(selection: $visitReport.isOption, label: "isThisPropertyAnOption", options: [Decision.yes, Decision.no])
+                    CustomPicker(selection: $visitReport.isOption, label: "isThisPropertyAnOption", options: [Decision.yes, Decision.no])
                         
-                        CustomPicker(selection: $visitReport.hasPropertyToSell, label: "doYouHaveAnyPropertyToSell", options: [Decision.yes, Decision.no])
+                    CustomPicker(selection: $visitReport.hasPropertyToSell, label: "doYouHaveAnyPropertyToSell", options: [Decision.yes, Decision.no])
                         
-                        CustomInput(text: $visitReport.comments, placeholder: "comments")
-                    }
-                    Section {
-                        CustomButton("submit", asyncAction: { await save(visitReport: visitReport) })
-                            .navigationDestination(isPresented: $created) {
-                                HomeView()
-                            }
-                            .padding(.horizontal, 0.0)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
-                    .foregroundColor(.accentColor)
-                    .listRowBackground(Color.clear)
+                    CustomInput(text: $visitReport.comments, placeholder: "comments")
                 }
-                .alert(isPresented: $hasErrors) {
-                    Alert(
-                        title: Text("error"),
-                        message: Text("pleaseFillFieldsCorrectly"),
-                        dismissButton: .default(Text("ok"))
-                    )
+                Section {
+                    CustomButton("submit", asyncAction: { await save(visitReport: visitReport) })
+                        .navigationDestination(isPresented: $created) {
+                            HomeView()
+                        }
+                        .padding(.horizontal, 0.0)
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
+                .foregroundColor(.accentColor)
+                .listRowBackground(Color.clear)
+            }
+            .alert(isPresented: $hasErrors) {
+                Alert(
+                    title: Text("error"),
+                    message: Text("pleaseFillFieldsCorrectly"),
+                    dismissButton: .default(Text("ok"))
+                )
             }
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

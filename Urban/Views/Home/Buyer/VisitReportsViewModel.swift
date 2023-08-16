@@ -12,15 +12,18 @@ class VisitReportsViewModel: ObservableObject {
     @Published var selected: VisitReport = VisitReport()
     @Published var isLoading = true
     
-    let visitReportService: VisitReportService
+    let visitReportService: VisitReportServiceProtocol
     
     static let shared = VisitReportsViewModel()
     
-    private init(visitReportService: VisitReportService = VisitReportService()) {
+    init(visitReportService: VisitReportServiceProtocol = VisitReportService()) {
         self.visitReportService = visitReportService
         
-        Task{
-            try await visitReportService.get()
+        Task {
+            if(isLoading){
+                reports = try await visitReportService.get()
+            }
+            isLoading = false
         }
     }
     

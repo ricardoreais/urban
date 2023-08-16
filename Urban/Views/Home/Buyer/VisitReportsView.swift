@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct VisitReportsView: View {
-    @ObservedObject var model: VisitReportsViewModel
+    @ObservedObject var visitReportsStore: VisitReportsViewModel
     
-    init(model: VisitReportsViewModel = .shared) {
-        self.model = model
+    init(visitReportsStore: VisitReportsViewModel) {
+        self.visitReportsStore = visitReportsStore
     }
     
     var body: some View {
         NavigationStack {
             CustomBackground {
-                if model.isLoading {
+                if visitReportsStore.isLoading {
                     CustomLoading()
                 } else {
-                    if(model.reports.isEmpty){
+                    if(visitReportsStore.reports.isEmpty){
                         Text("noVisitsYet")
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
                     else {
-                        List(model.reports) { report in
+                        List(visitReportsStore.reports) { report in
                             NavigationLink(destination: VisitReportView(report: report)) {
                                 CustomText(label: "clientName", value: "TODO")
                             }
@@ -42,10 +42,6 @@ struct VisitReportsView: View {
 
 struct VisitReportsView_Previews: PreviewProvider {
     static var previews: some View {
-        let model = VisitReportsViewModel.shared
-        model.isLoading = false
-        model.reports = [
-        ]
-        return VisitReportsView(model: model)
+        VisitReportsView(visitReportsStore: VisitReportsViewModel(visitReportService: VisitReportServiceMock()))
     }
 }

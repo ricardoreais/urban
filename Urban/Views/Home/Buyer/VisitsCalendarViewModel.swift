@@ -10,11 +10,11 @@ class VisitsCalendarViewModel: ObservableObject {
     @Published var visits: [Visit] = []
     @Published var isLoading = true
     
-    let visitService: VisitService
+    let visitService: VisitServiceProtocol
     
     static let shared = VisitsCalendarViewModel(visitService: VisitService())
     
-    private init(visitService: VisitService) {
+    init(visitService: VisitServiceProtocol) {
         self.visitService = visitService
         
         Task{

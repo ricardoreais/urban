@@ -10,7 +10,14 @@ import FirebaseFirestore
 import Foundation
 import SwiftUI
 
-class EstateService {
+
+protocol EstateServiceProtocol {
+    func convertToDocumentReference(_ estateId: String) -> DocumentReference
+    func create(command: CreateEstateCommand) async -> Bool
+    func get() async -> [Estate]
+}
+
+class EstateService: EstateServiceProtocol {
     private let collection: CollectionReference
     private let userService: UserService
     private let userManager: UserManager

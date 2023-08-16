@@ -40,30 +40,6 @@ struct VisitReportView: View {
 
 struct VisitReportView_Previews: PreviewProvider {
     static var previews: some View {
-        let visitReport = VisitReport(
-            id: "someUniqueId",
-            date: Timestamp(date: Date()),  // Replace with the actual date
-            floorPlan: .medium,
-            finishes: .medium,
-            sunExposition: .medium,
-            locationRating: .medium,
-            value: .medium,
-            overallAssessment: .medium,
-            agentService: .medium,
-            likes: "Likes about the property",
-            dislikes: "Dislikes about the property",
-            willingToPay: "Some amount",
-            isOption: .yes,
-            hasPropertyToSell: true,
-            comments: "Additional comments",
-            createdBy: Firestore.firestore().document("users/userId"),  // Replace with the actual user reference
-            estate: Firestore.firestore().document("estates/estateId"),  // Replace with the actual estate reference
-            buyer: Firestore.firestore().document("buyers/buyerId"),  // Replace with the actual buyer reference
-            agent: Firestore.firestore().document("agents/agentId"),  // Replace with the actual agent reference
-            createdAt: Timestamp(date: Date()),
-            updatedAt: Timestamp(date: Date())
-        )
-        
-        return VisitReportView(report: visitReport)
+        VisitReportView(report: VisitReportServiceMock().visitReport)
     }
 }

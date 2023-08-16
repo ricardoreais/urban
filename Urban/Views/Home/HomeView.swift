@@ -50,17 +50,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        let userManager = UserManager.shared
-        userManager.isLoading = false
-        userManager.current = User(
-            id: "user123",
-            createdAt: Timestamp(date: Date()),
-            updatedAt: Timestamp(date: Date()),
-            name: "John Doe",
-            email: "john@example.com",
-            telephone: "123-456-7890",
-            types: [ .backoffice ]
-        )
-        return HomeView()
+        return HomeView(userManager: UserManager(userService: UserServiceMock()))
     }
 }

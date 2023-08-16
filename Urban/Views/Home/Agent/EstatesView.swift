@@ -10,7 +10,11 @@ import SwiftUI
 
 // TODO: Features: visitas efetuadas, outros agentes, propostas criadas, criar proposta, criar ficha de visita
 struct EstatesView: View {
-    @ObservedObject var model: EstatesViewModel = .shared
+    @ObservedObject var model: EstatesViewModel
+    
+    init(model: EstatesViewModel = .shared) {
+        self.model = model
+    }
 
     var body: some View {
         CustomBackground {
@@ -35,19 +39,6 @@ struct EstatesView: View {
 
 struct EstatesView_Previews: PreviewProvider {
     static var previews: some View {
-        let estate = EstatesViewModel.shared
-        let estate1 = Estate(
-            createdAt: Timestamp(date: Date()),
-            updatedAt: Timestamp(date: Date()), code: "E001", address: "123 Main St", seller: nil, agents: nil, visits: nil, bids: nil)
-        let estate2 = Estate(
-            createdAt: Timestamp(date: Date()),
-            updatedAt: Timestamp(date: Date()), code: "E002", address: "456 Elm St", seller: nil, agents: nil, visits: nil, bids: nil)
-        let estate3 = Estate(
-            createdAt: Timestamp(date: Date()),
-            updatedAt: Timestamp(date: Date()), code: "E003", address: "789 Oak St", seller: nil, agents: nil, visits: nil, bids: nil)
-        let estates: [Estate] = [estate1, estate2, estate3]
-        estate.isLoading = false
-        estate.estates = estates
-        return NavigationView { EstatesView(model: estate) }
+        return NavigationView { EstatesView(model: EstatesViewModel(estateService: EstateServiceMock())) }
     }
 }
