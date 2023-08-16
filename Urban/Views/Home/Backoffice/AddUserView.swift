@@ -12,7 +12,6 @@ struct AddUserView: View {
     
     @State private var email: String = ""
     @State private var type: UserType = UserType.guest
-    @ObservedObject private var user: UserObservable = UserObservable.shared
     
     init(userService: UserService = UserService()) {
         self.userService = userService

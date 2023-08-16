@@ -16,16 +16,17 @@ struct CreateEstateView: View {
     @State private var selectedAgents: Set<User> = Set([])
 
     @ObservedObject private var model: CreateEstateViewModel = CreateEstateViewModel.shared
-    @ObservedObject private var estateObs: EstateObservable = .shared
     let userService: UserService
+    let estateService: EstateService
     
-    init(userService: UserService = UserService()) {
+    init(userService: UserService = UserService(), estateService: EstateService = EstateService(userManager: UserManager.shared, userService: UserService())) {
         self.userService = userService
+        self.estateService = estateService
     }
     
     func createEstate() async -> Void {
         let createEstateCommand = CreateEstateCommand(code: estate.code, address: estate.address, agents: selectedAgents.map { userService.convertToDocumentReference($0.id!) }, sellerEmail: sellerEmail)
-        created = await estateObs.create(command: createEstateCommand)
+        created = await estateService.create(command: createEstateCommand)
         hasError = !created
     }
 

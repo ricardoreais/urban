@@ -10,9 +10,16 @@ import Firebase
 import FirebaseFirestore
 
 class VisitReportService {
-    static let shared = VisitReportService()
-    private let db = Firestore.firestore()
-    private let collection: CollectionReference = Firestore.firestore().collection(Collection.visitReports)
+    private let collection: CollectionReference
+    private let userService: UserService
+    private let userManager: UserManager
+    
+    init(userManager: UserManager = .shared, userService: UserService = UserService()) {
+        self.collection = Firestore.firestore().collection(Collection.visitReports)
+        self.userService = userService
+        self.userManager = userManager
+    }
+    
     
     func get(id: String, completion: @escaping (Result<VisitReport, Error>) -> Void) {
         collection
@@ -37,44 +44,40 @@ class VisitReportService {
             }
     }
     
-    func getAll(forUserID userID: String, completion: @escaping (Result<[VisitReport], Error>) -> Void) {
-        collection
-            .whereField("userId", isEqualTo: userID)
-            .getDocuments { snapshot, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let documents = snapshot?.documents else {
-                    completion(.failure(NSError(domain: "No documents found", code: -1, userInfo: nil)))
-                    return
-                }
-                
-                let reports: [VisitReport] = documents.compactMap { document -> VisitReport? in
-                    do {
-                        let report = try document.data(as: VisitReport.self)
-                        return report
-                    } catch {
-                        return nil
-                    }
-                }
-                
-                completion(.success(reports))
-            }
-    }
-    
-    func save(visitReport: VisitReport, completion: @escaping (Result<Void, Error>) -> Void) {
+    func get() async throws -> [VisitReport] {
+        let query = collection.whereField("buyer", isEqualTo: userService.convertToDocumentReference(userManager.current.id!))
+        
         do {
-            try collection.addDocument(from: visitReport) { error in
-                if let error = error {
-                    completion(.failure(error))
-                } else {
-                    completion(.success(()))
+            let querySnapshot = try await query.getDocuments()
+            
+            return querySnapshot.documents.compactMap { document in
+                do {
+                    return try document.data(as: VisitReport.self)
+                } catch {
+                    // Handle any errors related to data decoding
+                    print("Error decoding document: \(error)")
+                    return nil
                 }
             }
         } catch {
-            completion(.failure(error))
+            throw error
         }
     }
+    
+    func save(visitReport: VisitReport) async throws {
+        guard visitReport.agent != nil, visitReport.buyer != nil else {
+            throw VisitReportError.missingRequiredFields
+        }
+        
+        do {
+            _ = try collection.addDocument(from: visitReport)
+        } catch {
+            throw VisitReportError.saveFailed(error)
+        }
+    }
+}
+
+enum VisitReportError: Error {
+    case missingRequiredFields
+    case saveFailed(Error)
 }

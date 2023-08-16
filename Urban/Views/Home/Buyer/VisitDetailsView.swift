@@ -6,63 +6,64 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct VisitDetailsView: View {
-    let id: String
-    @ObservedObject var viewModel = VisitReportObservable.shared
+    let report: VisitReport
+    
+    init(report: VisitReport) {
+        self.report = report
+    }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            // TODO:
-            Text("Visita \("viewModel.report.listingCode")")
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.top, 16)
-            HStack(alignment: .top) {
-                VStack(alignment: .leading) {
-                    if viewModel.isLoading {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
-                            .scaleEffect(2)
-                            .padding()
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    } else {
-                        Group {
-                            Group {
-                                CustomText(label: "floorPlan", value: viewModel.report.floorPlan.rawValue)
-                                CustomText(label: "finishes", value: viewModel.report.finishes.rawValue)
-                                CustomText(label: "sunExposure", value: viewModel.report.sunExposition.rawValue)
-                            }
-                            Group {
-                                CustomText(label: "location", value: viewModel.report.locationRating.rawValue)
-                                CustomText(label: "value", value: viewModel.report.value.rawValue)
-                                CustomText(label: "overallAssessment", value: viewModel.report.overallAssessment.rawValue)
-                                CustomText(label: "kwService", value: viewModel.report.agentService.rawValue)
-                                CustomText(label: "whatILiked", value: viewModel.report.likes)
-                                CustomText(label: "whatIDisliked", value: viewModel.report.dislikes)
-                                CustomText(label: "howMuchAmIWillingToPay", value: viewModel.report.willingToPay)
-                                CustomText(label: "isItAnOption", value: viewModel.report.isOption.rawValue)
-                                CustomText(label: "comments", value: viewModel.report.comments)
-                            }
-                        }.padding(1)
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        CustomBackground(alignment: .leading) {
+            Group {
+                CustomText(label: "floorPlan", value: report.floorPlan.rawValue)
+                CustomText(label: "finishes", value: report.finishes.rawValue)
+                CustomText(label: "sunExposure", value: report.sunExposition.rawValue)
+            }
+            Group {
+                CustomText(label: "location", value: report.locationRating.rawValue)
+                CustomText(label: "value", value: report.value.rawValue)
+                CustomText(label: "overallAssessment", value: report.overallAssessment.rawValue)
+                CustomText(label: "kwService", value: report.agentService.rawValue)
+                CustomText(label: "whatILiked", value: report.likes)
+                CustomText(label: "whatIDisliked", value: report.dislikes)
+                CustomText(label: "howMuchAmIWillingToPay", value: report.willingToPay)
+                CustomText(label: "isItAnOption", value: report.isOption.rawValue)
+                CustomText(label: "comments", value: report.comments)
             }
         }
-        .padding(20)
-        .onAppear(perform: {
-            viewModel.fetchVisitReport(id: id)
-        })
-        .foregroundColor(ColorPalette.secondary)
-        .background(ColorPalette.primary)
     }
 }
 
 struct VisitDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = VisitReportObservable.shared
-        viewModel.isLoading = true
-        return VisitDetailsView(id: "6JAQAHYtNreSRJfEM9ssEr92uYx1", viewModel: viewModel)
+        var visitReport = VisitReport(
+            id: "someUniqueId",
+            date: Timestamp(date: Date()),  // Replace with the actual date
+            floorPlan: .medium,
+            finishes: .medium,
+            sunExposition: .medium,
+            locationRating: .medium,
+            value: .medium,
+            overallAssessment: .medium,
+            agentService: .medium,
+            likes: "Likes about the property",
+            dislikes: "Dislikes about the property",
+            willingToPay: "Some amount",
+            isOption: .yes,
+            hasPropertyToSell: true,
+            comments: "Additional comments",
+            createdBy: Firestore.firestore().document("users/userId"),  // Replace with the actual user reference
+            estate: Firestore.firestore().document("estates/estateId"),  // Replace with the actual estate reference
+            buyer: Firestore.firestore().document("buyers/buyerId"),  // Replace with the actual buyer reference
+            agent: Firestore.firestore().document("agents/agentId"),  // Replace with the actual agent reference
+            createdAt: Timestamp(date: Date()),
+            updatedAt: Timestamp(date: Date())
+        )
+        
+        return VisitDetailsView(report: visitReport)
     }
 }

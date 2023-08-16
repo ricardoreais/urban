@@ -11,31 +11,29 @@ import SwiftUI
 
 struct VisitReportFormView: View {
     @State private var visitReport: VisitReport = .init()
-    @State private var visitCreated: Bool = false
+    @State private var created: Bool = false
     @State private var hasErrors: Bool = false
     
-    func save(visitReport: VisitReport) {
-        hasErrors = visitReport.agent == nil || visitReport.buyer == nil
-        
-        if hasErrors {
-            return
-        }
-        
-        let db = Firestore.firestore()
-        let collectionRef = db.collection("VisitReports")
+    let visitReportService: VisitReportService
+    
+    init(visitReportService: VisitReportService = VisitReportService()) {
+        self.visitReportService = visitReportService
+    }
+    
+    func save(visitReport: VisitReport) async {
         do {
-            try collectionRef.addDocument(from: visitReport) { error in
-                if let error = error {
-                    hasErrors = true
-                    print("Error saving data: \(error.localizedDescription)")
-                } else {
-                    print("Form submitted with success!")
-                    visitCreated = true
-                }
-            }
-        } catch {
+            try await visitReportService.save(visitReport: visitReport)
+            print("Form submitted with success!")
+            created = true
+        } catch VisitReportError.missingRequiredFields {
+            hasErrors = true
+        } catch let VisitReportError.saveFailed(error) {
             hasErrors = true
             print("Error saving data: \(error)")
+        } catch {
+            // Handle any other errors
+            hasErrors = true
+            print("Unknown error: \(error)")
         }
     }
     
@@ -69,14 +67,12 @@ struct VisitReportFormView: View {
                         CustomInput(text: $visitReport.comments, placeholder: "comments")
                     }
                     Section {
-                        Button("submit") {
-                            save(visitReport: visitReport)
-                        }
-                        .navigationDestination(isPresented: $visitCreated) {
-                            HomeView()
-                        }
-                        .padding(.horizontal, 0.0)
-                        .frame(maxWidth: .infinity, alignment: .center)
+                        CustomButton("submit", asyncAction: { await save(visitReport: visitReport) })
+                            .navigationDestination(isPresented: $created) {
+                                HomeView()
+                            }
+                            .padding(.horizontal, 0.0)
+                            .frame(maxWidth: .infinity, alignment: .center)
                     }
                     .foregroundColor(.accentColor)
                     .listRowBackground(Color.clear)

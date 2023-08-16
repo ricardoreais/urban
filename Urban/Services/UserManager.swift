@@ -6,13 +6,13 @@
 //
 import Foundation
 
-class UserObservable: ObservableObject {
-    @Published var value: User = User()
+class UserManager: ObservableObject {
+    @Published var current: User = User()
     @Published var isLoading = true
     
     let userService: UserService
     
-    static let shared = UserObservable(userService: UserService())
+    static let shared = UserManager(userService: UserService())
     
     private init(userService: UserService) {
         self.userService = userService
@@ -25,7 +25,7 @@ class UserObservable: ObservableObject {
         if let user = await userService.getCurrent() {
             DispatchQueue.main.async {
                 self.isLoading = false
-                self.value = user
+                self.current = user
             }
         } else {
             // Handle fetching user errors

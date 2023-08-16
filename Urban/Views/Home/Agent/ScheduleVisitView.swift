@@ -10,21 +10,23 @@ import SwiftUI
 
 struct ScheduleVisitView: View {
     @ObservedObject var model: ScheduleVisitViewModel
-    @ObservedObject private var visitObs: VisitObservable = .shared
+    let visitService: VisitService
+    @ObservedObject private var estatesStore: EstatesViewModel
 
     @State private var selectedDate = Date()
     @State private var selectedAgents: Set<User> = Set([])
     @State private var created: Bool = false
     @State private var hasError: Bool = false
 
-    init(model: ScheduleVisitViewModel = ScheduleVisitViewModel.shared, visitObs: VisitObservable = .shared) {
+    init(model: ScheduleVisitViewModel = ScheduleVisitViewModel.shared, visitService: VisitService = VisitService(), estatesStore: EstatesViewModel = .shared) {
         self.model = model
-        self.visitObs = visitObs
+        self.visitService = visitService
+        self.estatesStore = estatesStore
     }
 
     func createVisit() async {
-        let createVisitCommand = CreateVisitCommand(date: selectedDate, buyer: selectedAgents.first!)
-        created = await visitObs.create(createVisitCommand)
+        let createVisitCommand = CreateVisitCommand(date: selectedDate, buyer: selectedAgents.first!, estate: estatesStore.selected!)
+        created = await visitService.create(createVisitCommand)
         hasError = !created
     }
 

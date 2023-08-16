@@ -9,13 +9,6 @@ import FirebaseFirestore
 import SwiftUI
 
 struct AgentHomeView: View {
-    @ObservedObject private var userObs: UserObservable = .shared
-    @ObservedObject private var estateObs: EstateObservable = .shared
-
-    init() {
-        UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
-    }
-
     var body: some View {
         TabView {
             EstatesView()
@@ -43,6 +36,8 @@ struct AgentHomeView: View {
                 Label("addBuyer", systemImage: "person.badge.plus")
             }
             .navigationBarBackButtonHidden(true)
+        }.onAppear {
+            UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
         }
     }
 }

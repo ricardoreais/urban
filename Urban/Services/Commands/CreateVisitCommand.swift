@@ -10,4 +10,5 @@ import Foundation
 struct CreateVisitCommand {
     var date: Date
     var buyer: User
+    var estate: Estate
 }

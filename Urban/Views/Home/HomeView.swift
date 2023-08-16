@@ -9,15 +9,19 @@ import SwiftUI
 import FirebaseFirestore
 
 struct HomeView: View {
-    @ObservedObject private var user: UserObservable = UserObservable.shared
-
+    @ObservedObject private var userManager: UserManager
+    
+    init(userManager: UserManager = UserManager.shared) {
+        self.userManager = userManager
+    }
+    
     var body: some View {
         CustomBackground {
-            if user.isLoading {
+            if userManager.isLoading {
                 CustomLoading()
             } else {
                 // Depending on the user type, show different views
-                if let userTypes = user.value.types {
+                if let userTypes = userManager.current.types {
                     if userTypes.contains(UserType.admin) {
                         BackofficeHomeView()
                     } else if userTypes.contains(UserType.buyer) {
@@ -41,21 +45,14 @@ struct HomeView: View {
                 }
             }
         }
-        .onAppear {
-            if(user.value.id == nil){
-                Task {
-                    await user.getCurrent()
-                }
-            }
-        }
-        
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        let userObs = UserObservable.shared
-        let currentUser = User(
+        let userManager = UserManager.shared
+        userManager.isLoading = false
+        userManager.current = User(
             id: "user123",
             createdAt: Timestamp(date: Date()),
             updatedAt: Timestamp(date: Date()),
@@ -64,8 +61,6 @@ struct HomeView_Previews: PreviewProvider {
             telephone: "123-456-7890",
             types: [ .backoffice ]
         )
-        userObs.isLoading = false
-        userObs.value = currentUser
         return HomeView()
     }
 }

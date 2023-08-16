@@ -13,8 +13,7 @@ struct SignInView: View {
     @State private var password: String = ""
     @State private var loggedIn: Bool = false
     @State private var hasErrors: Bool = false
-    // TODO: Set current user in user manager observable
-    @ObservedObject var user = UserObservable.shared
+    @ObservedObject var userManager = UserManager.shared
     let userService: UserService
     
     init(userService: UserService = UserService()) {

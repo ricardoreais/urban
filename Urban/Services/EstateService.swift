@@ -1,8 +1,8 @@
 //
-//  EstateObservable.swift
+//  EstateService.swift
 //  Urban
 //
-//  Created by Juliana Estrela on 30/07/2023.
+//  Created by Juliana Estrela on 16/08/2023.
 //
 
 import Firebase
@@ -10,27 +10,19 @@ import FirebaseFirestore
 import Foundation
 import SwiftUI
 
-// TODO: Segregate service logic from viewmodel logic
-class EstateObservable: ObservableObject {
-    @Published var values: [Estate] = []
-    @Published var selected: Estate? = nil
-    @Published var isLoading = true
-    let userService: UserService
+class EstateService {
+    private let collection: CollectionReference
+    private let userService: UserService
+    private let userManager: UserManager
     
-    static let shared = EstateObservable(userService: UserService())
-    
-    private init(userService: UserService) {
+    init(userManager: UserManager = .shared, userService: UserService = UserService()) {
+        self.collection = Firestore.firestore().collection(Collection.estates)
         self.userService = userService
+        self.userManager = userManager
     }
-
-    private let collection: CollectionReference = Firestore.firestore().collection(Collection.estates)
     
     func convertToDocumentReference(_ estateId: String) -> DocumentReference {
         return collection.document(estateId)
-    }
-    
-    func setSelected(_ estate: Estate) {
-        selected = estate
     }
     
     func create(command: CreateEstateCommand) async -> Bool {
@@ -60,12 +52,11 @@ class EstateObservable: ObservableObject {
         }
     }
     
-    func get() async {
+    func get() async -> [Estate] {
         do {
-            // TODO: Get current user from user manager observable?
-            let userId: String = ((await userService.getCurrent())?.id)!;
-            let currentUserReference = userService.convertToDocumentReference(userId)
+            let currentUserReference = userService.convertToDocumentReference(userManager.current.id!)
             let documents = try await collection.whereField("agents", arrayContains: currentUserReference).getDocuments().documents
+            
             let estates: [Estate] = documents.compactMap { document -> Estate? in
                 do {
                     let estateDocument = try document.data(as: Estate.self)
@@ -76,13 +67,11 @@ class EstateObservable: ObservableObject {
                 }
             }
             
-            DispatchQueue.main.async {
-                Logger.verboseFetchedEstates()
-                self.isLoading = false
-                self.values = estates
-            }
+            Logger.verboseFetchedEstates()
+            return estates
         } catch {
             Logger.error(error)
+            return []
         }
     }
 }

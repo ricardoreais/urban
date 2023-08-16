@@ -10,9 +10,7 @@ import SwiftUI
 
 struct EstateView: View {
     let estate: Estate
-    @ObservedObject private var estateObs: EstateObservable = .shared
-    @ObservedObject private var visitObs: VisitObservable = .shared
-    @ObservedObject private var userObs: UserObservable = .shared
+    @ObservedObject private var estateStore: EstatesViewModel = .shared
 
     func openInPreview() {}
 
@@ -33,7 +31,7 @@ struct EstateView: View {
             }
         }
         .onAppear(perform: {
-            estateObs.setSelected(estate)
+            estateStore.setSelected(estate)
         })
     }
 }

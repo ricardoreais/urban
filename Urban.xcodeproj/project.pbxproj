@@ -12,6 +12,10 @@
 		1F10A4CB2A8D38E500D7A007 /* ScheduleVisitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4CA2A8D38E500D7A007 /* ScheduleVisitViewModel.swift */; };
 		1F10A4CD2A8D3E3200D7A007 /* CreateEstateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4CC2A8D3E3200D7A007 /* CreateEstateViewModel.swift */; };
 		1F10A4CF2A8D3F4800D7A007 /* DeleteUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */; };
+		1F10A4D12A8D4A0800D7A007 /* EstateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D02A8D4A0800D7A007 /* EstateService.swift */; };
+		1F10A4D32A8D4A1400D7A007 /* VisitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D22A8D4A1400D7A007 /* VisitService.swift */; };
+		1F10A4D52A8D4C0400D7A007 /* EstatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D42A8D4C0400D7A007 /* EstatesViewModel.swift */; };
+		1F10A4DC2A8D56AB00D7A007 /* VisitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4DB2A8D56AB00D7A007 /* VisitsViewModel.swift */; };
 		1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2152A840B2900A44925 /* CustomSecureField.swift */; };
 		1F1DD2182A840E1E00A44925 /* CustomLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2172A840E1E00A44925 /* CustomLoading.swift */; };
 		1F3804CD2A59B57A00F70347 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */; };
@@ -32,7 +36,6 @@
 		1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */; };
 		1F3A3DE32A4718990088F25D /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE22A4718990088F25D /* Logo.swift */; };
 		1F3A3DE52A4840EC0088F25D /* VisitDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */; };
-		1F3A3DE72A4841450088F25D /* VisitReportObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE62A4841450088F25D /* VisitReportObservable.swift */; };
 		1F3A3DE92A4854800088F25D /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3A3DE82A4854800088F25D /* CustomText.swift */; };
 		1F3A3DEF2A4860BA0088F25D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F3A3DEE2A4860BA0088F25D /* Localizable.strings */; };
 		1F552DAA2A879B8C0089349A /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F552DA92A879B8C0089349A /* Collection.swift */; };
@@ -58,11 +61,10 @@
 		1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F654BDD29EB1CD6002ED11C /* VisitReport.swift */; };
 		1F70C6EC2A8CDDC200ED785F /* CustomCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F70C6EB2A8CDDC200ED785F /* CustomCalendar.swift */; };
 		1F7F33AB2A22A9FE0080DE09 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F33AA2A22A9FE0080DE09 /* MainView.swift */; };
-		1F7F33B92A2389000080DE09 /* VisitReportsObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */; };
 		1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8AD73A2A3DD6990031B154 /* HomeView.swift */; };
 		1F9A97662A8A9E1000B64436 /* ScheduleVisitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */; };
 		1F9A97682A8A9EB900B64436 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97672A8A9EB900B64436 /* CustomDatePicker.swift */; };
-		1F9A976A2A8AA54E00B64436 /* VisitObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97692A8AA54E00B64436 /* VisitObservable.swift */; };
+		1F9A976A2A8AA54E00B64436 /* VisitsCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A97692A8AA54E00B64436 /* VisitsCalendarViewModel.swift */; };
 		1F9A976E2A8AA7A000B64436 /* CreateVisitCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A976D2A8AA7A000B64436 /* CreateVisitCommand.swift */; };
 		1F9A977C2A8ACE1300B64436 /* VisitsCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */; };
 		1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7A229D9D41E00886539 /* UrbanApp.swift */; };
@@ -73,12 +75,11 @@
 		1FA7F7B329D9E43B00886539 /* Decision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7B229D9E43B00886539 /* Decision.swift */; };
 		1FA7F7B729D9EDEF00886539 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA7F7B629D9EDEF00886539 /* ColorExtension.swift */; };
 		1FED3F882A75539100F38DD9 /* AddUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F872A75539100F38DD9 /* AddUserView.swift */; };
-		1FED3F8A2A75582300F38DD9 /* UserObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F892A75582300F38DD9 /* UserObservable.swift */; };
+		1FED3F8A2A75582300F38DD9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F892A75582300F38DD9 /* UserManager.swift */; };
 		1FED3F8F2A75632200F38DD9 /* CreateUserCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F8E2A75632200F38DD9 /* CreateUserCommand.swift */; };
 		1FED3F992A757BEE00F38DD9 /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F982A757BEE00F38DD9 /* DeleteUserView.swift */; };
 		1FED3F9E2A757F9F00F38DD9 /* GetUsersQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F9D2A757F9F00F38DD9 /* GetUsersQuery.swift */; };
 		1FED3FA32A76886600F38DD9 /* CreateEstateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FA22A76886600F38DD9 /* CreateEstateView.swift */; };
-		1FED3FA52A76895500F38DD9 /* EstateObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FA42A76895500F38DD9 /* EstateObservable.swift */; };
 		1FED3FA72A7689C400F38DD9 /* CreateEstateCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FA62A7689C400F38DD9 /* CreateEstateCommand.swift */; };
 		1FED3FA92A79BC6B00F38DD9 /* CustomSelectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FA82A79BC6B00F38DD9 /* CustomSelectList.swift */; };
 		1FED3FAB2A79BF4700F38DD9 /* CustomSelectListDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FAA2A79BF4700F38DD9 /* CustomSelectListDetail.swift */; };
@@ -96,6 +97,10 @@
 		1F10A4CA2A8D38E500D7A007 /* ScheduleVisitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVisitViewModel.swift; sourceTree = "<group>"; };
 		1F10A4CC2A8D3E3200D7A007 /* CreateEstateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEstateViewModel.swift; sourceTree = "<group>"; };
 		1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserViewModel.swift; sourceTree = "<group>"; };
+		1F10A4D02A8D4A0800D7A007 /* EstateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstateService.swift; sourceTree = "<group>"; };
+		1F10A4D22A8D4A1400D7A007 /* VisitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitService.swift; sourceTree = "<group>"; };
+		1F10A4D42A8D4C0400D7A007 /* EstatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatesViewModel.swift; sourceTree = "<group>"; };
+		1F10A4DB2A8D56AB00D7A007 /* VisitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsViewModel.swift; sourceTree = "<group>"; };
 		1F1DD2152A840B2900A44925 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		1F1DD2172A840E1E00A44925 /* CustomLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoading.swift; sourceTree = "<group>"; };
 		1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -116,7 +121,6 @@
 		1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		1F3A3DE22A4718990088F25D /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
 		1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitDetailsView.swift; sourceTree = "<group>"; };
-		1F3A3DE62A4841450088F25D /* VisitReportObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportObservable.swift; sourceTree = "<group>"; };
 		1F3A3DE82A4854800088F25D /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
 		1F3A3DEE2A4860BA0088F25D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		1F552DA92A879B8C0089349A /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -129,12 +133,11 @@
 		1F654BDD29EB1CD6002ED11C /* VisitReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReport.swift; sourceTree = "<group>"; };
 		1F70C6EB2A8CDDC200ED785F /* CustomCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalendar.swift; sourceTree = "<group>"; };
 		1F7F33AA2A22A9FE0080DE09 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsObservable.swift; sourceTree = "<group>"; };
 		1F8AD73A2A3DD6990031B154 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		1F9A97642A8A97F200B64436 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleVisitView.swift; sourceTree = "<group>"; };
 		1F9A97672A8A9EB900B64436 /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
-		1F9A97692A8AA54E00B64436 /* VisitObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitObservable.swift; sourceTree = "<group>"; };
+		1F9A97692A8AA54E00B64436 /* VisitsCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsCalendarViewModel.swift; sourceTree = "<group>"; };
 		1F9A976D2A8AA7A000B64436 /* CreateVisitCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVisitCommand.swift; sourceTree = "<group>"; };
 		1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitsCalendarView.swift; sourceTree = "<group>"; };
 		1FA7F79F29D9D41E00886539 /* AM Advisors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AM Advisors.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,12 +149,11 @@
 		1FA7F7B229D9E43B00886539 /* Decision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decision.swift; sourceTree = "<group>"; };
 		1FA7F7B629D9EDEF00886539 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		1FED3F872A75539100F38DD9 /* AddUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserView.swift; sourceTree = "<group>"; };
-		1FED3F892A75582300F38DD9 /* UserObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObservable.swift; sourceTree = "<group>"; };
+		1FED3F892A75582300F38DD9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		1FED3F8E2A75632200F38DD9 /* CreateUserCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserCommand.swift; sourceTree = "<group>"; };
 		1FED3F982A757BEE00F38DD9 /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
 		1FED3F9D2A757F9F00F38DD9 /* GetUsersQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersQuery.swift; sourceTree = "<group>"; };
 		1FED3FA22A76886600F38DD9 /* CreateEstateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEstateView.swift; sourceTree = "<group>"; };
-		1FED3FA42A76895500F38DD9 /* EstateObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstateObservable.swift; sourceTree = "<group>"; };
 		1FED3FA62A7689C400F38DD9 /* CreateEstateCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEstateCommand.swift; sourceTree = "<group>"; };
 		1FED3FA82A79BC6B00F38DD9 /* CustomSelectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectList.swift; sourceTree = "<group>"; };
 		1FED3FAA2A79BF4700F38DD9 /* CustomSelectListDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectListDetail.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				1F3804CE2A59B9C500F70347 /* AgentHomeView.swift */,
 				1F552DAF2A8A5AE70089349A /* EstatesView.swift */,
+				1F10A4D42A8D4C0400D7A007 /* EstatesViewModel.swift */,
 				1F5FAF562A8A6445007DB2DC /* EstateView.swift */,
 				1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */,
 				1F10A4CA2A8D38E500D7A007 /* ScheduleVisitViewModel.swift */,
@@ -304,13 +307,11 @@
 			children = (
 				1FED3F9A2A757F0900F38DD9 /* Queries */,
 				1FED3F8B2A75624000F38DD9 /* Commands */,
-				1F7F33B82A2389000080DE09 /* VisitReportsObservable.swift */,
-				1F3A3DE62A4841450088F25D /* VisitReportObservable.swift */,
-				1FED3F892A75582300F38DD9 /* UserObservable.swift */,
-				1FED3FA42A76895500F38DD9 /* EstateObservable.swift */,
-				1F9A97692A8AA54E00B64436 /* VisitObservable.swift */,
+				1FED3F892A75582300F38DD9 /* UserManager.swift */,
 				1F10A4C62A8D31FF00D7A007 /* VisitReportService.swift */,
 				1F10A4C82A8D341A00D7A007 /* UserService.swift */,
+				1F10A4D02A8D4A0800D7A007 /* EstateService.swift */,
+				1F10A4D22A8D4A1400D7A007 /* VisitService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -320,8 +321,10 @@
 			children = (
 				1F3A3DE42A4840EC0088F25D /* VisitDetailsView.swift */,
 				1FFAD7F92A113BF000F63B1C /* VisitsView.swift */,
+				1F10A4DB2A8D56AB00D7A007 /* VisitsViewModel.swift */,
 				1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */,
 				1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */,
+				1F9A97692A8AA54E00B64436 /* VisitsCalendarViewModel.swift */,
 			);
 			path = Buyer;
 			sourceTree = "<group>";
@@ -492,29 +495,29 @@
 			files = (
 				1F552DB02A8A5AE70089349A /* EstatesView.swift in Sources */,
 				1F10A4CD2A8D3E3200D7A007 /* CreateEstateViewModel.swift in Sources */,
-				1FED3FA52A76895500F38DD9 /* EstateObservable.swift in Sources */,
 				1F1DD2182A840E1E00A44925 /* CustomLoading.swift in Sources */,
 				1FED3F8F2A75632200F38DD9 /* CreateUserCommand.swift in Sources */,
 				1F552DAA2A879B8C0089349A /* Collection.swift in Sources */,
 				1F10A4CB2A8D38E500D7A007 /* ScheduleVisitViewModel.swift in Sources */,
 				1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */,
 				1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */,
+				1F10A4D52A8D4C0400D7A007 /* EstatesViewModel.swift in Sources */,
 				1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */,
 				1F5FAF5B2A8A7168007DB2DC /* CustomLink.swift in Sources */,
 				1F552DAC2A8A334C0089349A /* Logger.swift in Sources */,
 				1F3804D62A59BA2A00F70347 /* SellerHomeView.swift in Sources */,
 				1FA7F7A529D9D41E00886539 /* VisitReportFormView.swift in Sources */,
+				1F10A4DC2A8D56AB00D7A007 /* VisitsViewModel.swift in Sources */,
 				1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */,
 				1F3804E32A5A3D4400F70347 /* CustomInput.swift in Sources */,
 				1FFAD7FA2A113BF000F63B1C /* VisitsView.swift in Sources */,
-				1F7F33B92A2389000080DE09 /* VisitReportsObservable.swift in Sources */,
-				1F3A3DE72A4841450088F25D /* VisitReportObservable.swift in Sources */,
 				1F3A3DE32A4718990088F25D /* Logo.swift in Sources */,
 				1F3804E92A5A459B00F70347 /* LocalizedEnum.swift in Sources */,
 				1F5FAF5D2A8A738E007DB2DC /* SettingsManager.swift in Sources */,
 				1FED3F992A757BEE00F38DD9 /* DeleteUserView.swift in Sources */,
 				1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */,
 				1F3804D82A59D12B00F70347 /* User.swift in Sources */,
+				1F10A4D12A8D4A0800D7A007 /* EstateService.swift in Sources */,
 				1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */,
 				1F9A976E2A8AA7A000B64436 /* CreateVisitCommand.swift in Sources */,
 				1F9A97682A8A9EB900B64436 /* CustomDatePicker.swift in Sources */,
@@ -534,16 +537,17 @@
 				1FA7F7B729D9EDEF00886539 /* ColorExtension.swift in Sources */,
 				1F3804D22A59B9FD00F70347 /* BuyerHomeView.swift in Sources */,
 				1FED3F9E2A757F9F00F38DD9 /* GetUsersQuery.swift in Sources */,
-				1F9A976A2A8AA54E00B64436 /* VisitObservable.swift in Sources */,
+				1F9A976A2A8AA54E00B64436 /* VisitsCalendarViewModel.swift in Sources */,
 				1F3804E52A5A411000F70347 /* EvaluationPicker.swift in Sources */,
 				1F70C6EC2A8CDDC200ED785F /* CustomCalendar.swift in Sources */,
 				1F3804DC2A59D15000F70347 /* Bid.swift in Sources */,
 				1FED3FA72A7689C400F38DD9 /* CreateEstateCommand.swift in Sources */,
 				1FED3FA92A79BC6B00F38DD9 /* CustomSelectList.swift in Sources */,
+				1F10A4D32A8D4A1400D7A007 /* VisitService.swift in Sources */,
 				1F10A4CF2A8D3F4800D7A007 /* DeleteUserViewModel.swift in Sources */,
 				1F3804D42A59BA1200F70347 /* BackofficeHomeView.swift in Sources */,
 				1F3804ED2A5A4CF200F70347 /* CustomSection.swift in Sources */,
-				1FED3F8A2A75582300F38DD9 /* UserObservable.swift in Sources */,
+				1FED3F8A2A75582300F38DD9 /* UserManager.swift in Sources */,
 				1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */,
 				1F10A4C72A8D31FF00D7A007 /* VisitReportService.swift in Sources */,
 				1FED3FA32A76886600F38DD9 /* CreateEstateView.swift in Sources */,

@@ -9,26 +9,26 @@ import FirebaseFirestore
 import SwiftUI
 
 struct VisitsCalendarView: View {
-    @ObservedObject var visitObs: VisitObservable
+    @ObservedObject var model: VisitsCalendarViewModel
 
     private let dateFormatter: DateFormatter
 
-    init(visitObs: VisitObservable = .shared) {
+    init(model: VisitsCalendarViewModel = .shared) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, d MMMM HH:mm"
         self.dateFormatter = dateFormatter
-        self.visitObs = .shared
+        self.model = model
     }
 
     var body: some View {
         CustomBackground {
-            if visitObs.isLoading {
+            if model.isLoading {
                 CustomLoading()
             } else {
-                if visitObs.values.isEmpty {
+                if model.visits.isEmpty {
                     Text("noScheduledVisitsYet")
                 } else {
-                    List(visitObs.values) { visit in
+                    List(model.visits) { visit in
                         Menu {
                             NavigationLink("createVisitReport", destination: VisitReportFormView())
                             CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\("1208-4267")")
@@ -41,18 +41,13 @@ struct VisitsCalendarView: View {
                 }
             }
         }
-        .onAppear(perform: {
-            Task {
-                await visitObs.get()
-            }
-        })
     }
 }
 
 struct VisitsCalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        let visitObs = VisitObservable.shared
-        visitObs.isLoading = false
+        let model = VisitsCalendarViewModel.shared
+        model.isLoading = false
         let estateReference = Firestore.firestore().collection("estates").document("estateID")
         let buyerReference = Firestore.firestore().collection("buyers").document("buyerID")
         let agentReference = Firestore.firestore().collection("agents").document("agentID")
@@ -66,10 +61,10 @@ struct VisitsCalendarView_Previews: PreviewProvider {
             buyer: buyerReference,
             agent: agentReference
         )
-        visitObs.values = [firstVisit]
+        model.visits = [firstVisit]
         return
             NavigationView {
-                VisitsCalendarView(visitObs: visitObs)
+                VisitsCalendarView(model: model)
             }
     }
 }
