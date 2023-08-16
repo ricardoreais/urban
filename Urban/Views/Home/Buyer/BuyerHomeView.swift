@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct BuyerHomeView: View {
-    init() {
-        UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
-    }
-
     var body: some View {
-        TabView {
+        CustomTab {
             VisitReportsView()
             .tabItem {
                 Label("myVisits", systemImage: "list.bullet")
@@ -23,7 +19,6 @@ struct BuyerHomeView: View {
                 Label("calendar", systemImage: "calendar")
             }
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

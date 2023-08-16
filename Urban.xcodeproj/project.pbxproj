@@ -16,6 +16,7 @@
 		1F10A4D32A8D4A1400D7A007 /* VisitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D22A8D4A1400D7A007 /* VisitService.swift */; };
 		1F10A4D52A8D4C0400D7A007 /* EstatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D42A8D4C0400D7A007 /* EstatesViewModel.swift */; };
 		1F10A4DC2A8D56AB00D7A007 /* VisitReportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4DB2A8D56AB00D7A007 /* VisitReportsViewModel.swift */; };
+		1F10A4E02A8D5DCE00D7A007 /* CustomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4DF2A8D5DCE00D7A007 /* CustomTab.swift */; };
 		1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2152A840B2900A44925 /* CustomSecureField.swift */; };
 		1F1DD2182A840E1E00A44925 /* CustomLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2172A840E1E00A44925 /* CustomLoading.swift */; };
 		1F3804CD2A59B57A00F70347 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */; };
@@ -101,6 +102,7 @@
 		1F10A4D22A8D4A1400D7A007 /* VisitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitService.swift; sourceTree = "<group>"; };
 		1F10A4D42A8D4C0400D7A007 /* EstatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatesViewModel.swift; sourceTree = "<group>"; };
 		1F10A4DB2A8D56AB00D7A007 /* VisitReportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsViewModel.swift; sourceTree = "<group>"; };
+		1F10A4DF2A8D5DCE00D7A007 /* CustomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab.swift; sourceTree = "<group>"; };
 		1F1DD2152A840B2900A44925 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		1F1DD2172A840E1E00A44925 /* CustomLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoading.swift; sourceTree = "<group>"; };
 		1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				1F5FAF5A2A8A7168007DB2DC /* CustomLink.swift */,
 				1F9A97672A8A9EB900B64436 /* CustomDatePicker.swift */,
 				1F70C6EB2A8CDDC200ED785F /* CustomCalendar.swift */,
+				1F10A4DF2A8D5DCE00D7A007 /* CustomTab.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				1FED3FA72A7689C400F38DD9 /* CreateEstateCommand.swift in Sources */,
 				1FED3FA92A79BC6B00F38DD9 /* CustomSelectList.swift in Sources */,
 				1F10A4D32A8D4A1400D7A007 /* VisitService.swift in Sources */,
+				1F10A4E02A8D5DCE00D7A007 /* CustomTab.swift in Sources */,
 				1F10A4CF2A8D3F4800D7A007 /* DeleteUserViewModel.swift in Sources */,
 				1F3804D42A59BA1200F70347 /* BackofficeHomeView.swift in Sources */,
 				1F3804ED2A5A4CF200F70347 /* CustomSection.swift in Sources */,

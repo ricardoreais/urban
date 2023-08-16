@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct BackofficeHomeView: View {
-
-    init() {
-        UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
-    }
-
     var body: some View {
-        TabView {
+        CustomTab {
             CreateEstateView()
             .tabItem {
                 Label("createEstate", systemImage: "square.grid.3x1.folder.badge.plus")
@@ -34,7 +29,6 @@ struct BackofficeHomeView: View {
                 Label("deleteUser", systemImage: "person.badge.minus")
             }
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

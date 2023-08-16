@@ -10,34 +10,27 @@ import SwiftUI
 
 struct AgentHomeView: View {
     var body: some View {
-        TabView {
+        CustomTab {
             EstatesView()
                 .tabItem {
                     Label("estates", systemImage: "building.2")
                 }
-            VStack {
+            CustomBackground {
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
                 Text("Features: nome do comprador, opção de criar relatório de visita, opção de criar proposta")
                     .foregroundColor(ColorPalette.secondary)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
             .tabItem {
                 Label("buyers", systemImage: "person.3.sequence")
             }
-            VStack {
+            CustomBackground {
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(ColorPalette.primary)
             .tabItem {
                 Label("addBuyer", systemImage: "person.badge.plus")
             }
-            .navigationBarBackButtonHidden(true)
-        }.onAppear {
-            UITabBar.appearance().unselectedItemTintColor = ColorPalette.secondary.uiColor()
         }
     }
 }
