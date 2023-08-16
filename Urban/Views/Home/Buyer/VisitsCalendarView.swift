@@ -12,8 +12,7 @@ struct VisitsCalendarView: View {
     
     var body: some View {
         CustomBackground {
-            CustomDatePicker(selectedDate: $selectedDate)
-                .padding(.horizontal, 30)
+            Text("TODO")
         }
     }
 }
