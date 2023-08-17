@@ -6,6 +6,7 @@
 //
 import Foundation
 
+@MainActor
 class UserManager: ObservableObject {
     @Published var current: User = User()
     @Published var isLoading = true

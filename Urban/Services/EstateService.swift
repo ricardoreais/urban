@@ -61,7 +61,7 @@ class EstateService: EstateServiceProtocol {
     
     func get() async -> [Estate] {
         do {
-            let currentUserReference = userService.convertToDocumentReference(userManager.current.id!)
+            let currentUserReference = userService.convertToDocumentReference(await userManager.current.id!)
             let documents = try await collection.whereField("agents", arrayContains: currentUserReference).getDocuments().documents
             
             let estates: [Estate] = documents.compactMap { document -> Estate? in

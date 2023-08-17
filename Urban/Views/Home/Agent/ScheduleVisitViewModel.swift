@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class ScheduleVisitViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var buyers: [User] = []

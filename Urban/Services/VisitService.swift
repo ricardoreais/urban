@@ -28,7 +28,7 @@ class VisitService: VisitServiceProtocol {
     }
     
     func create(_ command: CreateVisitCommand) async -> Bool {
-        let currentUserReference = userService.convertToDocumentReference(userManager.current.id!)
+        let currentUserReference = userService.convertToDocumentReference(await userManager.current.id!)
         let buyerReference = userService.convertToDocumentReference(command.buyer.id!)
         let currentEstate = estateService.convertToDocumentReference((command.estate.id)!)
         let visit = Visit(date: command.date, estate: currentEstate, buyer: buyerReference, agent: currentUserReference)

@@ -18,10 +18,10 @@ struct ScheduleVisitView: View {
     @State private var created: Bool = false
     @State private var hasError: Bool = false
 
-    init(userService: UserServiceProtocol = UserService(), visitService: VisitServiceProtocol = VisitService(), estatesStore: EstatesStore = .shared) {
+    init(userService: UserServiceProtocol = UserService(), visitService: VisitServiceProtocol = VisitService(), estatesStore: EstatesStore) {
         self.model = ScheduleVisitViewModel(userService: userService)
         self.visitService = visitService
-        self.estatesStore = .shared
+        self.estatesStore = estatesStore
     }
 
     func createVisit() async {

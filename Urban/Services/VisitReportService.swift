@@ -52,7 +52,7 @@ class VisitReportService : VisitReportServiceProtocol {
     
     func get() async throws -> [VisitReport] {
         do {
-            let query = collection.whereField("buyer", isEqualTo: userService.convertToDocumentReference(userManager.current.id!))
+            let query = collection.whereField("buyer", isEqualTo: userService.convertToDocumentReference(await userManager.current.id!))
             let querySnapshot = try await query.getDocuments()
             
             return querySnapshot.documents.compactMap { document in

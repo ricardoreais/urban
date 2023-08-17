@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class EstatesStore: ObservableObject {
     @Published var estates: [Estate] = []
     @Published var selected: Estate? = nil
@@ -28,11 +29,11 @@ class EstatesStore: ObservableObject {
     }
     
     func createEstate(command: CreateEstateCommand) async -> Bool {
-        return await estateService.create(command: command)
+        return await self.estateService.create(command: command)
     }
     
     func get() async {
-        self.estates = await estateService.get()
+        self.estates = await self.estateService.get()
         self.isLoading = false
     }
 }

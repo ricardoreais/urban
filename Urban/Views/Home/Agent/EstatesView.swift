@@ -12,8 +12,8 @@ import SwiftUI
 struct EstatesView: View {
     @ObservedObject var estateStore: EstatesStore
     
-    init(estateService: EstateServiceProtocol = EstateService()) {
-        self.estateStore = EstatesStore(estateService: estateService)
+    init(estatesStore: EstatesStore = .shared) {
+        self.estateStore = estatesStore
     }
 
     var body: some View {
@@ -25,7 +25,7 @@ struct EstatesView: View {
                     Text("noEstatesYet")
                 } else {
                     List(estateStore.estates) { estate in
-                        NavigationLink(destination: EstateView()) {
+                        NavigationLink(destination: EstateView(estateStore: estateStore)) {
                             CustomText(label: "code", value: estate.code) +
                                 CustomText(label: "address", value: estate.address)
                         }.simultaneousGesture(TapGesture().onEnded{
@@ -42,11 +42,8 @@ struct EstatesView: View {
 struct EstatesView_Previews: PreviewProvider {
     static var previews: some View {
         let estateServiceMock = EstateServiceMock()
-        let estateStore: EstatesStore = EstatesStore(estateService: estateServiceMock)
-        estateStore.selected = estateServiceMock.estate1
-        let hasEstates: Bool = estateStore.selected == nil
-        print("hello")
-        //return Text("Has estates: \(hasEstates ? "yes" : "no")")
-        return EstatesView(estateService: EstateServiceMock())
+        let estatesStore: EstatesStore = EstatesStore(estateService: estateServiceMock)
+        estatesStore.selected = estateServiceMock.estate1
+        return NavigationView{EstatesView(estatesStore: estatesStore)}
     }
 }

@@ -12,7 +12,7 @@ struct EstateView: View {
     @ObservedObject var estateStore: EstatesStore
     let estate: Estate
 
-    init(estateStore: EstatesStore = .shared) {
+    init(estateStore: EstatesStore) {
         self.estateStore = estateStore
         self.estate = estateStore.selected!
     }
@@ -41,10 +41,8 @@ struct EstateView: View {
 struct EstateView_Previews: PreviewProvider {
     static var previews: some View {
         let estateServiceMock: EstateServiceMock = EstateServiceMock()
-        let estateStore: EstatesStore = EstatesStore.shared;
+        let estateStore: EstatesStore = EstatesStore(estateService: estateServiceMock)
         estateStore.selected = estateServiceMock.estate1
-        
-        //return Text("hello")
-        return NavigationView {            EstateView(estateStore: estateStore)}
+        return NavigationView {EstateView(estateStore: estateStore)}
     }
 }
