@@ -14,6 +14,7 @@ class VisitServiceMock: VisitServiceProtocol {
         id: "visit123",
         date: Date(),
         estate: UserServiceMock().reference,
+        reports: [],
         buyer: UserServiceMock().reference,
         agent: UserServiceMock().reference
     )
@@ -21,6 +22,7 @@ class VisitServiceMock: VisitServiceProtocol {
         id: "visit456",
         date: Date(),
         estate: UserServiceMock().reference,
+        reports: [],
         buyer: UserServiceMock().reference,
         agent: UserServiceMock().reference
     )

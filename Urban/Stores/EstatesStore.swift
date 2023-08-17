@@ -7,19 +7,19 @@
 
 import Foundation
 
-class EstatesViewModel: ObservableObject {
+class EstatesStore: ObservableObject {
     @Published var estates: [Estate] = []
     @Published var selected: Estate? = nil
     @Published var isLoading = true
     
     let estateService: EstateServiceProtocol
     
-    static let shared = EstatesViewModel()
+    static let shared = EstatesStore()
     
-    init(estateService: EstateServiceProtocol = EstateService(userManager: UserManager.shared, userService: UserService())) {
+    init(estateService: EstateServiceProtocol = EstateService()) {
         self.estateService = estateService
         Task{
-            await get()
+            await self.get()
         }
     }
     

@@ -11,11 +11,11 @@ class ScheduleVisitViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var buyers: [User] = []
     
-    let userService: UserService
+    let userService: UserServiceProtocol
     
     static let shared = ScheduleVisitViewModel(userService: UserService())
     
-    private init(userService: UserService) {
+    init(userService: UserServiceProtocol) {
         self.userService = userService
         Task {
             await get()

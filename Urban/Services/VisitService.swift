@@ -16,11 +16,11 @@ protocol VisitServiceProtocol {
 
 class VisitService: VisitServiceProtocol {
     private let collection: CollectionReference
-    private let userService: UserService
-    private let estateService: EstateService
+    private let userService: UserServiceProtocol
+    private let estateService: EstateServiceProtocol
     private let userManager: UserManager
     
-    init(userService: UserService = UserService(), estateService: EstateService = EstateService(), userManager: UserManager = .shared) {
+    init(userService: UserServiceProtocol = UserService(), estateService: EstateServiceProtocol = EstateService(), userManager: UserManager = .shared) {
         self.collection = Firestore.firestore().collection(Collection.visits)
         self.estateService = estateService
         self.userService = userService

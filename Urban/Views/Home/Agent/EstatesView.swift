@@ -10,25 +10,27 @@ import SwiftUI
 
 // TODO: Features: visitas efetuadas, outros agentes, propostas criadas, criar proposta, criar ficha de visita
 struct EstatesView: View {
-    @ObservedObject var model: EstatesViewModel
+    @ObservedObject var estateStore: EstatesStore
     
-    init(model: EstatesViewModel = .shared) {
-        self.model = model
+    init(estateService: EstateServiceProtocol = EstateService()) {
+        self.estateStore = EstatesStore(estateService: estateService)
     }
 
     var body: some View {
         CustomBackground {
-            if model.isLoading {
+            if estateStore.isLoading {
                 CustomLoading()
             } else {
-                if model.estates.isEmpty {
+                if estateStore.estates.isEmpty {
                     Text("noEstatesYet")
                 } else {
-                    List(model.estates) { estate in
-                        NavigationLink(destination: EstateView(estate: estate)) {
+                    List(estateStore.estates) { estate in
+                        NavigationLink(destination: EstateView()) {
                             CustomText(label: "code", value: estate.code) +
                                 CustomText(label: "address", value: estate.address)
-                        }
+                        }.simultaneousGesture(TapGesture().onEnded{
+                            estateStore.setSelected(estate)
+                        })
                         .listRowBackground(ColorPalette.highlights)
                     }
                 }
@@ -39,6 +41,12 @@ struct EstatesView: View {
 
 struct EstatesView_Previews: PreviewProvider {
     static var previews: some View {
-        return NavigationView { EstatesView(model: EstatesViewModel(estateService: EstateServiceMock())) }
+        let estateServiceMock = EstateServiceMock()
+        let estateStore: EstatesStore = EstatesStore(estateService: estateServiceMock)
+        estateStore.selected = estateServiceMock.estate1
+        let hasEstates: Bool = estateStore.selected == nil
+        print("hello")
+        //return Text("Has estates: \(hasEstates ? "yes" : "no")")
+        return EstatesView(estateService: EstateServiceMock())
     }
 }

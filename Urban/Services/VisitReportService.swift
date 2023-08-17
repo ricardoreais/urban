@@ -17,10 +17,10 @@ protocol VisitReportServiceProtocol {
 
 class VisitReportService : VisitReportServiceProtocol {
     private let collection: CollectionReference
-    private let userService: UserService
+    private let userService: UserServiceProtocol
     private let userManager: UserManager
     
-    init(userManager: UserManager = .shared, userService: UserService = UserService()) {
+    init(userManager: UserManager = .shared, userService: UserServiceProtocol = UserService()) {
         self.collection = Firestore.firestore().collection(Collection.visitReports)
         self.userService = userService
         self.userManager = userManager

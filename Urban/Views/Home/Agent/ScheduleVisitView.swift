@@ -10,18 +10,18 @@ import SwiftUI
 
 struct ScheduleVisitView: View {
     @ObservedObject var model: ScheduleVisitViewModel
-    let visitService: VisitService
-    @ObservedObject private var estatesStore: EstatesViewModel
+    let visitService: VisitServiceProtocol
+    @ObservedObject var estatesStore: EstatesStore
 
     @State private var selectedDate = Date()
     @State private var selectedAgents: Set<User> = Set([])
     @State private var created: Bool = false
     @State private var hasError: Bool = false
 
-    init(model: ScheduleVisitViewModel = ScheduleVisitViewModel.shared, visitService: VisitService = VisitService(), estatesStore: EstatesViewModel = .shared) {
-        self.model = model
+    init(userService: UserServiceProtocol = UserService(), visitService: VisitServiceProtocol = VisitService(), estatesStore: EstatesStore = .shared) {
+        self.model = ScheduleVisitViewModel(userService: userService)
         self.visitService = visitService
-        self.estatesStore = estatesStore
+        self.estatesStore = .shared
     }
 
     func createVisit() async {
@@ -60,19 +60,12 @@ struct ScheduleVisitView: View {
 
 struct ScheduleVisitView_Previews: PreviewProvider {
     static var previews: some View {
+        let userService: UserServiceMock = UserServiceMock()
         let model = ScheduleVisitViewModel.shared
         model.isLoading = false
-        model.buyers = [User(
-            id: "user123",
-            createdAt: Timestamp(date: Date()),
-            updatedAt: Timestamp(date: Date()),
-            name: "John Doe",
-            email: "john@example.com",
-            telephone: "123-456-7890",
-            types: [.seller, .buyer]
-        )]
+        model.buyers = [userService.buyer]
         return NavigationView {
-            ScheduleVisitView(model: model)
+            ScheduleVisitView(userService: UserServiceMock(), visitService: VisitServiceMock(), estatesStore: EstatesStore(estateService: EstateServiceMock()))
         }
     }
 }

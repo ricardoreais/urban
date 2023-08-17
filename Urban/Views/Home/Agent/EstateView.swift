@@ -9,9 +9,14 @@ import FirebaseFirestore
 import SwiftUI
 
 struct EstateView: View {
+    @ObservedObject var estateStore: EstatesStore
     let estate: Estate
-    @ObservedObject private var estateStore: EstatesViewModel = .shared
 
+    init(estateStore: EstatesStore = .shared) {
+        self.estateStore = estateStore
+        self.estate = estateStore.selected!
+    }
+    
     func openInPreview() {}
 
     var body: some View {
@@ -24,35 +29,22 @@ struct EstateView: View {
             Menu {
                 Button("createVisitReport", action: openInPreview)
                 CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
-                NavigationLink("scheduleVisit", destination: ScheduleVisitView())
+                NavigationLink("scheduleVisit", destination: ScheduleVisitView(estatesStore: estateStore))
                 Button("createBid", action: openInPreview)
             } label: {
                 Label("moreActions", systemImage: "ellipsis")
             }
         }
-        .onAppear(perform: {
-            estateStore.setSelected(estate)
-        })
     }
 }
 
 struct EstateView_Previews: PreviewProvider {
     static var previews: some View {
-        let createdTimestamp = Timestamp(date: Calendar.current.date(bySettingHour: 9, minute: 0, second: 0, of: Date())!)
-        let updatedTimestamp = Timestamp(date: Calendar.current.date(bySettingHour: 13, minute: 0, second: 0, of: Date())!)
-        let estate = Estate(
-            id: "someID",
-            createdAt: createdTimestamp,
-            updatedAt: updatedTimestamp,
-            code: "ABC123",
-            address: "123 Main St",
-            seller: nil,
-            agents: nil,
-            visits: nil,
-            bids: nil
-        )
-        return NavigationView {
-            EstateView(estate: estate)
-        }
+        let estateServiceMock: EstateServiceMock = EstateServiceMock()
+        let estateStore: EstatesStore = EstatesStore.shared;
+        estateStore.selected = estateServiceMock.estate1
+        
+        //return Text("hello")
+        return NavigationView {            EstateView(estateStore: estateStore)}
     }
 }
