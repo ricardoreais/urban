@@ -14,9 +14,9 @@ struct VisitReportFormView: View {
     @State private var created: Bool = false
     @State private var hasErrors: Bool = false
     
-    let visitReportService: VisitReportService
+    let visitReportService: VisitReportServiceProtocol
     
-    init(visitReportService: VisitReportService = VisitReportService()) {
+    init(visitReportService: VisitReportServiceProtocol = VisitReportService()) {
         self.visitReportService = visitReportService
     }
     
