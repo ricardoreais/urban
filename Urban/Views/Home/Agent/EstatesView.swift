@@ -25,12 +25,10 @@ struct EstatesView: View {
                     Text("noEstatesYet")
                 } else {
                     List(estateStore.estates) { estate in
-                        NavigationLink(destination: EstateView(estateStore: estateStore)) {
+                        NavigationLink(destination: EstateView(estate: estate, estateStore: estateStore)) {
                             CustomText(label: "code", value: estate.code) +
                                 CustomText(label: "address", value: estate.address)
-                        }.simultaneousGesture(TapGesture().onEnded{
-                            estateStore.setSelected(estate)
-                        })
+                        }
                         .listRowBackground(ColorPalette.highlights)
                     }
                 }

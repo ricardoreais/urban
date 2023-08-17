@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomText: View {
     let label: String
-    let value: String
+    let value: String?
     
     var body: some View {
         Group {
@@ -17,7 +17,7 @@ struct CustomText: View {
                 .foregroundColor(.accentColor)
                 .fontWeight(.bold) +
             Text(" ") +
-            Text(LocalizedStringKey(value))
+            Text(LocalizedStringKey(value ?? ""))
                 .foregroundColor(ColorPalette.secondary)
         }
     }

@@ -12,9 +12,9 @@ struct EstateView: View {
     @ObservedObject var estateStore: EstatesStore
     let estate: Estate
 
-    init(estateStore: EstatesStore) {
+    init(estate: Estate, estateStore: EstatesStore) {
         self.estateStore = estateStore
-        self.estate = estateStore.selected!
+        self.estate = estate
     }
     
     func openInPreview() {}
@@ -34,7 +34,9 @@ struct EstateView: View {
             } label: {
                 Label("moreActions", systemImage: "ellipsis")
             }
-        }
+        }.onAppear(perform: {
+            estateStore.setSelected(estate)
+        })
     }
 }
 
@@ -42,7 +44,6 @@ struct EstateView_Previews: PreviewProvider {
     static var previews: some View {
         let estateServiceMock: EstateServiceMock = EstateServiceMock()
         let estateStore: EstatesStore = EstatesStore(estateService: estateServiceMock)
-        estateStore.selected = estateServiceMock.estate1
-        return NavigationView {EstateView(estateStore: estateStore)}
+        return NavigationView {EstateView(estate: estateServiceMock.estate1, estateStore: estateStore)}
     }
 }
