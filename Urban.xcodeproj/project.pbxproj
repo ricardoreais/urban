@@ -21,9 +21,6 @@
 		1F10A4E52A8D893000D7A007 /* UserServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4E42A8D893000D7A007 /* UserServiceMock.swift */; };
 		1F10A4E82A8D8D5C00D7A007 /* VisitServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4E72A8D8D5C00D7A007 /* VisitServiceMock.swift */; };
 		1F10A4EA2A8D8EE400D7A007 /* EstateServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4E92A8D8EE400D7A007 /* EstateServiceMock.swift */; };
-		1F10A4EE2A8E670700D7A007 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 1F10A4ED2A8E670700D7A007 /* Swinject */; };
-		1F10A4F02A8E670700D7A007 /* Swinject-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 1F10A4EF2A8E670700D7A007 /* Swinject-Dynamic */; };
-		1F10A4F22A8E672B00D7A007 /* DIResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4F12A8E672B00D7A007 /* DIResolver.swift */; };
 		1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2152A840B2900A44925 /* CustomSecureField.swift */; };
 		1F1DD2182A840E1E00A44925 /* CustomLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2172A840E1E00A44925 /* CustomLoading.swift */; };
 		1F3804CD2A59B57A00F70347 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */; };
@@ -114,7 +111,6 @@
 		1F10A4E42A8D893000D7A007 /* UserServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceMock.swift; sourceTree = "<group>"; };
 		1F10A4E72A8D8D5C00D7A007 /* VisitServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitServiceMock.swift; sourceTree = "<group>"; };
 		1F10A4E92A8D8EE400D7A007 /* EstateServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstateServiceMock.swift; sourceTree = "<group>"; };
-		1F10A4F12A8E672B00D7A007 /* DIResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIResolver.swift; sourceTree = "<group>"; };
 		1F1DD2152A840B2900A44925 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		1F1DD2172A840E1E00A44925 /* CustomLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoading.swift; sourceTree = "<group>"; };
 		1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -187,14 +183,12 @@
 				1F654BC629EB14AD002ED11C /* FirebaseDatabaseSwift in Frameworks */,
 				1F654BC429EB14AD002ED11C /* FirebaseDatabase in Frameworks */,
 				1F654BD029EB14AD002ED11C /* FirebaseFunctionsCombine-Community in Frameworks */,
-				1F10A4F02A8E670700D7A007 /* Swinject-Dynamic in Frameworks */,
 				1F654BD829EB14AD002ED11C /* FirebaseStorageCombine-Community in Frameworks */,
 				1F654BC029EB14AD002ED11C /* FirebaseAuth in Frameworks */,
 				1F654BCE29EB14AD002ED11C /* FirebaseFunctions in Frameworks */,
 				1F654BD629EB14AD002ED11C /* FirebaseStorage in Frameworks */,
 				1F654BD429EB14AD002ED11C /* FirebaseRemoteConfigSwift in Frameworks */,
 				1F654BCC29EB14AD002ED11C /* FirebaseFirestoreSwift in Frameworks */,
-				1F10A4EE2A8E670700D7A007 /* Swinject in Frameworks */,
 				1F654BCA29EB14AD002ED11C /* FirebaseFirestoreCombine-Community in Frameworks */,
 				1F654BC829EB14AD002ED11C /* FirebaseFirestore in Frameworks */,
 				1F654BC229EB14AD002ED11C /* FirebaseAuthCombine-Community in Frameworks */,
@@ -281,7 +275,6 @@
 				1F3A3DDB2A46F2C80088F25D /* ColorPalette.swift */,
 				1F552DAB2A8A334C0089349A /* Logger.swift */,
 				1F5FAF5C2A8A738E007DB2DC /* SettingsManager.swift */,
-				1F10A4F12A8E672B00D7A007 /* DIResolver.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -478,8 +471,6 @@
 				1F654BD329EB14AD002ED11C /* FirebaseRemoteConfigSwift */,
 				1F654BD529EB14AD002ED11C /* FirebaseStorage */,
 				1F654BD729EB14AD002ED11C /* FirebaseStorageCombine-Community */,
-				1F10A4ED2A8E670700D7A007 /* Swinject */,
-				1F10A4EF2A8E670700D7A007 /* Swinject-Dynamic */,
 			);
 			productName = Urban;
 			productReference = 1FA7F79F29D9D41E00886539 /* AM Advisors.app */;
@@ -594,7 +585,6 @@
 				1F70C6EC2A8CDDC200ED785F /* CustomCalendar.swift in Sources */,
 				1F3804DC2A59D15000F70347 /* Bid.swift in Sources */,
 				1FED3FA72A7689C400F38DD9 /* CreateEstateCommand.swift in Sources */,
-				1F10A4F22A8E672B00D7A007 /* DIResolver.swift in Sources */,
 				1FED3FA92A79BC6B00F38DD9 /* CustomSelectList.swift in Sources */,
 				1F10A4D32A8D4A1400D7A007 /* VisitService.swift in Sources */,
 				1F10A4E02A8D5DCE00D7A007 /* CustomTab.swift in Sources */,
@@ -844,16 +834,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1F10A4ED2A8E670700D7A007 /* Swinject */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1F10A4EC2A8E670700D7A007 /* XCRemoteSwiftPackageReference "Swinject" */;
-			productName = Swinject;
-		};
-		1F10A4EF2A8E670700D7A007 /* Swinject-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1F10A4EC2A8E670700D7A007 /* XCRemoteSwiftPackageReference "Swinject" */;
-			productName = "Swinject-Dynamic";
-		};
 		1F654BBF29EB14AD002ED11C /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1F654BBE29EB14AD002ED11C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
