@@ -31,4 +31,11 @@ class EstatesManager: ObservableObject {
         self.estates = await self.estateService.get(uuid: uuid)
         self.isLoading = false
     }
+    
+    static func example() -> EstatesManager {
+        let estatesManager = EstatesManager()
+        estatesManager.estates = [Estate.Example()]
+        estatesManager.isLoading = false
+        return estatesManager
+    }
 }

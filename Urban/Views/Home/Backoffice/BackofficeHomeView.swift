@@ -34,6 +34,6 @@ struct BackofficeHomeView: View {
 
 struct BackofficeHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        BackofficeHomeView()
+        BackofficeHomeView().environmentObject(UserManager.example())
     }
 }

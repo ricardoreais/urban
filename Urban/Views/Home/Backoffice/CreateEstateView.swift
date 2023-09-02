@@ -66,6 +66,6 @@ struct CreateEstateView: View {
 
 struct CreateEstateView_Previews: PreviewProvider {
     static var previews: some View {
-        return CreateEstateView()
+        CreateEstateView().environmentObject(UserManager.example())
     }
 }

@@ -45,9 +45,10 @@ class UserManager: ObservableObject {
         return result
     }
     
-    func example() -> UserManager {
+    static func example() -> UserManager {
         let userManager = UserManager()
         userManager.current = User.AdminExample()
+        userManager.isLoading = false
         return userManager
     }
 }

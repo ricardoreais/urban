@@ -11,7 +11,6 @@ import SwiftUI
 struct DeleteUserView: View {
     @ObservedObject private var model: DeleteUserViewModel = DeleteUserViewModel.shared
     
-    
     var body: some View {
         CustomBackground {
             if model.isLoading {
@@ -49,6 +48,6 @@ struct DeleteUserView: View {
 
 struct DeleteUserView_Previews: PreviewProvider {
     static var previews: some View {
-        return DeleteUserView()
+        DeleteUserView()
     }
 }

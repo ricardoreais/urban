@@ -10,17 +10,17 @@ import SwiftUI
 
 // TODO: Features: visitas efetuadas, outros agentes, propostas criadas, criar proposta, criar ficha de visita
 struct EstatesView: View {
-    @ObservedObject var estateStore: EstatesManager = EstatesManager.shared
+    @ObservedObject var estateManager: EstatesManager = EstatesManager.shared
 
     var body: some View {
         CustomBackground {
-            if estateStore.isLoading {
+            if estateManager.isLoading {
                 CustomLoading()
             } else {
-                if estateStore.estates.isEmpty {
+                if estateManager.estates.isEmpty {
                     Text("noEstatesYet")
                 } else {
-                    List(estateStore.estates) { estate in
+                    List(estateManager.estates) { estate in
                         NavigationLink(destination: EstateView(estate: estate)) {
                             CustomText(label: "code", value: estate.code) +
                                 CustomText(label: "address", value: estate.address)
@@ -35,6 +35,6 @@ struct EstatesView: View {
 
 struct EstatesView_Previews: PreviewProvider {
     static var previews: some View {
-        return NavigationView{EstatesView()}
+        return NavigationView{EstatesView(estateManager: EstatesManager.example())}
     }
 }

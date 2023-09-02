@@ -32,6 +32,6 @@ struct AddUserView: View {
 
 struct AddUserView_Previews: PreviewProvider {
     static var previews: some View {
-        AddUserView()
+        AddUserView().environmentObject(UserManager.example())
     }
 }
