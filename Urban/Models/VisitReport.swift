@@ -12,12 +12,6 @@ import FirebaseFirestoreSwift
 struct VisitReport: Codable, Identifiable {
     @DocumentID var id: String?
     @ServerTimestamp var date: Timestamp?
-    //var clientName: String = ""
-    //var listingCode: String = ""
-    //var location: String = ""
-    //var listedValue: String = ""
-    //var address: String = ""
-    //var district: String = ""
     var floorPlan: Evaluation = Evaluation.medium
     var finishes: Evaluation = Evaluation.medium
     var sunExposition: Evaluation = Evaluation.medium
@@ -37,4 +31,30 @@ struct VisitReport: Codable, Identifiable {
     var agent: DocumentReference?
     @ServerTimestamp var createdAt: Timestamp?
     @ServerTimestamp var updatedAt: Timestamp?
+    
+    static func Example() -> VisitReport{
+        return VisitReport(
+            id: "someUniqueId",
+            date: Timestamp(date: Date()),  // Replace with the actual date
+            floorPlan: .medium,
+            finishes: .medium,
+            sunExposition: .medium,
+            locationRating: .medium,
+            value: .medium,
+            overallAssessment: .medium,
+            agentService: .medium,
+            likes: "Likes about the property",
+            dislikes: "Dislikes about the property",
+            willingToPay: "Some amount",
+            isOption: .yes,
+            hasPropertyToSell: true,
+            comments: "Additional comments",
+            createdBy: Firestore.firestore().document("users/userId"),  // Replace with the actual user reference
+            estate: Firestore.firestore().document("estates/estateId"),  // Replace with the actual estate reference
+            buyer: Firestore.firestore().document("buyers/buyerId"),  // Replace with the actual buyer reference
+            agent: Firestore.firestore().document("agents/agentId"),  // Replace with the actual agent reference
+            createdAt: Timestamp(date: Date()),
+            updatedAt: Timestamp(date: Date())
+        )
+    }
 }

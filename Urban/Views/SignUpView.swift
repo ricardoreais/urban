@@ -16,16 +16,11 @@ struct SignUpView: View {
     @State private var confirmPassword: String = ""
     @State private var accountCreated: Bool = false
     @State private var hasErrors: Bool = false
-    let userService: UserService
-    
-    init(userService: UserService = UserService()) {
-        self.userService = userService
-    }
+    @EnvironmentObject var userManager: UserManager
     
     
     func signUp() async -> Void {
-        let createUserCommand = CreateUserCommand(name: "", password: password, confirmPassword: confirmPassword, email: email, types: [UserType.buyer], telephone: "")
-        let result = await userService.create(command: createUserCommand)
+        let result = await userManager.signUp(email, password, confirmPassword)
         hasErrors = result == false
         accountCreated = result == true
     }

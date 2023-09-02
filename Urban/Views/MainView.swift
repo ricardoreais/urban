@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject var userManager: UserManager = .shared
+    
     var body: some View {
         NavigationStack {
             CustomBackground {
@@ -22,7 +24,7 @@ struct MainView: View {
                 NavigationLink("signUp", destination: SignUpView())
                     .foregroundColor(.accentColor)
             }
-        }
+        }.environmentObject(userManager)
     }
 }
 

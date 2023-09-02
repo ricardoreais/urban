@@ -9,11 +9,10 @@ import FirebaseFirestore
 import SwiftUI
 
 struct EstateView: View {
-    @ObservedObject var estateStore: EstatesStore
+    @ObservedObject var estateStore: EstatesManager = EstatesManager.shared
     let estate: Estate
 
-    init(estate: Estate, estateStore: EstatesStore) {
-        self.estateStore = estateStore
+    init(estate: Estate) {
         self.estate = estate
     }
     
@@ -29,7 +28,7 @@ struct EstateView: View {
             Menu {
                 NavigationLink("createVisitReport", destination: VisitReportFormView())
                 CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
-                NavigationLink("scheduleVisit", destination: ScheduleVisitView(estatesStore: estateStore))
+                NavigationLink("scheduleVisit", destination: ScheduleVisitView())
                 Button("createBid", action: openInPreview)
             } label: {
                 Label("moreActions", systemImage: "ellipsis")
@@ -42,8 +41,6 @@ struct EstateView: View {
 
 struct EstateView_Previews: PreviewProvider {
     static var previews: some View {
-        let estateServiceMock: EstateServiceMock = EstateServiceMock()
-        let estateStore: EstatesStore = EstatesStore(estateService: estateServiceMock)
-        return NavigationView {EstateView(estate: estateServiceMock.estate1, estateStore: estateStore)}
+        return NavigationView {EstateView(estate: Estate.Example())}
     }
 }

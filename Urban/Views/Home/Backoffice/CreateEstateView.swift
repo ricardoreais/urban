@@ -14,19 +14,12 @@ struct CreateEstateView: View {
     @State private var created: Bool = false
     @State private var hasError: Bool = false
     @State private var selectedAgents: Set<User> = Set([])
-
+    @EnvironmentObject var userManager: UserManager
+    @ObservedObject private var estateManager: EstatesManager = EstatesManager.shared
     @ObservedObject private var model: CreateEstateViewModel = CreateEstateViewModel.shared
-    let userService: UserService
-    let estateService: EstateService
-    
-    init(userService: UserService = UserService(), estateService: EstateService = EstateService(userManager: UserManager.shared, userService: UserService())) {
-        self.userService = userService
-        self.estateService = estateService
-    }
     
     func createEstate() async -> Void {
-        let createEstateCommand = CreateEstateCommand(code: estate.code, address: estate.address, agents: selectedAgents.map { userService.convertToDocumentReference($0.id!) }, sellerEmail: sellerEmail)
-        created = await estateService.create(command: createEstateCommand)
+        created = await estateManager.create(estate.code, estate.address, selectedAgents, sellerEmail)
         hasError = !created
     }
 
@@ -61,6 +54,11 @@ struct CreateEstateView: View {
                     message: Text("pleaseFillFieldsCorrectly"),
                     dismissButton: .default(Text("ok"))
                 )
+            }
+        }
+        .onAppear {
+            Task {
+                await self.estateManager.get(uuid: userManager.current?.id ?? "")
             }
         }
     }

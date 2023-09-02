@@ -40,6 +40,6 @@ struct VisitReportView: View {
 
 struct VisitReportView_Previews: PreviewProvider {
     static var previews: some View {
-        VisitReportView(report: VisitReportServiceMock().visitReport)
+        VisitReportView(report: VisitReport.Example())
     }
 }

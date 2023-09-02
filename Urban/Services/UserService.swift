@@ -11,18 +11,10 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import Foundation
 
-protocol UserServiceProtocol {
-    func convertToDocumentReference(_ userId: String) -> DocumentReference
-    func signIn(_ email: String, _ password: String) async -> (loggedIn: Bool, hasErrors: Bool)
-    func getCurrent() async -> User?
-    func create(command: CreateUserCommand) async -> Bool
-    func get(_ type: UserType?) async throws -> [User]
-    func delete(uid: String) async throws -> Void
-    func get(email: String) async throws -> DocumentReference?
-    func getOrCreate(email: String) async -> (reference: DocumentReference?, success: Bool)
-}
-
-class UserService: UserServiceProtocol {
+class UserService {
+    static let shared = UserService()
+    private init(){}
+    
     private let collection: CollectionReference = Firestore.firestore().collection(Collection.users)
     
     func convertToDocumentReference(_ userId: String) -> DocumentReference {

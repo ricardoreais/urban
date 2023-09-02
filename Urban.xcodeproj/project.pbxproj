@@ -14,13 +14,9 @@
 		1F10A4CF2A8D3F4800D7A007 /* DeleteUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */; };
 		1F10A4D12A8D4A0800D7A007 /* EstateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D02A8D4A0800D7A007 /* EstateService.swift */; };
 		1F10A4D32A8D4A1400D7A007 /* VisitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D22A8D4A1400D7A007 /* VisitService.swift */; };
-		1F10A4D52A8D4C0400D7A007 /* EstatesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D42A8D4C0400D7A007 /* EstatesStore.swift */; };
+		1F10A4D52A8D4C0400D7A007 /* EstatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D42A8D4C0400D7A007 /* EstatesManager.swift */; };
 		1F10A4DC2A8D56AB00D7A007 /* VisitReportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4DB2A8D56AB00D7A007 /* VisitReportsViewModel.swift */; };
 		1F10A4E02A8D5DCE00D7A007 /* CustomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4DF2A8D5DCE00D7A007 /* CustomTab.swift */; };
-		1F10A4E32A8D67D900D7A007 /* VisitReportServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4E22A8D67D900D7A007 /* VisitReportServiceMock.swift */; };
-		1F10A4E52A8D893000D7A007 /* UserServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4E42A8D893000D7A007 /* UserServiceMock.swift */; };
-		1F10A4E82A8D8D5C00D7A007 /* VisitServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4E72A8D8D5C00D7A007 /* VisitServiceMock.swift */; };
-		1F10A4EA2A8D8EE400D7A007 /* EstateServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4E92A8D8EE400D7A007 /* EstateServiceMock.swift */; };
 		1F12A1792A8E854900D04A3C /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F12A1782A8E854900D04A3C /* LazyView.swift */; };
 		1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2152A840B2900A44925 /* CustomSecureField.swift */; };
 		1F1DD2182A840E1E00A44925 /* CustomLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DD2172A840E1E00A44925 /* CustomLoading.swift */; };
@@ -105,13 +101,9 @@
 		1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserViewModel.swift; sourceTree = "<group>"; };
 		1F10A4D02A8D4A0800D7A007 /* EstateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstateService.swift; sourceTree = "<group>"; };
 		1F10A4D22A8D4A1400D7A007 /* VisitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitService.swift; sourceTree = "<group>"; };
-		1F10A4D42A8D4C0400D7A007 /* EstatesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatesStore.swift; sourceTree = "<group>"; };
+		1F10A4D42A8D4C0400D7A007 /* EstatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatesManager.swift; sourceTree = "<group>"; };
 		1F10A4DB2A8D56AB00D7A007 /* VisitReportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsViewModel.swift; sourceTree = "<group>"; };
 		1F10A4DF2A8D5DCE00D7A007 /* CustomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab.swift; sourceTree = "<group>"; };
-		1F10A4E22A8D67D900D7A007 /* VisitReportServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportServiceMock.swift; sourceTree = "<group>"; };
-		1F10A4E42A8D893000D7A007 /* UserServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceMock.swift; sourceTree = "<group>"; };
-		1F10A4E72A8D8D5C00D7A007 /* VisitServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitServiceMock.swift; sourceTree = "<group>"; };
-		1F10A4E92A8D8EE400D7A007 /* EstateServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstateServiceMock.swift; sourceTree = "<group>"; };
 		1F12A1782A8E854900D04A3C /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		1F1DD2152A840B2900A44925 /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
 		1F1DD2172A840E1E00A44925 /* CustomLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoading.swift; sourceTree = "<group>"; };
@@ -209,31 +201,12 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		1F10A4E12A8D672D00D7A007 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				1F10A4E22A8D67D900D7A007 /* VisitReportServiceMock.swift */,
-				1F10A4E72A8D8D5C00D7A007 /* VisitServiceMock.swift */,
-				1F10A4E42A8D893000D7A007 /* UserServiceMock.swift */,
-				1F10A4E92A8D8EE400D7A007 /* EstateServiceMock.swift */,
-			);
-			path = Mocks;
-			sourceTree = "<group>";
-		};
 		1F10A4E62A8D8B4900D7A007 /* Seller */ = {
 			isa = PBXGroup;
 			children = (
 				1F3804D52A59BA2A00F70347 /* SellerHomeView.swift */,
 			);
 			path = Seller;
-			sourceTree = "<group>";
-		};
-		1F10A4EB2A8E5D1300D7A007 /* Stores */ = {
-			isa = PBXGroup;
-			children = (
-				1F10A4D42A8D4C0400D7A007 /* EstatesStore.swift */,
-			);
-			path = Stores;
 			sourceTree = "<group>";
 		};
 		1F3804D02A59B9D100F70347 /* Home */ = {
@@ -288,7 +261,6 @@
 				1F552DAF2A8A5AE70089349A /* EstatesView.swift */,
 				1F5FAF562A8A6445007DB2DC /* EstateView.swift */,
 				1F9A97652A8A9E1000B64436 /* ScheduleVisitView.swift */,
-				1F10A4CA2A8D38E500D7A007 /* ScheduleVisitViewModel.swift */,
 			);
 			path = Agent;
 			sourceTree = "<group>";
@@ -347,7 +319,6 @@
 			children = (
 				1FED3F9A2A757F0900F38DD9 /* Queries */,
 				1FED3F8B2A75624000F38DD9 /* Commands */,
-				1FED3F892A75582300F38DD9 /* UserManager.swift */,
 				1F10A4C62A8D31FF00D7A007 /* VisitReportService.swift */,
 				1F10A4C82A8D341A00D7A007 /* UserService.swift */,
 				1F10A4D02A8D4A0800D7A007 /* EstateService.swift */,
@@ -361,10 +332,8 @@
 			children = (
 				1F3A3DE42A4840EC0088F25D /* VisitReportView.swift */,
 				1FFAD7F92A113BF000F63B1C /* VisitReportsView.swift */,
-				1F10A4DB2A8D56AB00D7A007 /* VisitReportsViewModel.swift */,
 				1F3804D12A59B9FD00F70347 /* BuyerHomeView.swift */,
 				1F9A977B2A8ACE1300B64436 /* VisitsCalendarView.swift */,
-				1F9A97692A8AA54E00B64436 /* VisitsCalendarViewModel.swift */,
 			);
 			path = Buyer;
 			sourceTree = "<group>";
@@ -388,14 +357,13 @@
 		1FA7F7A129D9D41E00886539 /* Urban */ = {
 			isa = PBXGroup;
 			children = (
-				1F10A4EB2A8E5D1300D7A007 /* Stores */,
-				1F10A4E12A8D672D00D7A007 /* Mocks */,
 				1F9A97642A8A97F200B64436 /* Info.plist */,
 				1F552DAD2A8A33550089349A /* Infrastructure */,
 				1F7F33B72A2388E60080DE09 /* Services */,
 				1F3804CC2A59B57A00F70347 /* GoogleService-Info.plist */,
 				1F7F33AF2A237EAB0080DE09 /* Components */,
 				1F7F33AE2A237E920080DE09 /* Views */,
+				1FBAE1F32AA37F1A00506561 /* ViewModels */,
 				1F654BDF29EB2633002ED11C /* Models */,
 				1FA7F7A229D9D41E00886539 /* UrbanApp.swift */,
 				1FA7F7A629D9D41F00886539 /* Assets.xcassets */,
@@ -411,6 +379,20 @@
 				1FA7F7A929D9D41F00886539 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1FBAE1F32AA37F1A00506561 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1F10A4D42A8D4C0400D7A007 /* EstatesManager.swift */,
+				1F10A4CA2A8D38E500D7A007 /* ScheduleVisitViewModel.swift */,
+				1F9A97692A8AA54E00B64436 /* VisitsCalendarViewModel.swift */,
+				1F10A4DB2A8D56AB00D7A007 /* VisitReportsViewModel.swift */,
+				1FED3F892A75582300F38DD9 /* UserManager.swift */,
+				1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */,
+				1F10A4CC2A8D3E3200D7A007 /* CreateEstateViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		1FED3F8B2A75624000F38DD9 /* Commands */ = {
@@ -436,10 +418,8 @@
 			children = (
 				1FED3F872A75539100F38DD9 /* AddUserView.swift */,
 				1FED3F982A757BEE00F38DD9 /* DeleteUserView.swift */,
-				1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */,
 				1F3804D32A59BA1200F70347 /* BackofficeHomeView.swift */,
 				1FED3FA22A76886600F38DD9 /* CreateEstateView.swift */,
-				1F10A4CC2A8D3E3200D7A007 /* CreateEstateViewModel.swift */,
 			);
 			path = Backoffice;
 			sourceTree = "<group>";
@@ -542,18 +522,15 @@
 				1FED3F8F2A75632200F38DD9 /* CreateUserCommand.swift in Sources */,
 				1F552DAA2A879B8C0089349A /* Collection.swift in Sources */,
 				1F10A4CB2A8D38E500D7A007 /* ScheduleVisitViewModel.swift in Sources */,
-				1F10A4E82A8D8D5C00D7A007 /* VisitServiceMock.swift in Sources */,
 				1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */,
 				1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */,
-				1F10A4D52A8D4C0400D7A007 /* EstatesStore.swift in Sources */,
+				1F10A4D52A8D4C0400D7A007 /* EstatesManager.swift in Sources */,
 				1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */,
 				1F5FAF5B2A8A7168007DB2DC /* CustomLink.swift in Sources */,
 				1F552DAC2A8A334C0089349A /* Logger.swift in Sources */,
 				1F3804D62A59BA2A00F70347 /* SellerHomeView.swift in Sources */,
 				1FA7F7A529D9D41E00886539 /* VisitReportFormView.swift in Sources */,
-				1F10A4E32A8D67D900D7A007 /* VisitReportServiceMock.swift in Sources */,
 				1F10A4DC2A8D56AB00D7A007 /* VisitReportsViewModel.swift in Sources */,
-				1F10A4EA2A8D8EE400D7A007 /* EstateServiceMock.swift in Sources */,
 				1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */,
 				1F3804E32A5A3D4400F70347 /* CustomInput.swift in Sources */,
 				1FFAD7FA2A113BF000F63B1C /* VisitReportsView.swift in Sources */,
@@ -597,7 +574,6 @@
 				1F3804ED2A5A4CF200F70347 /* CustomSection.swift in Sources */,
 				1FED3F8A2A75582300F38DD9 /* UserManager.swift in Sources */,
 				1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */,
-				1F10A4E52A8D893000D7A007 /* UserServiceMock.swift in Sources */,
 				1F10A4C72A8D31FF00D7A007 /* VisitReportService.swift in Sources */,
 				1FED3FA32A76886600F38DD9 /* CreateEstateView.swift in Sources */,
 				1FA7F7A329D9D41E00886539 /* UrbanApp.swift in Sources */,

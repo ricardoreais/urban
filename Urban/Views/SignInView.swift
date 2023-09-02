@@ -13,18 +13,21 @@ struct SignInView: View {
     @State private var password: String = ""
     @State private var loggedIn: Bool = false
     @State private var hasErrors: Bool = false
-    @ObservedObject var userManager = UserManager.shared
-    let userService: UserService
-    
-    init(userService: UserService = UserService()) {
-        self.userService = userService
-    }
+    @EnvironmentObject var userManager: UserManager
     
     func signIn() async -> Void {
-        let result = await userService.signIn(email, password)
-        hasErrors = email.isEmpty || password.isEmpty
-        hasErrors = result.hasErrors
-        loggedIn = result.loggedIn
+        do {
+            let result = await userManager.signIn(email, password)
+            try await Task.sleep(until: .now + .seconds(10), clock: .continuous)
+            
+            let isEmptyEmailOrPassword = email.isEmpty || password.isEmpty
+            hasErrors = result.hasErrors || isEmptyEmailOrPassword
+            loggedIn = result.loggedIn && !hasErrors
+        } catch {
+            // Handle the error here
+            print("Error during sign-in: \(error)")
+            // You can set an error state or show an alert to the user, etc.
+        }
     }
     
     var body: some View {

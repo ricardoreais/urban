@@ -19,4 +19,10 @@ struct Estate: Codable, Identifiable {
     var agents: [DocumentReference]?
     var visits: [DocumentReference]?
     var bids: [DocumentReference]?
+    
+    static func Example() -> Estate{
+        return Estate(
+            createdAt: Timestamp(date: Date()),
+            updatedAt: Timestamp(date: Date()), code: "E001", address: "123 Main St", seller: User.ExampleReference(), agents: [], visits: [], bids: [])
+    }
 }

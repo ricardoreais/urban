@@ -10,23 +10,17 @@ import SwiftUI
 
 struct ScheduleVisitView: View {
     @ObservedObject var model: ScheduleVisitViewModel
-    let visitService: VisitServiceProtocol
-    @ObservedObject var estatesStore: EstatesStore
-
     @State private var selectedDate = Date()
     @State private var selectedAgents: Set<User> = Set([])
     @State private var created: Bool = false
     @State private var hasError: Bool = false
 
-    init(userService: UserServiceProtocol = UserService(), visitService: VisitServiceProtocol = VisitService(), estatesStore: EstatesStore) {
-        self.model = ScheduleVisitViewModel(userService: userService)
-        self.visitService = visitService
-        self.estatesStore = estatesStore
+    init() {
+        self.model = ScheduleVisitViewModel(selectedEstate: EstatesManager.shared.selected!)
     }
 
     func createVisit() async {
-        let createVisitCommand = CreateVisitCommand(date: selectedDate, buyer: selectedAgents.first!, estate: estatesStore.selected!)
-        created = await visitService.create(createVisitCommand)
+        created = await model.createVisit(date: selectedDate, buyer: selectedAgents.first!)
         hasError = !created
     }
 
@@ -60,12 +54,8 @@ struct ScheduleVisitView: View {
 
 struct ScheduleVisitView_Previews: PreviewProvider {
     static var previews: some View {
-        let userService: UserServiceMock = UserServiceMock()
-        let model = ScheduleVisitViewModel.shared
-        model.isLoading = false
-        model.buyers = [userService.buyer]
         return NavigationView {
-            ScheduleVisitView(userService: UserServiceMock(), visitService: VisitServiceMock(), estatesStore: EstatesStore(estateService: EstateServiceMock()))
+            ScheduleVisitView()
         }
     }
 }

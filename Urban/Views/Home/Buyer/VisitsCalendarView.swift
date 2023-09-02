@@ -9,15 +9,14 @@ import FirebaseFirestore
 import SwiftUI
 
 struct VisitsCalendarView: View {
-    @ObservedObject var visitsStore: VisitsCalendarViewModel
+    @ObservedObject var visitsStore: VisitsCalendarViewModel = .shared
 
     private let dateFormatter: DateFormatter
 
-    init(visitsStore: VisitsCalendarViewModel = .shared) {
+    init() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE, d MMMM HH:mm"
         self.dateFormatter = dateFormatter
-        self.visitsStore = visitsStore
     }
 
     var body: some View {
@@ -48,6 +47,6 @@ struct VisitsCalendarView: View {
 
 struct VisitsCalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        VisitsCalendarView(visitsStore: VisitsCalendarViewModel(visitService: VisitServiceMock()))
+        VisitsCalendarView()
     }
 }

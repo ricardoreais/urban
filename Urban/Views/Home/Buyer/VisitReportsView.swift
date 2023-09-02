@@ -42,6 +42,6 @@ struct VisitReportsView: View {
 
 struct VisitReportsView_Previews: PreviewProvider {
     static var previews: some View {
-        VisitReportsView(visitReportsStore: VisitReportsViewModel(visitReportService: VisitReportServiceMock()))
+        VisitReportsView(visitReportsStore: VisitReportsViewModel())
     }
 }

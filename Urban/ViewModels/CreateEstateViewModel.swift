@@ -1,5 +1,5 @@
 //
-//  ScheduleVisitViewModel.swift
+//  CreateEstateViewModel.swift
 //  Urban
 //
 //  Created by Juliana Estrela on 16/08/2023.
@@ -7,17 +7,14 @@
 
 import Foundation
 
-@MainActor
-class ScheduleVisitViewModel: ObservableObject {
+class CreateEstateViewModel: ObservableObject {
     @Published var isLoading = true
-    @Published var buyers: [User] = []
+    @Published var agents: [User] = []
+    private let userService: UserService = UserService.shared
     
-    let userService: UserServiceProtocol
+    static let shared = CreateEstateViewModel()
     
-    static let shared = ScheduleVisitViewModel(userService: UserService())
-    
-    init(userService: UserServiceProtocol) {
-        self.userService = userService
+    private init() {
         Task {
             await get()
         }
@@ -26,7 +23,7 @@ class ScheduleVisitViewModel: ObservableObject {
     func get() async -> Void {
         Task {
             do {
-                self.buyers = try await userService.get(.buyer)
+                self.agents = try await userService.get(.agent)
                 self.isLoading = false
             } catch {
                 // Handle fetching users by type errors

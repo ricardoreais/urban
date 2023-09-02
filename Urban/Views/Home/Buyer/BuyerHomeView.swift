@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct BuyerHomeView: View {
-    @ObservedObject var visitReportsStore: VisitReportsViewModel
-    
-    init(visitReportsStore: VisitReportsViewModel = .shared) {
-        self.visitReportsStore = visitReportsStore
-    }
+    @ObservedObject var visitReportsStore: VisitReportsViewModel = VisitReportsViewModel.shared
     
     var body: some View {
         CustomTab {
@@ -30,6 +26,6 @@ struct BuyerHomeView: View {
 
 struct BuyerHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        BuyerHomeView(visitReportsStore: VisitReportsViewModel(visitReportService: VisitReportServiceMock()))
+        BuyerHomeView()
     }
 }

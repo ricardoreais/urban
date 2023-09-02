@@ -9,25 +9,13 @@ import Firebase
 import FirebaseFirestore
 import Foundation
 import SwiftUI
+import Combine
 
-
-protocol EstateServiceProtocol {
-    func convertToDocumentReference(_ estateId: String) -> DocumentReference
-    func create(command: CreateEstateCommand) async -> Bool
-    func get() async -> [Estate]
-}
-
-class EstateService: EstateServiceProtocol {
-    private let collection: CollectionReference
-    private let userService: UserServiceProtocol
-    private let userManager: UserManager
-    
-    init(userManager: UserManager = .shared, userService: UserServiceProtocol = UserService()) {
-        self.collection = Firestore.firestore().collection(Collection.estates)
-        self.userService = userService
-        self.userManager = userManager
-    }
-    
+class EstateService {
+    private let collection: CollectionReference = Firestore.firestore().collection(Collection.estates)
+    private let userService: UserService = UserService.shared
+    static let shared = EstateService()
+    private init(){}
     func convertToDocumentReference(_ estateId: String) -> DocumentReference {
         return collection.document(estateId)
     }
@@ -59,9 +47,9 @@ class EstateService: EstateServiceProtocol {
         }
     }
     
-    func get() async -> [Estate] {
+    func get(uuid: String) async -> [Estate] {
         do {
-            let currentUserReference = userService.convertToDocumentReference(await userManager.current.id!)
+            let currentUserReference = userService.convertToDocumentReference(uuid)
             let documents = try await collection.whereField("agents", arrayContains: currentUserReference).getDocuments().documents
             
             let estates: [Estate] = documents.compactMap { document -> Estate? in

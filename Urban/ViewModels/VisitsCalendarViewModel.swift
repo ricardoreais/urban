@@ -9,14 +9,11 @@ import Foundation
 class VisitsCalendarViewModel: ObservableObject {
     @Published var visits: [Visit] = []
     @Published var isLoading = true
+    let visitService: VisitService = .shared
     
-    let visitService: VisitServiceProtocol
+    static let shared = VisitsCalendarViewModel()
     
-    static let shared = VisitsCalendarViewModel(visitService: VisitService())
-    
-    init(visitService: VisitServiceProtocol) {
-        self.visitService = visitService
-        
+    private init() {
         Task{
             await get()
         }

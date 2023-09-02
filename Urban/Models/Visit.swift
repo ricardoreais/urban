@@ -18,4 +18,15 @@ struct Visit: Codable, Identifiable {
     var reports: [DocumentReference]?
     var buyer: DocumentReference?
     var agent: DocumentReference?
+    
+    static func Example() -> Visit{
+        return Visit(
+            id: "visit123",
+            date: Date(),
+            estate: User.ExampleReference(),
+            reports: [],
+            buyer: User.ExampleReference(),
+            agent: User.ExampleReference()
+        )
+    }
 }

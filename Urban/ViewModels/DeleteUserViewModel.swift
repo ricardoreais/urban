@@ -10,13 +10,10 @@ import Foundation
 class DeleteUserViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var users: [User] = []
+    let userService: UserService = UserService.shared
+    static let shared = DeleteUserViewModel()
     
-    let userService: UserService
-    
-    static let shared = DeleteUserViewModel(userService: UserService())
-    
-    private init(userService: UserService) {
-        self.userService = userService
+    private init() {
         Task {
             await get()
         }
@@ -31,5 +28,9 @@ class DeleteUserViewModel: ObservableObject {
                 // Handle fetching users by type errors
             }
         }
+    }
+    
+    func delete(uid: String) async throws {
+        return try await userService.delete(uid: uid)
     }
 }

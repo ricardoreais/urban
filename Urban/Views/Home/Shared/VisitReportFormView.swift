@@ -13,12 +13,8 @@ struct VisitReportFormView: View {
     @State private var visitReport: VisitReport = .init()
     @State private var created: Bool = false
     @State private var hasErrors: Bool = false
+    let visitReportService: VisitReportService = .shared
     
-    let visitReportService: VisitReportServiceProtocol
-    
-    init(visitReportService: VisitReportServiceProtocol = VisitReportService()) {
-        self.visitReportService = visitReportService
-    }
     
     func save(visitReport: VisitReport) async {
         do {

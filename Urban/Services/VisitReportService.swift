@@ -9,23 +9,11 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 
-protocol VisitReportServiceProtocol {
-    func get(id: String, completion: @escaping (Result<VisitReport, Error>) -> Void)
-    func get() async throws -> [VisitReport]
-    func save(visitReport: VisitReport) async throws
-}
-
-class VisitReportService : VisitReportServiceProtocol {
-    private let collection: CollectionReference
-    private let userService: UserServiceProtocol
-    private let userManager: UserManager
-    
-    init(userManager: UserManager = .shared, userService: UserServiceProtocol = UserService()) {
-        self.collection = Firestore.firestore().collection(Collection.visitReports)
-        self.userService = userService
-        self.userManager = userManager
-    }
-    
+class VisitReportService {
+    private let collection: CollectionReference = Firestore.firestore().collection(Collection.visitReports)
+    private let userService: UserService = .shared
+    private let userManager: UserManager = .shared
+    static let shared = VisitReportService()
     
     func get(id: String, completion: @escaping (Result<VisitReport, Error>) -> Void) {
         collection
@@ -52,7 +40,7 @@ class VisitReportService : VisitReportServiceProtocol {
     
     func get() async throws -> [VisitReport] {
         do {
-            let query = collection.whereField("buyer", isEqualTo: userService.convertToDocumentReference(await userManager.current.id!))
+            let query = await collection.whereField("buyer", isEqualTo: userService.convertToDocumentReference((userManager.current?.id)!))
             let querySnapshot = try await query.getDocuments()
             
             return querySnapshot.documents.compactMap { document in

@@ -8,18 +8,12 @@
 import SwiftUI
 
 struct AddUserView: View {
-    let userService: UserService
-    
     @State private var email: String = ""
     @State private var type: UserType = UserType.guest
-    
-    init(userService: UserService = UserService()) {
-        self.userService = userService
-    }
+    @EnvironmentObject var userManager: UserManager
     
     func createUser() async -> Void {
-        let createUserCommand = CreateUserCommand(name: "", password: "123456", confirmPassword: "123456", email: email, types: [type], telephone: "")
-        _ = await userService.create(command: createUserCommand)
+        _ = await userManager.createUser(email, "123456", "123456", type)
     }
     
     var body: some View {

@@ -9,28 +9,20 @@ import Firebase
 import FirebaseFirestore
 import Foundation
 
-protocol VisitServiceProtocol {
-    func create(_ command: CreateVisitCommand) async -> Bool
-    func get() async -> [Visit]
-}
-
-class VisitService: VisitServiceProtocol {
-    private let collection: CollectionReference
-    private let userService: UserServiceProtocol
-    private let estateService: EstateServiceProtocol
-    private let userManager: UserManager
+class VisitService {
+    private let collection: CollectionReference = Firestore.firestore().collection(Collection.visits)
+    private let userService: UserService = UserService.shared
+    private let estateService: EstateService = EstateService.shared
+    private var userManager: UserManager = UserManager.shared
     
-    init(userService: UserServiceProtocol = UserService(), estateService: EstateServiceProtocol = EstateService(), userManager: UserManager = .shared) {
-        self.collection = Firestore.firestore().collection(Collection.visits)
-        self.estateService = estateService
-        self.userService = userService
-        self.userManager = userManager
-    }
+    
+    static let shared = VisitService()
+    private init(){}
     
     func create(_ command: CreateVisitCommand) async -> Bool {
-        let currentUserReference = userService.convertToDocumentReference(await userManager.current.id!)
+        let currentUserReference = await userService.convertToDocumentReference((userManager.current?.id)!)
         let buyerReference = userService.convertToDocumentReference(command.buyer.id!)
-        let currentEstate = estateService.convertToDocumentReference((command.estate.id)!)
+        let currentEstate = await estateService.convertToDocumentReference((command.estate.id)!)
         let visit = Visit(date: command.date, estate: currentEstate, buyer: buyerReference, agent: currentUserReference)
         
         do {

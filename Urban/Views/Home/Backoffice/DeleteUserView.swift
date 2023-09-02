@@ -9,15 +9,8 @@ import SwiftUI
 
 // TODO: We have a bug where in some cases (after a few minutes of authentication we need to re-authenticate to delete the user).
 struct DeleteUserView: View {
-    let userService: UserService
+    @ObservedObject private var model: DeleteUserViewModel = DeleteUserViewModel.shared
     
-    @ObservedObject private var model: DeleteUserViewModel
-    
-    
-    init(model: DeleteUserViewModel = DeleteUserViewModel.shared, userService: UserService = UserService()) {
-        self.model = model
-        self.userService = userService
-    }
     
     var body: some View {
         CustomBackground {
@@ -38,7 +31,7 @@ struct DeleteUserView: View {
                                 .onTapGesture {
                                     Task{
                                         do {
-                                            try await userService.delete(uid: user.id ?? "")
+                                            try await model.delete(uid: user.id ?? "")
                                             await model.get()
                                         } catch {
                                             // Handle error
