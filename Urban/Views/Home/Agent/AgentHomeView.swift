@@ -9,7 +9,7 @@ import FirebaseFirestore
 import SwiftUI
 
 struct AgentHomeView: View {
-    @ObservedObject var estateManager: EstatesManager = .shared
+    @ObservedObject var estateManager: EstatesViewModel = .shared
     
     var body: some View {
         CustomTab {
@@ -39,6 +39,6 @@ struct AgentHomeView: View {
 
 struct AgentHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        AgentHomeView(estateManager: EstatesManager.example())
+        AgentHomeView(estateManager: EstatesViewModel.example())
     }
 }

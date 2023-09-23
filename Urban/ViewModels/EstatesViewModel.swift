@@ -8,14 +8,14 @@
 import Foundation
 
 @MainActor
-class EstatesManager: ObservableObject {
+class EstatesViewModel: ObservableObject {
     @Published var estates: [Estate] = []
     @Published var selected: Estate? = nil
     @Published var isLoading = true
     let estateService: EstateService = EstateService.shared
     let userService: UserService = UserService.shared
     
-    static let shared = EstatesManager()
+    static let shared = EstatesViewModel()
     private init() {}
     
     func setSelected(_ estate: Estate) {
@@ -32,8 +32,8 @@ class EstatesManager: ObservableObject {
         self.isLoading = false
     }
     
-    static func example() -> EstatesManager {
-        let estatesManager = EstatesManager()
+    static func example() -> EstatesViewModel {
+        let estatesManager = EstatesViewModel()
         estatesManager.estates = [Estate.Example()]
         estatesManager.isLoading = false
         estatesManager.selected = Estate.Example()

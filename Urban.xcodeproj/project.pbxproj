@@ -14,7 +14,7 @@
 		1F10A4CF2A8D3F4800D7A007 /* DeleteUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */; };
 		1F10A4D12A8D4A0800D7A007 /* EstateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D02A8D4A0800D7A007 /* EstateService.swift */; };
 		1F10A4D32A8D4A1400D7A007 /* VisitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D22A8D4A1400D7A007 /* VisitService.swift */; };
-		1F10A4D52A8D4C0400D7A007 /* EstatesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D42A8D4C0400D7A007 /* EstatesManager.swift */; };
+		1F10A4D52A8D4C0400D7A007 /* EstatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4D42A8D4C0400D7A007 /* EstatesViewModel.swift */; };
 		1F10A4DC2A8D56AB00D7A007 /* VisitReportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4DB2A8D56AB00D7A007 /* VisitReportsViewModel.swift */; };
 		1F10A4E02A8D5DCE00D7A007 /* CustomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10A4DF2A8D5DCE00D7A007 /* CustomTab.swift */; };
 		1F12A1792A8E854900D04A3C /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F12A1782A8E854900D04A3C /* LazyView.swift */; };
@@ -101,7 +101,7 @@
 		1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserViewModel.swift; sourceTree = "<group>"; };
 		1F10A4D02A8D4A0800D7A007 /* EstateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstateService.swift; sourceTree = "<group>"; };
 		1F10A4D22A8D4A1400D7A007 /* VisitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitService.swift; sourceTree = "<group>"; };
-		1F10A4D42A8D4C0400D7A007 /* EstatesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatesManager.swift; sourceTree = "<group>"; };
+		1F10A4D42A8D4C0400D7A007 /* EstatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstatesViewModel.swift; sourceTree = "<group>"; };
 		1F10A4DB2A8D56AB00D7A007 /* VisitReportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsViewModel.swift; sourceTree = "<group>"; };
 		1F10A4DF2A8D5DCE00D7A007 /* CustomTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTab.swift; sourceTree = "<group>"; };
 		1F12A1782A8E854900D04A3C /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
@@ -384,7 +384,7 @@
 		1FBAE1F32AA37F1A00506561 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				1F10A4D42A8D4C0400D7A007 /* EstatesManager.swift */,
+				1F10A4D42A8D4C0400D7A007 /* EstatesViewModel.swift */,
 				1F10A4CA2A8D38E500D7A007 /* ScheduleVisitViewModel.swift */,
 				1F9A97692A8AA54E00B64436 /* VisitsCalendarViewModel.swift */,
 				1F10A4DB2A8D56AB00D7A007 /* VisitReportsViewModel.swift */,
@@ -524,7 +524,7 @@
 				1F10A4CB2A8D38E500D7A007 /* ScheduleVisitViewModel.swift in Sources */,
 				1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */,
 				1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */,
-				1F10A4D52A8D4C0400D7A007 /* EstatesManager.swift in Sources */,
+				1F10A4D52A8D4C0400D7A007 /* EstatesViewModel.swift in Sources */,
 				1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */,
 				1F5FAF5B2A8A7168007DB2DC /* CustomLink.swift in Sources */,
 				1F552DAC2A8A334C0089349A /* Logger.swift in Sources */,

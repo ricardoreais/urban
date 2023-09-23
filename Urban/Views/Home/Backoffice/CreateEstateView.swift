@@ -15,7 +15,7 @@ struct CreateEstateView: View {
     @State private var hasError: Bool = false
     @State private var selectedAgents: Set<User> = Set([])
     @EnvironmentObject var userManager: UserManager
-    @ObservedObject private var estateManager: EstatesManager = EstatesManager.shared
+    @ObservedObject private var estateManager: EstatesViewModel = EstatesViewModel.shared
     @ObservedObject private var model: CreateEstateViewModel = CreateEstateViewModel.shared
     
     func createEstate() async -> Void {

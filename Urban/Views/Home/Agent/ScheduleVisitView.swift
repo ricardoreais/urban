@@ -9,7 +9,7 @@ import FirebaseFirestore
 import SwiftUI
 
 struct ScheduleVisitView: View {
-    @EnvironmentObject var estateManager: EstatesManager
+    @EnvironmentObject var estateManager: EstatesViewModel
     @ObservedObject var model: ScheduleVisitViewModel = .shared
     @State private var selectedDate = Date()
     @State private var selectedAgents: Set<User> = Set([])
@@ -52,7 +52,7 @@ struct ScheduleVisitView: View {
 struct ScheduleVisitView_Previews: PreviewProvider {
     static var previews: some View {
         return NavigationView {
-            ScheduleVisitView(model: ScheduleVisitViewModel.example()).environmentObject(EstatesManager.example())
+            ScheduleVisitView(model: ScheduleVisitViewModel.example()).environmentObject(EstatesViewModel.example())
         }
     }
 }

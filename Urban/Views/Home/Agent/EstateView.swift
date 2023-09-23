@@ -9,7 +9,7 @@ import FirebaseFirestore
 import SwiftUI
 
 struct EstateView: View {
-    @EnvironmentObject var estateManager: EstatesManager
+    @EnvironmentObject var estateManager: EstatesViewModel
     let estate: Estate
 
     init(estate: Estate) {
@@ -41,6 +41,6 @@ struct EstateView: View {
 
 struct EstateView_Previews: PreviewProvider {
     static var previews: some View {
-        return EstateView(estate: Estate.Example()).environmentObject(EstatesManager.example())
+        return EstateView(estate: Estate.Example()).environmentObject(EstatesViewModel.example())
     }
 }
