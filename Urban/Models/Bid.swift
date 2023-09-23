@@ -25,6 +25,7 @@ struct Bid: Codable, Identifiable {
             updatedAt: Timestamp(date: Date()),
             value: 220000,
             buyer: User.ExampleReference(),
+            buyerValue: User.BuyerExample(),
             estate: Estate.ExampleReference())
     }
 }

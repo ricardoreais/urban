@@ -13,8 +13,6 @@ struct SellerEstatesView: View {
     
     var body: some View {
         CustomBackground {
-            Text("Features: link para o site, fichas de visita, propostas")
-                .foregroundColor(ColorPalette.secondary)
             if estateManager.isLoading {
                 CustomLoading()
             } else {
@@ -27,7 +25,7 @@ struct SellerEstatesView: View {
                 }
                 else {
                     List(estateManager.estates) { estate in
-                        NavigationLink(destination: EstateView(estate: estate)) {
+                        NavigationLink(destination: SellerEstateView(estate: estate)) {
                             CustomText(label: "property", value: estate.address)
                         }
                         .listRowBackground(ColorPalette.highlights)

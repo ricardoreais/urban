@@ -98,4 +98,5 @@
 "seeBids" = "Ver propostas de compradores";
 "bid" = "Proposta";
 "yourBidValue" = "Introduza o valor da sua proposta";
-"bidValue" = "O valor da proposta: ";
+"bidValue" = "Valor";
+"seeBuyerOpinions" = "Ver a opinião de potenciais compradores";

@@ -11,11 +11,11 @@ import SwiftUI
 struct SellerEstateView: View {
     @EnvironmentObject var estateManager: EstatesViewModel
     let estate: Estate
-    
+
     init(estate: Estate) {
         self.estate = estate
     }
-    
+
     var body: some View {
         NavigationView {
             CustomBackground(alignment: .leading) {
@@ -23,10 +23,14 @@ struct SellerEstateView: View {
                 CustomText(label: "address", value: estate.address)
                 CustomText(label: "createdAt", value: estate.createdAt!.toString())
                 CustomText(label: "updatedAt", value: estate.updatedAt!.toString())
-                
+
                 Menu {
                     CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
                     NavigationLink("seeBids", destination: BidsView(estate: estate))
+                    NavigationLink("seeBuyerOpinions", destination: CustomBackground {
+                        Text("comingSoon")
+                            .foregroundColor(ColorPalette.secondary)
+                    })
                 } label: {
                     Label("moreActions", systemImage: "ellipsis")
                 }
