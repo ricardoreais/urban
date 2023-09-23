@@ -17,12 +17,19 @@ struct Estate: Codable, Identifiable {
     var address: String = ""
     var seller: DocumentReference?
     var agents: [DocumentReference]?
-    var visits: [DocumentReference]?
-    var bids: [DocumentReference]?
     
     static func Example() -> Estate{
         return Estate(
+            id: "123",
             createdAt: Timestamp(date: Date()),
-            updatedAt: Timestamp(date: Date()), code: "E001", address: "123 Main St", seller: User.ExampleReference(), agents: [], visits: [], bids: [])
+            updatedAt: Timestamp(date: Date()),
+            code: "E001",
+            address: "123 Main St",
+            seller: User.ExampleReference(),
+            agents: [User.ExampleReference()])
+    }
+    
+    static func ExampleReference() -> DocumentReference {
+        return Firestore.firestore().document("Estate/estateId")
     }
 }

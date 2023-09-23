@@ -15,4 +15,16 @@ struct Bid: Codable, Identifiable {
     @ServerTimestamp var updatedAt: Timestamp?
     var value: Decimal?
     var buyer: DocumentReference?
+    var buyerValue: User?
+    var estate: DocumentReference?
+    
+    static func Example() -> Bid{
+        return Bid(
+            id: "123",
+            createdAt: Timestamp(date: Date()),
+            updatedAt: Timestamp(date: Date()),
+            value: 220000,
+            buyer: User.ExampleReference(),
+            estate: Estate.ExampleReference())
+    }
 }

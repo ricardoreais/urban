@@ -19,19 +19,19 @@ class VisitService {
     static let shared = VisitService()
     private init(){}
     
-    func create(_ command: CreateVisitCommand) async -> Bool {
+    func create(_ command: CreateVisitCommand) async -> DocumentReference? {
         let currentUserReference = await userService.convertToDocumentReference((userManager.current?.id)!)
         let buyerReference = userService.convertToDocumentReference(command.buyer.id!)
         let currentEstate = await estateService.convertToDocumentReference((command.estate.id)!)
         let visit = Visit(date: command.date, estate: currentEstate, buyer: buyerReference, agent: currentUserReference)
         
         do {
-            _ = try collection.addDocument(from: visit)
+            let result = try collection.addDocument(from: visit)
             Logger.infoVisitCreated(command.date)
-            return true
+            return result
         } catch {
             Logger.error(error)
-            return false
+            return nil
         }
     }
     

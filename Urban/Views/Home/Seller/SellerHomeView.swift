@@ -10,13 +10,7 @@ import SwiftUI
 struct SellerHomeView: View {
     var body: some View {
         CustomTab {
-            CustomBackground {
-                Text("comingSoon")
-                    .foregroundColor(ColorPalette.secondary)
-
-                Text("Features: link para o site, fichas de visita, propostas")
-                    .foregroundColor(ColorPalette.secondary)
-            }
+            SellerEstatesView()
             .tabItem {
                 Label("myEstates", systemImage: "list.bullet")
             }
@@ -34,6 +28,6 @@ struct SellerHomeView: View {
 
 struct SellerHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        SellerHomeView()
+        SellerHomeView().environmentObject(UserManager.example())
     }
 }

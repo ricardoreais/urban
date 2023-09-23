@@ -14,7 +14,6 @@ struct CreateEstateView: View {
     @State private var created: Bool = false
     @State private var hasError: Bool = false
     @State private var selectedAgents: Set<User> = Set([])
-    @EnvironmentObject var userManager: UserManager
     @ObservedObject private var estateManager: EstatesViewModel = EstatesViewModel.shared
     @ObservedObject private var model: CreateEstateViewModel = CreateEstateViewModel.shared
     
@@ -54,11 +53,6 @@ struct CreateEstateView: View {
                     message: Text("pleaseFillFieldsCorrectly"),
                     dismissButton: .default(Text("ok"))
                 )
-            }
-        }
-        .onAppear {
-            Task {
-                await self.estateManager.get(uuid: userManager.current?.id ?? "")
             }
         }
     }

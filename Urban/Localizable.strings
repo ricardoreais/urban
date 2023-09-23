@@ -25,7 +25,7 @@
 "whatDidYouDislike" = "O que gostou menos?";
 "whatDidYouLike" = "O que gostou mais?";
 "howMuchAreYouWillingToPay" = "Quanto vale para si este imóvel?";
-"moneyExample" = "e.g. 200,000,00$";
+"moneyExample" = "e.g. 200.000,00€";
 "isThisPropertyAnOption" = "Este imóvel seria uma opção?";
 "yes" = "Sim";
 "no" = "Não";
@@ -94,3 +94,8 @@
 "noScheduledVisitsYet" = "Sem visitas agendadas...";
 "day" = "Dia";
 "property" = "Imóvel";
+"noPropertiesYet" = "O seu imóvel ainda não foi adicionado à nossa base de dados, por favor contacte um dos nossos agentes...";
+"seeBids" = "Ver propostas de compradores";
+"bid" = "Proposta";
+"yourBidValue" = "Introduza o valor da sua proposta";
+"bidValue" = "O valor da proposta: ";

@@ -99,4 +99,12 @@ class Logger {
     static func errorCreatingVisit() -> Void {
         error("Error creating visit")
     }
+    
+    static func infoBidCreated() -> Void {
+        info("Bid created with success")
+    }
+    
+    static func verboseFetchedBids() -> Void {
+        verbose("Bids fetched with success!")
+    }
 }

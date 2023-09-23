@@ -161,4 +161,16 @@ class UserService {
             return (nil, false)
         }
     }
+    
+    func getByReference(_ userReference: DocumentReference) async -> User? {
+        do {
+            let document = try await userReference.getDocument()
+            let userDocument = try document.data(as: User.self)
+            return userDocument
+        } catch {
+            // Handle any errors that occur during the Firestore query or decoding
+            Logger.error(error)
+            return nil
+        }
+    }
 }

@@ -1,19 +1,21 @@
 //
-//  EstateView.swift
+//  SellerEstateView.swift
 //  Urban
 //
-//  Created by Juliana Estrela on 14/08/2023.
+//  Created by Juliana Estrela on 23/09/2023.
 //
 
 import FirebaseFirestore
 import SwiftUI
 
-struct EstateView: View {
+struct SellerEstateView: View {
     @EnvironmentObject var estateManager: EstatesViewModel
     let estate: Estate
     
-    func openInPreview() {}
-
+    init(estate: Estate) {
+        self.estate = estate
+    }
+    
     var body: some View {
         NavigationView {
             CustomBackground(alignment: .leading) {
@@ -23,21 +25,17 @@ struct EstateView: View {
                 CustomText(label: "updatedAt", value: estate.updatedAt!.toString())
                 
                 Menu {
-                    //NavigationLink("createVisitReport", destination: VisitReportFormView(visit: Visit))
                     CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
-                    NavigationLink("scheduleVisit", destination: ScheduleVisitView().environmentObject(estateManager))
-                    Button("createBid", action: openInPreview)
+                    NavigationLink("seeBids", destination: BidsView(estate: estate))
                 } label: {
                     Label("moreActions", systemImage: "ellipsis")
                 }
             }
-        }.onAppear{
-            estateManager.setSelected(estate)
         }
     }
 }
 
-struct EstateView_Previews: PreviewProvider {
+struct SellerEstateView_Previews: PreviewProvider {
     static var previews: some View {
         return EstateView(estate: Estate.Example()).environmentObject(EstatesViewModel.example())
     }

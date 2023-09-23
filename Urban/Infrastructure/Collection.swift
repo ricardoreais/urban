@@ -12,4 +12,5 @@ enum Collection {
     static let estates = "Estates"
     static let visits = "Visits"
     static let visitReports = "VisitReports"
+    static let bids = "Bids"
 }

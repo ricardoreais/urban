@@ -87,6 +87,12 @@
 		1FED3FAF2A7AC76C00F38DD9 /* CustomBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FAE2A7AC76C00F38DD9 /* CustomBackground.swift */; };
 		1FED3FB12A7ACBEB00F38DD9 /* CustomForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FB02A7ACBEB00F38DD9 /* CustomForm.swift */; };
 		1FED3FB32A7ACF7E00F38DD9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FB22A7ACF7E00F38DD9 /* CustomButton.swift */; };
+		1FFA0D922ABF35F60040904A /* SellerEstatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA0D912ABF35F60040904A /* SellerEstatesView.swift */; };
+		1FFA0D942ABF521D0040904A /* SellerEstateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA0D932ABF521D0040904A /* SellerEstateView.swift */; };
+		1FFA0D962ABF52BF0040904A /* BidsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA0D952ABF52BF0040904A /* BidsView.swift */; };
+		1FFA0D982ABF54400040904A /* CustomDecimalInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA0D972ABF54400040904A /* CustomDecimalInput.swift */; };
+		1FFA0D9A2ABF585A0040904A /* BidService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA0D992ABF585A0040904A /* BidService.swift */; };
+		1FFA0D9C2ABF5B180040904A /* BidsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA0D9B2ABF5B180040904A /* BidsViewModel.swift */; };
 		1FFAD7FA2A113BF000F63B1C /* VisitReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7F92A113BF000F63B1C /* VisitReportsView.swift */; };
 		1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */; };
 		1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7FD2A113E1100F63B1C /* SignInView.swift */; };
@@ -162,6 +168,12 @@
 		1FED3FAE2A7AC76C00F38DD9 /* CustomBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackground.swift; sourceTree = "<group>"; };
 		1FED3FB02A7ACBEB00F38DD9 /* CustomForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomForm.swift; sourceTree = "<group>"; };
 		1FED3FB22A7ACF7E00F38DD9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		1FFA0D912ABF35F60040904A /* SellerEstatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerEstatesView.swift; sourceTree = "<group>"; };
+		1FFA0D932ABF521D0040904A /* SellerEstateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerEstateView.swift; sourceTree = "<group>"; };
+		1FFA0D952ABF52BF0040904A /* BidsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidsView.swift; sourceTree = "<group>"; };
+		1FFA0D972ABF54400040904A /* CustomDecimalInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDecimalInput.swift; sourceTree = "<group>"; };
+		1FFA0D992ABF585A0040904A /* BidService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidService.swift; sourceTree = "<group>"; };
+		1FFA0D9B2ABF5B180040904A /* BidsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidsViewModel.swift; sourceTree = "<group>"; };
 		1FFAD7F92A113BF000F63B1C /* VisitReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsView.swift; sourceTree = "<group>"; };
 		1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1FFAD7FD2A113E1100F63B1C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -203,6 +215,9 @@
 			isa = PBXGroup;
 			children = (
 				1F3804D52A59BA2A00F70347 /* SellerHomeView.swift */,
+				1FFA0D912ABF35F60040904A /* SellerEstatesView.swift */,
+				1FFA0D932ABF521D0040904A /* SellerEstateView.swift */,
+				1FFA0D952ABF52BF0040904A /* BidsView.swift */,
 			);
 			path = Seller;
 			sourceTree = "<group>";
@@ -308,6 +323,7 @@
 				1F70C6EB2A8CDDC200ED785F /* CustomCalendar.swift */,
 				1F10A4DF2A8D5DCE00D7A007 /* CustomTab.swift */,
 				1F12A1782A8E854900D04A3C /* LazyView.swift */,
+				1FFA0D972ABF54400040904A /* CustomDecimalInput.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -320,6 +336,7 @@
 				1F10A4C82A8D341A00D7A007 /* UserService.swift */,
 				1F10A4D02A8D4A0800D7A007 /* EstateService.swift */,
 				1F10A4D22A8D4A1400D7A007 /* VisitService.swift */,
+				1FFA0D992ABF585A0040904A /* BidService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -388,6 +405,7 @@
 				1FED3F892A75582300F38DD9 /* UserManager.swift */,
 				1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */,
 				1F10A4CC2A8D3E3200D7A007 /* CreateEstateViewModel.swift */,
+				1FFA0D9B2ABF5B180040904A /* BidsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -514,8 +532,10 @@
 				1F3A3DDC2A46F2C80088F25D /* ColorPalette.swift in Sources */,
 				1FA7F7B129D9E2B400886539 /* Evaluation.swift in Sources */,
 				1F10A4D52A8D4C0400D7A007 /* EstatesViewModel.swift in Sources */,
+				1FFA0D982ABF54400040904A /* CustomDecimalInput.swift in Sources */,
 				1F654BDE29EB1CD6002ED11C /* VisitReport.swift in Sources */,
 				1F5FAF5B2A8A7168007DB2DC /* CustomLink.swift in Sources */,
+				1FFA0D962ABF52BF0040904A /* BidsView.swift in Sources */,
 				1F552DAC2A8A334C0089349A /* Logger.swift in Sources */,
 				1F3804D62A59BA2A00F70347 /* SellerHomeView.swift in Sources */,
 				1FA7F7A529D9D41E00886539 /* VisitReportFormView.swift in Sources */,
@@ -523,6 +543,7 @@
 				1F1DD2162A840B2900A44925 /* CustomSecureField.swift in Sources */,
 				1F3804E32A5A3D4400F70347 /* CustomInput.swift in Sources */,
 				1FFAD7FA2A113BF000F63B1C /* VisitReportsView.swift in Sources */,
+				1FFA0D9C2ABF5B180040904A /* BidsViewModel.swift in Sources */,
 				1F3A3DE32A4718990088F25D /* Logo.swift in Sources */,
 				1F3804E92A5A459B00F70347 /* LocalizedEnum.swift in Sources */,
 				1F5FAF5D2A8A738E007DB2DC /* SettingsManager.swift in Sources */,
@@ -532,6 +553,7 @@
 				1F12A1792A8E854900D04A3C /* LazyView.swift in Sources */,
 				1F10A4D12A8D4A0800D7A007 /* EstateService.swift in Sources */,
 				1F8AD73B2A3DD6990031B154 /* HomeView.swift in Sources */,
+				1FFA0D9A2ABF585A0040904A /* BidService.swift in Sources */,
 				1F9A976E2A8AA7A000B64436 /* CreateVisitCommand.swift in Sources */,
 				1F9A97682A8A9EB900B64436 /* CustomDatePicker.swift in Sources */,
 				1F10A4C92A8D341A00D7A007 /* UserService.swift in Sources */,
@@ -569,6 +591,8 @@
 				1F5FAF572A8A6445007DB2DC /* EstateView.swift in Sources */,
 				1F9A977C2A8ACE1300B64436 /* VisitsCalendarView.swift in Sources */,
 				1FED3FAB2A79BF4700F38DD9 /* CustomSelectListDetail.swift in Sources */,
+				1FFA0D922ABF35F60040904A /* SellerEstatesView.swift in Sources */,
+				1FFA0D942ABF521D0040904A /* SellerEstateView.swift in Sources */,
 				1FED3FAF2A7AC76C00F38DD9 /* CustomBackground.swift in Sources */,
 				1FA7F7B329D9E43B00886539 /* Decision.swift in Sources */,
 			);

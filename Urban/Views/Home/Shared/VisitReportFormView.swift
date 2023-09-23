@@ -11,15 +11,18 @@ import SwiftUI
 
 struct VisitReportFormView: View {
     @State private var visitReport: VisitReport = .init()
+    @State private var bid: Bid = .init()
     @State private var created: Bool = false
     @State private var hasErrors: Bool = false
     let visit: Visit
     let visitReportService: VisitReportService = .shared
+    let bidService: BidService = .shared
     let userService: UserService = .shared
     
     func save(visitReport: VisitReport) async {
         do {
             try await visitReportService.save(visitReport: visitReport)
+            _ = await bidService.save(bid)
             print("Form submitted with success!")
             created = true
         } catch VisitReportError.missingRequiredFields {
@@ -62,6 +65,13 @@ struct VisitReportFormView: View {
                         
                     CustomInput(text: $visitReport.comments, placeholder: "comments")
                 }
+                
+                
+                CustomSection(header: "bid") {
+                    Text("yourBidValue").foregroundColor(ColorPalette.secondary)
+                    CustomDecimalInput(value: $bid.value, placeholder: "moneyExample")
+                }
+                
                 Section {
                     CustomButton("submit", asyncAction: { await save(visitReport: visitReport) })
                         .navigationDestination(isPresented: $created) {
@@ -82,6 +92,9 @@ struct VisitReportFormView: View {
             }
         }
         .onAppear {
+            self.bid.buyer = visit.buyer
+            self.bid.estate = visit.estate
+            
             self.visitReport.buyer = visit.buyer
             self.visitReport.agent = visit.agent
             self.visitReport.estate = visit.estate

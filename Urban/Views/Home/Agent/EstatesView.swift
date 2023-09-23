@@ -10,6 +10,7 @@ import SwiftUI
 
 // TODO: Features: visitas efetuadas, outros agentes, propostas criadas, criar proposta, criar ficha de visita
 struct EstatesView: View {
+    @EnvironmentObject var userManager: UserManager
     @EnvironmentObject var estateManager: EstatesViewModel
 
     var body: some View {
@@ -21,7 +22,7 @@ struct EstatesView: View {
                     Text("noEstatesYet")
                 } else {
                     List(estateManager.estates) { estate in
-                        NavigationLink(destination: EstateView(estate: estate)) {
+                        NavigationLink(destination: EstateView(estate: estate).environmentObject(estateManager)) {
                             CustomText(label: "code", value: estate.code) +
                                 CustomText(label: "address", value: estate.address)
                         }
@@ -30,11 +31,16 @@ struct EstatesView: View {
                 }
             }
         }
+        .onAppear {
+            Task {
+                await self.estateManager.getByAgent(uuid: userManager.current?.id ?? "")
+            }
+        }
     }
 }
 
 struct EstatesView_Previews: PreviewProvider {
     static var previews: some View {
-        return NavigationView{EstatesView().environmentObject(EstatesViewModel.example())}
+        return NavigationView{EstatesView().environmentObject(UserManager.example()).environmentObject(EstatesViewModel.example())}
     }
 }

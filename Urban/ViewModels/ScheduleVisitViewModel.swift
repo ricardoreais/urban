@@ -35,7 +35,7 @@ class ScheduleVisitViewModel: ObservableObject {
     
     func createVisit(estate: Estate, date: Date, buyer: User) async -> Bool {
         let createVisitCommand = CreateVisitCommand(date: date, buyer: buyer, estate: estate)
-        return await visitService.create(createVisitCommand)
+        return await visitService.create(createVisitCommand) != nil
     }
     
     static func example() -> ScheduleVisitViewModel {

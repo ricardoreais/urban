@@ -16,6 +16,7 @@ class EstateService {
     private let userService: UserService = UserService.shared
     static let shared = EstateService()
     private init(){}
+    
     func convertToDocumentReference(_ estateId: String) -> DocumentReference {
         return collection.document(estateId)
     }
@@ -35,7 +36,7 @@ class EstateService {
             return false
         }
         
-        let estate = Estate(code: command.code, address: command.address, seller: seller, agents: command.agents, visits: [], bids: [])
+        let estate = Estate(code: command.code, address: command.address, seller: seller, agents: command.agents)
         
         do {
             _ = try collection.addDocument(from: estate)
@@ -47,10 +48,33 @@ class EstateService {
         }
     }
     
-    func get(uuid: String) async -> [Estate] {
+    func getByAgent(uuid: String) async -> [Estate] {
         do {
             let currentUserReference = userService.convertToDocumentReference(uuid)
             let documents = try await collection.whereField("agents", arrayContains: currentUserReference).getDocuments().documents
+            
+            let estates: [Estate] = documents.compactMap { document -> Estate? in
+                do {
+                    let estateDocument = try document.data(as: Estate.self)
+                    return estateDocument
+                } catch {
+                    Logger.error(error)
+                    return nil
+                }
+            }
+            
+            Logger.verboseFetchedEstates()
+            return estates
+        } catch {
+            Logger.error(error)
+            return []
+        }
+    }
+    
+    func getBySeller(uuid: String) async -> [Estate] {
+        do {
+            let currentUserReference = userService.convertToDocumentReference(uuid)
+            let documents = try await collection.whereField("seller", isEqualTo: currentUserReference).getDocuments().documents
             
             let estates: [Estate] = documents.compactMap { document -> Estate? in
                 do {

@@ -12,24 +12,35 @@ class EstatesViewModel: ObservableObject {
     @Published var estates: [Estate] = []
     @Published var selected: Estate? = nil
     @Published var isLoading = true
-    let estateService: EstateService = EstateService.shared
-    let userService: UserService = UserService.shared
+    let estateService: EstateService = .shared
+    let userService: UserService = .shared
     
     static let shared = EstatesViewModel()
     private init() {}
     
     func setSelected(_ estate: Estate) {
-        selected = estate
+        self.selected = estate
     }
     
     func create(_ code: String, _ address: String, _ agents: Set<User>, _ sellerEmail: String) async -> Bool {
-        let createEstateCommand = CreateEstateCommand(code: code, address: address, agents: agents.map { userService.convertToDocumentReference($0.id!) }, sellerEmail: sellerEmail)
-        return await estateService.create(command: createEstateCommand)
+        let createEstateCommand = CreateEstateCommand(code: code, address: address, agents: agents.map { self.userService.convertToDocumentReference($0.id!) }, sellerEmail: sellerEmail)
+        return await self.estateService.create(command: createEstateCommand)
     }
     
-    func get(uuid: String) async {
-        self.estates = await self.estateService.get(uuid: uuid)
-        self.isLoading = false
+    func getByAgent(uuid: String) async {
+        if self.estates.isEmpty {
+            self.isLoading = true
+            self.estates = await self.estateService.getByAgent(uuid: uuid)
+            self.isLoading = false
+        }
+    }
+    
+    func getBySeller(uuid: String) async {
+        if self.estates.isEmpty {
+            self.isLoading = true
+            self.estates = await self.estateService.getBySeller(uuid: uuid)
+            self.isLoading = false
+        }
     }
     
     static func example() -> EstatesViewModel {
