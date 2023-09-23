@@ -27,6 +27,7 @@ struct VisitReport: Codable, Identifiable {
     var comments: String = ""
     var createdBy: DocumentReference?
     var estate: DocumentReference?
+    var estateValue: Estate?
     var buyer: DocumentReference?
     var agent: DocumentReference?
     @ServerTimestamp var createdAt: Timestamp?

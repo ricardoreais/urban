@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class CreateEstateViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var agents: [User] = []

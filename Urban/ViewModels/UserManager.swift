@@ -13,15 +13,12 @@ class UserManager: ObservableObject {
     let userService: UserService = .shared
     
     static let shared = UserManager()
-    
     private init() {}
     
     func getCurrent() async -> Void {
         if let user = await userService.getCurrent() {
-            DispatchQueue.main.async {
-                self.isLoading = false
-                self.current = user
-            }
+            self.isLoading = false
+            self.current = user
         } else {
             // Handle fetching user errors
         }

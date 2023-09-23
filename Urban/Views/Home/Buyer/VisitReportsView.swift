@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VisitReportsView: View {
-    @EnvironmentObject var visitReportsStore: VisitReportsViewModel
+    @ObservedObject var visitReportsStore: VisitReportsViewModel = .shared
     
     var body: some View {
         CustomBackground {
@@ -22,7 +22,7 @@ struct VisitReportsView: View {
                 else {
                     List(visitReportsStore.reports) { report in
                         NavigationLink(destination: VisitReportView(report: report)) {
-                            CustomText(label: "clientName", value: "TODO")
+                            CustomText(label: "property", value:"TODO")
                         }
                         .listRowBackground(ColorPalette.highlights)
                     }
@@ -39,6 +39,6 @@ struct VisitReportsView: View {
 
 struct VisitReportsView_Previews: PreviewProvider {
     static var previews: some View {
-        VisitReportsView().environmentObject(VisitReportsViewModel.example())
+        VisitReportsView(visitReportsStore: VisitReportsViewModel.example())
     }
 }

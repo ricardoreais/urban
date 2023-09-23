@@ -10,11 +10,12 @@ import FirebaseFirestore
 import SwiftUI
 
 struct VisitReportFormView: View {
+    @EnvironmentObject var userManager: UserManager
     @State private var visitReport: VisitReport = .init()
     @State private var created: Bool = false
     @State private var hasErrors: Bool = false
     let visitReportService: VisitReportService = .shared
-    
+    let userService: UserService = .shared
     
     func save(visitReport: VisitReport) async {
         do {
@@ -35,6 +36,7 @@ struct VisitReportFormView: View {
     
     var body: some View {
         CustomBackground {
+            Text("Hello" + (userManager.current?.id ?? ""))
             Logo()
             CustomForm {
                 CustomSection(header: "property") {
@@ -80,11 +82,16 @@ struct VisitReportFormView: View {
                 )
             }
         }
+        .onAppear {
+            self.visitReport.buyer = userService.convertToDocumentReference((userManager.current?.id)!)
+            self.visitReport.agent = userService.convertToDocumentReference((userManager.current?.id)!)
+            self.visitReport.estate = userService.convertToDocumentReference((userManager.current?.id)!)
+        }
     }
 }
 
 struct VisitFormView_Previews: PreviewProvider {
     static var previews: some View {
-        VisitReportFormView()
+        VisitReportFormView().environmentObject(UserManager.example())
     }
 }

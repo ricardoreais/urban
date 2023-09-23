@@ -69,4 +69,16 @@ class EstateService {
             return []
         }
     }
+    
+    func get(_ estateReference: DocumentReference) async -> Estate? {
+        do {
+            let document = try await estateReference.getDocument()
+            let estateDocument = try document.data(as: Estate.self)
+            return estateDocument
+        } catch {
+            // Handle any errors that occur during the Firestore query or decoding
+            Logger.error(error)
+            return nil
+        }
+    }
 }

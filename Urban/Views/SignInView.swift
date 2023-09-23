@@ -18,8 +18,6 @@ struct SignInView: View {
     func signIn() async -> Void {
         do {
             let result = await userManager.signIn(email, password)
-            try await Task.sleep(until: .now + .seconds(10), clock: .continuous)
-            
             let isEmptyEmailOrPassword = email.isEmpty || password.isEmpty
             hasErrors = result.hasErrors || isEmptyEmailOrPassword
             loggedIn = result.loggedIn && !hasErrors

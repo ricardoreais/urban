@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class DeleteUserViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var users: [User] = []
@@ -20,13 +21,11 @@ class DeleteUserViewModel: ObservableObject {
     }
     
     func get() async -> Void {
-        Task {
-            do {
-                self.users = try await userService.get()
-                self.isLoading = false
-            } catch {
-                // Handle fetching users by type errors
-            }
+        do {
+            self.users = try await userService.get()
+            self.isLoading = false
+        } catch {
+            // Handle fetching users by type errors
         }
     }
     

@@ -42,6 +42,11 @@ struct VisitsCalendarView: View {
                 }
             }
         }
+        .onAppear {
+            Task {
+                await visitsStore.loadVisits()
+            }
+        }
     }
 }
 
