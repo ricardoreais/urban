@@ -23,4 +23,11 @@ class VisitsCalendarViewModel: ObservableObject {
         self.visits = await visitService.get()
         self.isLoading = false
     }
+    
+    static func example() -> VisitsCalendarViewModel {
+        let visitsCalendarViewModel = VisitsCalendarViewModel()
+        visitsCalendarViewModel.visits = [Visit.Example()]
+        visitsCalendarViewModel.isLoading = false
+        return visitsCalendarViewModel
+    }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 
 // TODO: Features: visitas efetuadas, outros agentes, propostas criadas, criar proposta, criar ficha de visita
 struct EstatesView: View {
-    @ObservedObject var estateManager: EstatesManager = EstatesManager.shared
+    @EnvironmentObject var estateManager: EstatesManager
 
     var body: some View {
         CustomBackground {
@@ -35,6 +35,6 @@ struct EstatesView: View {
 
 struct EstatesView_Previews: PreviewProvider {
     static var previews: some View {
-        return NavigationView{EstatesView(estateManager: EstatesManager.example())}
+        return NavigationView{EstatesView().environmentObject(EstatesManager.example())}
     }
 }

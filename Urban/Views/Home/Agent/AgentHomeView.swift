@@ -9,12 +9,14 @@ import FirebaseFirestore
 import SwiftUI
 
 struct AgentHomeView: View {
+    @ObservedObject var estateManager: EstatesManager = .shared
+    
     var body: some View {
         CustomTab {
             EstatesView()
                 .tabItem {
                     Label("estates", systemImage: "building.2")
-                }
+                }.environmentObject(estateManager)
             CustomBackground {
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
@@ -37,6 +39,6 @@ struct AgentHomeView: View {
 
 struct AgentHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        AgentHomeView()
+        AgentHomeView(estateManager: EstatesManager.example())
     }
 }

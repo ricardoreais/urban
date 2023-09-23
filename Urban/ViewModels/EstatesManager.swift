@@ -36,6 +36,7 @@ class EstatesManager: ObservableObject {
         let estatesManager = EstatesManager()
         estatesManager.estates = [Estate.Example()]
         estatesManager.isLoading = false
+        estatesManager.selected = Estate.Example()
         return estatesManager
     }
 }

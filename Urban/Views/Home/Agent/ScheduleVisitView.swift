@@ -9,18 +9,15 @@ import FirebaseFirestore
 import SwiftUI
 
 struct ScheduleVisitView: View {
-    @ObservedObject var model: ScheduleVisitViewModel
+    @EnvironmentObject var estateManager: EstatesManager
+    @ObservedObject var model: ScheduleVisitViewModel = .shared
     @State private var selectedDate = Date()
     @State private var selectedAgents: Set<User> = Set([])
     @State private var created: Bool = false
     @State private var hasError: Bool = false
-
-    init() {
-        self.model = ScheduleVisitViewModel(selectedEstate: EstatesManager.shared.selected!)
-    }
-
+    
     func createVisit() async {
-        created = await model.createVisit(date: selectedDate, buyer: selectedAgents.first!)
+        created = await model.createVisit(estate: estateManager.selected!, date: selectedDate, buyer: selectedAgents.first!)
         hasError = !created
     }
 
@@ -55,7 +52,7 @@ struct ScheduleVisitView: View {
 struct ScheduleVisitView_Previews: PreviewProvider {
     static var previews: some View {
         return NavigationView {
-            ScheduleVisitView()
+            ScheduleVisitView(model: ScheduleVisitViewModel.example()).environmentObject(EstatesManager.example())
         }
     }
 }

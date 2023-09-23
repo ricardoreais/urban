@@ -12,13 +12,11 @@ class ScheduleVisitViewModel: ObservableObject {
     @Published var isLoading = true
     @Published var buyers: [User] = []
     
-    let selectedEstate: Estate;
-    
     let userService: UserService = .shared
     let visitService: VisitService = .shared
     
-    init(selectedEstate: Estate) {
-        self.selectedEstate = selectedEstate
+    static let shared = ScheduleVisitViewModel()
+    private init() {
         Task {
             await get()
         }
@@ -35,8 +33,15 @@ class ScheduleVisitViewModel: ObservableObject {
         }
     }
     
-    func createVisit(date: Date, buyer: User) async -> Bool {
-        let createVisitCommand = CreateVisitCommand(date: date, buyer: buyer, estate: selectedEstate)
+    func createVisit(estate: Estate, date: Date, buyer: User) async -> Bool {
+        let createVisitCommand = CreateVisitCommand(date: date, buyer: buyer, estate: estate)
         return await visitService.create(createVisitCommand)
+    }
+    
+    static func example() -> ScheduleVisitViewModel {
+        let scheduleVisitViewModel = ScheduleVisitViewModel()
+        scheduleVisitViewModel.buyers = [User.BuyerExample()]
+        scheduleVisitViewModel.isLoading = false
+        return scheduleVisitViewModel
     }
 }

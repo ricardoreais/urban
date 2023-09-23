@@ -12,7 +12,7 @@ struct BuyerHomeView: View {
     
     var body: some View {
         CustomTab {
-            VisitReportsView(visitReportsStore: visitReportsStore)
+            VisitReportsView()
             .tabItem {
                 Label("myVisits", systemImage: "list.bullet")
             }
@@ -20,12 +20,12 @@ struct BuyerHomeView: View {
             .tabItem {
                 Label("calendar", systemImage: "calendar")
             }
-        }
+        }.environmentObject(visitReportsStore)
     }
 }
 
 struct BuyerHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        BuyerHomeView()
+        BuyerHomeView(visitReportsStore: VisitReportsViewModel.example())
     }
 }

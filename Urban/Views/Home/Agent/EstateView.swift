@@ -9,7 +9,7 @@ import FirebaseFirestore
 import SwiftUI
 
 struct EstateView: View {
-    @ObservedObject var estateStore: EstatesManager = EstatesManager.shared
+    @EnvironmentObject var estateManager: EstatesManager
     let estate: Estate
 
     init(estate: Estate) {
@@ -19,28 +19,28 @@ struct EstateView: View {
     func openInPreview() {}
 
     var body: some View {
-        CustomBackground(alignment: .leading) {
-            CustomText(label: "code", value: estate.code)
-            CustomText(label: "address", value: estate.address)
-            CustomText(label: "createdAt", value: estate.createdAt!.toString())
-            CustomText(label: "updatedAt", value: estate.updatedAt!.toString())
-
-            Menu {
-                NavigationLink("createVisitReport", destination: VisitReportFormView())
-                CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
-                NavigationLink("scheduleVisit", destination: ScheduleVisitView())
-                Button("createBid", action: openInPreview)
-            } label: {
-                Label("moreActions", systemImage: "ellipsis")
+        NavigationView {
+            CustomBackground(alignment: .leading) {
+                CustomText(label: "code", value: estate.code)
+                CustomText(label: "address", value: estate.address)
+                CustomText(label: "createdAt", value: estate.createdAt!.toString())
+                CustomText(label: "updatedAt", value: estate.updatedAt!.toString())
+                
+                Menu {
+                    NavigationLink("createVisitReport", destination: VisitReportFormView())
+                    CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
+                    NavigationLink("scheduleVisit", destination: ScheduleVisitView())
+                    Button("createBid", action: openInPreview)
+                } label: {
+                    Label("moreActions", systemImage: "ellipsis")
+                }
             }
-        }.onAppear(perform: {
-            estateStore.setSelected(estate)
-        })
+        }
     }
 }
 
 struct EstateView_Previews: PreviewProvider {
     static var previews: some View {
-        return NavigationView {EstateView(estate: Estate.Example())}
+        return EstateView(estate: Estate.Example()).environmentObject(EstatesManager.example())
     }
 }
