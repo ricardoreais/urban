@@ -11,7 +11,7 @@ import Foundation
 class VisitReportsViewModel: ObservableObject {
     @Published var reports: [VisitReport] = []
     @Published var selected: VisitReport = VisitReport()
-    @Published var isLoading = true
+    @Published var isLoading = false
     let visitReportService: VisitReportService = .shared
     let estateService: EstateService = .shared
     
@@ -23,18 +23,18 @@ class VisitReportsViewModel: ObservableObject {
     }	
     
     func load() async throws -> Void {
-        if(isLoading){
-            self.reports = try await visitReportService.get()
-//            for report in reports {
-//                if let estateReference = report.estate {
-//                    Task {
-//                        if let estate = await estateService.get(estateReference) {
-//                            report.estateValue = estate
-//                        }
-//                    }
-//                }
-//            }
+        isLoading = true;
+        if(self.reports.isEmpty){
+            var loadedReports: [VisitReport] = []
+            loadedReports = try await visitReportService.get()
+            
+            for i in loadedReports.indices {
+                loadedReports[i].estateValue = await estateService.get(loadedReports[i].estate!)
+            }
+            
+            self.reports = loadedReports
         }
+        
         isLoading = false
     }
     

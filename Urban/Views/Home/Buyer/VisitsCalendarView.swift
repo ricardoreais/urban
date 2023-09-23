@@ -30,7 +30,7 @@ struct VisitsCalendarView: View {
                     } else {
                         List(visitsStore.visits) { visit in
                             Menu {
-                                NavigationLink("createVisitReport", destination: VisitReportFormView())
+                                NavigationLink("createVisitReport", destination: VisitReportFormView(visit: visit))
                                 CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\("1208-4267")")
                             } label: {
                                 CustomText(label: "property", value: "1208-4267")

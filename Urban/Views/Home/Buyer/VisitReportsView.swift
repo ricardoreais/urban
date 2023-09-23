@@ -22,7 +22,7 @@ struct VisitReportsView: View {
                 else {
                     List(visitReportsStore.reports) { report in
                         NavigationLink(destination: VisitReportView(report: report)) {
-                            CustomText(label: "property", value:"TODO")
+                            CustomText(label: "property", value: report.estateValue?.address)
                         }
                         .listRowBackground(ColorPalette.highlights)
                     }

@@ -80,7 +80,6 @@
 		1FED3F8A2A75582300F38DD9 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F892A75582300F38DD9 /* UserManager.swift */; };
 		1FED3F8F2A75632200F38DD9 /* CreateUserCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F8E2A75632200F38DD9 /* CreateUserCommand.swift */; };
 		1FED3F992A757BEE00F38DD9 /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F982A757BEE00F38DD9 /* DeleteUserView.swift */; };
-		1FED3F9E2A757F9F00F38DD9 /* GetUsersQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3F9D2A757F9F00F38DD9 /* GetUsersQuery.swift */; };
 		1FED3FA32A76886600F38DD9 /* CreateEstateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FA22A76886600F38DD9 /* CreateEstateView.swift */; };
 		1FED3FA72A7689C400F38DD9 /* CreateEstateCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FA62A7689C400F38DD9 /* CreateEstateCommand.swift */; };
 		1FED3FA92A79BC6B00F38DD9 /* CustomSelectList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FED3FA82A79BC6B00F38DD9 /* CustomSelectList.swift */; };
@@ -156,7 +155,6 @@
 		1FED3F892A75582300F38DD9 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		1FED3F8E2A75632200F38DD9 /* CreateUserCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserCommand.swift; sourceTree = "<group>"; };
 		1FED3F982A757BEE00F38DD9 /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
-		1FED3F9D2A757F9F00F38DD9 /* GetUsersQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUsersQuery.swift; sourceTree = "<group>"; };
 		1FED3FA22A76886600F38DD9 /* CreateEstateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEstateView.swift; sourceTree = "<group>"; };
 		1FED3FA62A7689C400F38DD9 /* CreateEstateCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEstateCommand.swift; sourceTree = "<group>"; };
 		1FED3FA82A79BC6B00F38DD9 /* CustomSelectList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSelectList.swift; sourceTree = "<group>"; };
@@ -317,7 +315,6 @@
 		1F7F33B72A2388E60080DE09 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				1FED3F9A2A757F0900F38DD9 /* Queries */,
 				1FED3F8B2A75624000F38DD9 /* Commands */,
 				1F10A4C62A8D31FF00D7A007 /* VisitReportService.swift */,
 				1F10A4C82A8D341A00D7A007 /* UserService.swift */,
@@ -403,14 +400,6 @@
 				1F9A976D2A8AA7A000B64436 /* CreateVisitCommand.swift */,
 			);
 			path = Commands;
-			sourceTree = "<group>";
-		};
-		1FED3F9A2A757F0900F38DD9 /* Queries */ = {
-			isa = PBXGroup;
-			children = (
-				1FED3F9D2A757F9F00F38DD9 /* GetUsersQuery.swift */,
-			);
-			path = Queries;
 			sourceTree = "<group>";
 		};
 		1FED3FA12A75824A00F38DD9 /* Backoffice */ = {
@@ -560,7 +549,6 @@
 				1FED3FB12A7ACBEB00F38DD9 /* CustomForm.swift in Sources */,
 				1FA7F7B729D9EDEF00886539 /* ColorExtension.swift in Sources */,
 				1F3804D22A59B9FD00F70347 /* BuyerHomeView.swift in Sources */,
-				1FED3F9E2A757F9F00F38DD9 /* GetUsersQuery.swift in Sources */,
 				1F9A976A2A8AA54E00B64436 /* VisitsCalendarViewModel.swift in Sources */,
 				1F3804E52A5A411000F70347 /* EvaluationPicker.swift in Sources */,
 				1F70C6EC2A8CDDC200ED785F /* CustomCalendar.swift in Sources */,

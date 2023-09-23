@@ -52,6 +52,7 @@ struct VisitReport: Codable, Identifiable {
             comments: "Additional comments",
             createdBy: Firestore.firestore().document("users/userId"),  // Replace with the actual user reference
             estate: Firestore.firestore().document("estates/estateId"),  // Replace with the actual estate reference
+            estateValue: Estate.Example(),
             buyer: Firestore.firestore().document("buyers/buyerId"),  // Replace with the actual buyer reference
             agent: Firestore.firestore().document("agents/agentId"),  // Replace with the actual agent reference
             createdAt: Timestamp(date: Date()),

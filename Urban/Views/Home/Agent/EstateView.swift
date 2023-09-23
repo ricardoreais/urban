@@ -27,7 +27,7 @@ struct EstateView: View {
                 CustomText(label: "updatedAt", value: estate.updatedAt!.toString())
                 
                 Menu {
-                    NavigationLink("createVisitReport", destination: VisitReportFormView())
+                    //NavigationLink("createVisitReport", destination: VisitReportFormView(visit: Visit))
                     CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
                     NavigationLink("scheduleVisit", destination: ScheduleVisitView())
                     Button("createBid", action: openInPreview)

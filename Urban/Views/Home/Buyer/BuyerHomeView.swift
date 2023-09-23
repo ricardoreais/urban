@@ -24,6 +24,6 @@ struct BuyerHomeView: View {
 
 struct BuyerHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        BuyerHomeView()
+        BuyerHomeView().environmentObject(UserManager.example())
     }
 }
