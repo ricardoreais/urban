@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct SellerHomeView: View {
+    @ObservedObject var estateManager: EstatesViewModel = .shared
+    
     var body: some View {
         CustomTab {
-            SellerEstatesView()
+            SellerEstatesView(estateManager: estateManager)
             .tabItem {
                 Label("myEstates", systemImage: "list.bullet")
             }
@@ -28,6 +30,6 @@ struct SellerHomeView: View {
 
 struct SellerHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        SellerHomeView().environmentObject(UserManager.example())
+        SellerHomeView(estateManager: EstatesViewModel.example()).environmentObject(UserManager.example())
     }
 }

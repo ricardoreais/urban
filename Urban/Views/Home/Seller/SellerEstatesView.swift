@@ -43,6 +43,6 @@ struct SellerEstatesView: View {
 
 struct SellerEstatesView_Previews: PreviewProvider {
     static var previews: some View {
-        SellerEstatesView(estateManager: EstatesViewModel.example()).environmentObject(UserManager.example())
+        NavigationView{SellerEstatesView(estateManager: EstatesViewModel.example()).environmentObject(UserManager.example())}
     }
 }

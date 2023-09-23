@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct BuyerHomeView: View {
+    @ObservedObject var visitReportsStore: VisitReportsViewModel = .shared
+    
     var body: some View {
         CustomTab {
-            VisitReportsView()
+            VisitReportsView(visitReportsStore: visitReportsStore)
             .tabItem {
                 Label("myVisits", systemImage: "list.bullet")
             }
@@ -24,6 +26,6 @@ struct BuyerHomeView: View {
 
 struct BuyerHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        BuyerHomeView().environmentObject(UserManager.example())
+        NavigationView {BuyerHomeView(visitReportsStore: VisitReportsViewModel.example()).environmentObject(UserManager.example())}
     }
 }
