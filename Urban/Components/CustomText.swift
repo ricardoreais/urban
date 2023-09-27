@@ -17,7 +17,7 @@ struct CustomText: View {
                 .foregroundColor(.accentColor)
                 .fontWeight(.bold) +
             Text(" ") +
-            Text(LocalizedStringKey(value ?? ""))
+            Text(verbatim: (value ?? ""))
                 .foregroundColor(ColorPalette.secondary)
         }
     }
@@ -32,7 +32,7 @@ struct CustomText: View {
 
 struct CustomText_Previews: PreviewProvider {
     static var previews: some View {
-        CustomText(label: "clientName", value: "Ricardo Reais")
+        CustomText(label: "clientName", value: "Ricardo.Reais@hotmail.com")
             .padding()
             .background(ColorPalette.primary)
     }
