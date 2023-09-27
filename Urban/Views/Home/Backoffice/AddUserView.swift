@@ -17,7 +17,8 @@ struct AddUserView: View {
     }
     
     var body: some View {
-        CustomBackground{
+        CustomBackground {
+            Logo()
             CustomForm
             {
                 CustomSection(header: "createUser") {

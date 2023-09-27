@@ -15,6 +15,7 @@ struct VisitReportsView: View {
             if visitReportsStore.isLoading {
                 CustomLoading()
             } else {
+                Logo()
                 if(visitReportsStore.reports.isEmpty){
                     Text("noVisitsYet")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

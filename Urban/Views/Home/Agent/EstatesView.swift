@@ -18,6 +18,7 @@ struct EstatesView: View {
             if estateManager.isLoading {
                 CustomLoading()
             } else {
+                Logo()
                 if estateManager.estates.isEmpty {
                     Text("noEstatesYet")
                 } else {

@@ -18,6 +18,7 @@ struct AgentHomeView: View {
                     Label("estates", systemImage: "building.2")
                 }.environmentObject(estateManager)
             CustomBackground {
+                Logo()
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
                 Text("Features: nome do comprador, opção de criar relatório de visita, opção de criar proposta")
@@ -27,6 +28,7 @@ struct AgentHomeView: View {
                 Label("buyers", systemImage: "person.3.sequence")
             }
             CustomBackground {
+                Logo()
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
             }
@@ -39,6 +41,6 @@ struct AgentHomeView: View {
 
 struct AgentHomeView_Previews: PreviewProvider {
     static var previews: some View {
-        AgentHomeView(estateManager: EstatesViewModel.example())
+        NavigationView{AgentHomeView(estateManager: EstatesViewModel.example()).environmentObject(UserManager.example())}
     }
 }

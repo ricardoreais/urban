@@ -15,6 +15,7 @@ struct BackofficeHomeView: View {
                 Label("createEstate", systemImage: "square.grid.3x1.folder.badge.plus")
             }
             CustomBackground {
+                Logo()
                 Text("comingSoon")
             }
             .tabItem {

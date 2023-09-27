@@ -16,6 +16,7 @@ struct DeleteUserView: View {
             if model.isLoading {
                 CustomLoading()
             } else {
+                Logo()
                 if(model.users.isEmpty){
                     Text("noUsers")
                 }

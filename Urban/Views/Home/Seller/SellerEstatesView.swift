@@ -16,6 +16,7 @@ struct SellerEstatesView: View {
             if estateManager.isLoading {
                 CustomLoading()
             } else {
+                Logo()
                 if(estateManager.estates.isEmpty){
                     Text("noPropertiesYet")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

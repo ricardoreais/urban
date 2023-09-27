@@ -17,6 +17,7 @@ struct SellerHomeView: View {
                 Label("myEstates", systemImage: "list.bullet")
             }
             CustomBackground {
+                Logo()
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
             }

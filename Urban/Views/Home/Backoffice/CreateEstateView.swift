@@ -19,6 +19,7 @@ struct CreateEstateView: View {
 
     var body: some View {
         CustomBackground {
+            Logo()
             CustomForm {
                 CustomSection(header: "estate") {
                     CustomInput(text: $model.estate.code, placeholder: "id")

@@ -25,6 +25,7 @@ struct VisitsCalendarView: View {
                 if visitsStore.isLoading {
                     CustomLoading()
                 } else {
+                    Logo()
                     if visitsStore.visits.isEmpty {
                         Text("noScheduledVisitsYet")
                     } else {

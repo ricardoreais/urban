@@ -23,6 +23,7 @@ struct BidsView: View {
             if model.isLoading {
                 CustomLoading()
             } else {
+                Logo()
                 if model.bids.isEmpty {
                     Text("noBidsYet")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
