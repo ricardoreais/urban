@@ -21,17 +21,13 @@ struct AgentHomeView: View {
                 Logo()
                 Text("comingSoon")
                     .foregroundColor(ColorPalette.secondary)
-                Text("Features: nome do comprador, opção de criar relatório de visita, opção de criar proposta")
+                Text("Funcionalidades: nome do comprador, opção de criar relatório de visita, opção de criar proposta")
                     .foregroundColor(ColorPalette.secondary)
             }
             .tabItem {
                 Label("buyers", systemImage: "person.3.sequence")
             }
-            CustomBackground {
-                Logo()
-                Text("comingSoon")
-                    .foregroundColor(ColorPalette.secondary)
-            }
+            AddUserView(buyerCreation: true)
             .tabItem {
                 Label("addBuyer", systemImage: "person.badge.plus")
             }

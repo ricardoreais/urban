@@ -103,3 +103,4 @@
 "visitReportFormCreatedWithSuccess" = "Formulário de visita criado com sucesso!";
 "visitReportFormAndBidCreatedWithSuccess" = "Formulário de visita criado e proposta enviada para o vendedor com sucesso!";
 "selectBuyer" = "Selecione o seu cliente";
+"userSuccessfullyCreated" = "Utilizador criado com sucesso com a password: ";
