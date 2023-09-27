@@ -17,6 +17,7 @@ struct VisitReportView: View {
     }
 
     var body: some View {
+        
         CustomBackground(alignment: .leading) {
             Group {
                 CustomText(label: "floorPlan", value: report.floorPlan.rawValue)

@@ -24,7 +24,7 @@ struct Estate: Codable, Identifiable {
             createdAt: Timestamp(date: Date()),
             updatedAt: Timestamp(date: Date()),
             code: "E001",
-            address: "123 Main St",
+            address: "Rampa das necessidades 3, Ajuda, Lisboa",
             seller: User.ExampleReference(),
             agents: [User.ExampleReference()])
     }

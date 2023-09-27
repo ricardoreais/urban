@@ -19,6 +19,7 @@ struct CustomBackground<Content: View>: View {
     var body: some View {
         VStack(alignment: alignment) {
             content
+            Spacer()
         }
         .foregroundColor(ColorPalette.secondary)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

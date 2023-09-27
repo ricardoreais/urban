@@ -17,7 +17,7 @@ struct SellerEstateView: View {
     }
 
     var body: some View {
-        NavigationView {
+        VStack {
             CustomBackground(alignment: .leading) {
                 CustomText(label: "code", value: estate.code)
                 CustomText(label: "address", value: estate.address)
@@ -34,13 +34,13 @@ struct SellerEstateView: View {
                 } label: {
                     Label("moreActions", systemImage: "ellipsis")
                 }
-            }
-        }
+            }.padding(.horizontal, 40)
+        }.background(ColorPalette.primary)
     }
 }
 
 struct SellerEstateView_Previews: PreviewProvider {
     static var previews: some View {
-        return EstateView(estate: Estate.Example()).environmentObject(EstatesViewModel.example())
+        SellerEstateView(estate: Estate.Example()).environmentObject(EstatesViewModel.example())
     }
 }

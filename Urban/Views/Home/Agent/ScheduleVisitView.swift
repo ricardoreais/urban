@@ -26,12 +26,16 @@ struct ScheduleVisitView: View {
             CustomForm {
                 CustomSection(header: "estate") {
                     CustomDatePicker(selectedDate: $selectedDate)
+                }
+                CustomSection(header: "selectBuyer"){
                     CustomSelectList<User>(
                         label: "buyers",
                         options: model.buyers,
                         optionToString: { $0.email! },
                         selected: $selectedAgents
                     )
+                }
+                Section{
                     CustomButton("confirm", asyncAction: createVisit)
                         .navigationDestination(isPresented: $created) {
                             AgentHomeView()

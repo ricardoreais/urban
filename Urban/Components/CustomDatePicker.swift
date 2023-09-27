@@ -9,24 +9,24 @@ import SwiftUI
 
 struct CustomDatePicker: View {
     @Binding var selectedDate: Date
-    
+
     var minimumSelectableDate: Date {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         return today
     }
-    
+
     var maximumSelectableDate: Date {
         let calendar = Calendar.current
         let twoMonthsFromNow = calendar.date(byAdding: .month, value: 2, to: Date())!
         return twoMonthsFromNow
     }
-    
+
     var body: some View {
         DatePicker(
             "",
             selection: $selectedDate,
-            in: minimumSelectableDate...maximumSelectableDate,
+            in: minimumSelectableDate ... maximumSelectableDate,
             displayedComponents: [.date, .hourAndMinute]
         ).onAppear {
             UIDatePicker.appearance().minuteInterval = 15
@@ -45,9 +45,13 @@ struct CustomDatePicker_Previews: PreviewProvider {
             get: { Date() },
             set: { _ in }
         )
-        
-        return CustomBackground{
-            CustomDatePicker(selectedDate: inputValue)
+
+        return CustomBackground {
+            CustomForm {
+                CustomSection {
+                    CustomDatePicker(selectedDate: inputValue)
+                }
+            }
         }
     }
 }
