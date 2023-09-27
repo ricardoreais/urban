@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VisitReportsView: View {
-    @ObservedObject var visitReportsStore: VisitReportsViewModel
+    @EnvironmentObject var visitReportsStore: VisitReportsViewModel
     
     var body: some View {
         CustomBackground {
@@ -39,6 +39,6 @@ struct VisitReportsView: View {
 
 struct VisitReportsView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView{VisitReportsView(visitReportsStore: VisitReportsViewModel.example())}
+        NavigationView{VisitReportsView().environmentObject(VisitReportsViewModel.example())}
     }
 }

@@ -32,7 +32,7 @@ struct CustomSelectList<Selectable: Identifiable & Hashable>: View {
             }
         }
         .foregroundColor(ColorPalette.secondary)
-        .listRowBackground(Color.clear)
+        .listRowBackground(ColorPalette.highlights)
     }
 
     private func multiSelectionView() -> some View {

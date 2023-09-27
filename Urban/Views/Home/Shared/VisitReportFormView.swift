@@ -10,71 +10,54 @@ import FirebaseFirestore
 import SwiftUI
 
 struct VisitReportFormView: View {
-    @State private var visitReport: VisitReport = .init()
-    @State private var bid: Bid = .init()
-    @State private var created: Bool = false
-    @State private var hasErrors: Bool = false
-    let visit: Visit
-    let visitReportService: VisitReportService = .shared
-    let bidService: BidService = .shared
-    let userService: UserService = .shared
+    @ObservedObject var model: VisitReportFormViewModel = .shared
     
-    func save(visitReport: VisitReport) async {
-        do {
-            try await visitReportService.save(visitReport: visitReport)
-            _ = await bidService.save(bid)
-            print("Form submitted with success!")
-            created = true
-        } catch VisitReportError.missingRequiredFields {
-            hasErrors = true
-        } catch let VisitReportError.saveFailed(error) {
-            hasErrors = true
-            print("Error saving data: \(error)")
-        } catch {
-            // Handle any other errors
-            hasErrors = true
-            print("Unknown error: \(error)")
-        }
-    }
+    let visit: Visit
     
     var body: some View {
         CustomBackground {
             Logo()
             CustomForm {
                 CustomSection(header: "property") {
-                    EvaluationPicker(selection: $visitReport.floorPlan, label: "floorPlan")
-                    EvaluationPicker(selection: $visitReport.finishes, label: "finishes")
-                    EvaluationPicker(selection: $visitReport.sunExposition, label: "sunExposure")
-                    EvaluationPicker(selection: $visitReport.locationRating, label: "location")
-                    EvaluationPicker(selection: $visitReport.value, label: "value")
-                    EvaluationPicker(selection: $visitReport.overallAssessment, label: "overallAssessment")
-                    EvaluationPicker(selection: $visitReport.agentService, label: "kwService")
+                    EvaluationPicker(selection: $model.visitReport.floorPlan, label: "floorPlan")
+                    EvaluationPicker(selection: $model.visitReport.finishes, label: "finishes")
+                    EvaluationPicker(selection: $model.visitReport.sunExposition, label: "sunExposure")
+                    EvaluationPicker(selection: $model.visitReport.locationRating, label: "location")
+                    EvaluationPicker(selection: $model.visitReport.value, label: "value")
+                    EvaluationPicker(selection: $model.visitReport.overallAssessment, label: "overallAssessment")
+                    EvaluationPicker(selection: $model.visitReport.agentService, label: "kwService")
                 }
-                    
                 CustomSection(header: "impressions") {
-                    CustomInput(text: $visitReport.likes, placeholder: "whatDidYouLike")
+                    CustomInput(text: $model.visitReport.likes, placeholder: "whatDidYouLike")
+                    CustomInput(text: $model.visitReport.dislikes, placeholder: "whatDidYouDislike")
+                    CustomInput(text: $model.visitReport.willingToPay, placeholder: "howMuchAreYouWillingToPay")
+                    CustomPicker(selection: $model.visitReport.isOption, label: "isThisPropertyAnOption", options: [Decision.yes, Decision.no])
+                    CustomPicker(selection: $model.visitReport.hasPropertyToSell, label: "doYouHaveAnyPropertyToSell", options: [Decision.yes, Decision.no])
                         
-                    CustomInput(text: $visitReport.dislikes, placeholder: "whatDidYouDislike")
-                        
-                    Text("howMuchAreYouWillingToPay").foregroundColor(ColorPalette.secondary)
-                    CustomInput(text: $visitReport.willingToPay, placeholder: "moneyExample")
-                        
-                    CustomPicker(selection: $visitReport.isOption, label: "isThisPropertyAnOption", options: [Decision.yes, Decision.no])
-                        
-                    CustomPicker(selection: $visitReport.hasPropertyToSell, label: "doYouHaveAnyPropertyToSell", options: [Decision.yes, Decision.no])
-                        
-                    CustomInput(text: $visitReport.comments, placeholder: "comments")
+                    CustomInput(text: $model.visitReport.comments, placeholder: "comments")
                 }
-                
-                
                 CustomSection(header: "bid") {
-                    Text("yourBidValue").foregroundColor(ColorPalette.secondary)
-                    CustomDecimalInput(value: $bid.value, placeholder: "moneyExample")
+                    CustomDecimalInput(value: $model.bid.value, placeholder: "yourBidValue")
                 }
                 
                 Section {
-                    CustomButton("submit", asyncAction: { await save(visitReport: visitReport) })
-                        .navigationDestination(isPresented: $created) {
+                    CustomButton("submit", asyncAction: model.save)
+                        .alert(isPresented: $model.showAlert) {
+                            if model.hasErrors {
+                                return Alert(
+                                    title: Text("error"),
+                                    message: Text("pleaseFillFieldsCorrectly"),
+                                    dismissButton: .default(Text("ok"))
+                                )
+                            } else {
+                                return Alert(
+                                    title: Text("success"),
+                                    message: model.bidCreated ? Text("visitReportFormAndBidCreatedWithSuccess") : Text("visitReportFormCreatedWithSuccess"),
+                                    dismissButton: .default(Text("ok"), action: { model.navigate = true })
+                                )
+                            }
+                        }
+                        .navigationDestination(isPresented: $model.navigate) {
                             HomeView()
                         }
                         .padding(.horizontal, 0.0)
@@ -83,21 +66,14 @@ struct VisitReportFormView: View {
                 .foregroundColor(.accentColor)
                 .listRowBackground(Color.clear)
             }
-            .alert(isPresented: $hasErrors) {
-                Alert(
-                    title: Text("error"),
-                    message: Text("pleaseFillFieldsCorrectly"),
-                    dismissButton: .default(Text("ok"))
-                )
-            }
         }
         .onAppear {
-            self.bid.buyer = visit.buyer
-            self.bid.estate = visit.estate
+            self.model.bid.buyer = visit.buyer
+            self.model.bid.estate = visit.estate
             
-            self.visitReport.buyer = visit.buyer
-            self.visitReport.agent = visit.agent
-            self.visitReport.estate = visit.estate
+            self.model.visitReport.buyer = visit.buyer
+            self.model.visitReport.agent = visit.agent
+            self.model.visitReport.estate = visit.estate
         }
     }
 }

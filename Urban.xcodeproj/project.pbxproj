@@ -93,6 +93,7 @@
 		1FFA0D982ABF54400040904A /* CustomDecimalInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA0D972ABF54400040904A /* CustomDecimalInput.swift */; };
 		1FFA0D9A2ABF585A0040904A /* BidService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA0D992ABF585A0040904A /* BidService.swift */; };
 		1FFA0D9C2ABF5B180040904A /* BidsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA0D9B2ABF5B180040904A /* BidsViewModel.swift */; };
+		1FFA0D9E2AC4554B0040904A /* VisitReportFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA0D9D2AC4554B0040904A /* VisitReportFormViewModel.swift */; };
 		1FFAD7FA2A113BF000F63B1C /* VisitReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7F92A113BF000F63B1C /* VisitReportsView.swift */; };
 		1FFAD7FC2A113DF900F63B1C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */; };
 		1FFAD7FE2A113E1100F63B1C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFAD7FD2A113E1100F63B1C /* SignInView.swift */; };
@@ -174,6 +175,7 @@
 		1FFA0D972ABF54400040904A /* CustomDecimalInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDecimalInput.swift; sourceTree = "<group>"; };
 		1FFA0D992ABF585A0040904A /* BidService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidService.swift; sourceTree = "<group>"; };
 		1FFA0D9B2ABF5B180040904A /* BidsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidsViewModel.swift; sourceTree = "<group>"; };
+		1FFA0D9D2AC4554B0040904A /* VisitReportFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportFormViewModel.swift; sourceTree = "<group>"; };
 		1FFAD7F92A113BF000F63B1C /* VisitReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportsView.swift; sourceTree = "<group>"; };
 		1FFAD7FB2A113DF900F63B1C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		1FFAD7FD2A113E1100F63B1C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
@@ -406,6 +408,7 @@
 				1F10A4CE2A8D3F4800D7A007 /* DeleteUserViewModel.swift */,
 				1F10A4CC2A8D3E3200D7A007 /* CreateEstateViewModel.swift */,
 				1FFA0D9B2ABF5B180040904A /* BidsViewModel.swift */,
+				1FFA0D9D2AC4554B0040904A /* VisitReportFormViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				1F3804D22A59B9FD00F70347 /* BuyerHomeView.swift in Sources */,
 				1F9A976A2A8AA54E00B64436 /* VisitsCalendarViewModel.swift in Sources */,
 				1F3804E52A5A411000F70347 /* EvaluationPicker.swift in Sources */,
+				1FFA0D9E2AC4554B0040904A /* VisitReportFormViewModel.swift in Sources */,
 				1F70C6EC2A8CDDC200ED785F /* CustomCalendar.swift in Sources */,
 				1F3804DC2A59D15000F70347 /* Bid.swift in Sources */,
 				1FED3FA72A7689C400F38DD9 /* CreateEstateCommand.swift in Sources */,

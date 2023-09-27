@@ -22,7 +22,7 @@ struct CustomSection<Content: View>: View {
                 .foregroundColor(ColorPalette.secondary)
         }
         .foregroundColor(.accentColor)
-        .listRowBackground(Color.clear)
+        .listRowBackground(ColorPalette.highlights)
     }
 }
 

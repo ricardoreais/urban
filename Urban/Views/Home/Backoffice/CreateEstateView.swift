@@ -8,51 +8,47 @@
 import SwiftUI
 
 struct CreateEstateView: View {
-    @State private var estate: Estate = .init()
-    @State private var allAgents: [User] = []
-    @State private var sellerEmail: String = ""
-    @State private var created: Bool = false
-    @State private var hasError: Bool = false
-    @State private var selectedAgents: Set<User> = Set([])
     @ObservedObject private var estateManager: EstatesViewModel = EstatesViewModel.shared
     @ObservedObject private var model: CreateEstateViewModel = CreateEstateViewModel.shared
     
     func createEstate() async -> Void {
-        created = await estateManager.create(estate.code, estate.address, selectedAgents, sellerEmail)
-        hasError = !created
+        model.created = await estateManager.create(model.estate.code, model.estate.address, model.selectedAgents, model.sellerEmail)
+        model.hasError = !model.created
+        model.showAlert = model.created || model.hasError
     }
 
     var body: some View {
         CustomBackground {
             CustomForm {
                 CustomSection(header: "estate") {
-                    CustomInput(text: $estate.code, placeholder: "id")
+                    CustomInput(text: $model.estate.code, placeholder: "id")
                         .autocapitalization(/*@START_MENU_TOKEN@*/ .none/*@END_MENU_TOKEN@*/)
-                    CustomInput(text: $estate.address, placeholder: "address")
+                    CustomInput(text: $model.estate.address, placeholder: "address")
                     CustomSelectList<User>(
                         label: "agents",
                         options: model.agents,
                         optionToString: { $0.email! },
-                        selected: $selectedAgents
+                        selected: $model.selectedAgents
                     )
-                    CustomInput(text: $sellerEmail, placeholder: "sellerEmail")
+                    CustomInput(text: $model.sellerEmail, placeholder: "sellerEmail")
                         .autocapitalization(/*@START_MENU_TOKEN@*/ .none/*@END_MENU_TOKEN@*/)
                 }
                 CustomButton("createEstate", asyncAction: createEstate)
-            }
-            .alert(isPresented: $created) {
-                Alert(
-                    title: Text("success"),
-                    message: Text("estateCreatedWithSuccess"),
-                    dismissButton: .default(Text("ok"))
-                )
-            }
-            .alert(isPresented: $hasError) {
-                Alert(
-                    title: Text("error"),
-                    message: Text("pleaseFillFieldsCorrectly"),
-                    dismissButton: .default(Text("ok"))
-                )
+                    .alert(isPresented: $model.showAlert) {
+                        if model.hasError {
+                            return Alert(
+                                title: Text("error"),
+                                message: Text("pleaseFillFieldsCorrectly"),
+                                dismissButton: .default(Text("ok"))
+                            )
+                        } else {
+                            return Alert(
+                                title: Text("success"),
+                                message: Text("estateCreatedWithSuccess"),
+                                dismissButton: .default(Text("ok"))
+                            )
+                        }
+                    }
             }
         }
     }
@@ -60,6 +56,6 @@ struct CreateEstateView: View {
 
 struct CreateEstateView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateEstateView().environmentObject(UserManager.example())
+        NavigationView{CreateEstateView().environmentObject(UserManager.example())}
     }
 }

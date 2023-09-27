@@ -10,12 +10,14 @@ import SwiftUI
 struct CustomInput: View {
     @Binding var text: String
     let placeholder: LocalizedStringKey
-    
+
     var body: some View {
-        TextField("", text: $text, prompt: {
-            Text(placeholder)
+        TextField(
+            "",
+            text: $text,
+            prompt: Text(placeholder)
                 .foregroundColor(ColorPalette.highlightsPlus)
-        }())
+        )
         .foregroundColor(ColorPalette.secondary)
     }
 }
@@ -26,9 +28,12 @@ struct CustomInput_Previews: PreviewProvider {
             get: { "" },
             set: { _ in }
         )
-        
-        CustomInput(text: inputValue, placeholder: "Placeholder")
-            .padding()
-            .background(ColorPalette.primary)
+        return CustomForm {
+            CustomSection {
+                CustomInput(text: inputValue, placeholder: "Placeholder")
+            }
+        }
+        .padding()
+        .background(ColorPalette.primary)
     }
 }

@@ -59,12 +59,15 @@ class VisitReportService {
     
     func save(visitReport: VisitReport) async throws {
         guard visitReport.agent != nil, visitReport.buyer != nil else {
+            Logger.error("Can't create a visit report without agent or buyer")
             throw VisitReportError.missingRequiredFields
         }
         
         do {
             _ = try collection.addDocument(from: visitReport)
+            Logger.info("Visit report created with success!")
         } catch {
+            Logger.error("Error creating visit report")
             throw VisitReportError.saveFailed(error)
         }
     }

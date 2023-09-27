@@ -9,8 +9,16 @@ import Foundation
 
 @MainActor
 class CreateEstateViewModel: ObservableObject {
+    @Published var estate: Estate = .init()
+    @Published var allAgents: [User] = []
+    @Published var sellerEmail: String = ""
+    @Published var selectedAgents: Set<User> = Set([])
+    
     @Published var isLoading = true
     @Published var agents: [User] = []
+    @Published var created: Bool = false
+    @Published var hasError: Bool = false
+    @Published var showAlert: Bool = false
     private let userService: UserService = UserService.shared
     
     static let shared = CreateEstateViewModel()
