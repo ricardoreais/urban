@@ -26,7 +26,7 @@ struct EstateView: View {
                     //NavigationLink("createVisitReport", destination: VisitReportFormView(visit: Visit))
                     CustomLink("seeInBrowser", url: "\(SettingsManager.shared.getKwUrl()!)\(estate.code)")
                     NavigationLink("scheduleVisit", destination: ScheduleVisitView().environmentObject(estateManager))
-                    Button("createBid", action: openInPreview)
+                    NavigationLink("createBid", destination: CreateBidView())
                 } label: {
                     Label("moreActions", systemImage: "ellipsis")
                 }

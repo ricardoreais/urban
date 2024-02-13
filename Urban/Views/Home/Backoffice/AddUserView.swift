@@ -34,7 +34,7 @@ struct AddUserView: View {
     }
     
     func createUser() async -> Void {
-        generatedPassword = generateRandomPassword()
+        generatedPassword = "123456"
         created = await userManager.createUser(email, generatedPassword, generatedPassword, buyerCreation ? .buyer : type)
     }
     

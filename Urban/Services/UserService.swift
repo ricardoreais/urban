@@ -38,26 +38,30 @@ class UserService {
         return (loggedIn, hasErrors)
     }
     
-    func getCurrent() async -> User? {
-        guard let userEmail = Auth.auth().currentUser?.email else {
-            Logger.errorNoAuthenticatedUser()
-            return nil
-        }
-        
+    func get(email: String) async -> User? {
         do {
-            let querySnapshot = try await collection.whereField("email", isEqualTo: userEmail).getDocuments()
+            let querySnapshot = try await collection.whereField("email", isEqualTo: email).getDocuments()
             guard let document = querySnapshot.documents.first else {
                 Logger.errorFetchingUsers()
                 return nil
             }
             
             let user = try document.data(as: User.self)
-            Logger.infoFetchedUser(userEmail)
+            Logger.infoFetchedUser(email)
             return user
         } catch {
             Logger.error(error)
             return nil
         }
+    }
+    
+    func getCurrent() async -> User? {
+        guard let userEmail = Auth.auth().currentUser?.email else {
+            Logger.errorNoAuthenticatedUser()
+            return nil
+        }
+        
+        return await get(email: userEmail)
     }
     
     func create(command: CreateUserCommand) async -> Bool {
@@ -120,7 +124,7 @@ class UserService {
         }
     }
     
-    func get(email: String) async throws -> DocumentReference? {
+    func getReference(email: String) async throws -> DocumentReference? {
         do {
             let querySnapshot = try await collection.whereField("email", isEqualTo: email).getDocuments()
             
@@ -136,7 +140,7 @@ class UserService {
     
     func getOrCreate(email: String) async -> (reference: DocumentReference?, success: Bool) {
         do {
-            if let documentReference = try await get(email: email) {
+            if let documentReference = try await getReference(email: email) {
                 Logger.verboseUserAlreadyExists(email)
                 return (documentReference, true)
             } else {
@@ -147,7 +151,7 @@ class UserService {
                 let userCreated = await create(command: createUserCommand)
                 
                 if userCreated {
-                    if let newDocumentReference = try await get(email: email) {
+                    if let newDocumentReference = try await getReference(email: email) {
                         return (newDocumentReference, true)
                     } else {
                         Logger.errorFetchingOrCreatingUser(email)

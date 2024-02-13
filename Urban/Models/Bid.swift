@@ -17,6 +17,7 @@ struct Bid: Codable, Identifiable {
     var buyer: DocumentReference?
     var buyerValue: User?
     var estate: DocumentReference?
+    var status: BidStatus
     
     static func Example() -> Bid{
         return Bid(
@@ -26,6 +27,7 @@ struct Bid: Codable, Identifiable {
             value: 220000,
             buyer: User.ExampleReference(),
             buyerValue: User.BuyerExample(),
-            estate: Estate.ExampleReference())
+            estate: Estate.ExampleReference(),
+            status: .draft)
     }
 }

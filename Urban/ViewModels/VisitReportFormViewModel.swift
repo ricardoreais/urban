@@ -13,7 +13,7 @@ import FirebaseFirestore
 @MainActor
 class VisitReportFormViewModel: ObservableObject {
     @Published var visitReport: VisitReport = .init()
-    @Published var bid: Bid = .init()
+    @Published var bid: Bid = .init(status: .draft)
     @Published var bidCreated: Bool = false
     @Published var visitReportCreated: Bool = false
     @Published var navigate: Bool = false
