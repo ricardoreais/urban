@@ -17,14 +17,8 @@ class VisitsCalendarViewModel: ObservableObject {
     
     func loadVisits() async {
         isLoading = true // Set isLoading to true when loading data
-        do {
-            visits = await visitService.get()
-            isLoading = false // Set isLoading to false after data is loaded successfully
-        } catch {
-            // Handle the error
-            print("Error loading visits: \(error)")
-            isLoading = false // Set isLoading to false in case of error
-        }
+        visits = await visitService.get()
+        isLoading = false // Set isLoading to false after data is loaded successfully
     }
     
     static func example() -> VisitsCalendarViewModel {

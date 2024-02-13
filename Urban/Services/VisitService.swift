@@ -22,7 +22,7 @@ class VisitService {
     func create(_ command: CreateVisitCommand) async -> DocumentReference? {
         let currentUserReference = await userService.convertToDocumentReference((userManager.current?.id)!)
         let buyerReference = userService.convertToDocumentReference(command.buyer.id!)
-        let currentEstate = await estateService.convertToDocumentReference((command.estate.id)!)
+        let currentEstate = estateService.convertToDocumentReference((command.estate.id)!)
         let visit = Visit(date: command.date, estate: currentEstate, buyer: buyerReference, agent: currentUserReference)
         
         do {
@@ -56,6 +56,7 @@ class VisitService {
             
             return visits
         } catch {
+            print("Error loading visits: \(error)")
             Logger.error(error)
             return []
         }

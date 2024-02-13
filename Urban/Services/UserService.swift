@@ -30,6 +30,7 @@ class UserService {
             Logger.verboseSignIn(authResult.user.email ?? "")
             loggedIn = true
         } catch {
+            print("Error during sign-in: \(error)")
             Logger.errorSignIn(error)
             hasErrors = true
         }

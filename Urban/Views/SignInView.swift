@@ -16,16 +16,10 @@ struct SignInView: View {
     @EnvironmentObject var userManager: UserManager
     
     func signIn() async -> Void {
-        do {
-            let result = await userManager.signIn(email, password)
-            let isEmptyEmailOrPassword = email.isEmpty || password.isEmpty
-            hasErrors = result.hasErrors || isEmptyEmailOrPassword
-            loggedIn = result.loggedIn && !hasErrors
-        } catch {
-            // Handle the error here
-            print("Error during sign-in: \(error)")
-            // You can set an error state or show an alert to the user, etc.
-        }
+        let result = await userManager.signIn(email, password)
+        let isEmptyEmailOrPassword = email.isEmpty || password.isEmpty
+        hasErrors = result.hasErrors || isEmptyEmailOrPassword
+        loggedIn = result.loggedIn && !hasErrors
     }
     
     var body: some View {

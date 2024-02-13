@@ -40,7 +40,7 @@ class VisitReportFormViewModel: ObservableObject {
             }
         } catch VisitReportError.missingRequiredFields {
             hasErrors = true
-        } catch let VisitReportError.saveFailed(_) {
+        } catch VisitReportError.saveFailed(_) {
             hasErrors = true
         } catch {
             // Handle any other errors

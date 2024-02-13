@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddUserView: View {
     @State private var email: String = ""
-    @State private var type: UserType = UserType.guest
+    @State private var type: UserType = UserType.backoffice
     @State private var created: Bool = false
     @State private var generatedPassword: String = ""
     
